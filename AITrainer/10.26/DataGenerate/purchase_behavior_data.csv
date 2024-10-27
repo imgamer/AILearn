@@ -1,0 +1,5001 @@
+User_ID,Category,Purchase_Date,Price
+User_280,Cosmetics,2024-05-01,337.88
+User_60,Cosmetics,2023-08-26,392.88
+User_509,Food & Beverage,2024-01-16,124.94
+User_700,Cosmetics,2023-10-18,439.38
+User_568,Toys,2023-03-31,244.57
+User_577,Toys,2023-12-07,425.65
+User_346,Shoes,2023-06-19,145.75
+User_990,Books,2023-07-11,191.34
+User_996,Books,2023-11-30,190.01
+User_204,Food & Beverage,2023-10-12,340.13
+User_575,Cosmetics,2024-09-29,258.15
+User_924,Shoes,2024-03-01,165.09
+User_900,Toys,2024-03-13,115.48
+User_140,Cosmetics,2024-06-29,106.35
+User_570,Food & Beverage,2024-09-03,360.03
+User_8,Shoes,2023-05-02,62.25
+User_211,Books,2024-06-22,379.16
+User_835,Toys,2023-04-02,128.18
+User_127,Technology,2024-07-07,453.12
+User_37,Books,2024-06-02,321.85
+User_923,Books,2023-07-28,135.71
+User_794,Toys,2023-09-08,307.48
+User_646,Food & Beverage,2024-01-12,191.63
+User_255,Toys,2023-08-25,165.49
+User_533,Cosmetics,2023-10-24,324.24
+User_435,Technology,2024-04-27,119.68
+User_212,Toys,2023-04-04,186.73
+User_6,Cosmetics,2023-01-22,239.81
+User_344,Clothing,2023-12-26,298.39
+User_662,Food & Beverage,2023-07-10,233.15
+User_2,Cosmetics,2024-06-27,125.45
+User_2,Technology,2024-06-06,497.32
+User_173,Books,2023-12-10,435.67
+User_663,Books,2024-03-27,293.09
+User_905,Technology,2023-07-27,99.21
+User_659,Clothing,2024-05-24,424.95
+User_446,Toys,2024-09-16,331.99
+User_547,Toys,2023-08-18,205.07
+User_982,Toys,2024-07-03,406.75
+User_279,Toys,2023-07-21,177.05
+User_465,Technology,2023-08-05,251.84
+User_135,Toys,2023-03-03,141.63
+User_331,Cosmetics,2023-10-24,96.98
+User_451,Clothing,2024-05-09,334.39
+User_179,Shoes,2023-03-08,405.85
+User_134,Toys,2023-04-23,192.07
+User_980,Technology,2023-10-10,333.95
+User_891,Toys,2024-04-08,440.39
+User_196,Books,2023-01-01,112.1
+User_850,Toys,2023-07-07,141.6
+User_501,Cosmetics,2024-04-26,324.12
+User_895,Food & Beverage,2023-12-28,321.76
+User_79,Shoes,2023-08-03,369.1
+User_989,Clothing,2024-01-20,34.79
+User_202,Toys,2023-03-20,217.67
+User_202,Clothing,2024-03-11,231.47
+User_158,Toys,2024-08-31,487.43
+User_689,Toys,2024-05-06,226.67
+User_904,Clothing,2024-01-04,406.8
+User_499,Food & Beverage,2024-02-04,373.75
+User_915,Shoes,2023-11-03,487.93
+User_904,Toys,2023-09-22,276.41
+User_1,Books,2024-02-06,446.82
+User_637,Clothing,2023-01-20,436.48
+User_234,Shoes,2023-07-24,45.49
+User_747,Cosmetics,2023-03-15,345.51
+User_490,Shoes,2024-05-06,73.61
+User_580,Food & Beverage,2023-07-13,400.25
+User_794,Books,2023-08-18,119.21
+User_82,Toys,2024-05-18,193.52
+User_864,Technology,2023-04-10,134.66
+User_735,Toys,2023-10-11,246.38
+User_943,Cosmetics,2023-06-07,346.05
+User_947,Technology,2024-08-26,66.88
+User_893,Technology,2023-12-26,359.87
+User_845,Clothing,2023-11-23,221.82
+User_365,Technology,2023-11-05,302.07
+User_489,Clothing,2023-02-22,82.67
+User_142,Toys,2023-03-02,86.97
+User_788,Technology,2023-12-20,177.77
+User_849,Toys,2023-03-15,180.48
+User_675,Toys,2024-09-26,97.89
+User_326,Books,2023-03-01,429.91
+User_802,Books,2023-12-06,80.25
+User_241,Books,2024-07-16,451.38
+User_495,Shoes,2023-04-05,294.23
+User_583,Books,2023-09-09,393.64
+User_664,Shoes,2024-05-17,409.22
+User_106,Toys,2023-06-04,302.01
+User_17,Shoes,2023-04-04,83.49
+User_41,Technology,2023-06-02,303.3
+User_868,Food & Beverage,2024-02-29,349.15
+User_45,Food & Beverage,2024-01-02,195.0
+User_55,Shoes,2024-08-01,124.4
+User_436,Food & Beverage,2024-05-15,148.23
+User_65,Books,2024-07-29,229.06
+User_484,Cosmetics,2024-06-28,266.89
+User_250,Books,2023-04-10,84.69
+User_538,Clothing,2023-12-14,411.67
+User_6,Technology,2023-06-15,165.26
+User_519,Shoes,2023-02-02,356.44
+User_86,Clothing,2024-02-07,18.5
+User_259,Technology,2024-03-09,215.61
+User_598,Toys,2023-05-24,145.84
+User_671,Cosmetics,2023-07-20,60.28
+User_789,Books,2023-02-16,303.45
+User_877,Books,2024-06-04,378.42
+User_913,Cosmetics,2023-09-25,458.55
+User_553,Cosmetics,2024-06-04,319.29
+User_994,Books,2023-06-03,367.42
+User_483,Toys,2023-07-18,224.94
+User_863,Shoes,2023-06-15,299.04
+User_648,Clothing,2024-08-20,212.45
+User_783,Food & Beverage,2023-08-17,438.41
+User_505,Clothing,2023-07-21,178.28
+User_912,Food & Beverage,2024-07-06,137.29
+User_416,Books,2024-07-25,394.58
+User_171,Technology,2023-06-13,354.63
+User_581,Technology,2024-07-28,21.43
+User_307,Toys,2024-07-14,340.38
+User_675,Toys,2024-07-03,414.63
+User_108,Shoes,2023-01-22,268.1
+User_116,Food & Beverage,2024-05-24,323.79
+User_523,Books,2024-06-11,389.85
+User_3,Shoes,2023-09-26,114.33
+User_307,Shoes,2024-04-09,177.91
+User_16,Toys,2024-05-06,46.89
+User_865,Shoes,2023-05-01,198.21
+User_399,Clothing,2023-07-02,51.43
+User_180,Food & Beverage,2024-04-17,490.93
+User_295,Food & Beverage,2024-02-06,150.43
+User_22,Shoes,2024-04-17,68.93
+User_223,Food & Beverage,2024-08-24,206.73
+User_640,Clothing,2023-07-21,350.8
+User_959,Clothing,2024-09-21,99.55
+User_892,Cosmetics,2024-08-29,299.74
+User_502,Clothing,2024-01-28,378.92
+User_998,Books,2023-06-05,395.95
+User_976,Food & Beverage,2023-11-11,155.68
+User_306,Shoes,2023-07-29,12.54
+User_869,Clothing,2023-07-10,126.37
+User_516,Shoes,2024-04-22,150.46
+User_794,Technology,2023-06-06,72.75
+User_311,Food & Beverage,2023-08-08,443.5
+User_79,Clothing,2023-06-24,476.62
+User_233,Toys,2023-04-01,481.06
+User_977,Clothing,2024-09-21,12.44
+User_490,Cosmetics,2024-08-31,355.72
+User_470,Food & Beverage,2023-10-25,209.22
+User_950,Shoes,2023-11-08,288.37
+User_125,Food & Beverage,2024-01-25,201.63
+User_589,Shoes,2024-06-12,218.46
+User_549,Technology,2024-09-04,59.78
+User_898,Books,2024-05-29,361.82
+User_104,Books,2023-04-03,141.45
+User_452,Food & Beverage,2023-12-09,347.28
+User_639,Clothing,2024-08-17,268.34
+User_347,Clothing,2024-07-14,357.54
+User_308,Food & Beverage,2023-07-24,340.62
+User_935,Food & Beverage,2023-07-01,482.67
+User_388,Technology,2024-04-29,492.97
+User_213,Toys,2023-02-18,258.02
+User_558,Shoes,2024-04-16,92.49
+User_463,Cosmetics,2023-09-29,208.98
+User_251,Shoes,2024-09-14,102.34
+User_289,Books,2023-09-14,313.1
+User_841,Cosmetics,2024-05-30,155.05
+User_340,Technology,2023-06-05,343.39
+User_527,Clothing,2024-03-01,331.9
+User_463,Books,2024-04-11,475.67
+User_409,Shoes,2024-04-30,331.84
+User_5,Shoes,2023-12-10,259.63
+User_118,Cosmetics,2023-08-20,281.66
+User_229,Toys,2023-04-29,465.48
+User_344,Toys,2024-01-21,206.24
+User_806,Toys,2023-11-01,409.32
+User_820,Technology,2023-04-27,471.82
+User_700,Technology,2023-06-22,350.86
+User_249,Food & Beverage,2023-08-10,408.26
+User_650,Food & Beverage,2024-07-02,409.1
+User_160,Technology,2023-02-28,44.87
+User_589,Technology,2024-01-19,309.84
+User_700,Cosmetics,2023-11-12,202.24
+User_55,Technology,2024-07-16,457.16
+User_109,Books,2024-02-06,330.29
+User_987,Books,2023-10-01,77.97
+User_815,Books,2024-01-05,198.1
+User_751,Food & Beverage,2024-04-15,469.03
+User_772,Books,2023-02-10,284.36
+User_704,Food & Beverage,2024-06-17,149.43
+User_228,Food & Beverage,2023-09-28,95.85
+User_431,Technology,2023-01-14,120.67
+User_862,Shoes,2024-05-04,255.43
+User_884,Food & Beverage,2024-09-25,278.81
+User_81,Toys,2024-09-04,297.87
+User_418,Clothing,2024-06-26,238.79
+User_453,Cosmetics,2024-03-07,394.34
+User_513,Shoes,2023-02-01,312.83
+User_723,Cosmetics,2024-09-22,51.98
+User_996,Cosmetics,2024-03-06,195.25
+User_881,Clothing,2024-01-14,15.9
+User_196,Shoes,2023-09-13,382.51
+User_63,Food & Beverage,2023-11-14,60.04
+User_877,Technology,2024-08-13,177.02
+User_616,Food & Beverage,2023-10-30,368.13
+User_231,Books,2024-08-21,260.92
+User_190,Books,2024-09-14,29.95
+User_162,Technology,2023-09-29,41.08
+User_366,Clothing,2023-08-06,19.74
+User_965,Food & Beverage,2023-10-18,361.38
+User_230,Cosmetics,2023-01-21,296.91
+User_362,Books,2024-09-04,153.01
+User_499,Technology,2024-03-02,340.42
+User_672,Clothing,2024-09-02,309.8
+User_593,Clothing,2023-10-18,331.56
+User_964,Shoes,2023-06-11,97.32
+User_642,Food & Beverage,2023-04-16,222.15
+User_998,Clothing,2023-06-28,188.34
+User_254,Cosmetics,2023-01-04,41.24
+User_511,Shoes,2024-04-17,153.51
+User_168,Shoes,2024-05-18,119.74
+User_57,Technology,2024-05-16,365.75
+User_174,Cosmetics,2024-05-02,220.43
+User_713,Books,2024-05-26,355.06
+User_289,Shoes,2024-03-28,431.7
+User_984,Technology,2024-03-26,191.76
+User_501,Cosmetics,2023-08-20,452.66
+User_304,Technology,2024-01-05,90.64
+User_820,Shoes,2023-05-07,308.69
+User_927,Cosmetics,2023-08-16,107.05
+User_886,Cosmetics,2023-04-08,339.93
+User_754,Cosmetics,2023-11-12,121.92
+User_244,Books,2023-09-18,53.28
+User_594,Clothing,2023-05-23,44.91
+User_681,Shoes,2023-02-10,46.32
+User_848,Toys,2024-02-26,37.98
+User_274,Technology,2023-11-23,16.92
+User_852,Toys,2023-04-03,297.48
+User_828,Clothing,2023-10-08,39.34
+User_520,Clothing,2024-09-17,77.26
+User_154,Toys,2024-04-03,88.93
+User_875,Toys,2023-07-19,113.38
+User_999,Clothing,2023-10-11,448.9
+User_296,Cosmetics,2023-05-04,273.02
+User_686,Technology,2023-10-13,187.67
+User_730,Food & Beverage,2023-12-18,136.66
+User_144,Food & Beverage,2023-06-29,176.99
+User_632,Technology,2024-03-04,210.14
+User_627,Food & Beverage,2024-05-17,248.92
+User_585,Food & Beverage,2023-12-07,216.56
+User_583,Toys,2024-02-15,105.65
+User_226,Shoes,2023-06-30,70.8
+User_528,Food & Beverage,2024-05-29,452.83
+User_239,Clothing,2024-02-05,114.71
+User_563,Food & Beverage,2023-07-08,41.59
+User_501,Shoes,2024-08-15,217.75
+User_789,Clothing,2023-08-23,449.03
+User_750,Shoes,2024-02-12,107.42
+User_681,Food & Beverage,2023-05-27,306.68
+User_945,Books,2023-06-03,452.24
+User_622,Clothing,2024-02-25,277.28
+User_960,Shoes,2023-01-16,312.68
+User_426,Shoes,2024-07-20,14.97
+User_667,Shoes,2023-10-28,358.95
+User_359,Books,2024-07-11,45.98
+User_251,Books,2024-09-20,61.67
+User_158,Technology,2023-08-27,106.8
+User_21,Technology,2023-06-28,39.02
+User_396,Shoes,2024-09-25,312.5
+User_254,Cosmetics,2023-10-02,410.82
+User_115,Clothing,2024-01-29,246.04
+User_229,Books,2024-03-31,238.53
+User_231,Shoes,2024-01-05,181.82
+User_82,Technology,2023-03-26,122.54
+User_810,Clothing,2024-09-28,487.26
+User_627,Toys,2023-04-20,152.07
+User_244,Clothing,2024-09-09,32.67
+User_274,Toys,2023-02-27,394.72
+User_766,Toys,2024-03-01,456.39
+User_213,Food & Beverage,2023-10-20,473.15
+User_615,Cosmetics,2024-02-23,445.02
+User_909,Books,2023-04-18,76.05
+User_245,Food & Beverage,2023-10-04,306.11
+User_420,Shoes,2024-05-01,111.8
+User_863,Clothing,2023-09-05,214.33
+User_109,Food & Beverage,2023-08-15,213.01
+User_855,Technology,2023-01-12,206.8
+User_765,Technology,2023-05-21,290.14
+User_736,Cosmetics,2023-05-21,97.04
+User_227,Toys,2023-03-17,228.01
+User_624,Shoes,2023-08-10,305.11
+User_509,Food & Beverage,2023-03-11,360.52
+User_339,Clothing,2023-01-01,45.0
+User_697,Clothing,2024-06-29,246.99
+User_425,Clothing,2024-01-15,241.52
+User_193,Technology,2024-05-31,116.75
+User_842,Clothing,2023-06-29,11.37
+User_609,Books,2023-10-03,434.47
+User_489,Toys,2023-05-08,486.09
+User_220,Food & Beverage,2024-07-30,395.29
+User_621,Books,2024-05-09,171.34
+User_80,Shoes,2023-08-15,277.7
+User_15,Cosmetics,2024-08-09,494.36
+User_589,Food & Beverage,2023-06-17,238.04
+User_200,Toys,2023-07-09,207.31
+User_455,Shoes,2024-05-12,328.3
+User_239,Toys,2024-07-26,178.88
+User_405,Cosmetics,2024-08-04,159.6
+User_211,Shoes,2023-04-03,224.12
+User_790,Food & Beverage,2024-08-28,492.57
+User_171,Technology,2023-11-07,135.2
+User_155,Food & Beverage,2023-01-16,271.54
+User_472,Books,2023-05-26,327.74
+User_208,Clothing,2024-07-01,106.65
+User_408,Technology,2023-04-14,205.63
+User_771,Clothing,2024-02-24,188.89
+User_742,Cosmetics,2024-05-29,411.74
+User_92,Books,2023-12-29,53.49
+User_973,Shoes,2023-07-20,447.14
+User_106,Cosmetics,2023-05-27,260.95
+User_98,Technology,2023-06-04,368.24
+User_600,Cosmetics,2024-06-13,167.16
+User_78,Food & Beverage,2024-07-26,289.29
+User_307,Food & Beverage,2023-02-19,236.41
+User_687,Technology,2024-05-13,149.11
+User_637,Shoes,2023-05-05,232.53
+User_344,Clothing,2023-09-25,77.48
+User_1,Clothing,2023-10-31,70.91
+User_11,Clothing,2023-04-30,61.21
+User_302,Food & Beverage,2024-07-28,376.22
+User_775,Shoes,2023-11-16,288.23
+User_228,Cosmetics,2023-06-26,152.77
+User_217,Food & Beverage,2023-04-20,62.18
+User_811,Technology,2023-04-11,397.6
+User_460,Clothing,2023-07-01,121.83
+User_418,Shoes,2023-11-11,228.66
+User_468,Shoes,2023-07-03,42.74
+User_467,Toys,2023-12-28,80.94
+User_310,Books,2024-09-11,104.98
+User_696,Books,2023-10-27,49.58
+User_54,Toys,2024-09-26,269.53
+User_296,Toys,2023-11-26,53.66
+User_678,Technology,2023-10-17,255.11
+User_827,Cosmetics,2024-09-24,10.11
+User_6,Books,2024-01-19,300.95
+User_76,Technology,2023-05-15,309.87
+User_888,Food & Beverage,2023-12-20,471.86
+User_815,Shoes,2023-07-23,108.89
+User_297,Shoes,2024-06-13,317.52
+User_118,Clothing,2023-01-26,353.96
+User_516,Books,2023-02-09,353.49
+User_178,Food & Beverage,2024-01-15,273.8
+User_886,Books,2023-12-09,183.81
+User_942,Shoes,2023-11-04,109.92
+User_710,Technology,2024-08-12,131.94
+User_99,Toys,2023-12-03,105.09
+User_980,Technology,2024-02-23,97.92
+User_585,Books,2024-02-19,154.78
+User_26,Cosmetics,2023-09-16,89.71
+User_238,Toys,2023-08-11,342.16
+User_793,Cosmetics,2023-07-29,330.35
+User_966,Clothing,2023-08-10,428.96
+User_499,Toys,2023-12-20,44.41
+User_544,Food & Beverage,2023-01-10,447.02
+User_497,Clothing,2024-02-20,154.1
+User_3,Shoes,2023-07-28,230.81
+User_143,Cosmetics,2024-09-04,342.21
+User_811,Books,2023-03-08,426.61
+User_134,Technology,2024-01-23,488.8
+User_711,Food & Beverage,2024-02-29,153.9
+User_356,Clothing,2023-10-18,371.5
+User_423,Technology,2024-07-25,155.03
+User_438,Shoes,2023-08-20,380.64
+User_235,Shoes,2023-06-17,359.8
+User_893,Cosmetics,2023-08-16,370.86
+User_131,Toys,2023-11-10,37.36
+User_169,Food & Beverage,2023-11-30,373.08
+User_81,Clothing,2024-04-01,343.26
+User_556,Cosmetics,2023-11-08,22.54
+User_872,Clothing,2023-12-21,148.49
+User_463,Books,2024-06-18,394.33
+User_781,Technology,2023-01-16,413.2
+User_976,Food & Beverage,2023-10-18,327.0
+User_744,Cosmetics,2023-05-07,392.88
+User_696,Technology,2024-01-29,425.11
+User_776,Toys,2023-02-22,128.34
+User_845,Clothing,2024-06-12,259.25
+User_432,Food & Beverage,2023-08-26,94.27
+User_553,Technology,2023-11-02,420.62
+User_495,Toys,2023-11-29,63.63
+User_427,Toys,2023-09-27,477.25
+User_258,Clothing,2023-05-13,22.87
+User_256,Technology,2024-08-05,138.41
+User_338,Shoes,2023-12-28,21.77
+User_796,Shoes,2023-05-12,119.56
+User_207,Food & Beverage,2023-08-14,254.27
+User_782,Toys,2023-08-09,222.15
+User_445,Toys,2023-08-19,493.08
+User_229,Shoes,2023-10-14,164.14
+User_739,Food & Beverage,2023-12-28,112.44
+User_120,Toys,2024-01-14,63.43
+User_88,Toys,2024-03-16,224.73
+User_345,Food & Beverage,2023-08-17,29.71
+User_267,Cosmetics,2023-04-05,464.32
+User_273,Clothing,2023-03-29,48.88
+User_319,Shoes,2023-04-05,49.11
+User_240,Food & Beverage,2023-03-02,326.88
+User_187,Food & Beverage,2024-01-20,88.49
+User_935,Shoes,2023-05-15,331.56
+User_894,Toys,2024-09-02,337.57
+User_75,Cosmetics,2023-08-06,223.79
+User_947,Books,2023-11-11,213.0
+User_414,Technology,2023-09-23,206.87
+User_878,Technology,2023-04-13,61.84
+User_367,Toys,2023-10-09,300.2
+User_94,Toys,2024-08-29,495.96
+User_436,Clothing,2023-06-19,262.14
+User_484,Food & Beverage,2024-07-24,143.19
+User_813,Technology,2024-01-16,396.75
+User_362,Toys,2024-06-25,183.46
+User_561,Toys,2023-11-28,62.29
+User_420,Books,2023-09-28,326.12
+User_933,Shoes,2023-09-26,349.9
+User_568,Food & Beverage,2023-08-25,93.71
+User_26,Cosmetics,2023-04-29,333.3
+User_951,Cosmetics,2023-08-03,33.38
+User_952,Shoes,2023-07-24,41.81
+User_701,Books,2024-02-21,101.44
+User_342,Shoes,2023-04-23,158.88
+User_603,Technology,2023-05-17,273.51
+User_20,Toys,2023-05-30,62.82
+User_819,Shoes,2023-06-17,62.07
+User_528,Technology,2024-06-03,319.86
+User_63,Cosmetics,2023-12-01,329.02
+User_747,Clothing,2024-08-30,110.71
+User_527,Cosmetics,2024-07-26,140.33
+User_591,Books,2023-01-12,480.95
+User_882,Toys,2023-09-28,383.77
+User_969,Toys,2024-06-16,172.18
+User_795,Food & Beverage,2024-01-19,308.58
+User_975,Clothing,2023-02-10,253.41
+User_442,Technology,2024-01-21,36.62
+User_226,Toys,2024-02-29,487.63
+User_851,Clothing,2024-07-19,226.55
+User_671,Food & Beverage,2023-07-05,414.81
+User_668,Toys,2024-04-13,23.99
+User_166,Technology,2024-06-15,146.84
+User_594,Shoes,2024-06-16,372.97
+User_919,Books,2024-07-05,460.54
+User_450,Cosmetics,2023-06-18,353.82
+User_154,Cosmetics,2023-09-28,132.99
+User_552,Cosmetics,2023-02-20,199.71
+User_399,Food & Beverage,2023-05-10,212.4
+User_85,Cosmetics,2024-05-21,340.38
+User_785,Food & Beverage,2023-02-25,33.34
+User_302,Cosmetics,2024-01-30,297.17
+User_449,Food & Beverage,2024-03-26,76.41
+User_902,Technology,2024-07-02,188.15
+User_184,Books,2024-08-10,87.75
+User_511,Cosmetics,2023-11-08,150.84
+User_219,Technology,2024-04-21,110.82
+User_902,Books,2024-04-03,485.99
+User_747,Clothing,2023-11-19,386.83
+User_807,Food & Beverage,2023-08-05,460.82
+User_562,Clothing,2024-08-23,403.13
+User_263,Food & Beverage,2024-01-07,465.02
+User_171,Books,2023-01-26,176.11
+User_924,Shoes,2023-06-29,155.52
+User_763,Cosmetics,2023-06-21,452.3
+User_9,Toys,2023-05-20,299.79
+User_898,Cosmetics,2023-06-26,411.05
+User_245,Books,2023-10-17,161.83
+User_337,Clothing,2024-01-31,72.83
+User_366,Books,2023-12-25,76.17
+User_103,Books,2024-08-06,426.94
+User_211,Technology,2023-10-21,270.58
+User_223,Cosmetics,2023-07-11,265.99
+User_933,Cosmetics,2024-09-08,344.83
+User_562,Technology,2024-05-18,413.4
+User_574,Toys,2024-04-18,240.15
+User_3,Books,2024-02-05,55.31
+User_951,Technology,2024-08-30,362.15
+User_295,Cosmetics,2024-04-22,270.63
+User_614,Books,2024-03-14,129.15
+User_16,Technology,2024-04-20,204.44
+User_796,Cosmetics,2023-06-09,435.5
+User_590,Cosmetics,2024-01-03,415.53
+User_534,Technology,2023-11-25,445.04
+User_937,Technology,2023-11-13,202.93
+User_204,Cosmetics,2023-04-23,186.24
+User_502,Cosmetics,2023-04-19,229.74
+User_103,Cosmetics,2023-12-12,197.49
+User_308,Clothing,2023-10-12,435.8
+User_305,Food & Beverage,2023-09-12,150.77
+User_721,Cosmetics,2024-08-19,317.22
+User_779,Cosmetics,2023-05-23,182.3
+User_876,Clothing,2024-03-23,216.72
+User_344,Clothing,2024-02-28,26.0
+User_712,Food & Beverage,2024-05-31,310.42
+User_739,Clothing,2024-03-15,325.21
+User_894,Clothing,2023-11-26,333.04
+User_541,Toys,2024-09-22,273.06
+User_740,Clothing,2024-01-10,142.13
+User_613,Toys,2024-07-26,300.23
+User_412,Books,2023-01-25,246.72
+User_972,Toys,2024-07-13,147.73
+User_454,Technology,2024-08-30,196.12
+User_233,Technology,2023-05-21,81.98
+User_249,Books,2023-06-20,128.58
+User_901,Toys,2023-01-15,58.14
+User_202,Shoes,2023-01-04,426.79
+User_87,Technology,2024-08-28,412.41
+User_444,Clothing,2024-02-17,195.8
+User_180,Books,2023-11-26,72.11
+User_782,Clothing,2023-03-15,285.27
+User_706,Cosmetics,2023-01-09,418.75
+User_523,Food & Beverage,2024-06-25,366.62
+User_908,Shoes,2023-07-01,148.14
+User_727,Books,2023-08-21,495.64
+User_728,Technology,2024-04-28,386.64
+User_900,Technology,2023-09-16,408.9
+User_981,Clothing,2023-03-05,457.32
+User_7,Cosmetics,2023-04-20,12.49
+User_891,Shoes,2024-07-21,197.77
+User_704,Technology,2023-08-01,60.14
+User_193,Shoes,2024-02-28,498.96
+User_260,Books,2023-07-30,131.89
+User_708,Books,2024-07-26,57.15
+User_554,Clothing,2023-11-03,250.9
+User_668,Food & Beverage,2024-08-14,429.53
+User_217,Cosmetics,2024-06-10,116.63
+User_564,Toys,2023-10-21,143.03
+User_112,Toys,2024-01-26,18.69
+User_438,Shoes,2023-05-11,219.57
+User_921,Clothing,2024-03-23,315.77
+User_168,Cosmetics,2023-06-19,64.13
+User_947,Cosmetics,2024-06-13,370.57
+User_274,Technology,2024-05-03,216.89
+User_596,Books,2024-08-19,436.05
+User_760,Clothing,2023-09-25,315.33
+User_545,Clothing,2024-06-25,80.04
+User_464,Books,2024-09-17,98.66
+User_276,Technology,2024-09-30,269.59
+User_808,Cosmetics,2024-02-04,87.85
+User_257,Toys,2023-01-03,222.79
+User_919,Clothing,2023-09-19,388.0
+User_335,Food & Beverage,2024-05-12,22.72
+User_535,Cosmetics,2024-08-12,364.33
+User_596,Food & Beverage,2024-04-08,442.61
+User_700,Cosmetics,2024-07-04,270.4
+User_998,Toys,2023-10-21,204.38
+User_587,Books,2023-11-09,425.9
+User_735,Technology,2023-05-02,442.2
+User_251,Shoes,2024-07-23,20.14
+User_818,Food & Beverage,2023-02-01,373.33
+User_821,Cosmetics,2023-07-17,432.42
+User_750,Shoes,2024-03-31,128.71
+User_244,Cosmetics,2023-05-08,360.21
+User_627,Technology,2023-12-25,168.76
+User_651,Technology,2023-07-07,474.36
+User_486,Toys,2024-06-22,301.63
+User_355,Toys,2023-09-15,401.0
+User_549,Cosmetics,2024-04-12,313.83
+User_313,Books,2024-02-11,495.11
+User_563,Cosmetics,2023-02-12,203.01
+User_643,Food & Beverage,2024-02-05,154.75
+User_753,Food & Beverage,2023-08-20,140.74
+User_498,Technology,2023-02-03,331.95
+User_757,Books,2023-10-21,126.97
+User_61,Clothing,2023-04-18,370.55
+User_73,Cosmetics,2024-03-02,220.71
+User_999,Shoes,2023-07-24,57.87
+User_140,Technology,2023-01-18,414.11
+User_722,Technology,2024-03-16,325.28
+User_61,Toys,2023-01-16,430.98
+User_529,Books,2024-03-28,255.47
+User_976,Cosmetics,2023-08-27,380.31
+User_778,Toys,2023-01-14,80.42
+User_484,Technology,2023-08-06,231.02
+User_697,Clothing,2024-02-11,465.95
+User_72,Cosmetics,2023-07-25,436.85
+User_151,Shoes,2023-02-14,127.27
+User_630,Cosmetics,2023-08-11,356.83
+User_689,Technology,2024-07-28,303.33
+User_365,Shoes,2023-04-10,96.54
+User_753,Toys,2023-04-23,483.12
+User_578,Shoes,2024-07-28,160.63
+User_849,Food & Beverage,2023-06-23,349.2
+User_441,Books,2023-01-19,169.31
+User_964,Food & Beverage,2023-01-22,179.52
+User_924,Books,2024-07-01,88.55
+User_503,Cosmetics,2024-07-19,31.48
+User_926,Toys,2023-11-18,440.83
+User_314,Clothing,2023-02-22,391.59
+User_352,Technology,2023-10-07,262.56
+User_656,Shoes,2023-10-24,241.06
+User_602,Books,2023-03-07,27.78
+User_770,Technology,2023-04-17,224.04
+User_363,Shoes,2024-03-25,215.69
+User_906,Books,2023-05-31,117.69
+User_401,Shoes,2023-09-01,428.51
+User_477,Shoes,2023-11-16,79.27
+User_307,Cosmetics,2023-09-29,395.19
+User_997,Cosmetics,2023-07-27,281.35
+User_390,Books,2024-07-02,464.02
+User_382,Food & Beverage,2023-04-20,156.99
+User_706,Food & Beverage,2024-03-04,171.68
+User_552,Food & Beverage,2023-09-30,458.69
+User_112,Shoes,2023-09-18,115.2
+User_944,Technology,2023-10-10,143.02
+User_523,Clothing,2023-03-14,168.86
+User_711,Technology,2024-03-12,123.65
+User_414,Food & Beverage,2023-01-28,232.74
+User_574,Technology,2023-05-15,305.9
+User_645,Clothing,2024-08-05,196.74
+User_137,Shoes,2024-05-29,401.5
+User_817,Technology,2024-02-13,473.53
+User_948,Food & Beverage,2023-12-07,209.27
+User_458,Cosmetics,2024-08-29,325.9
+User_574,Cosmetics,2023-10-14,158.3
+User_784,Technology,2024-05-03,152.17
+User_928,Cosmetics,2024-07-11,268.04
+User_704,Books,2024-01-27,335.4
+User_255,Cosmetics,2023-02-03,247.59
+User_850,Toys,2023-12-30,260.9
+User_882,Books,2024-09-09,241.22
+User_918,Toys,2024-01-31,160.6
+User_354,Food & Beverage,2023-02-13,422.12
+User_386,Shoes,2024-08-15,142.08
+User_821,Technology,2023-12-04,339.46
+User_147,Food & Beverage,2023-11-02,307.31
+User_235,Shoes,2023-07-30,55.87
+User_171,Technology,2024-08-26,230.58
+User_347,Toys,2023-05-18,314.75
+User_932,Toys,2024-09-24,84.4
+User_466,Toys,2024-08-03,403.98
+User_619,Books,2023-05-24,98.0
+User_809,Clothing,2023-07-28,210.58
+User_683,Cosmetics,2023-01-11,245.5
+User_21,Food & Beverage,2023-01-22,71.08
+User_21,Clothing,2023-06-26,195.82
+User_965,Shoes,2023-11-14,108.42
+User_432,Books,2023-03-05,366.95
+User_221,Cosmetics,2023-10-08,86.56
+User_254,Toys,2024-02-17,189.08
+User_788,Books,2024-03-02,336.21
+User_701,Food & Beverage,2023-10-16,499.75
+User_566,Toys,2023-12-16,74.04
+User_856,Toys,2023-04-02,148.39
+User_444,Clothing,2024-08-21,109.47
+User_327,Shoes,2023-10-27,117.25
+User_913,Food & Beverage,2024-07-25,83.64
+User_954,Clothing,2024-08-19,321.41
+User_863,Technology,2024-03-09,52.91
+User_777,Books,2023-10-23,219.06
+User_333,Books,2024-09-07,197.08
+User_627,Clothing,2023-09-08,16.4
+User_632,Technology,2024-09-11,246.65
+User_615,Toys,2023-09-13,413.46
+User_511,Shoes,2024-09-07,476.46
+User_520,Technology,2024-06-11,256.09
+User_615,Food & Beverage,2023-01-03,293.72
+User_377,Toys,2024-02-02,198.71
+User_726,Clothing,2024-01-18,246.74
+User_220,Cosmetics,2023-06-12,343.45
+User_946,Food & Beverage,2023-11-10,319.38
+User_365,Books,2023-11-13,139.13
+User_191,Books,2024-08-07,134.61
+User_119,Shoes,2023-09-18,86.62
+User_618,Cosmetics,2023-10-15,43.34
+User_511,Cosmetics,2024-01-08,260.95
+User_162,Food & Beverage,2024-09-18,145.18
+User_245,Clothing,2023-10-08,317.53
+User_779,Toys,2024-04-23,22.72
+User_730,Clothing,2024-08-03,267.48
+User_350,Clothing,2023-01-22,87.23
+User_636,Clothing,2023-01-29,12.17
+User_495,Technology,2024-05-13,362.3
+User_338,Cosmetics,2023-10-21,148.95
+User_855,Technology,2024-05-30,106.1
+User_413,Books,2024-08-09,214.13
+User_85,Food & Beverage,2023-04-19,73.22
+User_178,Books,2023-07-19,359.26
+User_198,Books,2024-04-12,13.23
+User_260,Toys,2023-06-17,138.51
+User_575,Technology,2023-07-25,486.19
+User_450,Food & Beverage,2024-08-29,324.91
+User_838,Food & Beverage,2023-10-18,107.2
+User_70,Shoes,2023-05-26,279.31
+User_710,Technology,2023-05-10,52.86
+User_838,Food & Beverage,2023-05-28,495.49
+User_231,Technology,2024-04-19,463.86
+User_415,Food & Beverage,2023-09-03,156.79
+User_690,Books,2023-10-24,470.82
+User_986,Books,2023-07-27,346.6
+User_336,Books,2024-06-30,363.35
+User_207,Shoes,2024-02-23,68.8
+User_125,Food & Beverage,2023-09-02,219.42
+User_765,Food & Beverage,2023-04-14,361.94
+User_66,Food & Beverage,2024-06-28,392.48
+User_421,Technology,2023-09-17,379.19
+User_198,Shoes,2024-01-02,157.43
+User_913,Shoes,2024-09-25,33.75
+User_429,Food & Beverage,2024-07-16,64.85
+User_567,Toys,2023-09-10,36.53
+User_822,Clothing,2023-05-18,450.0
+User_399,Technology,2023-08-25,387.72
+User_984,Books,2023-09-20,184.96
+User_801,Shoes,2024-06-14,232.75
+User_718,Toys,2024-02-20,252.85
+User_931,Cosmetics,2023-11-04,264.24
+User_486,Food & Beverage,2023-07-28,251.99
+User_832,Cosmetics,2024-09-27,74.19
+User_611,Clothing,2024-06-19,352.81
+User_941,Food & Beverage,2024-03-17,247.35
+User_33,Shoes,2023-04-24,56.77
+User_432,Technology,2024-04-28,89.52
+User_909,Technology,2023-07-11,343.43
+User_983,Books,2023-08-31,108.67
+User_971,Clothing,2024-04-27,255.51
+User_815,Books,2024-02-18,140.96
+User_300,Cosmetics,2023-11-11,39.17
+User_731,Shoes,2024-01-29,322.63
+User_568,Shoes,2023-11-22,336.3
+User_113,Toys,2023-05-26,325.67
+User_276,Food & Beverage,2023-03-21,175.52
+User_915,Books,2024-09-27,212.89
+User_885,Clothing,2024-01-28,183.05
+User_569,Cosmetics,2024-03-26,218.39
+User_615,Food & Beverage,2024-08-24,32.48
+User_879,Books,2023-11-22,213.61
+User_200,Food & Beverage,2023-04-30,388.03
+User_848,Toys,2023-09-20,468.41
+User_707,Clothing,2023-10-22,338.49
+User_16,Cosmetics,2024-02-05,284.45
+User_776,Food & Beverage,2023-11-24,86.3
+User_615,Technology,2024-01-13,455.31
+User_296,Books,2024-09-06,486.16
+User_615,Technology,2023-03-20,420.06
+User_241,Toys,2024-04-21,332.58
+User_492,Technology,2023-11-13,119.73
+User_356,Clothing,2024-04-01,180.5
+User_900,Toys,2023-03-14,418.16
+User_740,Technology,2024-02-28,459.23
+User_930,Books,2024-07-08,457.21
+User_354,Cosmetics,2024-01-29,201.33
+User_914,Technology,2024-02-21,129.52
+User_831,Food & Beverage,2023-05-19,189.05
+User_263,Books,2024-06-19,125.02
+User_945,Toys,2023-05-13,94.83
+User_198,Technology,2023-11-25,337.2
+User_221,Food & Beverage,2023-08-15,112.73
+User_504,Cosmetics,2024-03-22,414.09
+User_864,Technology,2023-11-01,50.8
+User_614,Technology,2023-08-24,319.57
+User_794,Cosmetics,2023-10-01,181.17
+User_895,Shoes,2023-07-10,307.06
+User_6,Shoes,2023-05-10,38.94
+User_696,Cosmetics,2023-10-16,105.25
+User_262,Food & Beverage,2024-05-10,356.8
+User_106,Toys,2023-01-20,18.66
+User_669,Food & Beverage,2024-09-21,32.9
+User_287,Clothing,2024-05-03,224.79
+User_202,Technology,2023-07-06,309.67
+User_49,Technology,2023-07-25,54.33
+User_532,Cosmetics,2024-07-15,323.82
+User_600,Cosmetics,2024-02-28,25.77
+User_637,Technology,2023-11-03,315.28
+User_943,Toys,2024-06-26,91.63
+User_980,Clothing,2023-11-25,329.78
+User_130,Technology,2024-06-08,400.89
+User_381,Books,2023-10-19,212.84
+User_374,Food & Beverage,2023-11-18,177.94
+User_552,Cosmetics,2024-06-16,150.23
+User_478,Cosmetics,2023-12-24,113.24
+User_346,Food & Beverage,2023-06-24,280.52
+User_363,Toys,2024-03-03,325.83
+User_946,Technology,2023-02-01,242.5
+User_289,Toys,2023-06-09,169.94
+User_199,Cosmetics,2023-08-24,80.93
+User_302,Cosmetics,2024-02-01,305.84
+User_86,Shoes,2024-07-03,452.32
+User_377,Technology,2024-04-12,116.21
+User_827,Books,2024-04-30,371.04
+User_536,Books,2023-12-02,90.45
+User_168,Cosmetics,2024-09-04,104.04
+User_577,Food & Beverage,2024-03-01,396.79
+User_906,Cosmetics,2024-06-05,275.62
+User_320,Shoes,2023-04-13,488.07
+User_278,Shoes,2023-03-27,81.81
+User_569,Clothing,2023-10-02,373.26
+User_158,Technology,2023-09-14,279.08
+User_420,Clothing,2024-06-29,258.78
+User_30,Food & Beverage,2023-07-23,480.6
+User_304,Technology,2024-07-27,424.15
+User_939,Cosmetics,2023-11-26,45.21
+User_662,Technology,2023-04-18,146.84
+User_584,Technology,2023-09-10,123.25
+User_807,Shoes,2023-09-15,83.66
+User_707,Toys,2023-02-21,191.39
+User_779,Technology,2024-08-04,282.46
+User_464,Cosmetics,2023-04-22,165.8
+User_319,Cosmetics,2023-05-23,383.15
+User_537,Food & Beverage,2024-07-02,213.87
+User_624,Food & Beverage,2023-05-10,19.19
+User_865,Shoes,2023-03-25,334.37
+User_329,Toys,2023-09-27,403.59
+User_303,Food & Beverage,2024-01-28,445.46
+User_811,Toys,2024-02-21,352.43
+User_917,Toys,2023-06-08,330.93
+User_620,Clothing,2023-03-30,433.77
+User_232,Books,2024-09-02,81.85
+User_320,Clothing,2023-01-31,237.31
+User_878,Clothing,2024-03-12,233.45
+User_70,Cosmetics,2023-09-13,428.4
+User_64,Books,2024-01-05,305.78
+User_166,Cosmetics,2024-01-17,269.86
+User_762,Cosmetics,2024-01-29,434.06
+User_182,Food & Beverage,2023-08-02,338.28
+User_112,Technology,2023-02-08,302.9
+User_620,Cosmetics,2023-08-06,476.73
+User_641,Toys,2024-09-10,327.7
+User_880,Books,2023-11-21,411.21
+User_824,Technology,2024-01-03,305.78
+User_980,Toys,2023-11-20,346.57
+User_305,Toys,2023-12-26,115.53
+User_188,Food & Beverage,2024-02-11,492.21
+User_373,Food & Beverage,2023-02-20,295.27
+User_629,Technology,2024-04-07,203.25
+User_953,Shoes,2023-12-03,53.42
+User_257,Toys,2023-03-22,290.54
+User_552,Cosmetics,2024-03-07,107.88
+User_979,Cosmetics,2023-05-07,453.85
+User_567,Clothing,2024-02-13,203.48
+User_823,Toys,2023-03-24,437.14
+User_886,Cosmetics,2023-08-22,378.53
+User_931,Books,2024-04-12,192.34
+User_799,Clothing,2023-04-09,56.36
+User_314,Toys,2023-02-10,127.36
+User_170,Cosmetics,2024-04-19,261.72
+User_796,Technology,2023-08-29,197.42
+User_232,Clothing,2023-09-28,119.57
+User_602,Clothing,2024-06-30,35.91
+User_467,Technology,2023-09-14,271.29
+User_499,Books,2023-05-07,156.69
+User_705,Shoes,2024-06-12,220.83
+User_366,Food & Beverage,2024-01-24,281.85
+User_53,Toys,2024-04-01,444.39
+User_845,Clothing,2024-07-27,217.52
+User_165,Food & Beverage,2023-04-19,96.84
+User_358,Clothing,2023-10-26,103.19
+User_790,Shoes,2023-09-06,38.26
+User_428,Food & Beverage,2023-04-07,230.43
+User_577,Toys,2023-03-21,298.87
+User_53,Food & Beverage,2024-09-09,315.14
+User_990,Clothing,2024-06-13,361.71
+User_451,Clothing,2024-09-10,459.41
+User_951,Shoes,2024-07-24,63.25
+User_765,Cosmetics,2023-08-03,81.2
+User_333,Clothing,2024-09-24,472.66
+User_617,Cosmetics,2023-01-02,455.41
+User_638,Technology,2023-10-02,400.07
+User_635,Books,2023-09-14,301.94
+User_773,Cosmetics,2024-05-25,180.68
+User_13,Books,2024-01-23,284.82
+User_170,Shoes,2024-08-02,68.06
+User_33,Food & Beverage,2023-08-17,446.63
+User_240,Technology,2024-09-21,300.91
+User_865,Toys,2024-03-24,403.25
+User_430,Clothing,2023-08-12,477.52
+User_17,Cosmetics,2023-03-26,484.27
+User_500,Toys,2024-07-13,91.55
+User_712,Toys,2023-01-22,27.22
+User_817,Clothing,2024-04-04,54.15
+User_428,Toys,2024-01-22,252.66
+User_399,Toys,2024-05-25,423.58
+User_124,Shoes,2023-02-16,90.81
+User_13,Technology,2023-06-09,235.13
+User_87,Food & Beverage,2023-03-02,361.01
+User_208,Books,2024-07-16,476.16
+User_56,Cosmetics,2023-08-07,92.1
+User_811,Technology,2023-03-28,294.1
+User_509,Food & Beverage,2023-04-01,298.08
+User_771,Books,2024-08-28,225.02
+User_739,Food & Beverage,2023-07-22,250.52
+User_618,Clothing,2024-09-17,245.87
+User_2,Books,2024-06-06,308.09
+User_313,Food & Beverage,2023-06-07,199.86
+User_832,Clothing,2023-06-09,223.28
+User_814,Technology,2024-01-05,184.65
+User_916,Food & Beverage,2023-03-06,206.15
+User_714,Toys,2023-11-25,494.91
+User_196,Toys,2024-07-10,295.2
+User_991,Food & Beverage,2023-09-19,476.31
+User_213,Toys,2024-07-09,304.19
+User_328,Technology,2024-09-02,274.25
+User_63,Toys,2023-02-14,116.21
+User_570,Technology,2023-10-22,225.91
+User_399,Books,2024-08-18,428.68
+User_990,Books,2024-09-17,292.84
+User_844,Cosmetics,2023-04-11,26.64
+User_978,Clothing,2023-03-15,85.32
+User_187,Toys,2023-08-06,294.47
+User_601,Clothing,2024-01-29,333.27
+User_179,Food & Beverage,2023-05-22,306.63
+User_637,Cosmetics,2023-05-28,278.83
+User_290,Toys,2024-03-01,467.85
+User_272,Technology,2023-08-12,342.53
+User_710,Food & Beverage,2023-09-12,496.25
+User_554,Books,2024-04-12,125.28
+User_731,Toys,2023-06-06,36.51
+User_638,Shoes,2023-08-04,22.89
+User_631,Books,2023-06-20,451.26
+User_430,Clothing,2023-04-01,490.39
+User_969,Toys,2023-07-16,435.66
+User_816,Technology,2023-09-20,320.39
+User_544,Toys,2023-12-25,300.91
+User_749,Toys,2024-04-11,228.0
+User_907,Cosmetics,2023-11-14,277.3
+User_765,Toys,2024-03-17,469.07
+User_501,Clothing,2023-08-26,293.05
+User_591,Shoes,2024-07-10,30.2
+User_254,Clothing,2024-08-16,485.39
+User_63,Technology,2024-07-25,232.34
+User_626,Technology,2024-02-03,173.85
+User_493,Cosmetics,2024-09-15,329.48
+User_756,Technology,2023-07-05,46.24
+User_293,Technology,2024-08-30,174.26
+User_457,Toys,2023-08-20,226.83
+User_749,Clothing,2023-06-13,338.11
+User_20,Books,2023-09-30,330.5
+User_943,Technology,2023-04-27,371.87
+User_716,Technology,2024-09-15,193.09
+User_260,Food & Beverage,2023-07-22,296.85
+User_193,Toys,2024-09-04,201.55
+User_28,Food & Beverage,2024-09-15,252.35
+User_751,Clothing,2024-05-21,316.58
+User_661,Shoes,2023-04-30,28.1
+User_837,Toys,2023-10-03,218.2
+User_132,Food & Beverage,2023-04-14,184.65
+User_752,Clothing,2024-06-23,158.41
+User_135,Shoes,2023-02-19,100.38
+User_679,Books,2024-06-23,270.89
+User_759,Cosmetics,2023-01-31,310.64
+User_535,Toys,2023-02-11,53.15
+User_28,Books,2024-06-07,98.5
+User_112,Clothing,2023-10-21,435.64
+User_963,Shoes,2023-01-18,47.19
+User_725,Books,2023-02-20,238.17
+User_553,Cosmetics,2023-01-02,361.23
+User_240,Shoes,2023-03-21,383.26
+User_6,Books,2023-10-23,25.76
+User_366,Cosmetics,2023-06-05,281.29
+User_848,Toys,2024-04-06,431.22
+User_298,Shoes,2023-09-13,59.08
+User_525,Technology,2023-08-14,292.57
+User_850,Clothing,2024-03-16,489.68
+User_266,Technology,2024-08-15,18.38
+User_737,Cosmetics,2023-03-06,348.02
+User_487,Food & Beverage,2023-05-16,329.42
+User_157,Shoes,2024-08-25,127.31
+User_222,Clothing,2023-03-22,234.71
+User_904,Cosmetics,2023-01-09,152.47
+User_80,Books,2023-04-23,148.35
+User_594,Shoes,2023-07-21,60.09
+User_876,Clothing,2024-05-09,157.25
+User_288,Toys,2024-08-05,213.92
+User_873,Technology,2024-09-01,13.46
+User_855,Cosmetics,2024-01-16,114.57
+User_607,Technology,2023-04-28,287.85
+User_410,Clothing,2023-03-22,461.81
+User_672,Technology,2024-07-02,219.06
+User_992,Shoes,2023-08-08,380.16
+User_200,Books,2023-09-01,157.98
+User_16,Technology,2023-02-16,119.43
+User_629,Clothing,2024-07-20,440.25
+User_724,Toys,2024-06-22,87.61
+User_562,Toys,2023-03-21,427.55
+User_541,Technology,2024-07-28,325.74
+User_110,Food & Beverage,2023-01-18,470.86
+User_284,Shoes,2023-05-15,310.33
+User_323,Clothing,2024-01-04,276.26
+User_591,Clothing,2024-09-20,391.4
+User_253,Clothing,2023-04-04,343.85
+User_178,Clothing,2023-11-07,321.52
+User_386,Food & Beverage,2023-09-16,197.11
+User_934,Technology,2024-01-22,403.42
+User_820,Cosmetics,2023-07-30,207.94
+User_655,Cosmetics,2024-01-26,216.54
+User_867,Technology,2023-01-19,90.76
+User_773,Toys,2023-08-11,378.74
+User_804,Food & Beverage,2023-11-20,409.32
+User_143,Books,2023-07-05,234.65
+User_179,Clothing,2023-02-13,456.01
+User_156,Cosmetics,2023-07-16,299.86
+User_155,Food & Beverage,2023-07-31,193.56
+User_867,Toys,2023-12-12,99.14
+User_918,Technology,2024-03-27,54.97
+User_377,Cosmetics,2024-04-07,319.71
+User_613,Clothing,2023-08-15,465.49
+User_389,Cosmetics,2024-08-04,87.88
+User_832,Food & Beverage,2023-02-11,46.34
+User_904,Technology,2023-07-04,293.13
+User_887,Books,2023-03-06,302.09
+User_910,Technology,2023-01-15,402.04
+User_688,Technology,2023-06-10,72.83
+User_815,Toys,2024-07-11,178.88
+User_715,Food & Beverage,2023-02-19,481.81
+User_977,Technology,2023-04-29,142.09
+User_598,Shoes,2023-06-01,17.84
+User_85,Shoes,2023-05-13,207.29
+User_330,Books,2023-11-21,18.78
+User_490,Clothing,2024-03-26,485.62
+User_261,Books,2023-09-14,292.07
+User_381,Toys,2023-01-04,169.28
+User_273,Technology,2023-10-14,360.48
+User_730,Clothing,2023-09-10,177.83
+User_844,Technology,2024-09-16,240.29
+User_875,Shoes,2023-12-08,330.33
+User_309,Food & Beverage,2024-02-15,61.91
+User_472,Books,2023-09-10,52.37
+User_358,Cosmetics,2024-07-18,458.31
+User_46,Technology,2024-06-14,376.17
+User_886,Clothing,2023-09-13,220.64
+User_413,Technology,2023-04-05,205.32
+User_805,Books,2024-06-03,77.44
+User_173,Shoes,2023-09-19,259.16
+User_990,Books,2024-06-09,144.02
+User_409,Toys,2024-08-11,365.94
+User_462,Clothing,2024-03-25,374.56
+User_152,Cosmetics,2024-09-23,267.01
+User_456,Technology,2023-06-29,384.42
+User_701,Technology,2023-12-29,469.79
+User_353,Books,2024-02-25,410.82
+User_36,Toys,2023-08-31,46.09
+User_587,Technology,2023-01-03,466.58
+User_833,Shoes,2024-09-15,440.27
+User_379,Technology,2023-10-04,363.0
+User_512,Technology,2023-01-26,277.99
+User_51,Books,2024-09-29,460.18
+User_916,Clothing,2024-05-24,439.92
+User_800,Toys,2023-08-18,118.83
+User_316,Cosmetics,2023-07-12,209.87
+User_358,Clothing,2023-02-08,426.69
+User_666,Cosmetics,2023-08-06,188.43
+User_394,Books,2023-09-18,419.73
+User_683,Food & Beverage,2023-08-30,389.81
+User_978,Technology,2023-03-29,87.2
+User_9,Toys,2023-06-17,79.1
+User_217,Shoes,2023-06-15,275.89
+User_528,Toys,2023-02-27,180.58
+User_221,Clothing,2023-03-30,184.15
+User_895,Toys,2023-08-25,477.39
+User_304,Shoes,2023-02-01,134.4
+User_542,Cosmetics,2023-01-28,144.74
+User_19,Toys,2023-04-25,422.48
+User_283,Technology,2024-01-31,457.22
+User_731,Technology,2023-01-31,415.38
+User_48,Toys,2023-08-25,288.53
+User_169,Shoes,2023-03-03,366.02
+User_571,Technology,2023-03-04,128.77
+User_854,Books,2024-07-12,26.59
+User_282,Food & Beverage,2023-05-30,173.76
+User_450,Food & Beverage,2024-05-29,40.88
+User_752,Shoes,2024-07-14,289.29
+User_705,Shoes,2024-05-18,215.14
+User_32,Clothing,2024-07-28,310.09
+User_795,Shoes,2023-07-06,352.97
+User_541,Food & Beverage,2024-02-19,474.21
+User_662,Cosmetics,2023-01-23,38.5
+User_94,Clothing,2024-01-27,191.75
+User_523,Food & Beverage,2023-10-23,292.11
+User_615,Food & Beverage,2023-08-26,198.54
+User_264,Food & Beverage,2023-08-19,366.3
+User_820,Cosmetics,2023-08-04,149.86
+User_992,Food & Beverage,2024-03-27,24.21
+User_760,Technology,2023-03-14,258.04
+User_657,Food & Beverage,2023-06-22,171.85
+User_714,Cosmetics,2023-06-07,18.6
+User_228,Books,2024-08-17,336.63
+User_693,Technology,2023-03-03,144.25
+User_601,Toys,2024-01-18,374.58
+User_717,Clothing,2024-02-02,138.59
+User_986,Technology,2023-03-09,20.63
+User_256,Toys,2024-07-24,49.2
+User_2,Cosmetics,2024-05-29,312.44
+User_351,Technology,2024-05-07,491.86
+User_410,Technology,2023-07-19,273.58
+User_486,Shoes,2023-08-19,159.69
+User_534,Technology,2024-07-25,51.53
+User_501,Technology,2023-01-28,87.08
+User_81,Shoes,2023-08-15,438.13
+User_512,Food & Beverage,2024-05-10,267.51
+User_432,Books,2023-05-20,419.33
+User_957,Technology,2023-04-17,303.1
+User_508,Food & Beverage,2023-04-10,418.41
+User_636,Clothing,2024-08-16,286.79
+User_361,Toys,2023-07-31,218.04
+User_485,Food & Beverage,2023-09-14,324.49
+User_444,Books,2023-05-19,488.48
+User_852,Cosmetics,2023-02-26,240.61
+User_96,Food & Beverage,2023-07-13,86.66
+User_203,Food & Beverage,2023-01-20,15.44
+User_965,Toys,2023-08-26,435.09
+User_964,Cosmetics,2023-10-08,311.15
+User_264,Cosmetics,2023-11-04,220.94
+User_630,Books,2024-04-02,366.55
+User_901,Toys,2024-04-13,351.77
+User_218,Cosmetics,2023-12-12,340.1
+User_397,Food & Beverage,2023-09-13,94.83
+User_784,Books,2024-03-24,153.06
+User_118,Books,2023-01-25,482.8
+User_972,Clothing,2023-03-28,106.54
+User_742,Shoes,2023-09-25,340.21
+User_472,Clothing,2023-05-20,369.81
+User_947,Books,2023-02-20,306.94
+User_732,Shoes,2024-06-04,334.87
+User_525,Books,2023-03-21,158.28
+User_15,Clothing,2023-10-23,421.87
+User_8,Books,2023-08-16,120.14
+User_862,Food & Beverage,2024-07-06,391.68
+User_222,Toys,2023-08-27,243.73
+User_389,Food & Beverage,2023-08-23,34.16
+User_824,Food & Beverage,2023-11-17,436.58
+User_854,Clothing,2023-08-05,303.06
+User_65,Books,2024-02-17,375.09
+User_98,Technology,2024-02-02,129.51
+User_757,Clothing,2023-12-24,54.93
+User_846,Cosmetics,2023-05-10,425.7
+User_47,Books,2023-03-10,135.87
+User_204,Food & Beverage,2023-04-20,266.04
+User_216,Clothing,2024-02-02,122.53
+User_324,Technology,2023-10-23,246.34
+User_575,Toys,2024-05-21,238.58
+User_103,Shoes,2024-03-25,65.01
+User_376,Books,2024-04-26,146.0
+User_257,Food & Beverage,2024-07-11,65.83
+User_411,Books,2024-07-02,406.12
+User_345,Toys,2023-08-07,11.84
+User_507,Toys,2023-04-11,294.69
+User_580,Books,2024-09-26,354.58
+User_841,Food & Beverage,2023-01-11,55.52
+User_696,Cosmetics,2024-02-01,306.9
+User_451,Clothing,2023-03-08,331.23
+User_210,Technology,2023-02-10,313.16
+User_552,Shoes,2024-08-24,79.31
+User_616,Technology,2024-09-08,109.21
+User_909,Technology,2023-06-12,75.36
+User_491,Cosmetics,2024-08-21,218.31
+User_537,Food & Beverage,2024-08-25,364.37
+User_887,Clothing,2024-04-17,342.05
+User_817,Food & Beverage,2023-05-21,316.36
+User_712,Cosmetics,2024-05-05,162.87
+User_202,Cosmetics,2024-01-01,21.22
+User_619,Clothing,2023-06-03,15.17
+User_180,Books,2023-08-27,280.51
+User_33,Technology,2023-04-03,457.84
+User_6,Cosmetics,2023-03-22,214.4
+User_754,Cosmetics,2024-07-19,354.05
+User_554,Cosmetics,2023-08-30,103.8
+User_169,Food & Beverage,2024-08-06,26.21
+User_76,Cosmetics,2023-06-29,98.62
+User_826,Shoes,2024-05-05,364.0
+User_629,Cosmetics,2023-06-14,317.35
+User_281,Food & Beverage,2023-09-25,121.04
+User_325,Clothing,2023-01-27,212.71
+User_348,Books,2023-03-05,371.57
+User_794,Food & Beverage,2023-06-02,378.07
+User_382,Food & Beverage,2024-05-03,384.3
+User_991,Clothing,2024-03-15,343.85
+User_722,Clothing,2024-05-22,348.02
+User_832,Clothing,2023-06-07,211.73
+User_88,Cosmetics,2023-10-04,225.39
+User_741,Food & Beverage,2024-09-28,208.93
+User_951,Technology,2024-03-08,132.47
+User_355,Toys,2024-01-15,270.77
+User_754,Food & Beverage,2023-05-12,183.17
+User_409,Shoes,2024-01-17,349.64
+User_142,Shoes,2024-03-04,26.94
+User_672,Food & Beverage,2023-11-25,342.65
+User_510,Food & Beverage,2024-04-09,389.17
+User_8,Shoes,2024-07-03,388.48
+User_289,Toys,2023-03-02,419.74
+User_248,Cosmetics,2024-02-07,95.61
+User_335,Shoes,2023-03-12,77.75
+User_76,Cosmetics,2024-01-17,372.72
+User_2,Technology,2023-06-06,218.73
+User_781,Cosmetics,2023-09-03,157.14
+User_829,Cosmetics,2023-03-10,83.02
+User_11,Shoes,2024-01-15,286.52
+User_612,Cosmetics,2024-07-12,257.92
+User_192,Clothing,2023-06-26,439.32
+User_631,Clothing,2024-07-12,497.32
+User_614,Technology,2023-05-07,12.64
+User_115,Toys,2023-04-23,486.25
+User_482,Technology,2024-07-15,448.17
+User_511,Toys,2024-02-24,441.79
+User_636,Books,2024-02-12,449.48
+User_630,Toys,2023-08-17,340.32
+User_429,Toys,2023-09-03,431.75
+User_788,Food & Beverage,2024-02-14,327.98
+User_123,Toys,2024-09-22,301.3
+User_138,Shoes,2023-04-02,433.5
+User_478,Shoes,2023-04-09,125.35
+User_918,Clothing,2024-06-07,83.08
+User_256,Shoes,2024-01-11,448.43
+User_766,Shoes,2024-05-28,379.76
+User_830,Food & Beverage,2023-03-10,15.13
+User_627,Technology,2024-01-16,171.94
+User_9,Food & Beverage,2023-01-12,341.1
+User_690,Cosmetics,2023-07-23,463.33
+User_203,Food & Beverage,2023-08-26,129.34
+User_552,Technology,2023-10-08,108.38
+User_279,Clothing,2024-01-24,179.85
+User_154,Shoes,2023-05-07,55.5
+User_686,Toys,2024-04-29,352.0
+User_329,Food & Beverage,2024-02-29,156.57
+User_12,Clothing,2023-08-10,323.72
+User_334,Food & Beverage,2023-09-10,183.66
+User_876,Shoes,2023-04-14,367.8
+User_348,Clothing,2023-11-13,341.11
+User_670,Clothing,2024-05-05,291.54
+User_748,Shoes,2023-06-03,466.5
+User_462,Books,2023-08-17,337.27
+User_629,Shoes,2024-05-11,294.96
+User_983,Shoes,2023-01-28,13.16
+User_66,Cosmetics,2024-08-19,49.99
+User_291,Toys,2024-07-13,438.96
+User_855,Books,2024-02-16,496.43
+User_355,Food & Beverage,2023-08-14,384.0
+User_370,Cosmetics,2023-11-28,64.88
+User_183,Shoes,2024-04-16,210.76
+User_511,Toys,2023-10-13,129.2
+User_163,Food & Beverage,2024-09-12,111.47
+User_549,Technology,2024-06-28,131.51
+User_462,Shoes,2023-01-04,440.16
+User_327,Clothing,2024-06-12,414.5
+User_207,Cosmetics,2024-03-07,271.49
+User_525,Toys,2023-06-22,326.46
+User_464,Cosmetics,2024-09-11,92.84
+User_717,Shoes,2023-07-30,110.27
+User_451,Food & Beverage,2024-05-15,387.33
+User_308,Shoes,2024-02-07,184.01
+User_862,Shoes,2023-08-26,426.49
+User_19,Shoes,2023-02-23,378.08
+User_452,Shoes,2024-06-11,471.63
+User_136,Food & Beverage,2023-08-26,239.99
+User_507,Technology,2023-06-22,494.64
+User_654,Shoes,2023-02-18,466.37
+User_957,Shoes,2024-07-10,264.47
+User_726,Toys,2023-07-31,212.93
+User_289,Toys,2024-07-15,78.46
+User_20,Books,2024-07-28,481.66
+User_314,Technology,2023-08-03,157.56
+User_260,Technology,2023-10-27,216.85
+User_74,Books,2024-04-25,430.97
+User_218,Toys,2024-03-03,185.13
+User_51,Books,2024-03-23,67.44
+User_335,Toys,2023-08-29,89.46
+User_713,Clothing,2023-11-18,297.61
+User_909,Cosmetics,2023-05-29,16.19
+User_216,Cosmetics,2024-01-21,430.78
+User_510,Clothing,2023-12-24,206.56
+User_676,Clothing,2024-05-14,33.32
+User_277,Books,2023-11-16,171.53
+User_46,Books,2024-02-11,52.17
+User_483,Technology,2023-08-31,381.57
+User_955,Food & Beverage,2024-07-05,92.11
+User_493,Technology,2024-08-18,496.43
+User_711,Clothing,2023-03-29,437.92
+User_659,Books,2023-05-27,383.95
+User_28,Cosmetics,2023-03-28,70.99
+User_986,Toys,2023-12-31,484.64
+User_977,Books,2024-03-28,200.63
+User_143,Technology,2024-03-19,388.95
+User_215,Technology,2023-03-22,81.57
+User_669,Cosmetics,2023-11-11,17.14
+User_517,Books,2023-01-15,258.28
+User_45,Books,2023-12-27,418.65
+User_269,Toys,2024-02-29,417.25
+User_922,Toys,2023-05-13,310.88
+User_746,Cosmetics,2024-01-27,53.34
+User_565,Clothing,2023-02-06,395.7
+User_523,Clothing,2024-01-31,247.17
+User_951,Shoes,2024-06-11,271.02
+User_947,Technology,2024-04-04,53.19
+User_894,Toys,2023-09-13,439.81
+User_482,Technology,2023-07-06,55.56
+User_878,Food & Beverage,2023-09-24,424.55
+User_264,Cosmetics,2023-06-30,442.45
+User_995,Books,2024-03-30,321.12
+User_636,Food & Beverage,2023-09-16,192.17
+User_298,Books,2023-09-22,388.0
+User_307,Cosmetics,2023-04-21,460.15
+User_601,Food & Beverage,2024-04-07,438.03
+User_460,Shoes,2023-06-05,493.32
+User_334,Shoes,2023-03-19,308.66
+User_25,Shoes,2024-09-12,310.73
+User_429,Technology,2023-10-28,217.2
+User_739,Technology,2024-07-07,155.92
+User_621,Food & Beverage,2024-03-13,410.57
+User_302,Shoes,2023-09-20,52.11
+User_678,Shoes,2024-03-20,116.39
+User_964,Clothing,2023-12-10,324.19
+User_794,Technology,2024-02-11,233.68
+User_206,Books,2023-03-28,132.43
+User_397,Clothing,2024-07-30,227.22
+User_411,Technology,2023-06-27,43.52
+User_70,Cosmetics,2023-11-24,123.46
+User_84,Technology,2023-11-24,32.27
+User_762,Clothing,2023-01-04,37.35
+User_66,Clothing,2024-02-23,161.03
+User_168,Food & Beverage,2024-02-13,439.62
+User_589,Cosmetics,2023-08-25,74.8
+User_768,Books,2023-11-19,495.77
+User_732,Food & Beverage,2023-12-05,355.26
+User_621,Clothing,2024-01-11,331.1
+User_634,Toys,2023-06-09,86.94
+User_819,Clothing,2024-01-15,238.83
+User_770,Clothing,2023-11-26,440.94
+User_750,Technology,2024-06-06,83.79
+User_750,Toys,2023-09-17,427.19
+User_777,Toys,2024-03-10,450.86
+User_583,Food & Beverage,2023-10-03,186.87
+User_810,Technology,2023-02-27,395.65
+User_355,Shoes,2023-08-10,468.13
+User_52,Food & Beverage,2023-02-18,374.6
+User_944,Shoes,2024-06-05,144.26
+User_412,Cosmetics,2023-09-23,290.0
+User_883,Clothing,2023-03-02,409.53
+User_875,Technology,2023-12-21,335.08
+User_53,Food & Beverage,2024-02-20,431.59
+User_318,Food & Beverage,2023-03-29,374.18
+User_387,Shoes,2024-09-11,444.17
+User_379,Cosmetics,2024-06-17,334.04
+User_904,Books,2024-06-06,458.43
+User_970,Technology,2023-05-06,424.24
+User_82,Clothing,2023-12-11,100.98
+User_158,Food & Beverage,2023-11-27,326.8
+User_569,Cosmetics,2023-10-29,401.69
+User_939,Cosmetics,2024-02-20,141.37
+User_140,Shoes,2023-06-17,405.26
+User_9,Clothing,2024-02-19,159.18
+User_421,Shoes,2023-07-13,452.17
+User_938,Books,2023-01-03,228.22
+User_456,Books,2023-11-26,192.15
+User_836,Shoes,2024-08-22,70.52
+User_74,Technology,2023-09-02,392.75
+User_279,Toys,2023-12-26,237.89
+User_541,Clothing,2023-12-04,110.91
+User_85,Toys,2024-04-19,115.36
+User_220,Cosmetics,2024-01-25,413.54
+User_352,Clothing,2023-02-12,369.09
+User_305,Shoes,2023-03-03,167.62
+User_966,Books,2023-06-05,418.54
+User_789,Shoes,2023-10-28,57.29
+User_266,Clothing,2023-10-18,422.17
+User_938,Food & Beverage,2024-01-11,489.43
+User_695,Books,2023-03-04,245.07
+User_277,Clothing,2023-10-10,72.91
+User_803,Food & Beverage,2024-03-08,154.82
+User_26,Technology,2023-09-12,172.52
+User_611,Shoes,2023-09-13,342.36
+User_88,Food & Beverage,2024-09-03,477.12
+User_358,Cosmetics,2023-11-15,473.44
+User_424,Books,2024-07-05,168.04
+User_619,Toys,2024-01-28,49.25
+User_196,Shoes,2023-05-07,162.7
+User_121,Toys,2023-08-03,87.58
+User_471,Clothing,2023-01-24,173.11
+User_441,Books,2023-11-22,129.0
+User_731,Food & Beverage,2023-04-01,424.61
+User_164,Clothing,2024-07-13,90.86
+User_424,Food & Beverage,2023-02-08,473.28
+User_58,Books,2024-09-06,291.52
+User_559,Books,2023-02-20,151.53
+User_232,Technology,2023-05-18,42.52
+User_4,Clothing,2023-10-02,104.0
+User_100,Toys,2023-04-07,46.13
+User_352,Shoes,2024-09-09,133.94
+User_180,Cosmetics,2024-06-08,251.67
+User_75,Shoes,2023-06-04,457.4
+User_45,Toys,2023-03-21,107.56
+User_202,Books,2023-01-04,388.29
+User_646,Clothing,2024-06-12,134.88
+User_832,Toys,2023-09-18,60.4
+User_960,Shoes,2023-01-09,107.44
+User_485,Books,2023-02-24,15.11
+User_538,Clothing,2023-10-15,264.19
+User_635,Shoes,2023-12-14,241.8
+User_547,Clothing,2024-06-26,498.87
+User_742,Food & Beverage,2023-01-21,240.1
+User_859,Shoes,2024-09-30,27.62
+User_942,Cosmetics,2023-12-20,118.93
+User_351,Food & Beverage,2024-07-13,298.43
+User_560,Shoes,2024-08-22,122.83
+User_574,Toys,2023-01-07,437.15
+User_341,Shoes,2023-09-16,33.92
+User_901,Books,2024-03-25,188.84
+User_512,Cosmetics,2024-01-28,10.9
+User_238,Clothing,2024-09-17,269.58
+User_400,Books,2023-03-02,327.58
+User_826,Cosmetics,2023-09-30,29.88
+User_420,Technology,2024-06-23,148.75
+User_184,Books,2023-09-26,227.53
+User_113,Technology,2023-07-26,67.19
+User_839,Toys,2023-03-24,308.72
+User_128,Toys,2023-01-20,390.2
+User_56,Cosmetics,2024-06-19,433.24
+User_212,Food & Beverage,2024-01-13,328.17
+User_678,Technology,2024-08-15,463.55
+User_249,Cosmetics,2023-04-06,173.58
+User_912,Shoes,2023-01-11,360.15
+User_867,Technology,2024-07-30,44.96
+User_765,Cosmetics,2023-10-03,143.62
+User_974,Technology,2023-09-24,373.61
+User_52,Clothing,2024-07-19,143.99
+User_771,Shoes,2023-03-15,74.16
+User_795,Shoes,2024-06-28,311.83
+User_495,Food & Beverage,2024-07-12,467.64
+User_39,Food & Beverage,2024-09-02,411.45
+User_422,Cosmetics,2024-04-02,274.89
+User_925,Clothing,2024-01-05,378.24
+User_112,Books,2023-11-12,201.33
+User_112,Technology,2023-08-20,296.31
+User_977,Cosmetics,2024-03-03,314.76
+User_294,Food & Beverage,2024-08-28,222.31
+User_342,Books,2024-06-12,330.66
+User_15,Books,2023-03-04,395.04
+User_39,Cosmetics,2023-08-15,492.63
+User_27,Technology,2023-08-07,191.03
+User_826,Toys,2023-11-11,113.74
+User_773,Food & Beverage,2024-01-09,132.71
+User_20,Shoes,2024-04-18,81.59
+User_109,Books,2024-07-14,139.38
+User_163,Books,2023-07-26,176.58
+User_589,Toys,2024-05-23,239.8
+User_309,Technology,2023-01-21,84.75
+User_197,Toys,2024-09-08,371.74
+User_443,Technology,2024-05-11,281.95
+User_673,Toys,2023-04-07,406.16
+User_100,Toys,2023-04-01,112.35
+User_675,Food & Beverage,2023-10-16,288.5
+User_861,Shoes,2023-12-27,353.96
+User_528,Technology,2023-06-06,360.95
+User_732,Technology,2023-04-10,336.47
+User_323,Shoes,2024-01-04,272.77
+User_758,Shoes,2024-05-15,250.46
+User_65,Cosmetics,2024-01-20,418.49
+User_661,Clothing,2023-04-29,179.69
+User_204,Food & Beverage,2023-03-17,113.89
+User_843,Technology,2024-03-16,350.83
+User_52,Technology,2023-09-30,316.35
+User_95,Clothing,2024-04-02,77.49
+User_98,Shoes,2024-01-10,225.13
+User_129,Cosmetics,2023-07-01,200.28
+User_91,Books,2024-04-03,432.1
+User_726,Cosmetics,2023-06-19,475.48
+User_282,Food & Beverage,2023-07-09,241.42
+User_26,Clothing,2023-10-29,30.82
+User_381,Toys,2023-10-10,111.56
+User_81,Technology,2023-08-26,464.66
+User_242,Technology,2024-06-06,187.3
+User_177,Cosmetics,2023-01-19,120.29
+User_494,Shoes,2023-06-03,323.36
+User_412,Technology,2023-03-23,303.91
+User_603,Shoes,2023-11-18,192.9
+User_784,Books,2023-01-16,129.99
+User_232,Toys,2024-08-13,236.72
+User_999,Food & Beverage,2024-01-01,293.92
+User_546,Clothing,2023-04-15,10.17
+User_949,Food & Beverage,2024-04-21,150.52
+User_541,Cosmetics,2023-10-08,424.45
+User_458,Shoes,2023-04-01,140.72
+User_233,Toys,2023-11-11,242.21
+User_158,Books,2023-09-23,61.92
+User_595,Shoes,2024-09-23,117.44
+User_349,Technology,2024-05-12,263.13
+User_139,Technology,2023-09-13,47.46
+User_212,Technology,2024-06-18,125.19
+User_159,Clothing,2023-11-13,34.08
+User_787,Food & Beverage,2023-07-28,382.04
+User_557,Books,2024-07-01,346.06
+User_83,Toys,2023-08-11,286.24
+User_89,Clothing,2024-09-05,32.03
+User_939,Shoes,2023-01-30,36.16
+User_884,Shoes,2023-04-13,468.6
+User_217,Cosmetics,2023-08-28,187.07
+User_903,Toys,2023-10-10,421.87
+User_689,Technology,2023-10-03,424.79
+User_312,Toys,2023-08-06,450.12
+User_145,Cosmetics,2024-02-18,458.28
+User_445,Food & Beverage,2023-07-11,106.12
+User_985,Books,2023-02-25,78.95
+User_438,Books,2023-01-04,241.49
+User_789,Clothing,2023-09-02,470.73
+User_85,Food & Beverage,2023-08-09,354.59
+User_824,Clothing,2024-05-13,427.89
+User_368,Food & Beverage,2023-12-23,464.55
+User_884,Clothing,2024-03-04,319.18
+User_310,Clothing,2024-06-13,254.68
+User_67,Clothing,2024-04-27,215.25
+User_878,Technology,2023-01-13,99.35
+User_628,Books,2023-06-16,294.8
+User_119,Food & Beverage,2023-12-25,199.97
+User_437,Technology,2024-08-14,396.95
+User_137,Clothing,2024-09-07,433.01
+User_685,Food & Beverage,2023-11-29,282.04
+User_2,Food & Beverage,2023-07-17,87.86
+User_595,Cosmetics,2024-04-24,250.24
+User_941,Clothing,2023-12-29,339.65
+User_95,Technology,2023-09-16,158.2
+User_63,Toys,2023-06-29,164.03
+User_343,Food & Beverage,2024-03-08,443.92
+User_945,Shoes,2024-03-01,365.62
+User_922,Food & Beverage,2023-06-06,148.26
+User_186,Clothing,2023-01-29,192.89
+User_683,Food & Beverage,2024-07-27,30.31
+User_203,Toys,2023-02-05,412.34
+User_464,Books,2024-03-07,168.48
+User_107,Cosmetics,2024-04-05,311.67
+User_199,Clothing,2023-04-14,118.84
+User_409,Books,2023-10-16,459.82
+User_345,Technology,2024-07-10,195.88
+User_943,Shoes,2023-08-21,463.49
+User_436,Food & Beverage,2024-07-05,483.39
+User_834,Books,2023-12-14,176.88
+User_400,Toys,2024-04-15,153.44
+User_68,Cosmetics,2023-08-10,425.02
+User_8,Shoes,2023-03-24,194.54
+User_821,Food & Beverage,2023-12-05,123.01
+User_254,Shoes,2023-03-30,97.06
+User_287,Food & Beverage,2024-03-20,85.04
+User_249,Technology,2024-04-24,299.66
+User_403,Food & Beverage,2023-01-30,433.47
+User_350,Toys,2023-04-30,136.09
+User_258,Technology,2024-08-22,203.42
+User_54,Cosmetics,2024-01-21,61.3
+User_122,Toys,2023-12-30,476.61
+User_788,Shoes,2023-04-15,201.58
+User_407,Food & Beverage,2023-09-23,158.55
+User_349,Books,2023-04-28,244.34
+User_100,Shoes,2023-05-27,73.11
+User_307,Books,2023-06-09,476.62
+User_409,Shoes,2024-07-29,125.27
+User_87,Food & Beverage,2023-04-19,499.76
+User_146,Books,2023-07-14,238.14
+User_125,Clothing,2023-10-21,173.19
+User_615,Clothing,2024-05-17,329.63
+User_624,Shoes,2024-03-05,157.91
+User_52,Food & Beverage,2023-05-29,62.99
+User_444,Cosmetics,2023-08-06,381.01
+User_122,Technology,2024-09-16,89.51
+User_547,Clothing,2024-06-17,217.47
+User_93,Toys,2023-02-04,155.09
+User_451,Toys,2024-02-27,271.45
+User_646,Food & Beverage,2023-11-11,341.94
+User_467,Books,2024-08-07,184.48
+User_306,Toys,2024-01-30,473.79
+User_581,Cosmetics,2024-08-10,425.51
+User_416,Food & Beverage,2024-06-11,44.62
+User_635,Books,2023-03-14,301.54
+User_656,Books,2023-01-23,82.97
+User_631,Books,2023-11-28,76.95
+User_882,Technology,2023-01-31,155.43
+User_53,Toys,2024-08-01,167.49
+User_782,Clothing,2023-11-02,451.55
+User_661,Food & Beverage,2023-02-24,386.9
+User_973,Books,2024-01-08,76.09
+User_769,Books,2023-03-17,55.34
+User_226,Cosmetics,2023-08-13,130.27
+User_127,Technology,2023-12-23,240.25
+User_803,Toys,2024-02-15,257.46
+User_323,Toys,2023-08-30,113.93
+User_61,Shoes,2023-02-03,440.15
+User_555,Food & Beverage,2024-05-10,337.27
+User_538,Technology,2024-02-08,333.06
+User_382,Toys,2024-07-01,88.67
+User_434,Shoes,2024-04-15,255.64
+User_864,Clothing,2023-08-13,281.14
+User_115,Shoes,2024-04-23,336.63
+User_869,Cosmetics,2023-08-03,378.48
+User_669,Cosmetics,2023-03-28,490.75
+User_265,Books,2023-08-09,58.74
+User_597,Shoes,2023-10-17,439.22
+User_727,Food & Beverage,2024-08-31,469.31
+User_999,Shoes,2024-08-07,364.84
+User_105,Shoes,2023-11-16,417.42
+User_929,Technology,2023-08-29,288.31
+User_503,Shoes,2024-05-02,366.94
+User_826,Cosmetics,2023-05-22,441.87
+User_199,Technology,2024-09-04,166.71
+User_545,Cosmetics,2023-04-26,60.11
+User_301,Shoes,2024-05-15,235.04
+User_629,Cosmetics,2023-11-17,92.01
+User_849,Cosmetics,2023-01-22,172.36
+User_1000,Books,2023-08-30,467.99
+User_306,Technology,2024-07-11,34.13
+User_919,Cosmetics,2024-09-12,98.79
+User_54,Shoes,2023-10-22,186.64
+User_485,Toys,2023-06-07,32.37
+User_897,Clothing,2023-11-29,42.88
+User_409,Books,2024-02-06,483.14
+User_487,Shoes,2024-07-25,364.67
+User_646,Toys,2023-01-12,374.93
+User_520,Clothing,2023-02-09,220.76
+User_240,Food & Beverage,2024-07-26,33.01
+User_357,Shoes,2023-08-29,309.99
+User_321,Clothing,2023-06-13,497.24
+User_646,Shoes,2023-04-30,175.49
+User_438,Food & Beverage,2023-02-15,174.6
+User_138,Clothing,2023-09-25,419.71
+User_132,Shoes,2023-05-18,97.81
+User_386,Clothing,2023-10-12,400.35
+User_26,Technology,2023-10-07,228.69
+User_580,Toys,2023-05-30,264.7
+User_775,Food & Beverage,2023-06-29,484.64
+User_988,Toys,2023-12-21,323.81
+User_494,Books,2023-05-27,226.08
+User_65,Books,2023-06-10,19.54
+User_899,Clothing,2023-02-10,120.54
+User_741,Cosmetics,2024-07-05,345.43
+User_713,Cosmetics,2024-05-16,469.59
+User_833,Shoes,2024-01-24,302.02
+User_291,Cosmetics,2024-08-07,433.85
+User_652,Food & Beverage,2023-02-15,80.72
+User_106,Technology,2023-12-07,171.39
+User_624,Toys,2023-05-28,176.69
+User_814,Food & Beverage,2023-06-26,494.53
+User_212,Cosmetics,2023-06-21,323.34
+User_819,Shoes,2023-06-14,276.09
+User_866,Books,2023-02-22,197.11
+User_906,Clothing,2023-09-14,55.43
+User_166,Clothing,2024-02-12,371.36
+User_548,Technology,2023-05-01,125.3
+User_944,Food & Beverage,2024-07-17,465.86
+User_415,Food & Beverage,2023-12-19,72.18
+User_829,Toys,2023-07-25,63.58
+User_444,Shoes,2024-04-06,341.08
+User_252,Food & Beverage,2023-03-15,137.38
+User_799,Technology,2024-04-23,130.36
+User_731,Food & Beverage,2024-07-10,20.44
+User_396,Cosmetics,2023-01-22,297.67
+User_512,Food & Beverage,2023-05-21,383.74
+User_789,Cosmetics,2023-10-05,88.04
+User_446,Technology,2024-01-13,113.83
+User_961,Clothing,2023-01-15,425.94
+User_672,Shoes,2024-07-02,67.16
+User_263,Toys,2024-01-25,124.02
+User_550,Cosmetics,2023-08-17,226.32
+User_873,Clothing,2023-07-01,316.68
+User_416,Food & Beverage,2024-05-26,498.26
+User_943,Books,2024-01-06,140.33
+User_517,Food & Beverage,2023-04-20,235.53
+User_470,Cosmetics,2023-09-26,13.18
+User_120,Shoes,2023-10-24,481.68
+User_405,Books,2024-04-24,292.74
+User_75,Technology,2023-01-01,109.63
+User_991,Food & Beverage,2023-02-06,325.66
+User_440,Technology,2024-06-04,370.55
+User_399,Food & Beverage,2024-09-22,363.67
+User_726,Cosmetics,2024-09-17,497.72
+User_360,Toys,2023-05-08,123.97
+User_177,Shoes,2024-08-18,161.83
+User_823,Toys,2023-09-16,325.23
+User_392,Cosmetics,2024-01-11,126.06
+User_870,Shoes,2024-04-28,306.84
+User_55,Technology,2023-05-06,151.13
+User_548,Shoes,2023-01-28,129.75
+User_93,Food & Beverage,2023-02-28,365.49
+User_211,Technology,2023-01-07,333.16
+User_373,Technology,2023-12-08,423.28
+User_713,Technology,2024-01-13,41.39
+User_859,Food & Beverage,2023-03-01,330.58
+User_252,Toys,2023-05-18,133.67
+User_984,Clothing,2023-02-20,39.47
+User_535,Food & Beverage,2023-01-24,270.82
+User_996,Books,2023-11-08,171.6
+User_81,Cosmetics,2023-11-07,485.17
+User_486,Cosmetics,2023-12-28,368.42
+User_850,Clothing,2023-06-27,245.65
+User_884,Clothing,2023-09-14,311.16
+User_528,Books,2024-04-18,276.89
+User_594,Technology,2024-04-19,210.22
+User_144,Toys,2023-01-08,346.41
+User_831,Toys,2024-07-31,406.96
+User_27,Shoes,2024-03-28,76.4
+User_622,Technology,2023-06-18,451.69
+User_426,Food & Beverage,2024-06-13,364.53
+User_329,Food & Beverage,2023-07-19,181.63
+User_751,Clothing,2023-08-14,449.68
+User_941,Technology,2024-01-17,252.04
+User_855,Shoes,2023-03-25,306.93
+User_710,Toys,2023-01-15,480.14
+User_754,Toys,2023-03-11,486.74
+User_800,Food & Beverage,2023-11-02,281.03
+User_878,Cosmetics,2024-04-29,377.76
+User_515,Technology,2024-06-01,304.82
+User_891,Cosmetics,2024-07-18,199.01
+User_853,Toys,2023-10-28,350.35
+User_619,Clothing,2023-02-08,491.85
+User_150,Food & Beverage,2024-02-05,455.47
+User_929,Shoes,2024-02-23,265.67
+User_426,Food & Beverage,2023-05-25,420.78
+User_218,Cosmetics,2023-07-09,380.86
+User_830,Cosmetics,2024-08-31,311.97
+User_96,Clothing,2024-01-15,161.76
+User_725,Technology,2023-07-01,47.83
+User_533,Food & Beverage,2023-08-13,21.64
+User_423,Cosmetics,2023-03-07,120.38
+User_676,Toys,2024-03-12,408.25
+User_772,Toys,2023-01-29,386.58
+User_58,Shoes,2024-06-08,117.2
+User_579,Shoes,2023-04-19,12.09
+User_228,Shoes,2023-05-20,176.28
+User_296,Toys,2023-04-22,74.21
+User_275,Cosmetics,2024-01-10,95.36
+User_377,Toys,2024-04-27,488.11
+User_35,Books,2023-03-14,105.54
+User_673,Shoes,2023-08-10,479.17
+User_851,Technology,2024-04-28,419.82
+User_951,Technology,2024-01-15,317.18
+User_590,Food & Beverage,2023-04-02,144.34
+User_620,Clothing,2024-08-19,269.52
+User_28,Toys,2023-10-10,269.82
+User_206,Cosmetics,2023-11-07,50.21
+User_939,Books,2023-06-06,315.44
+User_110,Cosmetics,2023-03-16,210.66
+User_564,Books,2024-04-17,150.77
+User_507,Books,2023-06-10,351.3
+User_569,Cosmetics,2024-05-23,56.53
+User_966,Shoes,2023-09-28,128.1
+User_291,Toys,2023-02-10,373.57
+User_281,Books,2023-04-07,250.55
+User_695,Shoes,2023-08-10,420.41
+User_436,Technology,2023-08-01,414.44
+User_593,Food & Beverage,2024-02-28,433.65
+User_199,Food & Beverage,2024-07-02,10.19
+User_477,Cosmetics,2023-05-04,151.89
+User_492,Technology,2023-07-25,355.79
+User_687,Technology,2024-08-15,73.57
+User_359,Books,2023-11-17,166.18
+User_154,Technology,2024-05-06,306.48
+User_692,Shoes,2023-02-12,462.01
+User_934,Toys,2023-09-25,63.83
+User_595,Shoes,2023-02-17,45.83
+User_607,Cosmetics,2024-04-04,156.12
+User_410,Cosmetics,2024-03-01,270.71
+User_220,Clothing,2024-06-12,167.59
+User_898,Shoes,2024-01-09,375.29
+User_493,Technology,2023-04-08,159.64
+User_526,Shoes,2024-07-10,359.97
+User_188,Clothing,2023-07-08,241.38
+User_174,Food & Beverage,2023-03-23,20.2
+User_586,Food & Beverage,2023-07-13,356.42
+User_942,Clothing,2023-07-06,369.89
+User_900,Cosmetics,2024-02-01,80.47
+User_872,Toys,2023-03-07,304.81
+User_773,Technology,2023-01-23,460.02
+User_618,Books,2023-09-08,249.59
+User_280,Toys,2023-05-03,189.56
+User_822,Food & Beverage,2024-07-17,476.91
+User_379,Shoes,2024-04-17,496.57
+User_170,Technology,2024-07-05,447.55
+User_487,Toys,2024-02-06,388.49
+User_672,Books,2024-03-28,376.67
+User_345,Books,2024-08-04,150.85
+User_545,Toys,2023-02-25,78.03
+User_811,Technology,2023-02-13,398.92
+User_951,Food & Beverage,2023-07-24,176.11
+User_270,Books,2023-05-05,99.78
+User_451,Clothing,2024-05-28,58.15
+User_883,Books,2024-03-20,327.81
+User_215,Cosmetics,2023-01-25,402.84
+User_89,Toys,2023-10-12,305.25
+User_750,Books,2024-07-05,412.89
+User_299,Toys,2023-08-29,338.79
+User_406,Food & Beverage,2023-04-10,310.35
+User_69,Toys,2023-07-21,129.45
+User_632,Food & Beverage,2024-04-10,472.25
+User_484,Technology,2023-04-17,261.74
+User_448,Toys,2023-05-16,437.73
+User_712,Shoes,2023-12-28,190.44
+User_305,Clothing,2024-04-21,311.04
+User_591,Cosmetics,2023-07-12,199.3
+User_639,Cosmetics,2024-07-24,402.4
+User_289,Technology,2024-01-28,35.67
+User_181,Shoes,2023-08-09,58.02
+User_144,Food & Beverage,2023-02-26,51.29
+User_186,Cosmetics,2024-04-14,419.4
+User_849,Food & Beverage,2023-05-07,487.42
+User_990,Clothing,2024-05-12,186.46
+User_780,Cosmetics,2023-12-29,206.64
+User_603,Toys,2023-05-20,263.42
+User_354,Books,2024-08-27,388.26
+User_148,Shoes,2024-01-02,149.61
+User_459,Clothing,2024-06-24,428.15
+User_180,Toys,2024-07-24,401.54
+User_215,Food & Beverage,2024-01-24,200.19
+User_994,Food & Beverage,2023-11-13,14.4
+User_301,Books,2023-08-07,450.93
+User_350,Toys,2024-03-11,295.87
+User_439,Toys,2023-07-03,363.46
+User_11,Food & Beverage,2024-05-18,109.91
+User_661,Technology,2023-07-10,367.19
+User_781,Shoes,2023-10-25,392.54
+User_355,Books,2023-06-02,14.79
+User_944,Food & Beverage,2024-09-27,11.29
+User_846,Shoes,2023-02-24,487.58
+User_182,Food & Beverage,2023-09-16,60.17
+User_38,Technology,2024-02-16,137.09
+User_601,Food & Beverage,2024-03-24,57.54
+User_648,Shoes,2023-12-17,165.06
+User_228,Cosmetics,2023-10-06,292.78
+User_620,Shoes,2023-01-09,413.98
+User_593,Cosmetics,2023-06-02,497.21
+User_724,Food & Beverage,2024-08-28,395.11
+User_183,Clothing,2023-11-17,421.18
+User_729,Shoes,2024-05-31,246.38
+User_606,Food & Beverage,2024-01-21,38.18
+User_772,Clothing,2023-01-05,275.24
+User_871,Shoes,2023-12-12,228.44
+User_198,Clothing,2024-03-07,148.88
+User_565,Toys,2023-06-27,368.36
+User_65,Clothing,2024-08-25,286.83
+User_24,Shoes,2023-05-21,291.58
+User_791,Toys,2024-09-07,35.99
+User_230,Shoes,2023-03-18,301.92
+User_693,Clothing,2024-08-03,112.8
+User_967,Clothing,2024-08-02,362.77
+User_555,Technology,2023-08-24,17.65
+User_341,Technology,2023-02-01,410.7
+User_950,Toys,2023-01-29,334.3
+User_79,Books,2024-04-28,185.12
+User_262,Clothing,2023-10-20,113.77
+User_493,Food & Beverage,2024-05-17,25.18
+User_975,Food & Beverage,2023-11-21,445.21
+User_194,Cosmetics,2024-04-25,462.24
+User_485,Technology,2023-12-28,346.67
+User_863,Toys,2023-12-07,354.76
+User_5,Technology,2024-01-13,29.73
+User_600,Technology,2024-01-13,73.45
+User_280,Clothing,2023-03-01,232.53
+User_184,Toys,2023-07-21,216.41
+User_470,Toys,2023-08-11,107.12
+User_295,Food & Beverage,2023-05-11,92.31
+User_839,Cosmetics,2023-11-17,315.27
+User_375,Shoes,2024-01-12,109.02
+User_163,Books,2024-03-23,277.24
+User_990,Shoes,2023-09-09,293.93
+User_189,Toys,2023-08-26,128.48
+User_935,Books,2024-03-27,258.58
+User_905,Books,2023-04-21,195.83
+User_194,Toys,2024-07-29,40.75
+User_39,Toys,2023-08-31,44.78
+User_349,Shoes,2023-11-01,136.88
+User_470,Technology,2023-04-18,23.73
+User_300,Books,2023-02-21,128.34
+User_281,Cosmetics,2023-09-24,476.98
+User_763,Books,2023-12-11,235.33
+User_202,Food & Beverage,2024-03-24,37.12
+User_549,Technology,2023-08-15,22.6
+User_104,Food & Beverage,2023-07-25,370.48
+User_660,Shoes,2024-09-14,134.25
+User_857,Shoes,2024-07-25,213.73
+User_308,Clothing,2024-09-23,408.65
+User_858,Clothing,2024-05-22,229.41
+User_433,Technology,2023-01-06,170.76
+User_620,Technology,2023-08-13,68.38
+User_23,Clothing,2024-02-28,213.94
+User_48,Shoes,2023-08-15,381.05
+User_290,Shoes,2024-02-11,150.64
+User_137,Technology,2023-08-02,18.06
+User_457,Technology,2023-12-11,11.93
+User_822,Cosmetics,2023-10-06,66.57
+User_998,Food & Beverage,2024-03-22,44.69
+User_862,Shoes,2024-08-19,87.28
+User_592,Technology,2024-07-19,134.69
+User_720,Food & Beverage,2023-07-26,496.8
+User_866,Books,2023-10-13,116.9
+User_906,Technology,2023-11-20,278.28
+User_636,Shoes,2024-08-14,349.93
+User_834,Shoes,2023-01-17,349.6
+User_275,Clothing,2023-04-23,164.92
+User_575,Books,2024-01-15,11.22
+User_795,Books,2024-05-31,57.15
+User_811,Clothing,2023-06-05,313.27
+User_546,Clothing,2023-08-12,142.68
+User_253,Books,2023-04-15,375.9
+User_585,Technology,2024-09-10,396.75
+User_518,Clothing,2023-05-01,251.94
+User_748,Books,2023-03-16,217.33
+User_950,Clothing,2023-03-04,123.76
+User_314,Cosmetics,2023-10-31,289.27
+User_213,Food & Beverage,2024-03-25,92.68
+User_275,Toys,2023-08-24,131.5
+User_731,Clothing,2023-05-26,157.66
+User_781,Technology,2023-06-23,120.03
+User_644,Clothing,2024-06-13,155.31
+User_631,Toys,2023-05-31,355.55
+User_495,Shoes,2024-04-11,346.42
+User_811,Cosmetics,2023-03-22,226.02
+User_104,Cosmetics,2023-08-19,250.72
+User_733,Books,2024-04-23,215.85
+User_479,Books,2023-09-17,109.81
+User_120,Cosmetics,2023-06-10,291.03
+User_292,Food & Beverage,2024-07-31,117.63
+User_153,Food & Beverage,2023-02-03,379.44
+User_281,Technology,2023-09-12,319.16
+User_260,Toys,2024-02-10,187.17
+User_471,Clothing,2023-08-29,126.99
+User_501,Technology,2023-09-10,283.27
+User_135,Books,2024-06-30,46.94
+User_232,Shoes,2024-06-26,446.99
+User_793,Food & Beverage,2023-10-04,343.9
+User_226,Toys,2023-06-20,344.21
+User_420,Cosmetics,2024-06-27,488.24
+User_662,Technology,2024-05-29,355.44
+User_288,Food & Beverage,2023-02-17,36.63
+User_894,Cosmetics,2023-02-17,360.9
+User_203,Technology,2023-12-11,134.39
+User_628,Clothing,2024-03-18,67.03
+User_976,Toys,2024-05-31,129.82
+User_3,Books,2023-03-05,170.64
+User_860,Toys,2024-08-23,339.04
+User_792,Books,2023-02-03,74.43
+User_613,Toys,2023-07-07,459.26
+User_797,Shoes,2024-04-28,162.02
+User_886,Clothing,2023-01-15,385.77
+User_9,Shoes,2023-04-02,116.8
+User_469,Shoes,2024-05-01,38.29
+User_680,Books,2023-10-20,185.94
+User_876,Books,2024-06-26,190.71
+User_81,Food & Beverage,2023-04-10,134.83
+User_941,Cosmetics,2024-09-18,50.74
+User_118,Food & Beverage,2024-08-09,299.29
+User_839,Clothing,2024-03-30,471.29
+User_95,Books,2023-02-12,463.34
+User_831,Books,2023-07-17,132.55
+User_669,Clothing,2024-02-20,450.09
+User_860,Books,2024-08-01,119.0
+User_216,Food & Beverage,2023-06-07,137.09
+User_166,Books,2024-07-28,15.19
+User_729,Shoes,2024-03-26,13.53
+User_918,Food & Beverage,2024-09-13,62.47
+User_745,Food & Beverage,2023-10-04,276.61
+User_844,Books,2023-09-19,117.99
+User_351,Books,2024-03-30,465.88
+User_378,Cosmetics,2024-03-21,138.33
+User_197,Shoes,2023-08-23,110.9
+User_158,Technology,2024-05-15,79.06
+User_393,Shoes,2024-07-05,453.26
+User_650,Food & Beverage,2023-10-21,322.32
+User_562,Books,2023-11-26,359.54
+User_554,Toys,2023-01-07,14.65
+User_713,Technology,2024-08-15,87.21
+User_971,Clothing,2023-04-08,85.26
+User_228,Shoes,2023-06-26,325.83
+User_663,Cosmetics,2023-06-04,196.08
+User_532,Food & Beverage,2024-09-29,208.2
+User_642,Shoes,2023-04-04,238.56
+User_477,Cosmetics,2023-05-02,464.62
+User_675,Cosmetics,2023-09-29,239.33
+User_879,Cosmetics,2024-08-07,403.09
+User_431,Clothing,2023-10-26,297.56
+User_533,Technology,2023-01-01,221.04
+User_811,Clothing,2023-07-30,296.31
+User_446,Toys,2023-07-26,397.56
+User_206,Shoes,2023-04-16,87.05
+User_682,Books,2024-04-20,381.28
+User_250,Cosmetics,2023-03-12,468.7
+User_788,Cosmetics,2023-04-06,484.06
+User_791,Cosmetics,2024-07-24,134.91
+User_432,Toys,2023-02-10,236.32
+User_42,Clothing,2024-07-02,454.97
+User_937,Books,2024-01-07,378.24
+User_86,Books,2023-05-27,72.78
+User_52,Shoes,2023-09-06,33.97
+User_258,Toys,2024-05-31,185.62
+User_122,Clothing,2023-05-22,248.64
+User_704,Books,2023-09-27,301.07
+User_811,Food & Beverage,2024-01-11,493.21
+User_468,Toys,2024-06-16,399.0
+User_841,Technology,2023-11-05,89.49
+User_571,Food & Beverage,2024-05-01,468.04
+User_964,Clothing,2024-07-29,65.51
+User_230,Technology,2024-01-30,494.88
+User_834,Technology,2023-05-04,468.41
+User_190,Cosmetics,2023-08-22,175.34
+User_159,Books,2024-02-05,401.61
+User_312,Technology,2024-07-20,13.82
+User_904,Toys,2023-06-16,26.46
+User_426,Toys,2023-09-27,260.14
+User_508,Cosmetics,2023-07-09,492.88
+User_874,Shoes,2024-07-16,186.08
+User_712,Toys,2023-06-10,492.61
+User_79,Food & Beverage,2023-08-23,92.38
+User_59,Toys,2024-01-21,147.08
+User_372,Cosmetics,2023-04-24,369.68
+User_159,Food & Beverage,2024-09-24,408.08
+User_118,Clothing,2023-07-29,276.78
+User_262,Books,2023-01-15,446.31
+User_537,Books,2023-08-23,69.82
+User_861,Toys,2024-03-07,223.61
+User_898,Toys,2023-11-23,307.56
+User_375,Food & Beverage,2024-08-16,244.12
+User_213,Cosmetics,2023-07-27,107.49
+User_101,Cosmetics,2023-02-12,418.73
+User_900,Food & Beverage,2023-05-04,102.59
+User_305,Cosmetics,2024-02-27,60.61
+User_895,Technology,2023-11-06,467.76
+User_822,Toys,2023-07-28,302.76
+User_668,Food & Beverage,2023-01-04,344.86
+User_434,Technology,2023-12-09,56.17
+User_892,Clothing,2023-06-20,140.56
+User_645,Books,2024-02-20,97.37
+User_431,Food & Beverage,2023-11-03,148.35
+User_645,Cosmetics,2023-03-08,26.06
+User_805,Food & Beverage,2023-08-06,166.64
+User_252,Toys,2024-01-21,96.69
+User_618,Clothing,2024-08-21,369.33
+User_372,Clothing,2023-10-26,366.8
+User_760,Clothing,2024-07-19,459.19
+User_805,Food & Beverage,2024-01-26,78.74
+User_92,Clothing,2023-01-03,66.45
+User_551,Technology,2023-04-24,311.72
+User_20,Clothing,2023-08-24,376.24
+User_588,Clothing,2024-09-06,215.92
+User_924,Technology,2023-03-12,167.18
+User_696,Shoes,2024-05-25,315.12
+User_579,Shoes,2023-05-06,477.73
+User_966,Technology,2023-08-30,416.74
+User_600,Shoes,2023-05-13,216.46
+User_375,Shoes,2024-07-08,364.12
+User_455,Books,2023-10-05,113.87
+User_982,Technology,2023-10-01,438.16
+User_338,Cosmetics,2024-06-12,83.95
+User_814,Technology,2024-07-21,231.1
+User_924,Books,2023-01-29,147.82
+User_680,Cosmetics,2023-04-01,439.02
+User_687,Shoes,2023-05-18,225.91
+User_146,Technology,2024-03-16,134.28
+User_845,Books,2023-08-14,288.09
+User_149,Food & Beverage,2023-02-22,135.69
+User_594,Clothing,2023-10-15,219.87
+User_313,Clothing,2023-08-30,474.68
+User_965,Clothing,2023-04-14,292.46
+User_632,Technology,2023-05-25,391.67
+User_958,Cosmetics,2023-02-17,496.49
+User_63,Food & Beverage,2024-09-25,238.04
+User_72,Cosmetics,2023-02-21,332.88
+User_578,Food & Beverage,2024-05-17,140.18
+User_218,Shoes,2024-09-12,277.24
+User_749,Toys,2023-05-25,454.49
+User_868,Shoes,2023-08-02,23.76
+User_783,Toys,2024-05-01,413.79
+User_885,Food & Beverage,2023-07-31,75.56
+User_541,Cosmetics,2023-01-29,365.14
+User_6,Toys,2023-12-31,37.83
+User_283,Books,2023-05-14,92.26
+User_508,Clothing,2023-01-21,376.39
+User_524,Clothing,2024-07-16,85.68
+User_655,Toys,2023-12-03,225.91
+User_598,Books,2023-11-30,63.46
+User_882,Shoes,2023-02-11,396.61
+User_230,Toys,2023-02-09,262.36
+User_809,Shoes,2023-06-23,331.36
+User_299,Toys,2023-07-21,66.37
+User_325,Toys,2024-05-25,202.06
+User_469,Food & Beverage,2023-10-14,287.16
+User_80,Shoes,2024-06-17,41.71
+User_37,Toys,2024-06-19,185.96
+User_167,Shoes,2023-11-19,225.08
+User_143,Food & Beverage,2024-05-07,253.61
+User_341,Cosmetics,2024-04-26,489.16
+User_895,Toys,2024-06-03,53.28
+User_794,Books,2023-12-08,207.74
+User_553,Toys,2023-04-07,366.46
+User_579,Books,2023-06-22,180.53
+User_662,Books,2023-05-21,406.06
+User_687,Books,2023-10-17,319.45
+User_27,Technology,2023-07-11,220.31
+User_255,Cosmetics,2023-05-12,336.55
+User_622,Technology,2024-06-12,281.82
+User_822,Shoes,2023-10-18,443.47
+User_145,Cosmetics,2023-08-30,186.87
+User_766,Technology,2023-01-19,24.39
+User_564,Clothing,2023-10-26,183.69
+User_558,Clothing,2023-06-02,14.22
+User_40,Shoes,2024-09-06,114.33
+User_71,Clothing,2024-01-27,128.54
+User_159,Toys,2023-09-18,66.97
+User_668,Clothing,2023-08-29,384.68
+User_219,Cosmetics,2023-12-27,24.19
+User_747,Technology,2024-09-08,447.73
+User_137,Shoes,2024-05-12,496.57
+User_914,Toys,2023-05-24,436.94
+User_691,Clothing,2024-07-08,498.79
+User_568,Cosmetics,2023-07-03,309.27
+User_73,Shoes,2023-12-26,306.34
+User_123,Clothing,2023-01-06,201.28
+User_538,Clothing,2023-06-11,230.56
+User_429,Cosmetics,2023-01-08,408.65
+User_584,Shoes,2024-05-16,141.62
+User_679,Clothing,2024-04-28,28.87
+User_877,Technology,2024-01-18,411.89
+User_391,Clothing,2024-06-03,469.24
+User_586,Toys,2023-04-25,106.61
+User_952,Cosmetics,2023-01-18,118.95
+User_551,Clothing,2023-09-14,243.58
+User_686,Clothing,2023-05-18,293.75
+User_353,Technology,2023-10-04,466.68
+User_29,Cosmetics,2024-02-23,436.9
+User_976,Books,2023-10-16,98.62
+User_729,Cosmetics,2024-08-26,470.91
+User_135,Clothing,2024-07-04,459.97
+User_97,Books,2024-01-28,310.15
+User_263,Food & Beverage,2023-10-28,387.59
+User_568,Technology,2023-08-22,457.44
+User_834,Shoes,2024-06-03,253.52
+User_683,Toys,2024-04-23,482.87
+User_282,Technology,2024-01-21,357.07
+User_883,Clothing,2024-01-03,155.96
+User_550,Technology,2023-02-04,215.52
+User_32,Cosmetics,2023-12-14,411.85
+User_691,Shoes,2024-07-18,44.97
+User_903,Food & Beverage,2023-10-24,30.72
+User_650,Food & Beverage,2023-08-10,230.19
+User_171,Cosmetics,2023-06-11,47.46
+User_603,Cosmetics,2023-02-03,389.35
+User_554,Toys,2023-10-28,152.69
+User_611,Food & Beverage,2024-08-17,227.15
+User_586,Cosmetics,2024-07-19,334.39
+User_26,Books,2024-05-14,491.41
+User_867,Clothing,2024-07-08,211.61
+User_620,Cosmetics,2023-07-15,248.77
+User_409,Shoes,2024-07-19,298.24
+User_184,Technology,2023-05-17,132.12
+User_781,Toys,2023-02-25,458.41
+User_960,Shoes,2023-04-14,403.73
+User_970,Cosmetics,2023-01-23,105.95
+User_770,Cosmetics,2024-07-13,335.62
+User_386,Shoes,2024-09-03,304.75
+User_577,Cosmetics,2024-04-08,39.15
+User_302,Clothing,2023-02-28,262.46
+User_727,Technology,2024-05-15,463.86
+User_713,Clothing,2024-01-09,264.17
+User_557,Food & Beverage,2023-05-12,123.64
+User_8,Clothing,2024-06-10,347.7
+User_699,Shoes,2023-02-26,188.96
+User_963,Cosmetics,2023-12-30,469.93
+User_255,Shoes,2023-07-09,74.31
+User_828,Cosmetics,2023-09-11,357.37
+User_461,Cosmetics,2024-06-14,51.82
+User_422,Technology,2024-06-18,431.97
+User_18,Toys,2024-03-16,181.97
+User_279,Food & Beverage,2024-08-01,180.51
+User_566,Food & Beverage,2023-10-18,375.93
+User_810,Food & Beverage,2023-03-19,214.63
+User_56,Cosmetics,2024-08-12,341.02
+User_902,Technology,2023-05-30,107.13
+User_195,Technology,2024-06-26,64.08
+User_545,Technology,2024-06-14,260.94
+User_120,Toys,2023-08-07,110.35
+User_18,Clothing,2024-08-12,319.99
+User_855,Shoes,2023-01-16,278.49
+User_561,Technology,2023-06-12,286.31
+User_233,Technology,2023-03-06,410.46
+User_259,Shoes,2023-06-11,43.88
+User_592,Clothing,2023-10-29,42.15
+User_539,Shoes,2023-04-02,48.7
+User_197,Shoes,2024-07-14,77.27
+User_6,Shoes,2024-02-18,69.62
+User_553,Food & Beverage,2023-11-01,424.24
+User_883,Books,2024-02-07,401.27
+User_227,Food & Beverage,2024-03-27,498.16
+User_614,Shoes,2023-11-22,174.16
+User_105,Toys,2023-04-22,474.29
+User_43,Cosmetics,2024-03-19,149.08
+User_49,Clothing,2023-09-07,42.03
+User_456,Toys,2023-06-12,411.69
+User_501,Books,2024-02-14,90.94
+User_937,Technology,2023-02-04,492.3
+User_205,Shoes,2023-05-12,23.8
+User_367,Cosmetics,2023-07-21,372.7
+User_166,Books,2023-09-23,292.83
+User_507,Food & Beverage,2024-02-19,178.12
+User_740,Food & Beverage,2024-08-15,444.78
+User_577,Technology,2024-06-05,424.42
+User_435,Books,2023-11-21,454.83
+User_595,Technology,2023-07-11,173.21
+User_899,Food & Beverage,2023-08-10,438.84
+User_144,Clothing,2024-02-02,386.59
+User_398,Toys,2024-04-01,84.23
+User_487,Clothing,2024-07-02,203.32
+User_545,Books,2023-09-21,26.32
+User_741,Food & Beverage,2023-05-02,497.73
+User_336,Clothing,2024-05-22,267.77
+User_279,Clothing,2024-04-12,76.65
+User_227,Books,2024-03-16,362.26
+User_714,Clothing,2023-03-24,275.01
+User_629,Clothing,2023-09-03,212.41
+User_211,Cosmetics,2024-05-04,223.65
+User_21,Toys,2023-02-21,259.46
+User_899,Toys,2023-07-16,336.87
+User_615,Toys,2024-02-15,302.6
+User_929,Cosmetics,2024-07-19,472.89
+User_973,Cosmetics,2023-01-24,498.14
+User_913,Food & Beverage,2023-12-07,95.43
+User_299,Cosmetics,2023-01-22,465.1
+User_187,Cosmetics,2024-03-06,318.08
+User_937,Shoes,2023-10-18,445.4
+User_676,Toys,2024-07-31,57.76
+User_163,Food & Beverage,2023-10-20,286.99
+User_622,Shoes,2023-03-23,220.96
+User_319,Food & Beverage,2023-10-16,172.32
+User_966,Clothing,2024-05-07,430.43
+User_491,Clothing,2023-03-13,485.34
+User_139,Toys,2023-10-23,259.55
+User_231,Clothing,2024-07-15,43.44
+User_699,Food & Beverage,2023-05-30,454.87
+User_743,Shoes,2023-07-02,305.3
+User_263,Clothing,2023-10-24,493.4
+User_479,Cosmetics,2023-02-09,471.71
+User_521,Toys,2024-07-19,429.92
+User_392,Cosmetics,2024-08-17,194.52
+User_39,Cosmetics,2024-04-04,169.96
+User_776,Toys,2023-06-01,324.45
+User_518,Books,2024-03-14,45.02
+User_54,Food & Beverage,2024-04-26,270.63
+User_804,Food & Beverage,2023-02-22,129.28
+User_31,Books,2024-01-22,362.49
+User_582,Clothing,2024-09-16,150.11
+User_433,Shoes,2024-04-28,217.58
+User_120,Books,2023-01-03,192.96
+User_553,Books,2024-02-07,79.86
+User_381,Toys,2024-01-20,278.15
+User_133,Cosmetics,2023-08-30,264.59
+User_822,Shoes,2023-09-10,73.48
+User_408,Books,2023-06-27,157.0
+User_470,Cosmetics,2023-05-27,466.55
+User_196,Clothing,2024-03-09,57.98
+User_116,Shoes,2023-05-08,428.77
+User_549,Food & Beverage,2023-07-27,421.54
+User_866,Shoes,2024-04-16,360.11
+User_22,Books,2024-08-25,282.91
+User_785,Toys,2023-11-13,92.61
+User_400,Food & Beverage,2023-02-19,79.74
+User_207,Cosmetics,2024-07-20,327.3
+User_761,Books,2024-04-01,192.85
+User_35,Toys,2023-04-03,392.35
+User_876,Clothing,2023-02-05,163.79
+User_334,Cosmetics,2023-01-01,301.57
+User_661,Shoes,2023-07-23,58.95
+User_819,Toys,2024-02-07,259.51
+User_683,Shoes,2024-01-11,292.21
+User_688,Clothing,2024-01-28,30.97
+User_948,Cosmetics,2023-06-27,237.65
+User_714,Toys,2024-06-21,34.04
+User_236,Cosmetics,2024-02-28,228.57
+User_85,Food & Beverage,2023-03-25,460.09
+User_636,Technology,2024-06-13,50.41
+User_190,Cosmetics,2023-04-06,429.59
+User_714,Cosmetics,2023-09-27,372.78
+User_424,Food & Beverage,2023-02-02,32.16
+User_670,Cosmetics,2023-08-22,320.49
+User_294,Books,2023-07-20,491.12
+User_390,Toys,2023-10-17,137.02
+User_186,Toys,2024-08-02,177.94
+User_332,Cosmetics,2023-04-23,98.02
+User_160,Toys,2023-08-07,475.62
+User_417,Clothing,2023-05-28,162.87
+User_616,Clothing,2024-09-02,161.51
+User_500,Books,2024-04-13,225.89
+User_959,Books,2024-09-29,244.35
+User_960,Cosmetics,2023-04-04,220.33
+User_997,Cosmetics,2023-03-31,214.42
+User_928,Books,2024-03-02,280.21
+User_506,Toys,2024-09-28,144.38
+User_756,Technology,2024-04-02,134.97
+User_672,Cosmetics,2023-10-26,254.85
+User_282,Clothing,2023-05-27,72.82
+User_332,Cosmetics,2023-11-05,418.92
+User_995,Cosmetics,2024-07-21,250.51
+User_749,Technology,2023-08-07,80.86
+User_741,Books,2024-05-02,251.58
+User_681,Shoes,2023-06-24,416.31
+User_78,Clothing,2024-02-29,216.64
+User_195,Toys,2024-06-15,465.36
+User_466,Books,2023-04-26,26.93
+User_621,Technology,2024-07-05,310.62
+User_244,Books,2023-07-31,203.24
+User_195,Shoes,2023-05-22,27.84
+User_55,Food & Beverage,2024-04-20,255.67
+User_343,Technology,2024-05-05,161.12
+User_679,Technology,2023-04-04,228.83
+User_663,Technology,2024-04-14,25.02
+User_465,Cosmetics,2023-05-23,424.69
+User_680,Food & Beverage,2023-09-08,458.95
+User_303,Books,2023-02-07,338.62
+User_453,Cosmetics,2024-04-07,246.65
+User_521,Shoes,2023-02-12,375.14
+User_603,Shoes,2023-07-14,474.0
+User_615,Shoes,2023-05-21,253.61
+User_80,Food & Beverage,2023-04-22,147.18
+User_913,Books,2024-06-29,164.92
+User_618,Shoes,2024-01-08,429.59
+User_935,Cosmetics,2024-07-08,109.25
+User_789,Cosmetics,2024-07-14,107.58
+User_206,Technology,2023-10-02,172.6
+User_179,Clothing,2023-02-25,477.86
+User_515,Shoes,2024-02-13,160.45
+User_167,Toys,2023-06-22,281.35
+User_165,Technology,2024-06-01,118.96
+User_774,Food & Beverage,2024-01-25,375.69
+User_836,Books,2024-03-25,161.75
+User_803,Technology,2024-02-25,418.8
+User_595,Books,2023-10-20,166.59
+User_668,Clothing,2023-07-18,319.27
+User_410,Shoes,2023-06-24,166.31
+User_811,Food & Beverage,2024-05-14,398.96
+User_955,Shoes,2023-09-14,387.36
+User_400,Cosmetics,2024-03-06,158.11
+User_22,Books,2023-11-19,270.79
+User_813,Toys,2023-07-04,270.43
+User_674,Food & Beverage,2023-04-25,413.9
+User_553,Toys,2024-06-22,223.6
+User_347,Food & Beverage,2023-07-16,404.29
+User_973,Shoes,2024-06-28,488.87
+User_912,Books,2023-09-01,51.96
+User_62,Food & Beverage,2023-11-16,264.12
+User_652,Clothing,2023-11-17,383.96
+User_86,Technology,2024-04-28,243.24
+User_940,Cosmetics,2023-11-22,479.35
+User_808,Toys,2023-12-27,36.35
+User_951,Food & Beverage,2024-08-16,97.53
+User_935,Clothing,2024-09-08,401.98
+User_132,Technology,2024-01-05,231.45
+User_265,Toys,2024-03-17,98.83
+User_161,Food & Beverage,2024-02-08,27.65
+User_591,Food & Beverage,2023-01-28,210.43
+User_77,Food & Beverage,2024-05-16,316.08
+User_84,Books,2023-11-17,488.32
+User_297,Clothing,2023-08-04,180.8
+User_806,Food & Beverage,2024-07-23,97.89
+User_91,Shoes,2024-04-17,280.92
+User_554,Technology,2023-03-08,184.8
+User_615,Food & Beverage,2023-04-26,190.87
+User_800,Cosmetics,2024-08-24,484.66
+User_299,Toys,2024-03-05,440.82
+User_734,Clothing,2024-01-28,452.56
+User_202,Food & Beverage,2023-03-15,498.09
+User_245,Books,2023-02-19,56.93
+User_497,Clothing,2023-06-24,437.05
+User_22,Cosmetics,2023-06-05,15.47
+User_451,Books,2024-04-11,39.82
+User_122,Clothing,2023-05-19,306.68
+User_893,Food & Beverage,2023-04-05,108.47
+User_199,Cosmetics,2024-07-13,128.46
+User_123,Books,2024-07-04,210.97
+User_922,Technology,2023-04-30,243.6
+User_382,Food & Beverage,2024-06-14,467.17
+User_524,Books,2024-09-18,395.7
+User_371,Shoes,2024-09-05,151.56
+User_576,Cosmetics,2024-06-12,73.06
+User_315,Clothing,2024-01-02,469.16
+User_489,Books,2023-01-14,382.19
+User_989,Clothing,2024-09-10,359.58
+User_13,Clothing,2023-03-26,73.72
+User_518,Books,2024-06-28,492.08
+User_896,Clothing,2024-02-03,497.79
+User_621,Technology,2024-09-03,478.57
+User_607,Shoes,2024-07-09,385.59
+User_464,Books,2024-04-10,220.47
+User_718,Cosmetics,2023-11-20,490.99
+User_831,Shoes,2024-05-26,331.57
+User_32,Cosmetics,2024-06-07,285.6
+User_490,Cosmetics,2023-06-19,272.95
+User_270,Shoes,2023-12-18,329.2
+User_451,Clothing,2024-09-24,229.93
+User_665,Shoes,2023-02-13,200.36
+User_498,Technology,2023-09-09,382.71
+User_957,Shoes,2024-03-05,386.96
+User_596,Clothing,2024-03-12,142.31
+User_431,Food & Beverage,2024-07-13,447.46
+User_144,Food & Beverage,2023-06-01,492.52
+User_820,Toys,2023-01-22,382.44
+User_601,Toys,2024-07-30,346.75
+User_440,Cosmetics,2023-09-21,427.43
+User_244,Books,2023-12-02,308.44
+User_664,Books,2024-07-12,198.75
+User_288,Food & Beverage,2024-08-01,276.35
+User_557,Books,2024-03-20,112.28
+User_679,Technology,2023-05-13,201.01
+User_281,Technology,2023-01-02,67.67
+User_311,Food & Beverage,2024-02-11,42.59
+User_109,Books,2023-10-31,184.55
+User_877,Shoes,2023-05-26,69.39
+User_279,Shoes,2024-07-26,408.71
+User_458,Food & Beverage,2024-06-07,194.73
+User_968,Books,2023-07-24,49.88
+User_949,Technology,2023-02-27,378.47
+User_666,Cosmetics,2024-01-13,121.0
+User_16,Books,2023-10-07,441.91
+User_372,Books,2023-10-17,144.68
+User_807,Cosmetics,2023-03-26,442.3
+User_386,Toys,2024-05-10,407.27
+User_233,Clothing,2023-07-29,452.96
+User_937,Cosmetics,2023-03-01,406.54
+User_532,Toys,2024-03-22,200.78
+User_291,Food & Beverage,2023-05-11,460.36
+User_419,Toys,2023-09-17,484.9
+User_404,Books,2024-05-29,54.56
+User_804,Clothing,2023-07-15,131.97
+User_912,Books,2024-02-29,427.89
+User_8,Clothing,2024-09-11,438.0
+User_512,Technology,2024-07-14,315.86
+User_408,Food & Beverage,2023-02-28,399.49
+User_286,Food & Beverage,2023-06-26,344.65
+User_12,Cosmetics,2024-09-01,89.2
+User_473,Cosmetics,2023-07-28,187.74
+User_103,Food & Beverage,2023-03-31,484.81
+User_617,Food & Beverage,2024-04-02,360.92
+User_691,Cosmetics,2024-04-01,396.92
+User_559,Toys,2024-07-16,369.78
+User_890,Food & Beverage,2024-05-20,374.84
+User_964,Books,2024-09-12,407.35
+User_121,Shoes,2024-05-01,149.25
+User_813,Toys,2023-01-26,133.94
+User_941,Technology,2024-03-23,429.4
+User_286,Shoes,2023-02-08,218.22
+User_212,Toys,2023-07-25,395.34
+User_471,Shoes,2024-09-03,211.89
+User_534,Clothing,2024-02-18,79.12
+User_640,Food & Beverage,2023-05-19,304.59
+User_565,Technology,2024-02-03,289.86
+User_348,Technology,2023-02-06,145.4
+User_60,Food & Beverage,2023-01-18,177.21
+User_647,Shoes,2024-09-21,351.29
+User_308,Toys,2023-01-01,78.79
+User_687,Clothing,2023-09-23,305.33
+User_361,Clothing,2023-03-11,456.49
+User_499,Shoes,2023-08-09,27.36
+User_672,Technology,2023-08-19,423.52
+User_405,Shoes,2024-05-28,456.54
+User_597,Technology,2023-09-08,108.16
+User_489,Cosmetics,2023-08-30,318.41
+User_687,Food & Beverage,2023-05-25,451.35
+User_611,Food & Beverage,2024-01-04,145.34
+User_872,Cosmetics,2024-02-20,363.87
+User_983,Shoes,2024-03-28,133.42
+User_432,Books,2024-04-17,130.09
+User_776,Books,2024-05-03,191.66
+User_880,Shoes,2023-06-11,471.28
+User_214,Food & Beverage,2023-12-01,122.58
+User_932,Shoes,2024-09-18,336.16
+User_155,Books,2023-12-21,357.85
+User_482,Books,2023-04-17,258.79
+User_162,Toys,2024-03-21,355.13
+User_605,Cosmetics,2023-06-28,309.87
+User_755,Shoes,2023-11-23,153.91
+User_252,Clothing,2023-07-30,352.57
+User_572,Cosmetics,2024-05-12,312.56
+User_599,Cosmetics,2023-07-05,374.36
+User_228,Books,2024-08-04,425.46
+User_458,Books,2024-08-08,142.74
+User_578,Toys,2023-12-28,137.84
+User_130,Books,2024-03-14,31.67
+User_835,Food & Beverage,2024-05-06,99.11
+User_255,Technology,2024-05-17,288.22
+User_791,Shoes,2023-05-22,497.21
+User_978,Cosmetics,2024-08-05,484.89
+User_816,Clothing,2023-08-01,23.48
+User_168,Shoes,2023-05-16,182.7
+User_426,Clothing,2023-09-25,353.37
+User_855,Books,2024-05-07,193.51
+User_533,Shoes,2024-08-22,126.86
+User_640,Toys,2024-02-17,140.65
+User_79,Shoes,2023-02-22,211.52
+User_421,Toys,2023-06-15,398.44
+User_903,Books,2023-05-10,120.54
+User_270,Food & Beverage,2023-07-23,494.71
+User_941,Books,2023-03-31,328.29
+User_692,Food & Beverage,2023-10-09,315.19
+User_708,Cosmetics,2024-06-11,51.22
+User_599,Technology,2023-04-02,151.06
+User_489,Toys,2024-04-23,56.46
+User_395,Clothing,2023-01-24,63.8
+User_283,Food & Beverage,2024-09-03,444.19
+User_457,Books,2024-05-10,437.15
+User_987,Clothing,2024-08-15,107.08
+User_740,Toys,2023-09-13,362.36
+User_255,Food & Beverage,2023-03-26,43.74
+User_273,Clothing,2023-07-23,195.19
+User_848,Clothing,2023-04-09,247.67
+User_349,Technology,2024-02-25,220.38
+User_921,Food & Beverage,2023-10-03,210.95
+User_627,Technology,2023-03-15,176.86
+User_97,Cosmetics,2023-08-08,268.69
+User_418,Shoes,2023-07-10,176.81
+User_221,Toys,2024-01-21,333.95
+User_331,Cosmetics,2024-03-23,289.05
+User_476,Clothing,2024-01-26,243.88
+User_64,Clothing,2023-07-12,127.01
+User_682,Books,2023-08-19,133.32
+User_501,Books,2024-06-01,432.5
+User_194,Books,2024-04-16,94.16
+User_209,Cosmetics,2023-04-15,179.98
+User_11,Food & Beverage,2023-04-11,99.55
+User_695,Cosmetics,2023-02-28,178.28
+User_809,Shoes,2023-04-24,73.07
+User_91,Technology,2024-08-24,462.93
+User_755,Shoes,2023-04-09,278.85
+User_923,Cosmetics,2023-06-14,209.05
+User_320,Food & Beverage,2023-09-26,379.41
+User_677,Clothing,2023-04-16,10.74
+User_611,Cosmetics,2024-07-15,114.63
+User_999,Technology,2023-09-11,499.46
+User_134,Books,2024-08-27,165.35
+User_793,Technology,2023-11-23,269.69
+User_360,Food & Beverage,2023-12-22,484.91
+User_804,Books,2023-08-19,330.93
+User_72,Books,2023-02-06,21.49
+User_710,Clothing,2023-07-10,244.7
+User_887,Clothing,2024-08-04,275.94
+User_945,Clothing,2023-06-25,175.64
+User_962,Toys,2024-01-14,102.68
+User_712,Food & Beverage,2024-08-09,113.61
+User_637,Food & Beverage,2023-12-31,239.6
+User_474,Shoes,2024-04-15,46.32
+User_237,Toys,2024-03-03,368.97
+User_941,Cosmetics,2023-12-25,383.18
+User_600,Cosmetics,2023-08-05,437.49
+User_704,Food & Beverage,2023-11-27,425.64
+User_17,Toys,2023-07-07,41.03
+User_14,Cosmetics,2023-07-16,435.18
+User_327,Food & Beverage,2023-01-02,493.77
+User_575,Technology,2023-02-21,90.46
+User_152,Food & Beverage,2024-08-05,15.18
+User_234,Technology,2023-11-06,192.0
+User_280,Cosmetics,2024-03-28,308.77
+User_871,Food & Beverage,2023-01-02,302.92
+User_320,Technology,2023-12-13,174.64
+User_305,Shoes,2023-10-10,399.58
+User_135,Shoes,2023-05-07,459.69
+User_881,Technology,2023-03-04,75.19
+User_220,Clothing,2024-05-30,493.24
+User_212,Shoes,2023-12-29,228.8
+User_210,Technology,2023-10-08,99.83
+User_829,Food & Beverage,2023-11-23,223.08
+User_581,Shoes,2024-05-17,104.79
+User_868,Technology,2024-07-06,243.52
+User_363,Cosmetics,2023-05-17,377.35
+User_943,Technology,2023-07-17,454.27
+User_25,Food & Beverage,2024-06-30,162.34
+User_325,Technology,2024-09-18,14.19
+User_619,Cosmetics,2024-08-05,362.66
+User_200,Clothing,2023-06-15,210.45
+User_720,Technology,2023-10-11,222.67
+User_903,Food & Beverage,2023-10-12,137.24
+User_368,Food & Beverage,2024-05-12,193.25
+User_820,Cosmetics,2023-04-11,248.16
+User_479,Technology,2024-05-05,376.17
+User_399,Technology,2023-11-20,369.54
+User_361,Toys,2023-02-23,257.8
+User_884,Clothing,2024-08-09,376.82
+User_174,Clothing,2023-04-17,491.07
+User_120,Technology,2023-04-29,281.25
+User_863,Toys,2023-03-15,152.9
+User_696,Toys,2024-06-08,398.7
+User_483,Toys,2024-07-17,489.77
+User_918,Books,2024-06-03,269.31
+User_960,Toys,2023-05-19,31.2
+User_299,Toys,2024-01-22,32.53
+User_872,Toys,2023-08-12,62.42
+User_355,Shoes,2024-09-26,460.9
+User_821,Clothing,2023-05-09,363.55
+User_972,Shoes,2024-09-26,176.42
+User_325,Shoes,2024-02-28,346.9
+User_957,Books,2023-09-10,321.55
+User_484,Technology,2023-03-04,366.55
+User_64,Cosmetics,2023-09-30,309.49
+User_95,Food & Beverage,2023-06-04,76.24
+User_801,Food & Beverage,2024-03-16,305.59
+User_670,Technology,2023-06-19,138.81
+User_89,Cosmetics,2023-09-04,445.48
+User_677,Shoes,2024-01-14,55.29
+User_318,Books,2023-05-05,439.85
+User_277,Clothing,2023-07-29,340.5
+User_290,Books,2023-03-12,171.45
+User_89,Books,2023-03-04,365.24
+User_421,Technology,2023-05-12,146.89
+User_894,Books,2023-04-08,218.42
+User_766,Technology,2024-04-12,108.9
+User_298,Food & Beverage,2023-05-04,450.87
+User_909,Clothing,2023-11-01,499.28
+User_884,Food & Beverage,2023-11-11,149.52
+User_903,Toys,2023-09-17,400.56
+User_815,Shoes,2024-01-21,470.86
+User_539,Toys,2024-04-15,452.41
+User_163,Books,2023-08-26,46.4
+User_752,Shoes,2023-07-09,172.18
+User_487,Technology,2023-06-25,137.12
+User_351,Books,2023-04-06,129.58
+User_214,Toys,2023-07-15,319.16
+User_529,Food & Beverage,2023-12-05,418.46
+User_130,Toys,2024-09-28,434.54
+User_318,Shoes,2024-09-06,428.85
+User_841,Toys,2024-08-10,79.54
+User_222,Toys,2024-05-25,264.36
+User_954,Cosmetics,2024-09-26,296.76
+User_85,Shoes,2023-10-27,76.06
+User_237,Toys,2024-09-16,426.72
+User_969,Toys,2023-02-27,391.11
+User_79,Cosmetics,2024-08-19,342.85
+User_444,Toys,2024-08-09,112.93
+User_198,Clothing,2024-01-01,153.26
+User_448,Clothing,2023-12-09,336.91
+User_888,Books,2023-06-17,295.51
+User_299,Books,2023-01-05,153.75
+User_118,Shoes,2023-06-25,421.79
+User_713,Toys,2024-09-09,362.55
+User_779,Books,2023-12-10,121.47
+User_605,Technology,2024-01-22,496.36
+User_482,Cosmetics,2023-05-30,443.17
+User_509,Clothing,2023-04-10,172.52
+User_872,Food & Beverage,2024-06-20,427.52
+User_504,Books,2023-01-05,109.24
+User_264,Toys,2024-01-25,470.04
+User_86,Technology,2024-02-23,253.57
+User_790,Clothing,2024-03-14,227.03
+User_506,Toys,2024-05-02,167.01
+User_736,Food & Beverage,2024-06-08,360.19
+User_781,Books,2023-12-02,17.18
+User_474,Shoes,2023-08-02,60.89
+User_394,Cosmetics,2023-05-11,140.48
+User_518,Food & Beverage,2023-10-09,27.43
+User_793,Food & Beverage,2023-04-01,96.69
+User_189,Clothing,2023-06-02,107.61
+User_866,Technology,2024-04-12,103.86
+User_192,Food & Beverage,2023-05-25,305.41
+User_12,Technology,2023-07-18,386.14
+User_915,Clothing,2024-07-19,229.04
+User_431,Shoes,2024-08-07,343.75
+User_610,Toys,2024-04-21,276.39
+User_488,Books,2024-08-01,446.13
+User_91,Books,2023-05-24,126.03
+User_338,Books,2024-05-28,231.15
+User_515,Shoes,2024-06-17,171.12
+User_251,Cosmetics,2023-10-05,479.92
+User_943,Shoes,2024-09-18,76.62
+User_998,Toys,2023-09-08,317.01
+User_154,Books,2024-05-23,334.12
+User_167,Clothing,2024-07-18,466.77
+User_554,Technology,2024-02-04,298.92
+User_757,Technology,2023-12-25,278.45
+User_839,Cosmetics,2023-06-02,343.59
+User_374,Clothing,2023-09-18,162.1
+User_221,Toys,2023-10-13,203.85
+User_548,Cosmetics,2023-06-18,284.04
+User_481,Toys,2024-05-08,203.12
+User_872,Clothing,2024-02-07,205.21
+User_865,Food & Beverage,2024-03-14,301.62
+User_947,Toys,2023-11-17,238.51
+User_655,Cosmetics,2023-09-29,125.38
+User_686,Books,2024-01-18,499.45
+User_693,Food & Beverage,2023-05-08,499.26
+User_261,Cosmetics,2023-11-15,14.9
+User_898,Food & Beverage,2023-08-03,250.82
+User_571,Toys,2023-01-25,148.99
+User_100,Food & Beverage,2023-03-03,432.12
+User_459,Toys,2023-01-05,463.09
+User_643,Food & Beverage,2024-02-28,493.17
+User_963,Toys,2023-01-09,123.0
+User_438,Books,2023-03-12,306.05
+User_327,Food & Beverage,2023-07-12,428.57
+User_995,Books,2024-05-04,486.78
+User_15,Shoes,2023-01-08,330.98
+User_77,Books,2023-06-12,115.63
+User_851,Cosmetics,2024-05-29,324.26
+User_787,Technology,2024-04-21,321.83
+User_409,Toys,2024-09-20,250.59
+User_741,Technology,2023-04-07,271.46
+User_423,Books,2024-04-13,161.19
+User_895,Books,2023-03-02,309.79
+User_533,Toys,2023-07-07,271.88
+User_944,Food & Beverage,2023-08-10,335.88
+User_744,Books,2023-02-28,449.94
+User_593,Toys,2024-01-31,365.16
+User_94,Cosmetics,2024-06-24,499.54
+User_302,Toys,2023-12-29,296.25
+User_734,Shoes,2023-12-22,366.92
+User_414,Food & Beverage,2023-12-04,482.99
+User_83,Books,2024-08-03,173.66
+User_509,Toys,2023-04-21,19.91
+User_473,Technology,2023-09-14,259.63
+User_385,Food & Beverage,2023-05-24,109.8
+User_200,Toys,2023-10-26,279.53
+User_328,Cosmetics,2023-11-06,439.53
+User_387,Cosmetics,2024-02-09,244.0
+User_566,Toys,2023-10-22,386.0
+User_29,Toys,2024-09-07,77.79
+User_967,Technology,2023-02-10,444.15
+User_83,Toys,2023-04-16,367.63
+User_266,Food & Beverage,2024-07-02,453.31
+User_29,Technology,2024-03-30,53.85
+User_957,Books,2023-12-05,275.71
+User_230,Books,2023-06-01,224.42
+User_250,Toys,2024-08-03,171.55
+User_740,Shoes,2023-03-30,288.76
+User_19,Food & Beverage,2023-07-07,294.58
+User_521,Cosmetics,2024-01-25,245.86
+User_810,Shoes,2023-11-14,303.57
+User_542,Clothing,2024-05-13,405.95
+User_77,Books,2024-01-26,145.71
+User_653,Technology,2023-05-21,130.13
+User_139,Shoes,2023-08-12,44.1
+User_649,Toys,2024-09-02,313.28
+User_200,Books,2023-08-10,114.03
+User_497,Clothing,2024-02-11,187.66
+User_560,Books,2024-04-27,287.98
+User_340,Books,2023-03-11,431.58
+User_543,Technology,2023-03-14,305.98
+User_54,Clothing,2023-09-04,245.53
+User_179,Books,2023-11-20,184.18
+User_548,Toys,2024-04-21,167.44
+User_529,Food & Beverage,2023-07-09,182.44
+User_767,Technology,2023-12-28,438.86
+User_392,Technology,2023-02-19,190.52
+User_572,Clothing,2024-07-01,404.61
+User_723,Books,2024-06-02,462.86
+User_889,Food & Beverage,2024-03-25,165.7
+User_269,Food & Beverage,2024-09-16,370.2
+User_483,Food & Beverage,2024-06-16,32.4
+User_897,Technology,2023-10-21,247.48
+User_3,Cosmetics,2023-12-22,201.56
+User_52,Shoes,2023-10-31,292.28
+User_634,Shoes,2023-01-12,160.14
+User_977,Clothing,2023-11-23,444.52
+User_743,Cosmetics,2024-02-18,384.0
+User_672,Shoes,2023-06-15,42.74
+User_226,Technology,2023-08-11,97.93
+User_684,Technology,2024-04-13,123.47
+User_698,Shoes,2023-07-19,297.47
+User_391,Clothing,2024-01-27,181.14
+User_626,Food & Beverage,2024-08-06,317.98
+User_210,Toys,2024-04-29,169.32
+User_633,Books,2024-04-05,465.29
+User_981,Shoes,2024-05-04,161.39
+User_15,Shoes,2024-01-30,369.29
+User_687,Technology,2023-12-14,61.74
+User_345,Clothing,2023-07-12,344.88
+User_724,Cosmetics,2023-09-19,437.27
+User_796,Clothing,2023-05-31,477.3
+User_669,Books,2024-01-22,495.54
+User_761,Food & Beverage,2023-10-01,210.01
+User_687,Cosmetics,2023-05-16,64.47
+User_552,Technology,2023-08-02,11.46
+User_38,Books,2024-05-09,103.87
+User_719,Technology,2023-08-10,487.48
+User_260,Toys,2024-09-21,79.0
+User_230,Toys,2023-06-30,201.98
+User_275,Shoes,2023-04-06,215.06
+User_508,Clothing,2024-09-04,429.26
+User_296,Food & Beverage,2024-09-30,136.36
+User_951,Toys,2023-06-15,219.41
+User_346,Toys,2024-09-28,101.13
+User_340,Cosmetics,2024-08-24,180.59
+User_726,Toys,2023-06-06,291.71
+User_746,Technology,2023-05-01,17.47
+User_553,Books,2023-05-01,198.57
+User_219,Cosmetics,2023-12-14,202.99
+User_617,Toys,2023-12-09,160.0
+User_624,Technology,2023-08-07,155.34
+User_875,Toys,2023-11-19,258.62
+User_659,Food & Beverage,2023-12-01,183.64
+User_324,Clothing,2023-10-10,365.52
+User_768,Technology,2024-07-08,33.58
+User_930,Books,2024-04-25,281.15
+User_571,Clothing,2023-09-18,37.32
+User_855,Technology,2023-07-28,72.66
+User_114,Books,2024-02-12,216.06
+User_397,Shoes,2024-06-23,311.6
+User_912,Technology,2023-11-06,493.87
+User_530,Books,2023-08-19,253.0
+User_103,Food & Beverage,2024-07-04,417.56
+User_313,Clothing,2023-03-15,493.27
+User_722,Books,2023-06-27,177.88
+User_763,Cosmetics,2023-11-29,144.94
+User_709,Cosmetics,2023-04-29,266.93
+User_526,Technology,2024-09-16,195.69
+User_530,Clothing,2024-01-08,89.31
+User_471,Technology,2023-07-11,79.77
+User_797,Technology,2023-03-05,108.45
+User_25,Cosmetics,2024-06-15,495.29
+User_384,Clothing,2024-07-16,196.53
+User_710,Cosmetics,2024-03-23,234.67
+User_401,Cosmetics,2024-07-25,248.37
+User_529,Toys,2024-03-03,41.14
+User_392,Toys,2024-08-01,402.83
+User_576,Technology,2023-06-26,226.15
+User_493,Clothing,2024-08-29,480.52
+User_784,Toys,2023-06-04,434.2
+User_952,Technology,2024-06-07,163.48
+User_122,Books,2024-08-30,434.19
+User_897,Technology,2023-05-19,98.15
+User_455,Technology,2023-10-17,84.48
+User_653,Food & Beverage,2024-06-06,458.82
+User_941,Food & Beverage,2024-02-29,284.42
+User_887,Technology,2024-05-06,140.61
+User_431,Clothing,2023-08-18,496.83
+User_209,Clothing,2023-01-01,300.02
+User_198,Food & Beverage,2024-04-08,233.63
+User_269,Food & Beverage,2024-03-13,490.87
+User_602,Shoes,2023-12-18,241.73
+User_814,Shoes,2023-07-05,150.71
+User_281,Clothing,2023-09-19,425.51
+User_540,Clothing,2024-07-17,112.31
+User_145,Books,2024-07-09,189.14
+User_660,Clothing,2024-08-11,321.1
+User_161,Shoes,2023-01-04,175.92
+User_239,Clothing,2023-07-18,453.89
+User_542,Clothing,2024-08-05,149.27
+User_656,Books,2024-09-23,339.76
+User_513,Books,2024-01-15,309.96
+User_846,Shoes,2023-12-26,386.79
+User_121,Technology,2023-10-23,54.86
+User_523,Shoes,2024-03-25,441.82
+User_772,Clothing,2023-09-07,336.42
+User_907,Technology,2024-03-08,308.84
+User_822,Technology,2024-05-08,157.25
+User_527,Technology,2023-05-09,15.38
+User_735,Food & Beverage,2024-09-17,349.91
+User_101,Toys,2023-09-20,263.17
+User_646,Shoes,2024-09-28,335.23
+User_341,Technology,2024-04-22,346.25
+User_365,Food & Beverage,2024-07-29,288.05
+User_704,Technology,2024-08-19,369.51
+User_672,Cosmetics,2024-02-04,370.31
+User_831,Shoes,2023-01-31,336.95
+User_681,Clothing,2024-04-08,420.09
+User_765,Shoes,2023-07-13,296.54
+User_427,Shoes,2023-10-06,409.39
+User_11,Cosmetics,2024-03-15,335.0
+User_878,Technology,2023-07-29,358.07
+User_874,Clothing,2024-04-12,209.16
+User_264,Books,2024-03-13,79.27
+User_413,Shoes,2024-03-07,310.99
+User_75,Food & Beverage,2023-09-07,204.64
+User_772,Books,2024-01-07,115.63
+User_884,Technology,2023-02-28,60.35
+User_11,Cosmetics,2024-08-28,135.87
+User_280,Books,2024-08-06,260.79
+User_856,Cosmetics,2023-05-15,163.43
+User_544,Books,2023-11-18,42.08
+User_667,Food & Beverage,2024-08-17,382.18
+User_477,Toys,2023-09-14,14.89
+User_999,Technology,2023-09-14,205.32
+User_971,Clothing,2024-04-11,264.5
+User_680,Clothing,2024-08-08,297.99
+User_442,Toys,2024-09-25,421.83
+User_745,Food & Beverage,2024-08-26,34.98
+User_182,Technology,2024-06-30,456.92
+User_835,Shoes,2024-05-30,479.57
+User_623,Books,2024-06-05,401.47
+User_408,Toys,2024-07-27,209.83
+User_28,Cosmetics,2023-08-05,361.56
+User_466,Books,2024-04-28,32.6
+User_152,Toys,2024-01-21,260.32
+User_350,Clothing,2023-02-04,302.58
+User_295,Technology,2023-09-21,339.49
+User_953,Technology,2023-12-19,495.38
+User_463,Cosmetics,2023-05-25,317.87
+User_553,Toys,2024-05-18,450.5
+User_338,Cosmetics,2023-01-26,288.11
+User_134,Food & Beverage,2024-08-19,123.83
+User_221,Clothing,2023-05-04,99.19
+User_162,Books,2023-05-14,291.14
+User_549,Food & Beverage,2024-01-26,64.29
+User_846,Shoes,2023-02-05,489.62
+User_772,Cosmetics,2023-12-21,417.73
+User_435,Cosmetics,2023-05-18,92.17
+User_655,Technology,2023-07-10,316.98
+User_419,Cosmetics,2023-05-16,101.1
+User_543,Cosmetics,2023-06-21,157.33
+User_912,Cosmetics,2023-11-17,115.76
+User_398,Toys,2024-08-10,282.97
+User_855,Toys,2023-12-28,332.46
+User_492,Food & Beverage,2023-03-18,240.11
+User_624,Clothing,2023-02-25,19.75
+User_514,Shoes,2023-11-16,339.1
+User_900,Books,2023-12-20,354.42
+User_406,Clothing,2024-07-02,132.32
+User_977,Technology,2024-08-22,171.26
+User_467,Food & Beverage,2024-01-28,207.23
+User_894,Shoes,2023-02-28,282.91
+User_493,Books,2023-11-06,493.07
+User_196,Cosmetics,2024-06-05,231.33
+User_52,Food & Beverage,2024-03-10,185.4
+User_107,Cosmetics,2023-01-30,303.26
+User_253,Books,2024-05-10,273.0
+User_620,Toys,2024-07-12,375.4
+User_939,Clothing,2023-06-12,109.66
+User_725,Cosmetics,2023-11-28,48.46
+User_403,Cosmetics,2023-01-26,176.77
+User_169,Books,2023-09-29,193.72
+User_955,Clothing,2023-03-21,151.17
+User_315,Books,2023-01-08,395.25
+User_442,Books,2024-07-09,323.79
+User_670,Books,2023-09-23,436.48
+User_381,Cosmetics,2023-05-13,383.93
+User_395,Shoes,2023-01-24,40.43
+User_439,Food & Beverage,2023-04-22,398.79
+User_491,Technology,2023-01-10,361.68
+User_323,Books,2024-01-19,272.15
+User_201,Cosmetics,2023-09-12,207.86
+User_381,Clothing,2024-02-21,282.11
+User_484,Cosmetics,2023-11-15,472.36
+User_815,Food & Beverage,2023-05-02,400.59
+User_510,Technology,2023-05-16,458.91
+User_440,Food & Beverage,2023-04-26,172.57
+User_881,Food & Beverage,2024-03-27,495.57
+User_206,Cosmetics,2024-08-26,134.35
+User_593,Technology,2023-02-15,163.25
+User_625,Cosmetics,2024-05-14,411.64
+User_635,Shoes,2024-03-20,455.32
+User_425,Food & Beverage,2023-05-21,242.01
+User_93,Technology,2024-03-29,487.09
+User_203,Cosmetics,2024-04-27,239.88
+User_421,Food & Beverage,2024-05-28,207.08
+User_110,Books,2023-02-16,30.66
+User_730,Technology,2023-06-10,77.01
+User_348,Books,2023-10-01,425.34
+User_739,Cosmetics,2024-06-07,126.15
+User_354,Food & Beverage,2023-08-08,425.09
+User_806,Books,2023-01-17,283.62
+User_505,Technology,2023-11-08,439.19
+User_31,Clothing,2024-07-05,48.51
+User_536,Toys,2023-08-04,301.17
+User_638,Food & Beverage,2023-10-04,296.59
+User_356,Cosmetics,2024-09-03,182.47
+User_552,Cosmetics,2024-04-10,188.28
+User_840,Toys,2023-02-18,412.67
+User_113,Clothing,2024-07-05,50.81
+User_524,Shoes,2023-05-28,69.55
+User_847,Food & Beverage,2024-04-01,220.34
+User_984,Books,2024-04-24,10.48
+User_702,Shoes,2023-08-11,339.22
+User_462,Food & Beverage,2024-09-03,473.82
+User_230,Toys,2023-10-14,443.58
+User_521,Toys,2023-03-30,351.08
+User_978,Books,2023-11-13,491.77
+User_523,Cosmetics,2023-08-29,198.32
+User_624,Toys,2023-04-15,128.65
+User_503,Food & Beverage,2024-07-05,232.8
+User_11,Clothing,2023-07-23,129.74
+User_185,Toys,2023-02-06,419.01
+User_606,Shoes,2023-05-19,38.2
+User_349,Books,2024-08-20,260.03
+User_365,Clothing,2024-04-30,178.55
+User_900,Toys,2024-07-26,416.98
+User_581,Shoes,2024-08-30,107.74
+User_268,Toys,2024-03-18,313.43
+User_857,Cosmetics,2023-08-25,264.82
+User_996,Technology,2024-07-25,354.34
+User_94,Cosmetics,2023-03-29,472.21
+User_533,Technology,2023-09-02,498.98
+User_415,Books,2024-09-05,436.01
+User_114,Cosmetics,2024-02-12,194.04
+User_730,Shoes,2024-08-24,105.13
+User_335,Clothing,2024-03-24,360.92
+User_232,Cosmetics,2024-02-10,37.65
+User_151,Technology,2024-02-29,320.79
+User_471,Shoes,2024-07-17,69.54
+User_505,Food & Beverage,2023-04-22,245.92
+User_763,Food & Beverage,2023-04-13,363.59
+User_528,Clothing,2023-04-19,130.23
+User_912,Shoes,2024-05-30,377.88
+User_238,Cosmetics,2023-08-25,242.53
+User_192,Books,2024-09-23,13.12
+User_588,Clothing,2024-08-04,422.85
+User_669,Books,2024-04-03,10.76
+User_580,Food & Beverage,2023-03-11,457.44
+User_209,Books,2024-04-06,219.69
+User_535,Toys,2023-04-16,169.3
+User_936,Cosmetics,2023-12-21,290.42
+User_301,Cosmetics,2023-04-25,404.24
+User_551,Toys,2023-09-07,302.66
+User_996,Shoes,2024-07-31,48.67
+User_860,Food & Beverage,2023-08-09,164.7
+User_437,Food & Beverage,2023-12-06,466.63
+User_994,Clothing,2024-08-18,26.08
+User_712,Technology,2023-03-12,199.12
+User_742,Shoes,2023-03-19,109.44
+User_944,Shoes,2023-01-07,220.83
+User_308,Toys,2023-04-05,387.58
+User_160,Food & Beverage,2023-11-08,235.14
+User_424,Cosmetics,2023-05-31,263.75
+User_747,Books,2024-09-01,249.21
+User_891,Books,2023-07-09,310.26
+User_166,Food & Beverage,2023-09-18,370.18
+User_142,Technology,2024-06-24,58.36
+User_915,Clothing,2024-04-15,426.85
+User_296,Cosmetics,2024-08-12,462.22
+User_946,Cosmetics,2024-09-11,263.15
+User_389,Technology,2024-09-05,103.48
+User_604,Technology,2023-04-15,411.21
+User_380,Cosmetics,2023-10-07,442.21
+User_102,Books,2023-02-02,240.54
+User_235,Technology,2024-06-27,294.3
+User_742,Shoes,2024-01-11,405.43
+User_949,Shoes,2023-03-13,213.33
+User_310,Toys,2023-09-07,121.91
+User_422,Cosmetics,2023-09-07,206.16
+User_852,Toys,2023-10-05,336.9
+User_662,Toys,2023-05-01,146.64
+User_387,Shoes,2024-02-15,258.87
+User_933,Technology,2024-03-09,422.97
+User_346,Clothing,2023-06-20,461.27
+User_81,Cosmetics,2024-05-21,31.84
+User_3,Cosmetics,2024-04-07,80.21
+User_257,Technology,2024-04-25,369.2
+User_200,Toys,2024-01-25,300.33
+User_945,Shoes,2023-09-13,300.27
+User_128,Clothing,2023-10-11,251.45
+User_791,Shoes,2023-06-04,356.92
+User_836,Food & Beverage,2024-07-27,245.97
+User_66,Technology,2023-05-30,434.86
+User_195,Technology,2023-01-27,61.16
+User_630,Toys,2024-03-15,415.39
+User_943,Technology,2023-04-12,353.81
+User_85,Books,2023-09-11,216.85
+User_847,Cosmetics,2023-08-07,52.84
+User_523,Cosmetics,2023-09-10,73.79
+User_193,Food & Beverage,2023-05-31,184.74
+User_307,Cosmetics,2023-06-09,452.02
+User_453,Technology,2024-07-27,323.94
+User_940,Toys,2023-12-04,311.67
+User_678,Technology,2023-12-25,158.25
+User_335,Shoes,2023-09-12,222.29
+User_376,Books,2024-06-29,428.66
+User_428,Technology,2023-06-07,205.42
+User_256,Shoes,2023-02-15,450.48
+User_148,Clothing,2023-07-09,77.56
+User_461,Toys,2024-08-15,489.14
+User_453,Books,2023-12-31,168.52
+User_841,Food & Beverage,2023-10-24,277.85
+User_588,Technology,2023-10-05,282.6
+User_329,Cosmetics,2023-11-19,285.18
+User_681,Books,2023-10-16,43.17
+User_735,Technology,2024-02-22,82.48
+User_454,Clothing,2024-02-12,148.71
+User_864,Cosmetics,2023-07-31,51.29
+User_771,Clothing,2023-10-09,316.06
+User_78,Technology,2024-05-12,46.1
+User_728,Clothing,2023-04-29,405.21
+User_596,Toys,2023-04-07,190.76
+User_78,Toys,2024-02-12,494.78
+User_387,Clothing,2023-12-02,164.27
+User_249,Cosmetics,2023-08-23,268.84
+User_433,Books,2023-04-25,61.11
+User_539,Clothing,2024-02-27,17.9
+User_908,Cosmetics,2023-03-28,318.44
+User_350,Toys,2024-09-21,394.22
+User_621,Toys,2024-01-03,59.09
+User_979,Books,2024-06-12,411.96
+User_869,Shoes,2023-04-30,432.44
+User_835,Technology,2024-05-03,193.28
+User_213,Shoes,2024-08-12,174.95
+User_187,Cosmetics,2024-07-21,424.91
+User_951,Books,2024-01-05,196.91
+User_547,Shoes,2023-04-14,272.77
+User_639,Books,2024-02-02,474.94
+User_911,Shoes,2023-11-25,183.04
+User_162,Books,2024-09-18,264.32
+User_245,Cosmetics,2023-07-25,110.92
+User_210,Food & Beverage,2023-03-24,309.17
+User_452,Shoes,2024-05-05,175.34
+User_166,Food & Beverage,2023-01-01,249.37
+User_110,Clothing,2024-09-18,19.97
+User_479,Cosmetics,2024-09-01,409.68
+User_796,Cosmetics,2024-07-19,223.96
+User_474,Shoes,2023-11-12,81.29
+User_186,Books,2023-11-21,317.71
+User_886,Toys,2023-05-26,109.28
+User_421,Books,2023-01-10,245.53
+User_132,Technology,2023-12-08,249.15
+User_113,Food & Beverage,2024-08-18,260.78
+User_508,Books,2023-04-20,458.38
+User_880,Toys,2024-06-08,266.3
+User_77,Shoes,2024-03-05,181.55
+User_622,Books,2024-03-07,479.97
+User_959,Cosmetics,2024-03-30,490.04
+User_786,Toys,2023-09-04,47.5
+User_961,Books,2024-05-20,190.57
+User_432,Toys,2024-06-29,444.78
+User_656,Books,2023-05-04,475.47
+User_457,Clothing,2023-05-01,193.16
+User_691,Shoes,2024-04-25,259.32
+User_292,Food & Beverage,2024-01-10,392.41
+User_840,Clothing,2024-06-07,282.42
+User_740,Cosmetics,2024-09-17,223.01
+User_16,Technology,2023-05-26,54.03
+User_965,Books,2024-05-11,52.07
+User_665,Toys,2023-12-24,175.7
+User_561,Toys,2024-05-15,270.56
+User_704,Technology,2024-08-24,467.17
+User_271,Books,2023-04-14,142.15
+User_76,Food & Beverage,2023-10-31,405.78
+User_766,Toys,2024-03-01,486.09
+User_807,Food & Beverage,2024-08-06,168.72
+User_977,Clothing,2023-11-25,50.37
+User_212,Books,2023-07-10,215.41
+User_20,Food & Beverage,2023-09-25,182.54
+User_708,Food & Beverage,2024-02-25,83.4
+User_634,Cosmetics,2023-06-25,20.84
+User_267,Cosmetics,2023-02-09,243.51
+User_246,Shoes,2024-05-26,372.97
+User_628,Food & Beverage,2023-03-07,227.53
+User_594,Books,2024-02-25,100.08
+User_483,Food & Beverage,2024-08-31,291.82
+User_631,Shoes,2024-08-06,67.59
+User_272,Cosmetics,2023-09-21,198.86
+User_705,Shoes,2024-05-09,129.82
+User_607,Books,2023-10-26,81.54
+User_730,Books,2024-01-12,362.07
+User_845,Technology,2023-03-16,40.46
+User_746,Shoes,2024-08-30,364.68
+User_920,Food & Beverage,2023-05-13,110.4
+User_644,Technology,2023-08-02,312.36
+User_427,Cosmetics,2023-02-09,369.9
+User_236,Cosmetics,2023-05-23,330.6
+User_156,Cosmetics,2023-07-25,19.19
+User_501,Toys,2023-07-23,84.22
+User_99,Cosmetics,2023-06-05,177.53
+User_137,Clothing,2024-06-23,223.0
+User_390,Technology,2023-10-13,400.58
+User_585,Technology,2023-06-09,198.5
+User_883,Clothing,2024-01-07,253.41
+User_522,Food & Beverage,2024-02-25,463.99
+User_604,Books,2024-08-15,63.27
+User_11,Technology,2024-06-29,335.07
+User_134,Toys,2023-07-05,141.57
+User_391,Technology,2024-03-30,363.12
+User_949,Toys,2024-03-17,336.45
+User_945,Toys,2024-01-18,300.19
+User_257,Shoes,2024-05-14,51.89
+User_991,Toys,2024-07-25,87.48
+User_53,Clothing,2024-05-01,433.12
+User_596,Shoes,2023-05-21,79.97
+User_596,Food & Beverage,2023-08-31,48.57
+User_67,Toys,2023-08-23,122.37
+User_739,Cosmetics,2024-05-11,150.47
+User_322,Technology,2024-03-03,83.42
+User_771,Books,2023-10-03,131.87
+User_133,Clothing,2024-07-07,244.93
+User_914,Shoes,2024-08-20,192.43
+User_719,Food & Beverage,2024-07-13,124.44
+User_675,Cosmetics,2023-10-24,346.59
+User_283,Shoes,2023-08-12,499.84
+User_949,Food & Beverage,2023-04-23,456.58
+User_518,Technology,2024-05-02,250.19
+User_880,Clothing,2023-04-05,125.03
+User_341,Technology,2024-05-29,487.65
+User_827,Clothing,2024-05-15,387.01
+User_26,Clothing,2023-03-15,27.11
+User_464,Food & Beverage,2023-04-20,151.71
+User_546,Cosmetics,2023-08-14,338.8
+User_893,Technology,2023-10-13,468.34
+User_441,Shoes,2024-07-31,140.97
+User_398,Technology,2023-12-01,394.38
+User_602,Books,2024-07-14,442.26
+User_806,Food & Beverage,2023-06-21,330.62
+User_941,Shoes,2023-07-23,184.06
+User_843,Toys,2024-05-30,275.49
+User_128,Food & Beverage,2023-08-08,58.93
+User_612,Books,2023-05-16,117.78
+User_125,Food & Beverage,2023-11-05,209.83
+User_840,Technology,2023-06-30,346.12
+User_795,Cosmetics,2023-06-15,189.28
+User_460,Cosmetics,2024-05-21,177.15
+User_769,Toys,2023-03-18,53.47
+User_522,Toys,2024-07-16,56.77
+User_755,Toys,2023-05-28,349.34
+User_148,Technology,2024-05-05,134.34
+User_297,Shoes,2024-09-23,236.47
+User_471,Cosmetics,2024-03-29,373.31
+User_640,Toys,2023-09-27,274.19
+User_443,Clothing,2024-09-12,352.96
+User_624,Shoes,2024-03-12,273.35
+User_670,Toys,2023-07-22,140.47
+User_745,Cosmetics,2023-03-17,242.23
+User_424,Toys,2023-05-03,239.65
+User_65,Books,2024-06-24,407.25
+User_698,Shoes,2023-01-26,343.73
+User_313,Clothing,2024-08-14,31.52
+User_653,Books,2024-05-08,383.0
+User_378,Books,2023-11-16,383.18
+User_369,Toys,2023-08-23,87.05
+User_321,Clothing,2024-08-31,182.68
+User_354,Cosmetics,2023-04-26,23.49
+User_651,Cosmetics,2023-05-13,163.39
+User_903,Toys,2023-11-19,228.66
+User_674,Toys,2023-10-07,351.38
+User_525,Food & Beverage,2024-05-19,487.32
+User_625,Toys,2023-01-14,137.96
+User_906,Clothing,2023-07-15,35.24
+User_977,Toys,2023-01-06,143.94
+User_781,Clothing,2023-02-02,338.6
+User_258,Food & Beverage,2024-08-30,214.67
+User_56,Toys,2023-12-22,238.54
+User_507,Shoes,2023-01-31,390.29
+User_388,Food & Beverage,2024-03-05,35.3
+User_993,Technology,2024-02-24,384.62
+User_718,Technology,2023-06-11,73.12
+User_784,Shoes,2023-01-16,402.82
+User_765,Toys,2024-05-25,273.18
+User_827,Shoes,2023-11-15,20.45
+User_348,Shoes,2024-09-05,298.16
+User_679,Food & Beverage,2023-03-11,204.36
+User_751,Clothing,2023-07-06,496.93
+User_461,Technology,2024-08-17,155.19
+User_71,Toys,2024-08-16,34.89
+User_309,Technology,2024-09-06,238.2
+User_737,Toys,2023-08-14,426.09
+User_104,Cosmetics,2024-07-30,191.99
+User_44,Toys,2024-06-27,191.4
+User_732,Shoes,2024-05-14,324.73
+User_772,Toys,2024-07-03,168.09
+User_164,Cosmetics,2024-02-11,152.37
+User_722,Cosmetics,2023-11-22,276.36
+User_612,Shoes,2023-07-16,18.33
+User_498,Technology,2023-11-01,173.89
+User_571,Shoes,2024-03-30,293.99
+User_771,Technology,2023-08-25,306.72
+User_971,Cosmetics,2024-03-28,57.03
+User_424,Shoes,2023-12-31,95.08
+User_34,Technology,2024-04-18,477.41
+User_41,Toys,2024-07-10,141.53
+User_100,Books,2023-02-10,97.48
+User_188,Cosmetics,2023-07-08,227.1
+User_554,Shoes,2023-07-03,19.81
+User_966,Food & Beverage,2023-03-01,131.77
+User_658,Toys,2023-08-14,292.87
+User_357,Toys,2023-07-01,395.79
+User_773,Cosmetics,2023-07-16,346.38
+User_658,Cosmetics,2023-03-26,240.6
+User_915,Toys,2023-06-15,271.09
+User_964,Technology,2024-01-28,143.74
+User_189,Toys,2023-11-09,487.98
+User_449,Books,2023-04-04,367.01
+User_753,Toys,2024-06-22,224.66
+User_67,Technology,2024-03-08,171.57
+User_846,Books,2023-05-08,246.77
+User_782,Toys,2024-08-10,398.68
+User_717,Food & Beverage,2023-02-22,356.58
+User_861,Toys,2023-09-01,361.27
+User_358,Toys,2024-06-13,188.76
+User_935,Books,2023-04-30,331.12
+User_824,Technology,2023-06-11,365.7
+User_80,Clothing,2023-03-29,349.82
+User_282,Cosmetics,2024-04-26,13.65
+User_793,Toys,2024-05-24,207.6
+User_690,Clothing,2024-03-20,90.14
+User_972,Technology,2023-10-15,146.66
+User_7,Technology,2023-12-05,182.86
+User_315,Toys,2023-08-28,17.93
+User_61,Food & Beverage,2023-03-02,413.7
+User_784,Food & Beverage,2023-12-20,226.12
+User_963,Cosmetics,2023-09-06,35.87
+User_736,Food & Beverage,2024-06-25,209.13
+User_817,Clothing,2024-08-13,28.58
+User_812,Clothing,2023-07-19,197.14
+User_465,Technology,2024-07-05,301.74
+User_192,Food & Beverage,2024-02-11,313.29
+User_987,Clothing,2023-05-14,27.85
+User_664,Clothing,2024-05-27,449.16
+User_80,Cosmetics,2023-09-04,308.63
+User_769,Toys,2023-02-07,15.58
+User_502,Technology,2024-09-28,40.7
+User_413,Cosmetics,2024-08-08,463.17
+User_99,Clothing,2023-06-02,382.13
+User_216,Shoes,2023-07-09,404.01
+User_168,Technology,2023-02-02,332.77
+User_86,Shoes,2023-08-18,133.74
+User_948,Clothing,2024-04-12,433.78
+User_91,Toys,2024-08-29,202.68
+User_323,Toys,2023-07-11,272.8
+User_114,Cosmetics,2024-07-20,132.32
+User_107,Books,2023-11-27,173.78
+User_274,Clothing,2024-07-23,230.7
+User_1000,Books,2023-07-10,432.73
+User_698,Clothing,2024-02-10,127.89
+User_478,Books,2024-02-03,50.06
+User_172,Shoes,2023-05-01,274.6
+User_721,Cosmetics,2024-03-09,238.92
+User_820,Clothing,2024-05-06,365.0
+User_144,Clothing,2023-05-27,328.01
+User_991,Shoes,2024-01-06,375.89
+User_182,Toys,2023-12-05,442.81
+User_255,Shoes,2024-08-12,157.37
+User_984,Clothing,2023-01-23,422.51
+User_561,Clothing,2023-10-03,390.78
+User_812,Books,2023-09-15,350.48
+User_204,Cosmetics,2023-06-27,492.92
+User_158,Food & Beverage,2023-05-10,147.77
+User_397,Shoes,2023-04-09,50.41
+User_431,Books,2024-08-05,294.03
+User_564,Books,2024-01-31,476.21
+User_928,Shoes,2024-04-10,73.43
+User_262,Books,2024-06-21,205.88
+User_789,Books,2024-09-14,440.29
+User_470,Technology,2024-03-07,37.71
+User_904,Clothing,2023-07-13,455.95
+User_814,Food & Beverage,2024-07-31,137.27
+User_433,Cosmetics,2024-07-26,461.87
+User_192,Food & Beverage,2023-06-23,245.41
+User_946,Toys,2024-07-10,423.37
+User_20,Clothing,2024-01-09,67.81
+User_241,Clothing,2024-03-01,375.98
+User_661,Toys,2024-01-10,11.61
+User_813,Food & Beverage,2024-07-31,389.38
+User_110,Toys,2024-03-08,93.82
+User_724,Books,2023-05-27,399.75
+User_596,Cosmetics,2023-05-24,215.63
+User_309,Toys,2023-12-24,462.52
+User_976,Cosmetics,2023-02-10,425.71
+User_617,Food & Beverage,2023-04-03,271.54
+User_287,Food & Beverage,2023-09-13,94.53
+User_993,Clothing,2024-06-30,110.04
+User_554,Food & Beverage,2024-07-13,113.47
+User_927,Books,2024-09-29,337.85
+User_526,Toys,2024-09-13,449.88
+User_992,Clothing,2024-04-24,267.03
+User_180,Clothing,2023-06-04,389.69
+User_10,Cosmetics,2024-03-20,434.95
+User_913,Cosmetics,2024-03-16,112.67
+User_93,Cosmetics,2023-02-20,111.95
+User_406,Technology,2023-08-16,446.67
+User_509,Cosmetics,2023-12-21,420.1
+User_516,Books,2023-03-20,141.29
+User_981,Shoes,2023-02-01,79.46
+User_584,Cosmetics,2024-03-17,19.37
+User_528,Books,2024-05-06,45.51
+User_280,Toys,2023-11-22,247.92
+User_737,Food & Beverage,2024-07-25,383.01
+User_580,Clothing,2023-08-12,350.63
+User_147,Clothing,2024-07-27,477.66
+User_976,Shoes,2024-03-30,90.54
+User_140,Books,2024-07-27,75.89
+User_619,Cosmetics,2024-02-22,226.92
+User_892,Shoes,2024-07-06,318.89
+User_2,Shoes,2023-05-22,309.05
+User_795,Toys,2023-04-09,461.21
+User_879,Cosmetics,2024-02-05,417.9
+User_101,Shoes,2023-04-23,118.34
+User_683,Cosmetics,2023-08-15,235.86
+User_305,Technology,2023-12-08,285.92
+User_304,Technology,2024-02-22,85.38
+User_260,Technology,2023-12-29,20.32
+User_730,Shoes,2024-01-23,228.31
+User_419,Toys,2023-07-27,298.77
+User_19,Toys,2023-08-15,165.7
+User_832,Clothing,2023-09-05,21.91
+User_885,Clothing,2023-08-15,316.13
+User_985,Clothing,2023-04-04,475.46
+User_186,Books,2023-04-26,183.52
+User_21,Food & Beverage,2023-01-29,376.53
+User_16,Shoes,2023-07-18,257.58
+User_845,Toys,2023-03-07,375.64
+User_689,Books,2024-04-15,467.25
+User_338,Cosmetics,2024-06-02,285.26
+User_411,Shoes,2023-04-28,100.16
+User_210,Cosmetics,2024-03-29,126.94
+User_694,Food & Beverage,2023-05-29,131.41
+User_680,Toys,2023-09-30,292.26
+User_852,Food & Beverage,2023-06-30,344.09
+User_975,Food & Beverage,2023-04-30,54.38
+User_712,Cosmetics,2024-04-28,286.02
+User_912,Clothing,2023-11-17,264.24
+User_505,Cosmetics,2023-08-23,85.59
+User_149,Food & Beverage,2024-05-31,71.58
+User_359,Toys,2024-07-06,167.59
+User_87,Shoes,2024-01-02,90.6
+User_982,Books,2024-08-23,31.0
+User_630,Toys,2023-06-02,481.27
+User_582,Food & Beverage,2023-02-21,470.0
+User_187,Books,2024-05-11,11.54
+User_321,Technology,2023-01-26,486.94
+User_378,Shoes,2024-05-13,366.5
+User_514,Toys,2024-05-12,253.42
+User_342,Technology,2023-08-11,491.87
+User_201,Shoes,2023-06-24,108.41
+User_959,Technology,2023-01-10,119.73
+User_889,Books,2023-04-29,429.41
+User_607,Technology,2024-05-22,58.49
+User_666,Technology,2024-05-09,402.29
+User_1000,Shoes,2023-04-17,412.23
+User_478,Shoes,2023-12-22,28.54
+User_752,Toys,2023-09-09,365.55
+User_126,Books,2023-12-28,427.03
+User_253,Clothing,2023-01-15,31.51
+User_412,Toys,2024-01-01,208.84
+User_521,Cosmetics,2024-05-08,237.65
+User_358,Food & Beverage,2023-08-20,356.93
+User_886,Books,2023-07-10,329.26
+User_410,Clothing,2023-10-16,248.28
+User_946,Cosmetics,2023-09-03,39.34
+User_929,Toys,2023-03-25,332.53
+User_226,Books,2023-10-06,159.73
+User_582,Technology,2023-07-20,435.39
+User_617,Technology,2023-08-15,128.29
+User_796,Books,2023-12-28,298.47
+User_58,Shoes,2023-08-16,293.95
+User_132,Technology,2024-09-14,351.23
+User_625,Food & Beverage,2024-05-30,84.3
+User_20,Shoes,2024-01-17,143.21
+User_967,Books,2023-02-07,154.13
+User_275,Food & Beverage,2024-06-24,275.14
+User_345,Technology,2023-05-12,498.22
+User_255,Toys,2024-09-08,146.15
+User_704,Cosmetics,2024-03-15,454.98
+User_859,Cosmetics,2023-08-08,101.1
+User_380,Cosmetics,2024-07-01,177.27
+User_649,Technology,2024-06-09,307.38
+User_410,Food & Beverage,2023-07-17,110.23
+User_763,Books,2023-06-30,494.01
+User_577,Shoes,2024-08-21,497.36
+User_518,Cosmetics,2024-06-28,434.95
+User_551,Shoes,2023-07-23,132.4
+User_858,Cosmetics,2024-07-01,407.55
+User_158,Toys,2024-04-28,78.66
+User_134,Clothing,2023-01-21,292.24
+User_106,Toys,2024-04-11,354.66
+User_675,Books,2024-05-18,232.9
+User_510,Food & Beverage,2024-08-10,47.59
+User_782,Shoes,2024-03-14,367.21
+User_758,Clothing,2023-12-30,196.82
+User_746,Shoes,2024-01-10,136.64
+User_475,Clothing,2023-03-13,290.65
+User_192,Food & Beverage,2023-06-05,450.01
+User_500,Toys,2023-03-20,291.36
+User_63,Technology,2023-11-07,283.25
+User_190,Cosmetics,2024-02-27,105.06
+User_444,Cosmetics,2024-06-09,389.31
+User_810,Technology,2024-02-25,309.45
+User_82,Shoes,2023-03-20,229.61
+User_236,Technology,2024-01-20,174.3
+User_315,Shoes,2023-02-02,355.99
+User_450,Clothing,2023-10-13,42.94
+User_122,Cosmetics,2023-12-13,145.47
+User_392,Clothing,2023-09-29,181.46
+User_649,Books,2023-03-25,498.06
+User_119,Cosmetics,2023-08-07,137.74
+User_957,Clothing,2024-03-09,299.61
+User_84,Toys,2023-02-21,72.94
+User_274,Cosmetics,2024-09-07,106.11
+User_448,Books,2023-08-19,189.12
+User_553,Technology,2024-08-02,179.36
+User_842,Clothing,2024-03-28,215.57
+User_431,Toys,2023-05-09,449.85
+User_407,Technology,2023-09-08,87.5
+User_467,Books,2023-07-24,55.41
+User_210,Technology,2023-10-01,307.36
+User_870,Toys,2024-07-20,411.21
+User_771,Technology,2023-08-19,257.39
+User_750,Technology,2023-04-13,356.15
+User_255,Toys,2024-05-28,313.4
+User_182,Shoes,2023-06-20,427.17
+User_762,Books,2023-09-03,100.04
+User_384,Technology,2023-01-05,339.18
+User_649,Food & Beverage,2023-06-13,161.42
+User_443,Cosmetics,2024-05-15,260.39
+User_28,Books,2023-10-18,101.53
+User_194,Toys,2023-02-27,147.23
+User_365,Toys,2024-07-02,42.93
+User_932,Food & Beverage,2023-12-09,386.16
+User_554,Toys,2024-03-09,93.11
+User_475,Technology,2023-12-07,406.65
+User_63,Food & Beverage,2023-09-07,368.08
+User_628,Food & Beverage,2023-06-22,108.23
+User_811,Technology,2023-06-09,116.01
+User_717,Clothing,2024-06-15,497.7
+User_567,Toys,2023-11-28,20.85
+User_147,Books,2023-05-20,494.07
+User_772,Technology,2023-03-05,307.44
+User_457,Shoes,2023-08-28,499.11
+User_603,Clothing,2024-03-05,56.32
+User_222,Books,2023-09-18,480.55
+User_481,Toys,2023-05-08,329.7
+User_950,Shoes,2024-08-23,423.27
+User_601,Technology,2024-06-07,489.92
+User_803,Cosmetics,2023-06-27,68.72
+User_914,Books,2024-08-24,334.49
+User_485,Food & Beverage,2023-07-29,173.61
+User_263,Food & Beverage,2023-02-16,425.87
+User_199,Shoes,2023-11-05,386.9
+User_749,Shoes,2024-05-12,292.69
+User_76,Cosmetics,2024-01-01,226.2
+User_292,Cosmetics,2024-07-09,381.25
+User_487,Shoes,2024-04-02,55.1
+User_854,Cosmetics,2024-03-24,143.38
+User_950,Toys,2023-03-17,481.72
+User_663,Books,2023-07-28,415.9
+User_844,Books,2023-10-06,132.19
+User_705,Clothing,2024-04-27,236.24
+User_24,Toys,2024-08-08,145.87
+User_260,Books,2024-02-13,490.55
+User_654,Books,2024-03-06,386.81
+User_175,Cosmetics,2023-12-09,145.69
+User_870,Toys,2024-01-05,165.83
+User_19,Technology,2023-06-25,66.49
+User_113,Technology,2023-12-22,408.77
+User_975,Cosmetics,2023-01-11,433.11
+User_998,Toys,2023-10-25,127.38
+User_763,Cosmetics,2023-05-19,473.32
+User_576,Food & Beverage,2023-09-17,83.45
+User_697,Technology,2024-09-05,199.93
+User_895,Clothing,2023-01-12,198.89
+User_407,Technology,2023-02-08,254.09
+User_977,Technology,2024-09-25,332.36
+User_208,Shoes,2024-04-19,473.72
+User_120,Books,2024-03-24,424.23
+User_110,Cosmetics,2024-03-21,19.68
+User_331,Cosmetics,2024-05-12,289.11
+User_645,Toys,2023-03-13,453.63
+User_203,Books,2023-03-02,268.3
+User_59,Toys,2024-08-11,473.96
+User_219,Toys,2023-11-28,40.53
+User_986,Books,2024-08-28,419.4
+User_587,Books,2024-06-19,22.44
+User_173,Cosmetics,2024-03-03,445.71
+User_971,Clothing,2024-06-21,471.94
+User_323,Clothing,2024-01-15,219.64
+User_332,Toys,2024-03-29,248.48
+User_724,Cosmetics,2023-12-19,277.03
+User_172,Cosmetics,2024-09-24,170.05
+User_688,Cosmetics,2023-10-25,55.85
+User_517,Books,2023-04-28,124.7
+User_286,Toys,2023-05-04,410.08
+User_453,Clothing,2023-07-29,417.2
+User_428,Shoes,2023-12-04,356.63
+User_570,Food & Beverage,2023-03-28,431.58
+User_850,Food & Beverage,2024-07-29,146.01
+User_130,Toys,2024-09-20,494.91
+User_155,Clothing,2024-01-13,87.95
+User_538,Toys,2023-02-01,380.69
+User_76,Toys,2023-05-26,422.7
+User_370,Toys,2023-04-14,301.09
+User_516,Cosmetics,2024-08-01,396.87
+User_20,Toys,2023-02-06,82.88
+User_567,Food & Beverage,2023-01-12,297.21
+User_398,Books,2023-08-04,392.35
+User_623,Cosmetics,2023-06-26,118.87
+User_108,Toys,2023-02-03,462.84
+User_11,Technology,2024-05-25,174.99
+User_686,Technology,2023-11-24,141.1
+User_781,Clothing,2023-06-15,139.44
+User_377,Food & Beverage,2024-09-27,297.96
+User_592,Shoes,2024-04-22,112.41
+User_222,Clothing,2023-02-20,243.9
+User_593,Clothing,2023-10-30,144.91
+User_4,Shoes,2023-07-19,404.4
+User_260,Books,2023-03-06,187.52
+User_688,Toys,2024-02-23,419.0
+User_438,Technology,2023-11-20,262.23
+User_890,Cosmetics,2024-07-07,497.04
+User_825,Toys,2024-09-06,236.03
+User_367,Food & Beverage,2023-05-04,100.21
+User_867,Clothing,2024-04-03,391.93
+User_864,Clothing,2024-01-11,124.92
+User_247,Clothing,2023-04-09,185.28
+User_367,Clothing,2023-01-27,116.39
+User_412,Cosmetics,2023-08-11,50.53
+User_985,Books,2023-08-13,178.87
+User_235,Cosmetics,2023-01-10,435.19
+User_234,Toys,2024-09-21,203.5
+User_869,Food & Beverage,2023-06-02,110.05
+User_939,Cosmetics,2023-12-27,305.53
+User_710,Shoes,2023-11-13,284.39
+User_990,Cosmetics,2024-03-12,354.3
+User_335,Shoes,2023-01-18,377.32
+User_623,Shoes,2023-12-19,301.33
+User_601,Technology,2023-06-24,255.73
+User_413,Clothing,2024-07-28,436.47
+User_717,Clothing,2024-08-28,122.35
+User_627,Toys,2023-08-18,48.78
+User_795,Books,2024-03-31,231.55
+User_874,Technology,2023-01-05,116.71
+User_602,Clothing,2023-03-29,40.37
+User_199,Books,2024-02-29,358.54
+User_10,Cosmetics,2023-01-13,411.15
+User_855,Food & Beverage,2024-04-09,126.36
+User_157,Clothing,2024-01-23,299.77
+User_152,Books,2023-12-15,494.49
+User_730,Food & Beverage,2023-07-31,83.71
+User_802,Technology,2023-04-12,375.15
+User_343,Shoes,2023-12-02,450.57
+User_790,Shoes,2023-01-15,163.47
+User_164,Clothing,2024-07-20,291.27
+User_386,Books,2024-05-08,343.17
+User_251,Technology,2024-09-30,178.02
+User_165,Shoes,2023-06-23,296.11
+User_247,Food & Beverage,2024-01-01,67.98
+User_528,Cosmetics,2023-04-14,356.58
+User_958,Toys,2024-03-02,330.42
+User_146,Toys,2024-02-25,446.45
+User_6,Shoes,2023-11-03,293.66
+User_480,Cosmetics,2023-12-21,316.0
+User_878,Shoes,2023-10-11,321.95
+User_783,Toys,2023-03-24,295.05
+User_897,Shoes,2024-03-26,273.63
+User_697,Toys,2024-03-22,290.36
+User_466,Technology,2024-08-24,118.13
+User_741,Clothing,2023-01-30,237.6
+User_629,Cosmetics,2023-04-26,339.6
+User_483,Clothing,2023-04-30,377.53
+User_142,Technology,2023-10-26,446.95
+User_707,Cosmetics,2024-08-07,464.4
+User_180,Books,2023-01-23,39.3
+User_915,Clothing,2023-01-01,81.08
+User_266,Technology,2024-08-23,125.63
+User_352,Shoes,2023-06-23,302.11
+User_694,Cosmetics,2024-04-25,29.63
+User_97,Shoes,2023-03-29,353.14
+User_878,Books,2023-12-15,38.01
+User_52,Technology,2024-09-15,54.78
+User_659,Shoes,2024-01-27,303.82
+User_518,Books,2024-05-18,36.15
+User_408,Food & Beverage,2023-12-30,21.75
+User_958,Toys,2024-09-15,90.41
+User_409,Food & Beverage,2023-07-31,430.72
+User_227,Food & Beverage,2023-07-25,107.92
+User_154,Cosmetics,2023-07-08,228.32
+User_990,Technology,2023-03-03,387.21
+User_303,Technology,2023-11-10,392.16
+User_274,Clothing,2023-01-27,57.43
+User_108,Toys,2023-06-09,399.34
+User_564,Toys,2023-04-03,449.89
+User_217,Shoes,2023-01-12,384.81
+User_648,Clothing,2023-10-10,400.24
+User_470,Books,2023-05-01,442.08
+User_475,Shoes,2024-05-30,252.46
+User_941,Shoes,2024-01-20,136.67
+User_642,Food & Beverage,2023-02-07,302.77
+User_980,Food & Beverage,2024-01-31,400.74
+User_647,Food & Beverage,2024-07-08,200.47
+User_754,Clothing,2023-11-16,126.77
+User_454,Toys,2024-08-04,300.62
+User_519,Shoes,2024-06-17,195.88
+User_947,Toys,2023-08-09,356.96
+User_388,Toys,2024-02-19,296.99
+User_151,Shoes,2023-10-26,186.65
+User_59,Clothing,2023-12-09,448.06
+User_517,Books,2023-11-22,381.96
+User_539,Clothing,2023-08-06,30.12
+User_945,Cosmetics,2024-06-03,101.43
+User_622,Cosmetics,2023-04-24,326.79
+User_876,Toys,2023-06-01,215.49
+User_203,Clothing,2023-05-13,105.78
+User_511,Toys,2024-05-10,254.35
+User_180,Cosmetics,2023-04-03,448.56
+User_405,Food & Beverage,2023-08-13,112.83
+User_436,Technology,2024-01-24,140.18
+User_676,Food & Beverage,2023-10-04,476.16
+User_496,Shoes,2024-07-19,54.24
+User_708,Books,2024-07-25,90.89
+User_651,Food & Beverage,2023-08-13,22.68
+User_96,Clothing,2023-07-26,329.86
+User_417,Toys,2024-04-06,57.89
+User_260,Cosmetics,2024-06-10,449.32
+User_746,Toys,2024-08-28,483.26
+User_244,Food & Beverage,2024-01-28,438.0
+User_342,Shoes,2023-10-01,92.98
+User_435,Shoes,2024-05-13,400.24
+User_732,Toys,2023-01-31,180.53
+User_206,Cosmetics,2024-02-10,206.62
+User_508,Toys,2024-05-09,390.51
+User_551,Shoes,2023-07-02,339.63
+User_34,Shoes,2023-04-17,81.59
+User_78,Technology,2023-05-10,314.74
+User_234,Cosmetics,2023-01-31,48.33
+User_747,Books,2023-01-04,205.52
+User_487,Cosmetics,2023-04-19,248.83
+User_306,Shoes,2024-02-23,294.27
+User_798,Shoes,2024-07-02,114.71
+User_296,Shoes,2023-03-30,232.01
+User_513,Toys,2023-06-07,457.12
+User_438,Clothing,2023-07-07,268.7
+User_91,Shoes,2023-04-11,261.45
+User_540,Books,2023-03-10,344.95
+User_717,Food & Beverage,2024-04-03,110.4
+User_992,Books,2024-07-10,20.47
+User_311,Food & Beverage,2023-06-16,275.97
+User_947,Books,2023-08-10,264.26
+User_454,Toys,2024-04-29,379.58
+User_673,Shoes,2024-09-23,263.79
+User_454,Cosmetics,2023-06-04,105.34
+User_146,Books,2023-10-01,367.0
+User_741,Shoes,2023-04-07,482.99
+User_318,Food & Beverage,2023-01-08,356.24
+User_706,Toys,2023-03-16,245.4
+User_965,Books,2023-03-21,441.61
+User_775,Cosmetics,2024-07-02,497.36
+User_559,Food & Beverage,2024-06-01,414.91
+User_182,Clothing,2024-01-01,465.1
+User_624,Books,2024-04-01,130.63
+User_964,Clothing,2024-08-20,115.62
+User_889,Food & Beverage,2023-02-13,29.23
+User_468,Books,2023-08-15,281.29
+User_877,Shoes,2024-01-18,384.23
+User_229,Toys,2023-09-16,119.32
+User_148,Clothing,2023-12-26,251.19
+User_805,Toys,2024-07-08,89.49
+User_591,Clothing,2023-10-18,198.0
+User_846,Toys,2023-02-11,45.69
+User_634,Shoes,2023-06-12,295.0
+User_292,Technology,2023-02-25,391.19
+User_713,Cosmetics,2023-10-08,388.0
+User_203,Technology,2023-07-02,460.18
+User_135,Cosmetics,2024-07-09,253.68
+User_92,Cosmetics,2024-01-19,336.59
+User_823,Clothing,2023-01-06,225.08
+User_929,Shoes,2023-12-27,435.12
+User_6,Food & Beverage,2024-05-16,471.54
+User_315,Shoes,2024-09-23,111.87
+User_481,Cosmetics,2023-01-15,473.16
+User_162,Food & Beverage,2024-09-03,196.51
+User_955,Shoes,2024-08-28,367.17
+User_489,Food & Beverage,2023-01-06,398.49
+User_396,Clothing,2023-11-28,204.29
+User_475,Shoes,2023-09-03,407.4
+User_728,Clothing,2024-06-09,158.73
+User_14,Technology,2024-01-12,284.31
+User_98,Technology,2023-12-28,407.9
+User_467,Technology,2023-11-24,237.07
+User_828,Books,2023-01-21,482.14
+User_373,Clothing,2024-09-23,153.16
+User_1,Books,2024-05-24,471.74
+User_123,Food & Beverage,2023-07-20,345.56
+User_895,Toys,2023-12-31,39.63
+User_792,Cosmetics,2023-08-21,41.24
+User_526,Technology,2023-01-29,41.96
+User_632,Books,2024-06-11,261.58
+User_985,Books,2023-09-29,418.61
+User_7,Clothing,2023-06-24,454.56
+User_273,Food & Beverage,2024-05-01,168.89
+User_525,Clothing,2024-02-04,283.41
+User_792,Cosmetics,2024-09-18,113.77
+User_333,Shoes,2024-02-02,146.56
+User_267,Toys,2024-09-26,325.04
+User_731,Cosmetics,2024-01-10,483.55
+User_165,Food & Beverage,2024-06-27,138.04
+User_845,Cosmetics,2023-11-21,49.34
+User_324,Technology,2023-03-28,88.1
+User_960,Food & Beverage,2023-01-30,82.6
+User_535,Cosmetics,2023-03-05,232.24
+User_821,Clothing,2023-05-23,285.31
+User_548,Food & Beverage,2023-07-15,163.58
+User_119,Technology,2023-12-28,474.61
+User_952,Books,2023-01-16,342.51
+User_647,Food & Beverage,2023-07-09,211.96
+User_519,Cosmetics,2023-02-03,391.17
+User_430,Food & Beverage,2023-09-30,195.31
+User_505,Cosmetics,2023-09-01,436.08
+User_362,Technology,2024-03-14,261.11
+User_2,Technology,2023-06-23,30.87
+User_635,Books,2024-06-15,338.41
+User_561,Clothing,2023-04-09,455.06
+User_254,Food & Beverage,2023-07-15,146.08
+User_544,Books,2023-04-08,25.87
+User_592,Clothing,2023-09-12,442.14
+User_195,Toys,2024-04-08,465.13
+User_510,Cosmetics,2024-09-01,297.67
+User_546,Food & Beverage,2024-05-25,351.21
+User_702,Technology,2024-03-20,176.62
+User_890,Technology,2023-06-03,308.0
+User_458,Technology,2024-03-29,279.06
+User_404,Shoes,2023-08-18,461.99
+User_265,Toys,2023-09-05,80.91
+User_779,Books,2023-04-26,224.66
+User_472,Technology,2023-11-24,347.28
+User_564,Shoes,2023-09-18,397.25
+User_884,Food & Beverage,2023-05-21,403.95
+User_394,Toys,2024-09-13,130.66
+User_101,Cosmetics,2024-05-04,343.0
+User_763,Cosmetics,2023-03-20,363.15
+User_513,Shoes,2023-07-15,288.78
+User_201,Books,2023-02-18,88.05
+User_642,Technology,2023-07-01,421.5
+User_828,Shoes,2024-04-19,379.35
+User_868,Clothing,2024-04-26,163.75
+User_7,Shoes,2023-02-02,417.31
+User_353,Books,2024-03-31,301.58
+User_763,Cosmetics,2023-09-10,384.78
+User_623,Technology,2023-06-23,39.36
+User_332,Clothing,2023-09-24,384.53
+User_400,Toys,2024-06-28,143.67
+User_215,Cosmetics,2024-07-21,212.83
+User_450,Technology,2023-03-03,155.94
+User_184,Food & Beverage,2023-05-25,180.63
+User_473,Technology,2024-06-13,446.34
+User_705,Technology,2024-01-23,243.87
+User_603,Shoes,2024-08-06,101.17
+User_501,Clothing,2023-08-24,33.82
+User_614,Toys,2023-12-16,264.32
+User_111,Technology,2023-09-14,214.66
+User_654,Books,2024-03-29,424.33
+User_878,Toys,2024-01-02,479.43
+User_86,Food & Beverage,2024-07-15,83.64
+User_79,Clothing,2023-10-06,274.36
+User_730,Books,2024-08-02,28.88
+User_447,Shoes,2023-06-06,100.39
+User_882,Books,2023-06-18,87.88
+User_990,Technology,2023-05-01,485.11
+User_864,Food & Beverage,2023-01-25,153.12
+User_371,Clothing,2023-09-20,78.77
+User_62,Clothing,2023-02-12,282.42
+User_560,Cosmetics,2023-12-20,134.79
+User_469,Books,2024-01-07,182.99
+User_459,Cosmetics,2024-03-20,466.63
+User_830,Cosmetics,2024-02-15,248.89
+User_230,Books,2024-02-21,380.47
+User_953,Shoes,2023-09-28,252.89
+User_280,Shoes,2023-03-02,188.86
+User_584,Shoes,2023-03-01,65.56
+User_532,Food & Beverage,2023-01-03,299.61
+User_41,Shoes,2024-06-26,113.55
+User_155,Clothing,2024-02-26,329.97
+User_274,Cosmetics,2023-02-02,494.75
+User_584,Toys,2024-09-08,326.77
+User_515,Cosmetics,2024-03-07,332.21
+User_42,Clothing,2023-12-14,142.94
+User_570,Books,2024-02-11,188.82
+User_118,Shoes,2024-02-14,112.09
+User_748,Shoes,2023-04-24,396.86
+User_381,Food & Beverage,2024-05-18,356.4
+User_635,Shoes,2024-07-29,217.75
+User_317,Technology,2023-08-12,37.51
+User_122,Books,2024-09-14,381.27
+User_432,Clothing,2024-04-02,187.01
+User_439,Clothing,2024-06-06,304.99
+User_674,Books,2023-02-13,320.74
+User_928,Food & Beverage,2023-10-06,14.78
+User_201,Books,2024-01-21,284.88
+User_378,Food & Beverage,2024-09-12,86.84
+User_980,Cosmetics,2023-03-07,230.67
+User_992,Clothing,2024-08-22,172.31
+User_786,Toys,2023-08-19,146.78
+User_471,Technology,2023-12-28,307.55
+User_850,Technology,2024-07-28,432.75
+User_303,Clothing,2023-12-12,349.13
+User_355,Cosmetics,2023-11-26,162.67
+User_752,Toys,2023-09-29,21.74
+User_180,Books,2024-03-31,434.99
+User_341,Cosmetics,2024-01-26,237.66
+User_434,Clothing,2024-09-11,363.83
+User_986,Toys,2023-01-06,265.74
+User_779,Food & Beverage,2023-04-12,321.23
+User_818,Clothing,2024-03-10,28.74
+User_273,Clothing,2024-01-06,467.23
+User_902,Cosmetics,2023-03-21,146.33
+User_186,Food & Beverage,2024-04-04,432.32
+User_528,Food & Beverage,2023-12-25,198.89
+User_802,Toys,2023-08-24,82.69
+User_44,Toys,2023-11-16,241.73
+User_190,Cosmetics,2023-10-08,438.35
+User_64,Books,2024-08-28,69.58
+User_176,Books,2023-05-29,168.49
+User_161,Shoes,2024-07-22,142.57
+User_688,Technology,2024-03-31,331.44
+User_404,Books,2023-11-30,13.85
+User_777,Books,2023-05-14,423.01
+User_526,Cosmetics,2023-11-18,45.39
+User_614,Clothing,2023-07-19,480.19
+User_12,Books,2023-02-19,156.04
+User_726,Books,2024-09-11,145.76
+User_507,Technology,2024-01-27,116.99
+User_724,Food & Beverage,2023-02-08,344.73
+User_39,Books,2024-07-12,477.77
+User_100,Toys,2024-09-06,94.26
+User_344,Toys,2024-09-12,272.93
+User_545,Toys,2024-05-07,201.51
+User_807,Shoes,2024-04-01,409.34
+User_447,Clothing,2024-05-30,162.84
+User_930,Books,2024-02-04,408.82
+User_222,Clothing,2024-03-03,404.65
+User_307,Clothing,2024-07-27,294.12
+User_479,Cosmetics,2024-06-16,53.76
+User_613,Shoes,2023-02-01,465.11
+User_711,Toys,2024-04-25,16.46
+User_305,Toys,2024-06-25,143.64
+User_27,Shoes,2024-02-18,146.28
+User_971,Food & Beverage,2023-06-03,414.91
+User_934,Clothing,2023-12-08,205.37
+User_632,Cosmetics,2023-01-07,264.68
+User_845,Books,2024-02-07,208.79
+User_323,Books,2023-08-23,336.29
+User_220,Shoes,2023-03-14,464.29
+User_72,Toys,2023-02-23,460.85
+User_946,Toys,2023-06-19,230.94
+User_805,Toys,2023-10-02,299.64
+User_216,Toys,2023-01-19,497.78
+User_584,Toys,2023-11-15,183.19
+User_22,Clothing,2023-06-11,481.17
+User_219,Shoes,2023-09-11,481.38
+User_305,Clothing,2024-09-06,216.27
+User_371,Food & Beverage,2024-03-08,106.98
+User_930,Clothing,2023-12-14,315.71
+User_732,Shoes,2023-01-27,43.18
+User_467,Clothing,2023-05-26,475.26
+User_70,Toys,2023-08-02,256.18
+User_805,Clothing,2023-12-29,394.33
+User_518,Books,2024-08-18,225.61
+User_301,Toys,2023-01-04,292.12
+User_505,Shoes,2023-08-28,444.97
+User_446,Cosmetics,2023-02-23,379.31
+User_910,Technology,2023-03-16,361.95
+User_651,Books,2023-04-10,119.98
+User_414,Technology,2024-06-27,62.33
+User_239,Clothing,2024-04-24,149.76
+User_189,Books,2024-09-22,43.52
+User_933,Shoes,2023-05-16,473.24
+User_73,Technology,2023-08-12,437.19
+User_298,Books,2023-03-11,376.3
+User_280,Technology,2024-09-27,107.08
+User_643,Shoes,2023-01-24,83.98
+User_27,Shoes,2023-01-27,439.91
+User_932,Books,2024-05-07,477.83
+User_772,Clothing,2023-03-18,49.84
+User_956,Toys,2023-10-06,467.22
+User_491,Books,2023-06-27,43.38
+User_780,Toys,2023-09-26,417.49
+User_475,Clothing,2023-10-16,178.03
+User_969,Toys,2024-04-14,408.58
+User_756,Cosmetics,2023-03-12,42.19
+User_121,Cosmetics,2023-12-11,250.73
+User_202,Cosmetics,2023-12-22,210.66
+User_751,Technology,2024-09-17,20.71
+User_859,Cosmetics,2023-11-05,427.23
+User_380,Shoes,2023-11-06,452.08
+User_47,Books,2024-05-17,300.59
+User_599,Technology,2024-05-30,371.85
+User_141,Technology,2023-02-10,336.98
+User_142,Books,2023-06-01,427.44
+User_188,Technology,2023-09-16,22.03
+User_306,Toys,2024-05-07,89.89
+User_513,Books,2024-02-13,196.49
+User_316,Books,2024-06-19,280.52
+User_407,Shoes,2023-03-30,230.26
+User_963,Technology,2023-01-17,358.15
+User_322,Cosmetics,2023-11-10,392.74
+User_370,Toys,2024-08-26,47.88
+User_492,Food & Beverage,2024-09-22,45.04
+User_292,Shoes,2024-04-27,304.18
+User_722,Cosmetics,2023-07-02,94.28
+User_125,Technology,2024-09-17,495.18
+User_595,Toys,2023-06-07,23.72
+User_181,Technology,2023-02-17,84.71
+User_130,Clothing,2024-01-03,396.25
+User_458,Cosmetics,2023-02-23,303.21
+User_342,Food & Beverage,2023-12-13,163.61
+User_391,Food & Beverage,2023-12-10,471.36
+User_132,Shoes,2023-11-03,369.07
+User_430,Clothing,2023-05-09,73.42
+User_839,Shoes,2023-10-14,429.26
+User_525,Shoes,2023-06-16,333.47
+User_969,Food & Beverage,2023-01-18,280.85
+User_418,Toys,2023-09-11,159.32
+User_705,Clothing,2023-06-21,121.16
+User_979,Toys,2023-01-06,45.0
+User_151,Books,2023-04-14,266.03
+User_151,Food & Beverage,2023-04-18,439.58
+User_110,Toys,2024-07-19,420.03
+User_3,Cosmetics,2024-08-03,85.07
+User_20,Toys,2024-09-30,409.7
+User_577,Food & Beverage,2023-10-24,293.53
+User_178,Books,2023-03-27,147.49
+User_247,Books,2024-08-19,125.6
+User_153,Technology,2024-08-23,163.8
+User_358,Toys,2023-05-07,73.71
+User_299,Books,2024-03-24,80.85
+User_321,Shoes,2023-09-26,101.78
+User_839,Shoes,2023-07-03,249.87
+User_520,Cosmetics,2023-01-02,98.96
+User_872,Technology,2023-11-23,222.09
+User_546,Toys,2023-06-14,119.44
+User_441,Toys,2023-08-21,202.95
+User_112,Toys,2023-04-09,435.39
+User_7,Toys,2024-04-08,35.8
+User_774,Shoes,2024-04-05,129.1
+User_227,Technology,2023-07-01,37.5
+User_288,Food & Beverage,2023-08-24,358.4
+User_525,Books,2023-03-19,236.68
+User_621,Food & Beverage,2023-09-29,233.8
+User_212,Shoes,2023-08-24,447.14
+User_997,Books,2023-02-21,466.92
+User_596,Shoes,2023-09-23,214.49
+User_241,Clothing,2023-12-10,37.21
+User_565,Books,2023-05-08,170.4
+User_162,Clothing,2024-03-05,20.15
+User_535,Books,2024-08-02,116.55
+User_579,Books,2023-11-26,255.58
+User_55,Books,2024-03-20,255.08
+User_77,Technology,2023-04-03,416.48
+User_466,Shoes,2024-01-05,147.92
+User_993,Cosmetics,2023-05-29,484.94
+User_536,Clothing,2023-06-10,10.78
+User_266,Food & Beverage,2024-05-17,119.1
+User_643,Books,2023-12-23,183.78
+User_214,Clothing,2023-11-29,69.55
+User_873,Books,2023-05-29,167.03
+User_242,Clothing,2023-08-16,58.63
+User_641,Technology,2023-08-03,374.08
+User_85,Food & Beverage,2023-04-11,168.6
+User_804,Technology,2023-12-17,39.12
+User_185,Books,2024-02-06,347.23
+User_987,Shoes,2024-07-10,275.89
+User_838,Clothing,2024-05-27,458.38
+User_62,Technology,2024-07-08,480.9
+User_84,Food & Beverage,2024-03-29,280.04
+User_128,Shoes,2023-04-05,475.61
+User_153,Toys,2023-10-29,453.51
+User_194,Clothing,2024-04-06,336.57
+User_988,Toys,2024-02-28,342.1
+User_414,Food & Beverage,2023-11-29,320.79
+User_485,Shoes,2023-03-01,386.49
+User_684,Cosmetics,2024-04-19,110.52
+User_171,Technology,2023-10-31,227.26
+User_190,Food & Beverage,2024-06-23,363.29
+User_616,Food & Beverage,2023-10-25,415.51
+User_188,Books,2023-11-29,274.63
+User_964,Technology,2023-07-26,48.88
+User_73,Books,2023-05-10,282.37
+User_332,Cosmetics,2023-08-28,318.53
+User_963,Shoes,2024-06-26,138.81
+User_317,Books,2023-11-29,449.72
+User_941,Technology,2023-12-12,298.3
+User_457,Toys,2024-04-12,202.75
+User_54,Cosmetics,2024-06-11,474.73
+User_403,Clothing,2024-08-08,63.53
+User_344,Technology,2023-05-10,274.07
+User_529,Food & Beverage,2024-01-18,309.71
+User_166,Toys,2023-08-26,425.06
+User_7,Shoes,2024-09-25,471.25
+User_22,Books,2024-01-17,455.2
+User_4,Books,2023-10-22,93.12
+User_918,Shoes,2024-06-18,126.23
+User_954,Cosmetics,2023-09-03,98.03
+User_733,Food & Beverage,2023-08-08,170.54
+User_906,Cosmetics,2023-04-24,115.1
+User_998,Clothing,2023-02-06,41.12
+User_769,Cosmetics,2024-05-06,436.58
+User_641,Toys,2024-07-30,481.36
+User_742,Clothing,2023-03-21,98.91
+User_923,Books,2023-07-02,390.67
+User_97,Technology,2023-12-08,177.29
+User_778,Toys,2024-02-20,138.81
+User_965,Cosmetics,2023-07-12,219.75
+User_285,Toys,2024-03-14,233.29
+User_606,Cosmetics,2023-05-19,214.04
+User_83,Food & Beverage,2024-04-04,404.59
+User_713,Food & Beverage,2024-08-22,421.76
+User_433,Books,2024-05-31,391.49
+User_23,Cosmetics,2024-09-11,432.36
+User_221,Clothing,2023-03-02,487.44
+User_837,Food & Beverage,2023-09-05,101.99
+User_227,Shoes,2024-03-09,260.32
+User_752,Technology,2023-11-22,73.48
+User_63,Shoes,2024-04-14,409.87
+User_330,Clothing,2024-08-22,382.91
+User_719,Clothing,2023-01-11,161.48
+User_705,Clothing,2023-12-03,231.0
+User_401,Books,2023-09-26,112.66
+User_628,Cosmetics,2023-01-18,170.89
+User_530,Toys,2024-06-29,60.0
+User_955,Food & Beverage,2023-09-23,467.63
+User_637,Shoes,2024-04-06,303.55
+User_409,Clothing,2023-12-19,12.83
+User_134,Toys,2023-02-07,96.74
+User_426,Cosmetics,2023-01-27,69.53
+User_258,Clothing,2023-08-30,62.19
+User_243,Books,2024-02-22,484.32
+User_880,Books,2024-09-16,61.54
+User_9,Technology,2024-01-31,204.59
+User_238,Cosmetics,2024-01-12,310.85
+User_59,Cosmetics,2023-09-06,187.61
+User_348,Cosmetics,2023-12-26,170.71
+User_397,Toys,2023-02-14,310.34
+User_895,Toys,2023-09-02,80.44
+User_627,Food & Beverage,2024-01-13,83.8
+User_486,Clothing,2024-02-22,33.27
+User_714,Shoes,2024-04-01,472.65
+User_262,Toys,2024-04-25,244.22
+User_61,Cosmetics,2023-09-16,476.79
+User_308,Food & Beverage,2024-08-02,180.75
+User_502,Books,2024-05-09,386.28
+User_141,Food & Beverage,2023-07-19,253.79
+User_869,Toys,2023-12-22,10.01
+User_751,Books,2023-03-29,261.01
+User_372,Books,2023-06-24,427.64
+User_410,Food & Beverage,2024-05-09,341.6
+User_117,Toys,2023-02-12,324.5
+User_845,Technology,2024-06-04,90.71
+User_20,Toys,2023-08-09,388.46
+User_13,Books,2023-02-12,404.02
+User_955,Cosmetics,2024-04-11,308.27
+User_77,Clothing,2023-08-16,378.97
+User_313,Clothing,2023-04-21,304.68
+User_394,Shoes,2023-01-26,119.94
+User_95,Food & Beverage,2024-03-11,478.75
+User_279,Cosmetics,2024-08-15,403.41
+User_16,Books,2023-05-13,10.02
+User_701,Books,2023-07-06,81.06
+User_832,Toys,2023-07-19,230.71
+User_928,Food & Beverage,2024-01-17,411.66
+User_650,Shoes,2023-06-26,441.02
+User_837,Clothing,2024-01-27,117.65
+User_519,Shoes,2023-10-16,443.53
+User_214,Cosmetics,2024-09-29,124.13
+User_269,Food & Beverage,2024-07-11,467.59
+User_222,Clothing,2023-09-19,380.18
+User_4,Shoes,2024-05-17,364.78
+User_162,Toys,2023-02-20,18.05
+User_27,Clothing,2023-02-11,265.36
+User_523,Cosmetics,2024-01-27,56.23
+User_518,Shoes,2024-07-31,222.26
+User_260,Books,2024-09-11,197.58
+User_920,Food & Beverage,2023-01-25,206.05
+User_526,Toys,2024-05-17,125.31
+User_823,Technology,2024-06-21,341.16
+User_203,Books,2023-01-23,49.49
+User_984,Toys,2024-06-27,272.23
+User_618,Technology,2023-07-10,211.25
+User_113,Books,2023-10-22,47.43
+User_169,Shoes,2023-11-13,431.28
+User_145,Books,2023-04-06,238.93
+User_586,Food & Beverage,2024-02-28,280.76
+User_202,Technology,2023-05-27,118.32
+User_282,Clothing,2023-04-01,323.02
+User_500,Shoes,2023-05-13,239.67
+User_17,Clothing,2023-12-10,423.72
+User_917,Shoes,2024-01-30,43.06
+User_797,Food & Beverage,2024-05-20,251.88
+User_495,Toys,2024-06-13,48.22
+User_650,Cosmetics,2023-06-01,201.68
+User_358,Shoes,2023-10-28,227.5
+User_521,Technology,2024-08-23,212.2
+User_989,Toys,2023-03-08,189.79
+User_774,Technology,2024-03-10,380.72
+User_203,Books,2023-11-18,252.83
+User_868,Toys,2023-11-12,280.12
+User_630,Toys,2024-05-04,260.0
+User_322,Shoes,2023-08-19,85.66
+User_756,Books,2024-05-11,185.55
+User_201,Technology,2023-02-21,261.43
+User_500,Books,2023-02-25,410.33
+User_168,Cosmetics,2024-06-03,388.68
+User_651,Toys,2023-07-11,283.75
+User_473,Shoes,2024-04-29,479.3
+User_996,Technology,2023-09-10,326.84
+User_692,Toys,2023-05-15,346.58
+User_545,Shoes,2023-07-06,48.22
+User_74,Shoes,2023-12-27,288.44
+User_235,Food & Beverage,2024-03-30,458.69
+User_501,Toys,2024-02-12,118.93
+User_935,Cosmetics,2024-04-23,78.92
+User_507,Shoes,2024-05-20,336.78
+User_569,Toys,2023-12-05,457.61
+User_160,Cosmetics,2023-01-08,384.13
+User_461,Toys,2024-07-05,388.56
+User_643,Shoes,2023-12-08,374.83
+User_178,Shoes,2024-08-04,355.57
+User_844,Clothing,2024-08-04,398.82
+User_224,Toys,2024-01-15,199.03
+User_525,Books,2023-05-10,283.18
+User_696,Technology,2023-03-12,187.94
+User_607,Food & Beverage,2024-07-06,368.91
+User_317,Shoes,2023-01-24,471.04
+User_490,Food & Beverage,2024-07-30,451.29
+User_748,Toys,2024-07-21,495.9
+User_394,Toys,2024-08-23,40.28
+User_54,Clothing,2024-07-23,148.53
+User_457,Books,2023-12-19,252.71
+User_223,Shoes,2023-08-04,399.69
+User_106,Toys,2024-08-03,95.78
+User_590,Food & Beverage,2023-10-02,184.05
+User_366,Books,2023-03-02,31.53
+User_955,Toys,2023-09-03,170.35
+User_412,Food & Beverage,2024-06-20,476.49
+User_203,Food & Beverage,2024-06-21,65.6
+User_431,Food & Beverage,2023-02-06,462.7
+User_66,Toys,2023-10-13,318.16
+User_352,Food & Beverage,2023-12-26,205.85
+User_394,Technology,2024-02-08,369.43
+User_845,Clothing,2023-12-25,88.88
+User_924,Food & Beverage,2023-11-27,262.72
+User_391,Technology,2023-12-07,295.99
+User_606,Technology,2023-09-28,109.6
+User_425,Cosmetics,2023-02-11,175.05
+User_11,Clothing,2023-07-19,473.45
+User_299,Clothing,2023-05-04,16.19
+User_481,Toys,2024-08-16,220.17
+User_308,Toys,2024-01-30,499.05
+User_430,Toys,2024-03-31,21.97
+User_198,Cosmetics,2023-08-04,100.32
+User_264,Cosmetics,2023-05-04,222.49
+User_702,Books,2023-01-19,373.33
+User_632,Shoes,2024-03-16,455.85
+User_943,Clothing,2023-08-25,94.59
+User_420,Technology,2024-07-30,19.5
+User_737,Shoes,2024-05-04,116.47
+User_509,Food & Beverage,2023-04-14,174.8
+User_874,Toys,2023-06-24,462.57
+User_145,Food & Beverage,2024-02-27,488.97
+User_102,Shoes,2023-06-14,436.44
+User_968,Toys,2023-09-23,437.94
+User_191,Clothing,2023-09-22,111.68
+User_979,Technology,2024-04-13,332.61
+User_564,Shoes,2023-06-15,306.24
+User_431,Cosmetics,2024-02-23,334.95
+User_245,Cosmetics,2023-04-13,457.56
+User_259,Books,2023-02-22,297.88
+User_718,Toys,2023-10-22,357.63
+User_464,Shoes,2023-10-09,315.71
+User_526,Food & Beverage,2023-11-12,112.42
+User_298,Clothing,2023-09-11,28.08
+User_541,Technology,2024-07-18,280.16
+User_182,Clothing,2024-07-22,364.1
+User_79,Toys,2024-07-29,391.07
+User_655,Cosmetics,2024-04-10,382.07
+User_67,Books,2023-12-13,311.34
+User_882,Shoes,2023-09-02,85.18
+User_539,Books,2024-05-18,259.29
+User_993,Cosmetics,2024-03-01,190.84
+User_810,Clothing,2023-07-21,49.79
+User_320,Food & Beverage,2023-04-01,134.43
+User_367,Shoes,2023-07-08,236.08
+User_898,Technology,2024-01-05,115.7
+User_542,Clothing,2023-01-20,469.77
+User_940,Shoes,2023-05-25,22.82
+User_285,Books,2023-06-23,29.07
+User_471,Cosmetics,2023-05-16,446.99
+User_857,Clothing,2023-08-31,248.13
+User_893,Cosmetics,2024-05-23,39.41
+User_398,Shoes,2024-05-12,202.77
+User_1000,Cosmetics,2023-08-16,343.98
+User_276,Cosmetics,2023-04-15,242.59
+User_375,Food & Beverage,2024-01-20,181.68
+User_223,Toys,2024-03-04,483.7
+User_892,Cosmetics,2024-08-18,421.4
+User_130,Toys,2023-03-26,295.8
+User_997,Food & Beverage,2023-08-12,185.41
+User_614,Technology,2023-11-25,457.12
+User_38,Books,2023-01-28,315.48
+User_473,Clothing,2024-09-17,418.81
+User_105,Toys,2023-11-15,433.12
+User_780,Food & Beverage,2023-07-23,234.84
+User_906,Food & Beverage,2024-06-14,88.72
+User_575,Clothing,2023-06-04,378.68
+User_759,Cosmetics,2024-06-20,465.83
+User_914,Shoes,2023-10-10,144.24
+User_570,Books,2024-08-01,480.22
+User_48,Books,2024-09-30,271.37
+User_599,Toys,2024-07-05,108.17
+User_655,Technology,2023-09-27,285.05
+User_285,Clothing,2024-04-22,264.35
+User_665,Toys,2023-10-21,255.48
+User_911,Clothing,2024-06-11,126.96
+User_36,Books,2024-09-09,413.1
+User_449,Toys,2024-05-15,297.29
+User_563,Shoes,2023-12-02,341.23
+User_71,Books,2023-10-16,91.41
+User_273,Technology,2023-11-10,220.91
+User_834,Technology,2024-07-06,43.28
+User_831,Toys,2023-07-13,285.35
+User_899,Technology,2023-03-19,310.96
+User_383,Cosmetics,2023-08-11,443.38
+User_223,Toys,2023-06-09,243.03
+User_810,Books,2024-09-26,364.14
+User_589,Books,2023-08-25,213.44
+User_816,Clothing,2023-02-28,498.43
+User_967,Shoes,2024-09-14,121.81
+User_308,Food & Beverage,2023-02-06,387.93
+User_358,Technology,2023-08-12,480.79
+User_882,Food & Beverage,2024-04-01,219.65
+User_773,Food & Beverage,2024-08-01,26.43
+User_250,Cosmetics,2023-08-11,292.98
+User_60,Clothing,2024-08-31,205.64
+User_884,Food & Beverage,2023-12-28,200.37
+User_516,Shoes,2023-01-02,107.67
+User_564,Technology,2023-07-21,449.77
+User_165,Cosmetics,2023-06-20,399.88
+User_121,Books,2023-09-06,55.46
+User_996,Clothing,2024-05-26,440.62
+User_178,Clothing,2023-03-15,395.18
+User_783,Toys,2024-04-23,414.23
+User_445,Toys,2023-07-26,492.88
+User_164,Toys,2024-02-26,63.92
+User_127,Food & Beverage,2023-12-05,132.51
+User_777,Toys,2024-03-27,267.21
+User_181,Books,2023-12-23,243.38
+User_719,Toys,2024-02-01,124.61
+User_286,Cosmetics,2024-09-16,446.52
+User_990,Food & Beverage,2023-06-26,202.88
+User_104,Shoes,2023-02-16,26.18
+User_509,Clothing,2023-08-09,423.5
+User_693,Technology,2024-07-25,467.42
+User_931,Technology,2024-02-08,418.72
+User_837,Shoes,2024-05-30,56.66
+User_995,Shoes,2023-04-15,326.06
+User_432,Shoes,2023-03-09,204.63
+User_274,Toys,2024-07-11,183.0
+User_675,Food & Beverage,2023-02-09,420.83
+User_481,Shoes,2023-04-22,81.59
+User_658,Books,2024-05-23,233.69
+User_642,Cosmetics,2023-05-28,469.63
+User_828,Food & Beverage,2024-09-20,19.34
+User_865,Toys,2023-09-09,313.87
+User_744,Clothing,2023-09-26,422.62
+User_93,Toys,2023-08-03,225.29
+User_788,Technology,2023-02-04,316.0
+User_143,Clothing,2023-11-13,229.09
+User_504,Shoes,2024-09-09,301.6
+User_217,Shoes,2023-06-10,67.66
+User_775,Technology,2024-03-12,54.96
+User_515,Food & Beverage,2024-08-11,109.5
+User_750,Books,2023-04-24,460.42
+User_653,Technology,2023-11-07,111.64
+User_599,Books,2024-06-11,137.24
+User_881,Clothing,2023-07-14,191.25
+User_53,Food & Beverage,2023-06-27,475.55
+User_354,Shoes,2023-12-01,65.97
+User_704,Toys,2023-10-31,373.32
+User_40,Food & Beverage,2023-01-13,404.61
+User_452,Food & Beverage,2024-07-30,200.41
+User_370,Cosmetics,2023-09-17,416.1
+User_805,Clothing,2024-07-13,274.9
+User_616,Food & Beverage,2024-08-07,110.7
+User_192,Shoes,2024-04-13,292.91
+User_700,Toys,2024-07-04,118.91
+User_953,Technology,2023-08-20,112.21
+User_254,Food & Beverage,2023-06-05,284.42
+User_755,Shoes,2023-02-05,329.17
+User_516,Technology,2024-04-20,14.93
+User_253,Cosmetics,2024-04-20,410.06
+User_140,Technology,2024-04-23,38.56
+User_653,Clothing,2024-07-09,370.82
+User_260,Toys,2023-02-11,453.98
+User_455,Shoes,2023-11-20,394.32
+User_302,Books,2023-12-28,107.89
+User_638,Books,2024-09-26,180.16
+User_755,Food & Beverage,2023-09-03,76.02
+User_631,Cosmetics,2023-11-28,294.51
+User_978,Toys,2024-08-02,286.03
+User_804,Technology,2023-11-29,279.59
+User_317,Food & Beverage,2023-11-04,52.94
+User_519,Cosmetics,2023-06-08,67.22
+User_256,Cosmetics,2024-06-26,102.73
+User_289,Cosmetics,2024-05-21,261.86
+User_401,Toys,2024-05-08,416.21
+User_443,Cosmetics,2024-07-25,96.89
+User_598,Books,2024-04-18,92.59
+User_734,Technology,2023-02-23,99.06
+User_595,Cosmetics,2023-07-11,299.78
+User_22,Books,2023-11-05,371.23
+User_910,Clothing,2024-05-24,131.25
+User_903,Food & Beverage,2024-08-03,193.3
+User_548,Clothing,2024-03-24,85.92
+User_581,Food & Beverage,2023-06-25,330.42
+User_838,Shoes,2023-08-04,22.96
+User_876,Clothing,2024-02-16,209.3
+User_632,Toys,2023-04-04,14.11
+User_495,Food & Beverage,2023-03-02,300.59
+User_78,Technology,2023-06-23,441.47
+User_142,Food & Beverage,2023-06-02,76.69
+User_873,Technology,2023-01-19,299.33
+User_806,Cosmetics,2023-10-11,297.8
+User_493,Books,2023-04-26,282.08
+User_557,Clothing,2024-08-08,76.62
+User_793,Technology,2023-09-22,384.75
+User_107,Food & Beverage,2024-05-19,45.74
+User_595,Technology,2023-01-18,342.0
+User_441,Books,2024-01-25,484.61
+User_155,Clothing,2024-07-31,430.31
+User_510,Technology,2024-06-30,118.66
+User_59,Technology,2024-04-09,354.27
+User_103,Food & Beverage,2024-04-04,85.62
+User_497,Toys,2023-11-26,380.91
+User_186,Cosmetics,2024-08-08,305.12
+User_231,Food & Beverage,2024-01-17,20.1
+User_165,Cosmetics,2023-05-20,253.29
+User_265,Food & Beverage,2023-02-23,193.38
+User_775,Food & Beverage,2024-04-18,46.66
+User_378,Cosmetics,2024-08-26,417.82
+User_795,Food & Beverage,2024-06-29,446.57
+User_568,Food & Beverage,2024-08-04,409.79
+User_947,Food & Beverage,2024-01-10,285.0
+User_319,Technology,2023-02-02,258.84
+User_74,Books,2023-03-27,209.49
+User_44,Technology,2023-09-12,473.13
+User_442,Food & Beverage,2023-03-15,237.04
+User_655,Toys,2023-02-05,108.7
+User_55,Technology,2024-05-17,200.15
+User_530,Toys,2023-11-05,292.88
+User_537,Books,2023-06-03,28.0
+User_119,Books,2024-06-30,373.65
+User_948,Cosmetics,2023-11-18,447.5
+User_522,Food & Beverage,2024-03-13,485.72
+User_633,Toys,2023-06-22,12.87
+User_694,Clothing,2024-04-10,282.12
+User_722,Shoes,2023-09-17,114.45
+User_55,Technology,2023-01-15,56.12
+User_373,Books,2023-11-15,48.42
+User_727,Food & Beverage,2023-11-07,467.38
+User_681,Clothing,2024-03-22,188.92
+User_165,Books,2023-12-04,210.98
+User_125,Technology,2023-03-05,276.54
+User_600,Food & Beverage,2023-06-24,434.94
+User_375,Cosmetics,2024-04-20,283.28
+User_615,Clothing,2023-11-23,128.23
+User_247,Food & Beverage,2023-03-04,239.08
+User_2,Books,2024-05-03,397.83
+User_434,Toys,2023-11-06,216.95
+User_953,Shoes,2023-08-05,380.79
+User_744,Books,2024-08-07,35.92
+User_492,Books,2024-05-15,397.31
+User_171,Shoes,2023-11-09,418.27
+User_99,Books,2024-04-02,264.08
+User_742,Cosmetics,2024-06-29,72.7
+User_746,Shoes,2024-03-31,417.44
+User_130,Toys,2023-09-16,121.6
+User_192,Food & Beverage,2023-05-31,465.46
+User_417,Toys,2024-07-12,114.23
+User_767,Food & Beverage,2024-02-18,135.14
+User_699,Cosmetics,2023-01-07,217.85
+User_851,Shoes,2023-06-26,225.74
+User_424,Toys,2023-02-18,132.83
+User_953,Technology,2023-05-31,202.73
+User_701,Clothing,2024-02-25,429.61
+User_100,Books,2024-02-19,496.1
+User_102,Books,2023-10-19,242.44
+User_845,Shoes,2024-07-05,124.39
+User_299,Shoes,2023-05-21,224.22
+User_671,Cosmetics,2023-11-17,207.69
+User_452,Food & Beverage,2024-06-28,118.96
+User_690,Clothing,2023-01-17,396.34
+User_961,Food & Beverage,2024-04-21,368.51
+User_68,Technology,2023-07-07,323.97
+User_935,Shoes,2023-07-17,29.3
+User_586,Shoes,2024-01-08,44.05
+User_906,Food & Beverage,2024-09-26,480.5
+User_776,Technology,2024-05-01,372.76
+User_116,Cosmetics,2023-12-19,101.43
+User_318,Toys,2023-06-30,347.88
+User_702,Technology,2023-04-12,71.67
+User_884,Food & Beverage,2024-02-20,209.88
+User_548,Toys,2023-05-04,218.64
+User_863,Clothing,2023-12-10,305.82
+User_743,Cosmetics,2023-01-04,196.32
+User_69,Technology,2023-08-14,173.25
+User_812,Clothing,2024-01-13,51.73
+User_672,Toys,2023-12-27,333.68
+User_966,Food & Beverage,2024-03-06,87.94
+User_457,Clothing,2024-09-17,291.77
+User_609,Technology,2023-08-11,217.85
+User_561,Shoes,2024-06-06,399.99
+User_428,Books,2024-04-12,55.61
+User_450,Books,2024-02-13,416.45
+User_490,Cosmetics,2023-03-04,307.19
+User_598,Books,2024-03-28,403.19
+User_260,Shoes,2023-03-12,298.58
+User_722,Clothing,2023-11-19,300.38
+User_102,Technology,2024-06-30,431.25
+User_474,Cosmetics,2024-06-03,82.98
+User_96,Technology,2023-06-19,45.44
+User_575,Toys,2023-11-20,136.54
+User_508,Clothing,2024-06-17,205.56
+User_905,Cosmetics,2023-12-22,133.48
+User_111,Books,2023-06-02,343.51
+User_305,Books,2023-03-18,111.46
+User_358,Food & Beverage,2024-09-19,286.48
+User_527,Books,2024-01-05,53.22
+User_205,Toys,2023-04-12,354.81
+User_687,Shoes,2024-02-15,304.81
+User_948,Food & Beverage,2024-03-28,133.15
+User_800,Toys,2023-09-26,293.63
+User_544,Food & Beverage,2023-03-08,415.15
+User_192,Toys,2023-06-22,301.98
+User_539,Clothing,2023-07-19,195.22
+User_313,Toys,2023-01-28,263.98
+User_754,Clothing,2023-04-11,74.64
+User_418,Clothing,2023-10-28,204.4
+User_722,Toys,2024-05-11,23.39
+User_361,Shoes,2023-12-16,404.25
+User_970,Food & Beverage,2024-02-04,132.8
+User_563,Shoes,2023-06-21,116.64
+User_242,Food & Beverage,2024-06-24,332.45
+User_898,Books,2023-02-27,417.92
+User_397,Food & Beverage,2023-05-16,75.0
+User_298,Technology,2023-09-05,259.45
+User_316,Food & Beverage,2024-04-05,85.55
+User_293,Books,2023-08-01,42.49
+User_61,Cosmetics,2023-05-26,389.69
+User_17,Shoes,2024-09-29,39.08
+User_756,Toys,2023-06-09,387.26
+User_24,Toys,2024-06-04,34.46
+User_168,Cosmetics,2023-12-25,113.78
+User_862,Clothing,2023-08-19,188.51
+User_328,Food & Beverage,2023-03-21,14.93
+User_622,Cosmetics,2023-10-20,344.35
+User_911,Clothing,2024-03-28,456.97
+User_835,Food & Beverage,2024-02-20,176.57
+User_941,Books,2024-01-04,20.17
+User_654,Books,2024-06-11,115.72
+User_126,Toys,2023-03-21,332.62
+User_123,Shoes,2023-02-18,192.65
+User_487,Cosmetics,2024-04-23,137.27
+User_737,Technology,2023-10-08,376.69
+User_975,Cosmetics,2023-06-26,411.2
+User_95,Technology,2023-10-27,264.67
+User_508,Technology,2024-02-03,34.34
+User_512,Shoes,2023-04-27,160.53
+User_257,Cosmetics,2023-11-26,388.75
+User_970,Books,2024-03-31,426.1
+User_163,Shoes,2024-05-19,235.49
+User_488,Food & Beverage,2023-01-25,397.55
+User_853,Books,2023-05-30,128.72
+User_909,Technology,2023-06-14,175.38
+User_424,Cosmetics,2023-11-24,393.67
+User_724,Cosmetics,2023-06-11,197.77
+User_963,Toys,2023-07-18,27.6
+User_992,Books,2023-03-19,403.75
+User_685,Food & Beverage,2023-09-08,175.62
+User_417,Toys,2024-02-08,409.9
+User_748,Toys,2023-06-11,419.46
+User_328,Toys,2024-03-29,278.12
+User_946,Clothing,2024-05-26,88.65
+User_429,Technology,2023-04-20,195.12
+User_186,Food & Beverage,2024-09-10,382.49
+User_721,Cosmetics,2024-06-03,44.45
+User_160,Shoes,2024-09-21,278.49
+User_386,Cosmetics,2023-08-08,40.42
+User_776,Books,2024-03-09,126.26
+User_838,Clothing,2024-04-07,210.65
+User_986,Books,2023-01-26,237.82
+User_620,Books,2023-02-15,195.42
+User_843,Shoes,2024-07-23,56.64
+User_962,Shoes,2023-03-13,128.07
+User_706,Technology,2023-09-07,304.72
+User_775,Shoes,2023-01-28,325.32
+User_411,Cosmetics,2023-03-05,271.45
+User_552,Food & Beverage,2024-06-19,197.94
+User_298,Food & Beverage,2024-04-01,63.06
+User_925,Books,2023-06-18,464.07
+User_276,Technology,2023-05-20,426.4
+User_663,Clothing,2023-02-12,333.57
+User_888,Shoes,2024-04-16,62.55
+User_322,Cosmetics,2023-08-25,152.86
+User_623,Cosmetics,2023-01-28,315.13
+User_567,Food & Beverage,2023-01-29,175.04
+User_804,Food & Beverage,2023-07-29,266.85
+User_592,Food & Beverage,2023-12-04,197.24
+User_252,Books,2024-02-10,206.57
+User_488,Technology,2023-12-06,484.75
+User_29,Clothing,2024-08-01,382.35
+User_871,Technology,2024-07-21,232.43
+User_609,Food & Beverage,2023-09-04,403.39
+User_378,Clothing,2023-07-31,89.11
+User_182,Books,2023-01-13,404.8
+User_99,Cosmetics,2024-02-27,427.44
+User_994,Cosmetics,2023-03-09,393.56
+User_331,Technology,2023-07-07,53.02
+User_335,Books,2023-01-04,492.76
+User_167,Toys,2023-07-30,326.0
+User_500,Clothing,2023-01-21,61.07
+User_901,Shoes,2023-01-21,458.64
+User_586,Books,2023-08-17,259.66
+User_672,Technology,2023-07-29,445.0
+User_563,Clothing,2023-05-25,311.68
+User_324,Cosmetics,2023-11-21,280.81
+User_652,Toys,2023-07-01,216.88
+User_465,Food & Beverage,2024-08-16,452.96
+User_488,Food & Beverage,2023-07-01,236.36
+User_19,Cosmetics,2024-07-14,49.67
+User_717,Shoes,2024-04-29,222.82
+User_809,Books,2023-08-24,423.28
+User_235,Cosmetics,2023-01-08,382.86
+User_682,Books,2023-02-06,334.94
+User_421,Food & Beverage,2023-09-03,78.26
+User_614,Clothing,2024-07-02,307.48
+User_120,Cosmetics,2024-02-06,401.56
+User_382,Shoes,2023-05-09,429.25
+User_683,Food & Beverage,2024-05-19,258.36
+User_836,Books,2024-08-30,36.11
+User_581,Books,2023-12-21,221.86
+User_901,Toys,2023-05-06,230.39
+User_398,Toys,2024-06-09,330.36
+User_253,Shoes,2023-08-13,207.67
+User_991,Shoes,2024-01-07,316.52
+User_885,Technology,2023-02-24,12.62
+User_993,Toys,2024-08-06,165.18
+User_22,Technology,2023-08-03,140.82
+User_443,Technology,2023-10-12,398.11
+User_2,Books,2023-09-05,320.39
+User_117,Cosmetics,2024-03-30,390.25
+User_39,Toys,2023-09-14,316.01
+User_443,Shoes,2024-08-18,267.41
+User_123,Technology,2024-07-21,375.63
+User_887,Shoes,2024-05-10,185.15
+User_312,Toys,2024-08-28,54.81
+User_113,Toys,2024-01-10,119.03
+User_116,Toys,2023-08-03,452.78
+User_794,Food & Beverage,2023-01-27,457.36
+User_153,Cosmetics,2024-09-30,480.73
+User_222,Cosmetics,2023-05-19,302.71
+User_521,Clothing,2024-01-26,375.02
+User_627,Toys,2023-09-04,80.81
+User_74,Books,2023-10-19,71.96
+User_872,Food & Beverage,2023-10-13,288.07
+User_311,Shoes,2023-06-30,477.72
+User_328,Technology,2023-04-26,12.32
+User_621,Books,2023-01-26,141.75
+User_470,Shoes,2024-04-16,215.35
+User_766,Cosmetics,2023-02-28,106.98
+User_124,Food & Beverage,2023-12-24,346.08
+User_649,Cosmetics,2023-09-11,436.05
+User_944,Cosmetics,2023-01-10,404.37
+User_90,Cosmetics,2024-05-16,355.88
+User_312,Books,2024-04-19,313.12
+User_752,Shoes,2023-12-29,256.91
+User_385,Toys,2024-01-01,378.92
+User_16,Toys,2024-03-01,80.04
+User_464,Food & Beverage,2023-07-08,26.91
+User_171,Shoes,2023-01-24,125.15
+User_199,Clothing,2023-12-15,374.9
+User_237,Clothing,2024-04-13,480.7
+User_728,Books,2024-01-05,171.5
+User_615,Books,2024-03-25,288.01
+User_582,Clothing,2024-03-20,453.28
+User_666,Cosmetics,2024-05-26,414.8
+User_749,Toys,2024-04-18,30.21
+User_719,Toys,2023-01-23,314.61
+User_809,Toys,2023-02-21,454.81
+User_784,Books,2023-09-14,450.31
+User_918,Books,2023-08-06,63.56
+User_433,Clothing,2024-01-06,38.38
+User_220,Technology,2023-11-30,155.86
+User_407,Shoes,2024-09-11,144.89
+User_892,Books,2023-01-12,396.05
+User_262,Shoes,2024-08-03,276.14
+User_368,Toys,2024-01-29,481.67
+User_833,Technology,2023-10-26,88.9
+User_856,Technology,2023-12-12,323.96
+User_70,Books,2024-08-22,36.74
+User_696,Food & Beverage,2023-01-26,273.45
+User_210,Technology,2024-02-16,335.35
+User_191,Cosmetics,2024-01-16,377.42
+User_722,Books,2023-01-22,327.15
+User_384,Food & Beverage,2024-01-13,56.7
+User_859,Books,2024-02-24,187.31
+User_991,Cosmetics,2024-06-11,197.49
+User_32,Technology,2024-01-11,360.02
+User_66,Technology,2023-05-08,63.23
+User_476,Shoes,2023-08-21,212.41
+User_858,Food & Beverage,2024-03-25,208.33
+User_500,Food & Beverage,2023-05-08,169.18
+User_25,Books,2024-07-03,157.17
+User_266,Clothing,2024-06-27,424.48
+User_638,Clothing,2024-01-07,395.64
+User_974,Technology,2023-05-28,484.03
+User_527,Technology,2023-10-26,456.34
+User_140,Technology,2024-05-22,102.57
+User_683,Clothing,2023-06-09,458.22
+User_279,Shoes,2023-03-06,301.24
+User_749,Technology,2023-10-09,339.6
+User_21,Clothing,2023-06-01,84.63
+User_33,Technology,2023-11-25,300.9
+User_353,Technology,2024-08-09,190.42
+User_395,Clothing,2024-01-11,190.75
+User_212,Toys,2023-03-11,496.53
+User_750,Food & Beverage,2023-01-18,23.76
+User_569,Clothing,2024-04-16,468.37
+User_878,Technology,2023-01-11,400.4
+User_890,Shoes,2023-08-16,455.3
+User_413,Technology,2023-08-10,166.42
+User_682,Clothing,2023-01-24,82.41
+User_144,Food & Beverage,2023-10-24,40.59
+User_375,Clothing,2024-01-23,438.58
+User_326,Cosmetics,2023-06-11,442.31
+User_573,Technology,2024-08-13,167.92
+User_740,Technology,2023-05-27,156.56
+User_194,Food & Beverage,2024-08-28,68.57
+User_948,Technology,2023-06-16,309.58
+User_92,Clothing,2024-06-04,109.75
+User_616,Shoes,2024-07-09,479.99
+User_787,Shoes,2024-03-15,226.6
+User_632,Toys,2023-02-19,37.35
+User_992,Toys,2023-11-18,411.98
+User_324,Technology,2023-03-20,141.65
+User_388,Toys,2023-08-12,65.23
+User_889,Shoes,2023-08-19,465.03
+User_929,Books,2023-02-22,10.7
+User_850,Toys,2023-02-04,352.54
+User_237,Cosmetics,2023-06-01,157.36
+User_379,Clothing,2023-08-09,74.48
+User_227,Shoes,2023-07-08,141.64
+User_493,Clothing,2024-04-07,397.61
+User_861,Books,2023-06-13,260.26
+User_569,Cosmetics,2023-12-05,121.36
+User_465,Shoes,2023-11-07,189.13
+User_129,Technology,2023-06-11,169.1
+User_546,Toys,2024-01-09,497.83
+User_460,Shoes,2023-11-13,345.95
+User_139,Clothing,2024-05-10,422.81
+User_95,Technology,2023-12-19,17.03
+User_88,Food & Beverage,2024-09-17,302.48
+User_774,Shoes,2023-07-31,419.14
+User_231,Books,2023-08-10,470.15
+User_165,Books,2023-04-23,177.82
+User_983,Cosmetics,2024-08-09,94.1
+User_711,Toys,2024-02-06,38.42
+User_40,Technology,2023-08-27,57.02
+User_352,Toys,2024-02-29,370.66
+User_994,Clothing,2023-12-08,163.29
+User_763,Toys,2023-11-04,321.77
+User_883,Books,2024-05-17,395.63
+User_23,Toys,2024-01-12,292.31
+User_954,Shoes,2024-04-16,16.19
+User_165,Cosmetics,2023-08-22,138.86
+User_211,Food & Beverage,2023-09-17,453.48
+User_197,Books,2023-04-07,192.06
+User_912,Cosmetics,2023-06-08,267.28
+User_101,Cosmetics,2024-07-03,350.82
+User_187,Cosmetics,2023-02-28,235.61
+User_465,Cosmetics,2023-10-20,30.85
+User_467,Cosmetics,2023-12-20,78.49
+User_251,Shoes,2023-05-19,405.49
+User_516,Food & Beverage,2023-07-14,374.25
+User_29,Clothing,2023-01-19,54.65
+User_550,Clothing,2023-06-13,59.31
+User_555,Technology,2024-08-21,132.15
+User_717,Books,2023-12-02,166.33
+User_763,Technology,2023-09-19,332.73
+User_153,Clothing,2023-06-07,171.24
+User_250,Shoes,2023-04-25,227.48
+User_480,Clothing,2023-04-23,283.29
+User_337,Shoes,2024-07-18,155.87
+User_928,Toys,2023-03-02,355.36
+User_560,Clothing,2024-02-05,351.47
+User_183,Books,2023-10-31,131.55
+User_213,Shoes,2023-08-31,456.14
+User_290,Food & Beverage,2023-09-29,44.89
+User_750,Toys,2023-04-26,172.18
+User_887,Shoes,2024-07-18,452.1
+User_170,Food & Beverage,2023-03-30,422.74
+User_328,Shoes,2023-01-27,13.96
+User_485,Cosmetics,2024-07-14,42.51
+User_431,Technology,2023-10-01,296.7
+User_594,Shoes,2024-07-08,13.47
+User_22,Clothing,2024-06-03,332.28
+User_175,Food & Beverage,2023-05-26,106.41
+User_832,Books,2023-04-06,175.54
+User_387,Food & Beverage,2024-04-09,499.8
+User_851,Food & Beverage,2024-03-14,73.18
+User_300,Clothing,2024-02-10,352.11
+User_722,Food & Beverage,2024-05-09,136.44
+User_720,Food & Beverage,2023-07-08,67.45
+User_921,Shoes,2024-09-08,200.07
+User_442,Toys,2024-06-30,444.5
+User_637,Cosmetics,2023-06-15,429.0
+User_868,Clothing,2024-05-18,497.97
+User_438,Food & Beverage,2023-11-30,85.93
+User_614,Cosmetics,2024-09-04,351.92
+User_642,Cosmetics,2023-11-11,464.03
+User_697,Shoes,2023-08-28,68.68
+User_318,Food & Beverage,2023-10-03,212.2
+User_38,Cosmetics,2023-11-19,379.8
+User_499,Technology,2024-06-03,451.03
+User_273,Toys,2024-04-22,271.31
+User_257,Books,2023-06-27,237.16
+User_591,Clothing,2024-08-04,200.48
+User_236,Shoes,2023-04-30,402.27
+User_380,Cosmetics,2023-05-02,474.18
+User_167,Technology,2023-12-28,174.58
+User_40,Food & Beverage,2023-01-30,176.17
+User_157,Technology,2024-01-22,158.86
+User_984,Food & Beverage,2024-03-04,127.9
+User_810,Technology,2024-06-02,111.01
+User_938,Cosmetics,2023-07-01,225.64
+User_693,Shoes,2024-09-08,193.44
+User_979,Toys,2024-07-31,35.76
+User_960,Food & Beverage,2023-01-10,486.28
+User_395,Toys,2023-05-07,356.85
+User_834,Shoes,2023-07-06,116.81
+User_474,Cosmetics,2023-01-12,93.8
+User_743,Clothing,2023-12-16,234.81
+User_334,Technology,2024-07-03,401.5
+User_629,Cosmetics,2024-04-25,53.99
+User_362,Clothing,2023-07-23,492.84
+User_688,Technology,2024-05-29,421.75
+User_731,Toys,2024-04-14,443.15
+User_919,Shoes,2024-08-13,348.81
+User_15,Toys,2023-12-01,478.49
+User_271,Food & Beverage,2023-09-23,371.7
+User_253,Food & Beverage,2024-01-20,282.2
+User_67,Books,2023-03-18,437.4
+User_730,Food & Beverage,2024-06-05,39.66
+User_897,Shoes,2023-02-22,433.55
+User_388,Cosmetics,2023-02-09,465.67
+User_742,Shoes,2024-05-08,126.96
+User_351,Technology,2023-02-10,236.97
+User_1,Clothing,2024-01-20,161.96
+User_622,Toys,2024-01-02,128.12
+User_666,Toys,2023-07-18,469.76
+User_671,Toys,2024-07-18,425.74
+User_896,Toys,2024-07-02,409.47
+User_60,Toys,2023-03-21,327.31
+User_531,Cosmetics,2024-02-06,448.05
+User_669,Books,2023-09-25,336.2
+User_434,Clothing,2024-01-12,131.54
+User_66,Shoes,2023-02-18,77.09
+User_838,Books,2024-09-27,395.53
+User_889,Shoes,2023-09-27,321.99
+User_978,Books,2023-02-02,62.96
+User_949,Food & Beverage,2023-08-29,279.66
+User_980,Cosmetics,2024-09-10,316.42
+User_437,Toys,2023-08-24,197.51
+User_612,Cosmetics,2023-03-28,52.63
+User_78,Books,2023-08-13,277.92
+User_184,Shoes,2024-01-08,476.33
+User_202,Cosmetics,2023-02-22,223.01
+User_347,Clothing,2023-07-13,491.22
+User_277,Toys,2024-03-06,90.93
+User_553,Clothing,2023-05-01,298.66
+User_93,Toys,2024-04-21,212.46
+User_693,Shoes,2024-01-29,39.13
+User_430,Toys,2023-07-18,272.5
+User_130,Toys,2023-01-13,84.73
+User_385,Technology,2023-05-15,203.26
+User_229,Books,2023-09-22,278.52
+User_906,Shoes,2023-03-09,114.53
+User_887,Shoes,2024-06-12,174.57
+User_113,Cosmetics,2024-03-16,490.94
+User_154,Books,2024-07-18,172.31
+User_118,Books,2024-01-10,62.27
+User_442,Books,2024-08-17,298.06
+User_822,Books,2024-06-20,242.84
+User_812,Cosmetics,2023-09-04,254.67
+User_394,Books,2023-06-03,234.16
+User_84,Cosmetics,2023-12-22,165.42
+User_534,Toys,2024-02-25,313.45
+User_493,Technology,2023-06-25,303.28
+User_185,Clothing,2024-01-04,215.46
+User_816,Toys,2024-06-13,352.31
+User_165,Cosmetics,2024-04-07,208.62
+User_478,Technology,2024-08-15,282.87
+User_997,Books,2024-08-19,86.02
+User_448,Technology,2023-01-06,287.7
+User_219,Books,2024-03-13,120.79
+User_872,Books,2024-01-09,254.64
+User_123,Books,2024-04-08,197.34
+User_37,Shoes,2024-07-01,499.48
+User_188,Shoes,2024-02-05,52.9
+User_570,Toys,2024-07-18,281.57
+User_576,Food & Beverage,2024-02-12,25.52
+User_458,Food & Beverage,2023-07-19,379.22
+User_105,Shoes,2024-01-05,82.64
+User_133,Books,2023-11-05,431.94
+User_945,Books,2023-06-19,218.54
+User_328,Toys,2024-01-11,377.41
+User_270,Books,2024-07-31,12.97
+User_36,Shoes,2024-05-29,154.1
+User_992,Clothing,2024-04-29,218.08
+User_355,Books,2024-05-19,217.11
+User_74,Toys,2023-03-08,355.39
+User_915,Cosmetics,2023-12-10,226.51
+User_235,Technology,2023-11-24,165.7
+User_442,Books,2023-10-07,162.58
+User_925,Shoes,2024-08-25,62.6
+User_677,Technology,2023-11-21,117.52
+User_562,Toys,2023-03-23,476.69
+User_406,Food & Beverage,2023-08-16,314.9
+User_924,Books,2024-03-23,284.02
+User_678,Clothing,2023-04-06,452.87
+User_540,Books,2024-04-16,263.63
+User_738,Technology,2023-09-10,228.38
+User_442,Cosmetics,2023-04-15,324.45
+User_101,Food & Beverage,2023-04-28,292.95
+User_203,Clothing,2024-07-19,417.89
+User_389,Shoes,2023-10-03,131.13
+User_423,Toys,2024-06-15,109.49
+User_261,Food & Beverage,2023-02-02,125.12
+User_374,Cosmetics,2024-02-08,73.21
+User_259,Cosmetics,2024-04-01,428.34
+User_119,Books,2023-07-01,467.92
+User_84,Books,2023-02-25,409.3
+User_626,Technology,2023-03-18,57.33
+User_857,Cosmetics,2023-07-11,281.61
+User_541,Cosmetics,2024-04-14,311.48
+User_637,Books,2023-12-20,443.15
+User_810,Shoes,2023-09-08,225.93
+User_773,Shoes,2023-10-27,324.82
+User_374,Clothing,2024-08-23,313.57
+User_606,Books,2024-03-03,61.36
+User_689,Technology,2024-06-23,348.17
+User_383,Technology,2024-05-22,234.1
+User_297,Cosmetics,2024-02-02,197.39
+User_289,Cosmetics,2023-07-09,486.98
+User_258,Food & Beverage,2024-02-27,448.1
+User_565,Food & Beverage,2023-08-16,360.86
+User_167,Cosmetics,2023-03-04,124.8
+User_912,Shoes,2024-05-05,497.32
+User_75,Clothing,2023-10-03,66.61
+User_222,Food & Beverage,2023-02-17,325.53
+User_430,Clothing,2023-07-12,376.34
+User_44,Shoes,2023-02-05,335.47
+User_132,Shoes,2024-05-02,492.44
+User_964,Cosmetics,2023-04-07,72.56
+User_720,Technology,2023-05-24,208.87
+User_836,Technology,2023-10-06,422.81
+User_358,Cosmetics,2023-12-14,297.25
+User_142,Technology,2024-06-08,389.53
+User_246,Toys,2023-10-21,252.58
+User_848,Technology,2023-11-24,165.12
+User_539,Technology,2023-01-26,256.85
+User_178,Cosmetics,2023-01-22,294.18
+User_444,Technology,2023-09-27,184.74
+User_463,Technology,2023-12-09,284.37
+User_583,Cosmetics,2024-05-24,462.97
+User_460,Food & Beverage,2024-05-04,92.29
+User_715,Books,2024-06-01,32.19
+User_286,Books,2024-01-12,326.21
+User_555,Food & Beverage,2023-01-02,229.16
+User_524,Toys,2024-06-15,461.12
+User_170,Technology,2023-11-13,384.9
+User_610,Clothing,2023-12-28,258.5
+User_978,Cosmetics,2023-11-01,208.04
+User_873,Technology,2023-08-26,139.75
+User_713,Clothing,2023-03-28,125.91
+User_183,Shoes,2024-08-10,362.75
+User_607,Food & Beverage,2023-11-16,378.23
+User_6,Cosmetics,2023-06-14,96.07
+User_352,Food & Beverage,2023-03-02,294.78
+User_271,Clothing,2023-05-27,276.01
+User_895,Books,2023-08-14,454.89
+User_368,Books,2023-01-01,377.25
+User_856,Clothing,2024-02-28,410.77
+User_601,Shoes,2023-04-07,359.66
+User_343,Cosmetics,2024-01-15,211.01
+User_444,Toys,2023-11-13,109.17
+User_522,Cosmetics,2024-08-16,18.73
+User_393,Cosmetics,2024-04-20,136.87
+User_508,Clothing,2023-03-23,364.78
+User_277,Toys,2024-04-24,280.05
+User_761,Books,2023-04-15,342.1
+User_871,Cosmetics,2023-04-25,464.78
+User_598,Technology,2023-03-16,332.78
+User_588,Food & Beverage,2024-05-12,278.01
+User_536,Shoes,2023-09-07,322.52
+User_196,Toys,2023-02-21,101.12
+User_983,Technology,2023-06-22,248.23
+User_354,Cosmetics,2024-07-15,24.53
+User_954,Technology,2023-06-23,125.62
+User_400,Toys,2023-05-01,222.78
+User_186,Shoes,2023-09-14,102.54
+User_980,Food & Beverage,2023-07-03,481.87
+User_813,Toys,2023-04-15,462.02
+User_918,Clothing,2024-05-12,44.72
+User_301,Toys,2023-06-28,60.92
+User_56,Technology,2023-08-14,392.53
+User_359,Cosmetics,2023-07-09,90.06
+User_465,Clothing,2024-09-22,452.36
+User_498,Food & Beverage,2023-09-12,360.79
+User_781,Food & Beverage,2024-09-28,336.05
+User_716,Books,2024-07-04,163.75
+User_103,Food & Beverage,2023-01-07,281.31
+User_460,Toys,2023-12-23,384.12
+User_290,Cosmetics,2023-12-03,111.56
+User_488,Food & Beverage,2024-03-29,54.93
+User_612,Cosmetics,2024-06-01,263.84
+User_467,Cosmetics,2023-02-17,226.38
+User_299,Technology,2024-05-14,237.63
+User_494,Cosmetics,2023-12-26,17.89
+User_380,Shoes,2024-07-21,21.77
+User_869,Clothing,2024-08-20,376.18
+User_130,Food & Beverage,2023-11-29,342.99
+User_936,Books,2023-09-26,55.29
+User_70,Technology,2024-06-11,171.51
+User_131,Food & Beverage,2023-05-11,18.42
+User_341,Technology,2024-06-13,112.07
+User_346,Clothing,2023-11-15,107.84
+User_958,Books,2024-06-21,494.15
+User_688,Toys,2023-07-29,496.39
+User_449,Books,2024-07-01,357.22
+User_410,Food & Beverage,2023-11-28,162.09
+User_224,Cosmetics,2023-05-05,245.16
+User_394,Food & Beverage,2023-05-09,174.64
+User_916,Food & Beverage,2023-05-04,211.74
+User_685,Technology,2023-06-19,399.92
