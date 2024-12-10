@@ -1,0 +1,70 @@
+打开anaconda虚拟环境，完成以下步骤：
+conda create -n py3818 python=3.8.18
+conda activate py3818
+pip install -r requirement3818.txt
+
+我的 requirement3818.txt 放在 D:\repository\AILearn\AITrainer\11.2\requirement3818.txt
+修改的pip源使用阿里云
+
+pip show tensorflow 显示库的信息
+pip install setuptools==57.5.0 安装指定版本，如果已有，那么卸载后安装。可以用来降级版本。
+pip install --upgrade setuptools 升级到支持的最新版本
+
+## 安装遇到问题：
+        File "D:\ProgramData\anaconda3\envs\py3818\lib\site-packages\setuptools\_core_metadata.py", line 285, in _distribution_fullname
+          canonicalize_version(version, strip_trailing_zero=False),
+      TypeError: canonicalize_version() got an unexpected keyword argument 'strip_trailing_zero'
+      [end of output]
+
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+error: metadata-generation-failed
+
+× Encountered error while generating package metadata.
+╰─> See above for output.
+
+got an unexpected keyword argument 'strip_trailing_zero' 问题原因是 setuptools 版本太高了，我降版本：
+pip install setuptools==57.5.0
+
+降版本会报错：
+      Successfully uninstalled setuptools-75.1.0
+ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+tensorflow-intel 2.13.0 requires flatbuffers>=23.1.21, which is not installed.
+tensorflow-intel 2.13.0 requires termcolor>=1.1.0, which is not installed.
+tensorflow-intel 2.13.0 requires numpy<=1.24.3,>=1.22, but you have numpy 1.19.4 which is incompatible.
+Successfully installed setuptools-57.5.0
+先不管，先把 pip install clang==5.0 安装上。这是版本冲突了，后续会卸载tensorflow并安装匹配的版本。
+
+再次升级setuptools到最新，然后继续安装剩下的依赖包
+pip install --upgrade setuptools
+
+又出错了：
+        File "D:\ProgramData\anaconda3\envs\py3818\lib\site-packages\setuptools\_core_metadata.py", line 285, in _distribution_fullname
+          canonicalize_version(version, strip_trailing_zero=False),
+      TypeError: canonicalize_version() got an unexpected keyword argument 'strip_trailing_zero'
+      [end of output]
+
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+error: metadata-generation-failed
+
+× Encountered error while generating package metadata.
+╰─> See above for output.
+
+note: This is an issue with the package mentioned above, not pip.
+hint: See above for details.
+查看日志，是安装labelme出错了：
+Collecting labelme==5.2.1 (from -r D:\repository\AILearn\AITrainer\11.2\requirement3818.txt (line 37))
+出这么多错，可能是py3.8安装指定版本的库比较旧，无法兼容最新setuptools工具了。
+还是回退 setuptools 版本：pip install setuptools==57.5.0
+pip install -r D:\repository\AILearn\AITrainer\11.2\requirement3818.txt 安装完所有库
+
+安装过程中会遇到依赖版本冲突的问题：
+      Successfully uninstalled tensorflow-2.13.0
+ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+tensorflow-intel 2.13.0 requires absl-py>=1.0.0, but you have absl-py 0.15.0 which is incompatible.
+tensorflow-intel 2.13.0 requires flatbuffers>=23.1.21, but you have flatbuffers 1.12 which is incompatible.
+tensorflow-intel 2.13.0 requires numpy<=1.24.3,>=1.22, but you have numpy 1.21.1 which is incompatible.
+tensorflow-intel 2.13.0 requires protobuf!=4.21.0,!=4.21.1,!=4.21.2,!=4.21.3,!=4.21.4,!=4.21.5,<5.0.0dev,>=3.20.3, but you have protobuf 3.20.0 which is incompatible.
+tensorflow-intel 2.13.0 requires tensorboard<2.14,>=2.13, but you have tensorboard 2.2.2 which is incompatible.
+tensorflow-intel 2.13.0 requires tensorflow-estimator<2.14,>=2.13.0, but you have tensorflow-estimator 2.2.0 which is incompatible.
+这问题原因可能是，存在二个tensorflow，有个tensorflow-intel，这2者对依赖库要求的版本不一样。可用 pip show查看。
+
