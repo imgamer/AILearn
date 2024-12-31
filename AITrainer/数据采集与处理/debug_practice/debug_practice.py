@@ -1,6 +1,12 @@
 """
+
 这段代码实现了将一个图像（logo）作为水印叠加到另一张图像（lena）上，并且在叠加前调整了logo的大小。
-原始错误代码见 debug_practice_error.py
+debug练习：通过把错误代码修改为正确的代码，并使用opencv库实现图像处理，原始错误代码见 debug_practice_error.py
+错误代码：
+在代码中，使用了cv2.imread函数读取图像文件，但参数1表示以灰度模式读取图像，而实际需要以彩色模式读取。
+在代码中，使用了cv2.resize函数调整图像大小，但实际需要调整logo图像的大小。
+在代码中，使用了cv2.cvtColor函数将logo图像转换为灰度图像，但实际需要将logo图像转换为灰度图像。
+在代码中，使用了cv2.threshold函数对灰度图像进行二值化处理，
 
 opencv： 这是一个用于计算机视觉任务的强大库。
 安装opencv库： pip install opencv-python
