@@ -1,0 +1,4756 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="icon" type="image/x-ico" href="../assets/favicon-13c948b931249d334d83e7f549f8aa4f.ico"/>
+  
+  <meta name="layout" content="vue_student"/>
+  
+  <link rel="stylesheet" href="../assets/app/codeSnippet/index.css" />
+  
+  <link rel="stylesheet" href="../static/css/3rd/splitpanes_vue/splitpanes.css"/>
+
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="icon" type="image/x-ico" href="../assets/favicon-13c948b931249d334d83e7f549f8aa4f.ico"/>
+
+  <link rel="stylesheet" href="../assets/main-1973a46397c2b88be7673c851b795266.css" />
+  <link rel="stylesheet" href="../assets/app/common/header-5763dd50df92242f4e5efd8e4b7765f8.css" />
+  <link rel="stylesheet" href="../static/css/3rd/bootstrap/bootstrap.min.css"/>
+  <title>
+  小程序列表
+  </title>
+</head>
+
+<body>
+<link rel="stylesheet" href="../static/css/3rd/element-plus.2.8.0/index.css">
+<script src="../static/js/3rd/vue/vue@3.4.5.global.min.js"></script>
+<script src="../static/js/3rd/vue/vue-i18n.9.13.1.js"></script>
+<script src="../static/js/3rd/element-plus.2.8.0/index.full.min.js"></script>
+<script src="../static/js/3rd/element-plus.2.8.0/zh-cn.min.js"></script>
+<script src="../static/js/3rd/element-plus-icons/@element-plus-icons@0.2.4.js"></script>
+<script src="../static/js/3rd/vue/axios@0.21.1.min.js"></script>
+<script src="../static/js/3rd/vue-router/vue-router.global.js"></script>
+<script src="./codeSnippets.json"></script>
+<script>
+  console.log(codeSnippets); // 使用引入的 JSON 对象
+</script>
+<script type="application/javascript">
+
+  window.createVueComponent = (callback) => {
+
+    const options = callback(Vue);
+    if (!options.name) {
+      console.error("name attribute is required")
+      return;  
+    }
+    window[options.name] = options;
+  }
+
+  window.vm = window.createVueApp = (options) => {
+    // 添加响应拦截器
+    // 对响应错误做点什么
+    let isShowNormalError = true;
+
+    const hideNormalError = function() {
+      isShowNormalError = false;
+    };
+
+    hideNormalError()
+    const app = Vue.createApp(options).use(ElementPlus, {
+      locale: ElementPlusLocaleZhCn,
+    })
+
+    for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+      app.component(key, component)
+    }
+
+    const {RouterView} = VueRouter
+    app.component(RouterView)
+
+    if (options.routes) {
+      const router = VueRouter.createRouter({
+        history: VueRouter.createWebHashHistory(),
+        routes: options.routes,
+      });
+      app.use(router);
+    }
+
+    // 挂载全局组件
+    app.component("Breadcrumb", Breadcrumb)
+    app.component("DataRender", DataRender)
+    // 默认挂载到 app  上，可以通过返回值的Vue对象，调用  mount(DomNode) 来重新设定挂载节点
+    app.cleanup = function () {
+      console.log("app unmount");
+      app.unmount();
+    }
+    app.mount(options.el ? options.el : '#app');
+
+    return app
+  }
+
+  axios.interceptors.request.use(
+    (config) => config,
+    (err) => {
+      Promise.reject(err);
+    },
+  );
+
+  axios.interceptors.response.use(
+    (response) => {
+      let isShowNormalError = false;
+
+      const hideNormalError = function() {
+        isShowNormalError = false;
+      }
+
+      const { data, headers, status } = response;
+      // 如果返回的数据格式不是json类型，则按照文件流处理
+      // if (!headers['content-type'].includes('application/json')) {
+      //   return data;
+      // }
+      let isSuccess = true;
+      if (data.app_code) {
+        if (data.app_code !== 10000) {
+          isSuccess = false
+          setTimeout(() => {
+            if (isShowNormalError) {
+              ElementPlus.ElMessage({
+                type: 'error',
+                message: data.message,
+              });
+            }
+          });
+        }
+        return { ...response.data, isSuccess, hideNormalError };
+      }
+
+      return { data: response.data, isSuccess, hideNormalError };
+    },
+    (error) => {
+      let isShowNormalError = false;
+
+      const hideNormalError = function() {
+        isShowNormalError = false;
+      }
+
+      if (error.response && error.response.data && error.response.data.message) {
+        error.message = error.response.data.message;
+      } else {
+        error.message = "系统有些异常，请报告系统管理员";
+      }
+      setTimeout(() => {
+        if (isShowNormalError) {
+          ElementPlus.ElMessage({
+            type: 'error',
+            message: error.message,
+          });
+        }
+      });
+      // 在error.response上添加方法
+      return window.Promise.reject({ error, hideNormalError });
+    },
+  );
+</script>
+
+<script type="text/x-template" id="breadcrumb-template">
+<el-breadcrumb separator="/" class="mb-2">
+    <el-breadcrumb-item v-for="(item,index) in stateBreadcrumbs" :key="index">
+        <a class="is-link" :href="item.link" v-if="item.link">{{item.title}}</a>
+        <template v-else>
+            {{item.title}}
+        </template>
+    </el-breadcrumb-item>
+</el-breadcrumb>
+
+</script>
+<script>
+  var defaultBreadcrumbs = [{title: "首页", link: "/"}];
+  createVueComponent((Vue) => {
+    return {
+      name: "Breadcrumb",
+      template: "#breadcrumb-template",
+      props: {
+        breadcrumbs: {
+          type: Array,
+          default: []
+        }
+      },
+      data() {
+        return {
+          stateBreadcrumbs: defaultBreadcrumbs
+        }
+      },
+      methods: {
+        generateBreadcrumb() {
+          this.stateBreadcrumbs = [
+            ...defaultBreadcrumbs,
+            ...this.breadcrumbs
+          ]
+        }
+      },
+      mounted() {
+        this.generateBreadcrumb()
+      },
+      watch: {
+        breadcrumbs(newVal, oldVal) {
+          this.generateBreadcrumb()
+        }
+      }
+    }
+  })
+</script>
+
+<script type="text/x-template" id="data-render-template">
+<el-empty v-if="isEmpty" :description="emptyDesc">
+    <slot name="empty"></slot>
+</el-empty>
+<template v-else>
+    <slot :data="data"></slot>
+</template>
+</script>
+<script>
+  createVueComponent((Vue) => {
+    const { computed, reactive, toRefs } = Vue;
+    return {
+      name: "DataRender",
+      template: "#data-render-template",
+      props: {
+        data: {
+          type: Object,
+          default: null
+        },
+        emptyDesc: {
+          type: String,
+          default: null
+        }
+      },
+      setup(props) {
+        const state = reactive({
+          emptyDesc: computed(() => props.emptyDesc ? props.emptyDesc : "数据为空"),
+          isEmpty: computed(() => !props.data || !(Array.isArray(props.data) && props.data.length > 0))
+        });
+
+        return {
+          ...toRefs(state)
+        }
+      }
+    }
+  });
+</script>
+
+
+<div class="wrapper">
+  
+    
+  
+  
+<link rel="stylesheet" href="../static/css/3rd/element-plus.2.8.0/index.css">
+<script src="../static/js/3rd/vue/vue@3.4.5.global.min.js"></script>
+<script src="../static/js/3rd/vue/vue-i18n.9.13.1.js"></script>
+<script src="../static/js/3rd/element-plus.2.8.0/index.full.min.js"></script>
+<script src="../static/js/3rd/element-plus.2.8.0/zh-cn.min.js"></script>
+<script src="../static/js/3rd/element-plus-icons/@element-plus-icons@0.2.4.js"></script>
+<script src="../static/js/3rd/vue/axios@0.21.1.min.js"></script>
+<script src="../static/js/3rd/vue-router/vue-router.global.js"></script>
+
+<script type="application/javascript">
+
+  window.createVueComponent = (callback) => {
+
+    const options = callback(Vue);
+    if (!options.name) {
+      console.error("name attribute is required")
+      return;
+    }
+    window[options.name] = options;
+  }
+
+  window.vm = window.createVueApp = (options) => {
+    // 添加响应拦截器
+    // 对响应错误做点什么
+    let isShowNormalError = true;
+
+    const hideNormalError = function() {
+      isShowNormalError = false;
+    };
+
+    hideNormalError()
+    const app = Vue.createApp(options).use(ElementPlus, {
+      locale: ElementPlusLocaleZhCn,
+    })
+
+    for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+      app.component(key, component)
+    }
+
+    const {RouterView} = VueRouter
+    app.component(RouterView)
+
+    if (options.routes) {
+      const router = VueRouter.createRouter({
+        history: VueRouter.createWebHashHistory(),
+        routes: options.routes,
+      });
+      app.use(router);
+    }
+
+    // 挂载全局组件
+    app.component("Breadcrumb", Breadcrumb)
+    app.component("DataRender", DataRender)
+    // 默认挂载到 app  上，可以通过返回值的Vue对象，调用  mount(DomNode) 来重新设定挂载节点
+    app.cleanup = function () {
+      console.log("app unmount");
+      app.unmount();
+    }
+    app.mount(options.el ? options.el : '#app');
+
+    return app
+  }
+
+  axios.interceptors.request.use(
+    (config) => config,
+    (err) => {
+      Promise.reject(err);
+    },
+  );
+
+  axios.interceptors.response.use(
+    (response) => {
+      let isShowNormalError = false;
+
+      const hideNormalError = function() {
+        isShowNormalError = false;
+      }
+
+      const { data, headers, status } = response;
+      // 如果返回的数据格式不是json类型，则按照文件流处理
+      // if (!headers['content-type'].includes('application/json')) {
+      //   return data;
+      // }
+      let isSuccess = true;
+      if (data.app_code) {
+        if (data.app_code !== 10000) {
+          isSuccess = false
+          setTimeout(() => {
+            if (isShowNormalError) {
+              ElementPlus.ElMessage({
+                type: 'error',
+                message: data.message,
+              });
+            }
+          });
+        }
+        return { ...response.data, isSuccess, hideNormalError };
+      }
+
+      return { data: response.data, isSuccess, hideNormalError };
+    },
+    (error) => {
+      let isShowNormalError = false;
+
+      const hideNormalError = function() {
+        isShowNormalError = false;
+      }
+
+      if (error.response && error.response.data && error.response.data.message) {
+        error.message = error.response.data.message;
+      } else {
+        error.message = "系统有些异常，请报告系统管理员";
+      }
+      setTimeout(() => {
+        if (isShowNormalError) {
+          ElementPlus.ElMessage({
+            type: 'error',
+            message: error.message,
+          });
+        }
+      });
+      // 在error.response上添加方法
+      return window.Promise.reject({ error, hideNormalError });
+    },
+  );
+</script>
+
+<script type="text/x-template" id="breadcrumb-template">
+<el-breadcrumb separator="/" class="mb-2">
+    <el-breadcrumb-item v-for="(item,index) in stateBreadcrumbs" :key="index">
+        <a class="is-link" :href="item.link" v-if="item.link">{{item.title}}</a>
+        <template v-else>
+            {{item.title}}
+        </template>
+    </el-breadcrumb-item>
+</el-breadcrumb>
+
+</script>
+<script>
+  var defaultBreadcrumbs = [{title: "首页", link: "/"}];
+  createVueComponent((Vue) => {
+    return {
+      name: "Breadcrumb",
+      template: "#breadcrumb-template",
+      props: {
+        breadcrumbs: {
+          type: Array,
+          default: []
+        }
+      },
+      data() {
+        return {
+          stateBreadcrumbs: defaultBreadcrumbs
+        }
+      },
+      methods: {
+        generateBreadcrumb() {
+          this.stateBreadcrumbs = [
+            ...defaultBreadcrumbs,
+            ...this.breadcrumbs
+          ]
+        }
+      },
+      mounted() {
+        this.generateBreadcrumb()
+      },
+      watch: {
+        breadcrumbs(newVal, oldVal) {
+          this.generateBreadcrumb()
+        }
+      }
+    }
+  })
+</script>
+
+<script type="text/x-template" id="data-render-template">
+<el-empty v-if="isEmpty" :description="emptyDesc">
+    <slot name="empty"></slot>
+</el-empty>
+<template v-else>
+    <slot :data="data"></slot>
+</template>
+</script>
+<script>
+  createVueComponent((Vue) => {
+    const { computed, reactive, toRefs } = Vue;
+    return {
+      name: "DataRender",
+      template: "#data-render-template",
+      props: {
+        data: {
+          type: Object,
+          default: null
+        },
+        emptyDesc: {
+          type: String,
+          default: null
+        }
+      },
+      setup(props) {
+        const state = reactive({
+          emptyDesc: computed(() => props.emptyDesc ? props.emptyDesc : "数据为空"),
+          isEmpty: computed(() => !props.data || !(Array.isArray(props.data) && props.data.length > 0))
+        });
+
+        return {
+          ...toRefs(state)
+        }
+      }
+    }
+  });
+</script>
+
+
+<script type="application/javascript" src="../static/js/3rd/splitpanes_vue/splitpanes.umd.min.js"/>
+
+<script type="text/x-template" id="language-options-template">
+<div>
+  <el-tooltip
+      class="item"
+      effect="light"
+      content="编程语言"
+      placement="bottom-start">
+    <el-select v-model="selectedLanguage"
+               placeholder="选择代码类型"
+               style="width: 160px"
+               :disabled="disabled"
+               @change="selectionChanged">
+      <el-option
+          v-for="item in languages"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value">
+      </el-option>
+    </el-select>
+  </el-tooltip>
+</div>
+</script>
+
+<script>
+  createVueComponent(Vue => {
+    const {toRefs, reactive, watch, watchEffect, nextTick, ref, toRaw, onMounted} = Vue
+
+    return {
+      name: 'LanguageOptions',
+      template: '#language-options-template',
+
+      props: {
+        language: {
+          type: String,
+          default: 'python',
+        },
+
+        disabled: {
+          type: Boolean,
+          default: false
+        }
+      },
+
+      emits: ['languageChanged'],
+
+      setup: function (props, {emit}) {
+        const state = reactive({
+          languages: [
+            {label: 'Python', value: 'python'},
+            {label: 'Python (Turtle)', value: 'skulpt'},
+            {label: 'ESP32(MicroPython)', value: 'ESP32'},
+            {label: 'MicroBit(MicroPython)', value: 'MicroBit'},
+            {label: 'K210(MicroPython)', value: 'K210'}
+          ],
+
+          selectedLanguage: props.language
+        })
+
+        const selectionChanged = function () {
+          emit('languageChanged', state.selectedLanguage)
+        }
+
+        watch(() => props.language, (first, second) => {
+          state.selectedLanguage = first
+        });
+
+        return {
+          ...toRefs(state),
+          selectionChanged,
+        }
+      },
+    }
+  })
+</script>
+<script type="text/template" id="new-code-modal-template">
+<el-dialog v-model="showDialog" title="创建新代码" width="30%" center>
+  <div class="d-flex flex-column">
+    <div class="d-flex flex-row mb-2">
+      <el-select v-model="programmingLanguage" placeholder="请选择语言">
+        <el-option
+            v-for="item in programmingLanguages"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+        >
+        </el-option>
+      </el-select>
+    </div>
+
+    <div class="d-flex flex-row">
+      <el-input v-model="name" placeholder="程序名称"/>
+    </div>
+  </div>
+  <template #footer>
+    <span class="dialog-footer">
+      <el-button @click="handleCancel">取消</el-button>
+      <el-button type="primary" @click="handleConfirmInput">创建</el-button>
+    </span>
+  </template>
+</el-dialog>
+</script>
+
+<script>
+  createVueComponent(Vue => {
+    const {reactive, toRefs, ref, refs} = Vue
+
+    return {
+      name: 'NewCodeModal',
+      template: '#new-code-modal-template',
+
+      props: {
+        showDialog: {
+          type: Boolean,
+          default: false,
+        }
+      },
+
+      emits: [
+        'cancel',
+        'confirm-input'
+      ],
+
+      setup: function (props, {emit}) {
+        const state = reactive({
+          programmingLanguage: 'python',
+          name: '',
+
+          programmingLanguages: [
+            {
+              value: 'python',
+              label: 'Python'
+            },
+            {
+              value: 'skulpt',
+              label: 'Python(海龟作图)'
+            },
+            {
+              value: 'ESP32',
+              label: 'ESP32(MicroPython)'
+            },
+            {
+              value: 'MicroBit',
+              label: 'MicroBit(MicroPython)'
+            },
+            {
+              value: 'K210',
+              label: 'K210(MicroPython)'
+            },
+            {
+              value: 'AiPage',
+              label: 'AiPage'
+            }
+          ]
+        })
+
+        const handleCancel = function () {
+          emit('cancel')
+        }
+
+        const handleConfirmInput = function () {
+          emit('confirm-input', {programmingLanguage: state.programmingLanguage, name: state.name})
+        }
+
+        return {
+          ...toRefs(state),
+          handleCancel,
+          handleConfirmInput
+        }
+      }
+    }
+  })
+</script>
+
+
+<script type="text/template" id="code-snippet-list-template">
+<div class="d-flex flex-column pb-2" style="height: 100%">
+  <div class="d-flex flex-row flex-grow-0 p-1">
+    <el-select-v2
+      v-model="programmingLanguageFilter"
+      :options="programmingLanguages"
+      @change="handleLanguageFilterChanged"
+      placeholder="代码类型"
+      style="width: 100%"
+      size="small"
+      class="me-1"/>
+
+    <el-tooltip
+      class="item"
+      effect="light"
+      content="新建文件"
+      placement="bottom-start">
+      <el-link @click="create"
+               class="ps-1 pe-1 me-1 shadow-1-soft bg-light"
+               size="small"
+               circle
+               type="primary"
+               v-if="enableCreate">
+        <svg class="icon" width="16" height="16" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"
+             data-v-042ca774="">
+          <path fill="currentColor"
+                d="M512 64h64v192h-64V64zm0 576h64v192h-64V640zM160 480v-64h192v64H160zm576 0v-64h192v64H736zM249.856 199.04l45.248-45.184L430.848 289.6 385.6 334.848 249.856 199.104zM657.152 606.4l45.248-45.248 135.744 135.744-45.248 45.248L657.152 606.4zM114.048 923.2L68.8 877.952l316.8-316.8 45.248 45.248-316.8 316.8zM702.4 334.848L657.152 289.6l135.744-135.744 45.248 45.248L702.4 334.848z"></path>
+        </svg>
+      </el-link>
+    </el-tooltip>
+  </div>
+
+  <div style="overflow-y: auto; height: 100%">
+    <el-table :data="codeSnippetList"
+              stripe
+              @row-click="rowClicked"
+              heigh="100%"
+              size="small"
+              id="code-snippet-list-table">
+      <el-table-column prop="name"
+                       class-name="code-name-column">
+        <template #default="scope">
+          <div class="d-flex flex-row justify-content-around text-black fs-6">
+            <span class="flex-grow-1">{{scope.row.name}}</span>
+            <span>
+              <el-link @click="rename($event, scope.row)" href="#" class="text-info me-1" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                     class="bi bi-pencil-square" viewBox="0 0 16 16">
+                  <path
+                    d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                  <path fill-rule="evenodd"
+                        d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                </svg>
+              </el-link>
+
+              <el-link @click="deleteCodeSnippet($event, scope.row)" href="#" class="text-danger" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash"
+                     viewBox="0 0 16 16">
+                  <path
+                    d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                  <path fill-rule="evenodd"
+                        d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                </svg>
+              </el-link>
+            </span>
+          </div>
+        </template>
+      </el-table-column>
+    </el-table>
+  </div>
+
+  <new-code-modal :showDialog="showNewCodeModal"
+                  @cancel="showNewCodeModal=false"
+                  @confirm-input="createNewCode"></new-code-modal>
+</div>
+</script>
+
+<script>
+  createVueComponent(Vue => {
+    const {toRefs, reactive, onMounted} = Vue
+    const {ElMessage, ElMessageBox} = ElementPlus
+
+    return {
+      name: 'CodeSnippetList',
+      template: '#code-snippet-list-template',
+
+      components: {
+        NewCodeModal,
+      },
+
+      props: {
+        specifiedProgrammingLanguage: {
+          default: '',
+          type: String,
+        },
+
+        enableCreate: {
+          default: true,
+          type: Boolean
+        }
+      },
+
+      emits: ['code-changed'],
+
+      setup: function (props, {emit}) {
+        const state = reactive({
+          codeSnippetList: null,
+          programmingLanguages: [
+            {
+              value: 'all',
+              label: '全部',
+            },
+            {
+              value: 'python',
+              label: 'Python',
+            },
+            {
+              value: 'skulpt',
+              label: 'Python(海龟)'
+            },
+            {
+              value: 'ESP32',
+              label: 'ESP32'
+            },
+            {
+              value: 'MicroBit',
+              label: 'MicroBit'
+            },
+            {
+              value: 'K210',
+              label: 'K210'
+            }
+          ],
+          programmingLanguageFilter: '',
+          showNewCodeModal: false
+        })
+
+        function loadData(filter) {
+          if (!filter)
+            filter = 'all'
+
+            state.codeSnippetList = codeSnippets.codeSnippets
+
+          // fetch('./codeSnippets.json')
+          //   .then(response => {
+          //     if (!response.ok) {
+          //       throw new Error('Network response was not ok');
+          //     }
+          //     return response.json();
+          //   })
+          //   .then(data => {
+          //     state.codeSnippetList = data.codeSnippets;
+          //   })
+          //   .catch(err => {
+          //     console.error('There was a problem with the fetch operation:', err);
+          //   });
+          
+          
+     
+        }
+
+        function showDateTime(date) {
+          return dc.util.showShortDatetime(date)
+        }
+
+        function rowClicked(row) {
+          emit('code-changed', row)
+        }
+
+        function create() {
+          state.showNewCodeModal = true
+        }
+
+        function reload(filter) {
+          loadData(state.programmingLanguageFilter)
+        }
+
+        function rename(evt, row) {
+          evt.preventDefault()
+
+          ElMessageBox.prompt('请输入新的小程序名称', '修改小程序名称', {
+            confirmButtonText: '修改',
+            cancelButtonText: '取消',
+            inputValue: row.name,
+          }).then(({value}) => {
+            axios.post('/codeSnippet/rename/' + row.id, null, {
+              params: {
+                name: value
+              }
+            }).then(resp => {
+              loadData(row.programmingLanguage)
+              ElMessage({
+                type: 'success',
+                message: '修改名称取消',
+              })
+            })
+          }).catch(() => {
+            ElMessage({
+              type: 'warnning',
+              message: '修改名称取消',
+            })
+          })
+
+          return false
+        }
+
+        function deleteCodeSnippet(evt, row) {
+          evt.preventDefault()
+          ElMessageBox.confirm(
+              '此操作会永久删除这个小程序，确定吗？',
+              '警告',
+              {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                type: 'warning',
+              }
+          ).then(() => {
+            axios.delete('/codeSnippet/delete/' + row.id).then(resp => {
+              reload()
+              ElMessage({
+                type: 'success',
+                message: '删除成功',
+              })
+            }).catch(err => {
+              console.log(err)
+              ElMessage({
+                type: 'error',
+                message: '删除失败',
+              })
+            })
+          }).catch(() => {
+            ElMessage({
+              type: 'info',
+              message: '取消删除',
+            })
+          })
+
+          return false
+        }
+
+        function createNewCode(data) {
+          axios.post('/codeSnippet/save', {
+            name: data.name,
+            programmingLanguage: data.programmingLanguage,
+            code: ''
+          }).then(resp => {
+            reload(state.programmingLanguageFilter)
+            state.showNewCodeModal = false
+
+            ElMessage({
+              type: 'success',
+              message: '小程序创建成功',
+            })
+          }).catch(err => {
+            console.log(err)
+          })
+        }
+
+        function handleLanguageFilterChanged() {
+          reload(state.programmingLanguageFilter)
+        }
+
+        onMounted(loadData)
+
+        return {
+          ...toRefs(state),
+
+          create,
+          createNewCode,
+          showDateTime,
+          rowClicked,
+          reload,
+          rename,
+          deleteCodeSnippet,
+          handleLanguageFilterChanged,
+        }
+      }
+    }
+  })
+</script>
+<style>
+.code-name-column {
+    cursor: pointer;
+}
+</style>
+
+<script src="../static/js/3rd/ace/ace.js" />
+<script src="../static/js/3rd/ace/keybinding-vim.js" />
+<script src="../static/js/3rd/ace/mode-python.js" />
+<script src="../static/js/3rd/ace/theme-github.js" />
+<script src="../static/js/3rd/ace/ResizeObserver.global.js" />
+<script src="../static/js/3rd/ace/ext-language_tools.js" />
+<script src="../static/js/3rd/ace/keybinding-vim.js" />
+<script src="../static/js/3rd/ace/keybinding-vscode.js" />
+
+
+<script src="../static/js/3rd/ace/ext-language_tools.js"></script>
+<script src="../static/js/3rd/ace/ext-statusbar.js"></script>
+
+<script type="text/x-template" id="code-editor-template">
+
+<div class="d-flex flex-column" style="height: 100%">
+  <div class="d-flex flex-row p-1 justify-content-around border-bottom border-1 border-primary">
+    <div class="d-flex flex-row justify-content-start">
+      <div class="text-dark me-2 d-flex flex-row align-items-center">
+        <div class="flex-grow-0">代码</div>
+      </div>
+
+      <div class="ms-2 me-2">
+        <slot name="opt-btns"></slot>
+      </div>
+
+      <div v-if="showToolbar">
+        <el-tooltip
+            class="item"
+            effect="light"
+            content="字体"
+            placement="top-start">
+          <el-select v-model="fontSize"
+                     @change="setFontSize"
+                     class=""
+                     style="width: 80px"
+                     size="small"
+                     placeholder="字号">
+            <el-option
+                v-for="item in fontSizes"
+                :key="item"
+                :label="item"
+                :value="item">
+            </el-option>
+          </el-select>
+        </el-tooltip>
+
+        <el-tooltip
+            class="item"
+            effect="light"
+            content="键盘设置"
+            placement="top-start">
+
+          <el-select v-model="currentKeyboardHandler"
+                     @change="handleKeyboardHandlerChanged"
+                     class=""
+                     style="width: 90px"
+                     size="small"
+                     placeholder="键盘设置">
+            <el-option
+                v-for="item in keyboardHandlers"
+                :key="item"
+                :label="item"
+                :value="item">
+            </el-option>
+          </el-select>
+        </el-tooltip>
+
+        <el-tooltip
+            class="item"
+            effect="light"
+            content="主题"
+            placement="top-start">
+
+          <el-select v-model="currentTheme"
+                     @change="handleThemeChanged"
+                     class=""
+                     style="width: 120px"
+                     size="small"
+                     placeholder="主题">
+            <el-option
+                v-for="item in themes"
+                :key="item"
+                :label="item"
+                :value="item">
+            </el-option>
+          </el-select>
+        </el-tooltip>
+      </div>
+    </div>
+
+    <div class="d-flex flex-row flex-grow-1">
+      {{name}}
+    </div>
+  </div>
+
+  <div id="editor_ace" class="editor" style="height: 100%;width: 100%;"></div>
+</div>
+
+</script>
+<script>
+  const events = [
+    'blur',
+    'input',
+    'change',
+    'changeSelectionStyle',
+    'changeSession',
+    'copy',
+    'focus',
+    'paste',
+  ];
+
+  createVueComponent((Vue) => {
+    const {capitalize, defineComponent, markRaw, h} = Vue;
+
+    return {
+      name: "CodeEditor",
+      template: "#code-editor-template",
+
+      props: {
+        value: {
+          type: String,
+          default: '',
+          required: true,
+        },
+
+        name: {
+          type: String,
+          default: '',
+          required: false
+        },
+
+        lang: {
+          type: String,
+          default: 'python',
+        },
+
+        theme: {
+          type: String,
+          default: 'github',
+        },
+
+        showToolbar: {
+          type: Boolean,
+          default: true
+        },
+
+        options: Object,
+        placeholder: String,
+        readonly: Boolean,
+        wrap: Boolean,
+        printMargin: {
+          type: [Boolean, Number],
+          default: true,
+        },
+        minLines: Number,
+        maxLines: Number,
+
+        keyboardHandler: {
+          type: String,
+          default: 'vscode'
+        },
+      },
+
+      emits: [
+        'update:value',
+        'init',
+        ...events
+      ],
+
+      data() {
+        return {
+          codeChanged: false,
+          fontSize: 16,
+          fontSizes: [12, 13, 14, 15, 16, 17, 18, 20, 24, 26, 30, 36, 40, 50, 64, 100],
+
+          keyboardHandlers: ['vscode', 'vim', 'emacs', 'sublime'],
+
+          themes: ['ambiance', 'chaos', 'chrome', 'clouds', 'clouds_midnight', 'cobalt', 'crimson_editor',
+            'dawn', 'dracula', 'dreamweaver', 'eclipse','github','gob','gruvbox', 'idle_fingers', 'iplastic',
+            'katzenmilch', 'kr_theme', 'kuroir',
+            "kr_theme", "kuroir", "merbivore", "merbivore_soft",
+            "mono_industrial", "monokai",
+            "nord_dark","one_dark", "pastel_on_dark","solarized_dark",
+            "solarized_light","sqlserver",
+            "terminal","textmate",
+            "tomorrow","tomorrow_night",
+            "tomorrow_night_blue","tomorrow_night_bright",
+            "tomorrow_night_eighties","twilight",
+          ],
+
+          currentKeyboardHandler: 'vscode',
+          currentTheme: 'github',
+        }
+      },
+
+      mounted() {
+        const editor = this._editor = markRaw(ace.edit("editor_ace", {
+          placeholder: this.placeholder,
+          readOnly: this.readonly,
+          value: this.value ? this.value : '',
+          mode: 'ace/mode/' + this.getLanguage(this.lang),
+          theme: 'ace/theme/' + this.theme,
+          keyboardHandler: 'ace/keyboard/' + this.keyboardHandler,
+          wrap: this.wrap,
+          printMargin: this.printMargin,
+          useWorker: false,
+          minLines: this.minLines,
+          maxLines: this.maxLines,
+          ...this.options,
+        }));
+
+        editor.setOptions({
+          enableBasicAutocompletion: true,
+          enableSnippets: true,
+          enableLiveAutocompletion: true,
+        })
+
+        this._editor.setFontSize(this.fontSize)
+        this._contentBackup = this.value
+        this._isSettingContent = false
+        editor.on('change', () => {
+          // ref: https://github.com/CarterLi/vue3-ace-editor/issues/11
+          if (this._isSettingContent)
+            return;
+          const content = editor.getValue();
+          this._contentBackup = content;
+          this.$emit('update:value', content);
+        });
+        events.forEach(x => {
+          const eventName = 'on' + capitalize(x);
+          if (typeof this.$.vnode.props[eventName] === 'function') {
+            editor.on(x, this.$emit.bind(this, x));
+          }
+        });
+        this._ro = new ResizeObserver(() => editor.resize());
+        this._ro.observe(document.querySelector("#editor_ace"));
+        this.$emit('init', editor);
+      },
+
+      beforeUnmount() {
+        var _a, _b;
+        (_a = this._ro) === null || _a === void 0 ? void 0 : _a.disconnect();
+        (_b = this._editor) === null || _b === void 0 ? void 0 : _b.destroy();
+      },
+
+      methods: {
+        focus() {
+          this._editor.focus();
+        },
+
+        blur() {
+          this._editor.blur();
+        },
+
+        selectAll() {
+          this._editor.selectAll();
+        },
+
+        setFontSize: function (value) {
+          this._editor.setFontSize(value)
+        },
+
+        handleKeyboardHandlerChanged(evt) {
+          this._editor.setKeyboardHandler('ace/keyboard/' + this.currentKeyboardHandler)
+        },
+
+        handleThemeChanged(evt) {
+          this._editor.setTheme('ace/theme/' + this.currentTheme)
+        },
+
+        getFontSize: function () {
+          this._editor.getFontSize()
+        },
+
+        getLanguage: function (val) {
+          if (val === null || val === '' || val === 'skulpt' || val === 'ESP32' || val === 'K210')
+            return 'python'
+
+          return val
+        }
+
+      },
+
+      watch: {
+        value(val) {
+          this.codeChanged = true
+          if (this._contentBackup !== val) {
+            try {
+              this._isSettingContent = true;
+              if (val !== null)
+                this._editor.setValue(val, 1);
+            } finally {
+              this._isSettingContent = false;
+            }
+            if (val !== null)
+              this._contentBackup = val;
+          }
+        },
+
+        theme(val) {
+          let lang = val
+          if (val === 'ESP32' || val === 'K210' || val === 'skulpt') {
+            lang = 'python'
+          }
+
+          this._editor.setTheme('ace/theme/' + lang);
+        },
+        options(val) {
+          this._editor.setOptions(val);
+        },
+        readonly(val) {
+          this._editor.setReadOnly(val);
+        },
+        placeholder(val) {
+          this._editor.setOption('placeholder', val);
+        },
+        wrap(val) {
+          this._editor.setWrapBehavioursEnabled(val);
+        },
+        printMargin(val) {
+          this._editor.setOption('printMargin', val);
+        },
+
+        lang(val) {
+          let lang = val
+          if (val === 'ESP32' || val === 'K210' || val === 'skulpt') {
+            lang = 'python'
+          }
+
+          this._editor.setOption('mode', 'ace/mode/' + lang);
+        },
+
+        minLines(val) {
+          this._editor.setOption('minLines', val);
+        },
+        maxLines(val) {
+          this._editor.setOption('maxLines', val);
+        },
+      }
+    }
+  });
+</script>
+<style>
+.editor-wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.editor-wrapper .editor {
+    flex-grow: 1;
+    height: 0;
+    padding: 8px 0;
+}
+
+</style>
+
+
+
+
+
+
+<script type="text/x-template" id="code-editor-lite-template">
+<div class="d-flex flex-column" style="height: 100%">
+  <div class="d-flex flex-row p-1 justify-content-around border-bottom border-1 border-primary" style="height: 100%">
+    <div :id="editorId" class="editor" style="height: 100%;width: 100%;"></div>
+  </div>
+</div>
+</script>
+
+<script>
+  createVueComponent((Vue) => {
+    const {capitalize, defineComponent, markRaw, h} = Vue;
+    const events = [
+      'blur',
+      'input',
+      'change',
+      'changeSelectionStyle',
+      'changeSession',
+      'copy',
+      'focus',
+      'paste',
+    ];
+    return {
+      name: "CodeEditorLite",
+      template: "#code-editor-lite-template",
+
+      props: {
+        editorId: {
+          type: String,
+          default: 'ace-editor',
+          required: true,
+        },
+
+        value: {
+          type: String,
+          default: '',
+          required: true,
+        },
+
+        name: {
+          type: String,
+          default: '',
+          required: false
+        },
+
+        lang: {
+          type: String,
+          default: 'python',
+        },
+
+        theme: {
+          type: String,
+          default: 'github',
+        },
+        options: Object,
+        placeholder: String,
+        readonly: Boolean,
+        wrap: Boolean,
+        printMargin: {
+          type: [Boolean, Number],
+          default: true,
+        },
+        minLines: Number,
+        maxLines: Number,
+      },
+
+      emits: [
+        'update:value',
+        'init',
+        ...events
+      ],
+
+      data() {
+        return {
+          codeChanged: false,
+          fontSize: 16,
+          fontSizes: [12, 13, 14, 15, 16, 17, 18, 20, 24, 26, 30, 36, 40, 50, 64, 100],
+        }
+      },
+
+      mounted() {
+        const editor = this._editor = markRaw(ace.edit(this.editorId, {
+          placeholder: this.placeholder,
+          readOnly: this.readonly,
+          value: this.value,
+          mode: 'ace/mode/' + this.getLanguage(this.lang),
+          theme: 'ace/theme/' + this.theme,
+          wrap: this.wrap,
+          printMargin: this.printMargin,
+          useWorker: false,
+          minLines: this.minLines,
+          maxLines: this.maxLines,
+          ...this.options,
+        }));
+
+        editor.setOptions({
+          enableBasicAutocompletion: true,
+          enableSnippets: true,
+          enableLiveAutocompletion: true,
+        })
+
+        this._editor.setFontSize(this.fontSize)
+        this._contentBackup = this.value
+        this._isSettingContent = false
+        editor.on('change', () => {
+          // ref: https://github.com/CarterLi/vue3-ace-editor/issues/11
+          if (this._isSettingContent)
+            return;
+          const content = editor.getValue();
+          this._contentBackup = content;
+          this.$emit('update:value', content);
+        });
+        events.forEach(x => {
+          const eventName = 'on' + capitalize(x);
+          if (typeof this.$.vnode.props[eventName] === 'function') {
+            editor.on(x, this.$emit.bind(this, x));
+          }
+        });
+        this._ro = new ResizeObserver(() => editor.resize());
+        this._ro.observe(document.querySelector('#' + this.editorId));
+        this.$emit('init', editor);
+      },
+
+      beforeUnmount() {
+        var _a, _b;
+        (_a = this._ro) === null || _a === void 0 ? void 0 : _a.disconnect();
+        (_b = this._editor) === null || _b === void 0 ? void 0 : _b.destroy();
+      },
+
+      methods: {
+        focus() {
+          this._editor.focus();
+        },
+
+        blur() {
+          this._editor.blur();
+        },
+
+        selectAll() {
+          this._editor.selectAll();
+        },
+
+        setFontSize: function (value) {
+          this._editor.setFontSize(value)
+        },
+
+        getFontSize: function () {
+          this._editor.getFontSize()
+        },
+
+        getLanguage: function (val) {
+          if (val === 'skulpt' || val === 'ESP32' || val === 'K210')
+            return 'python'
+
+          return val
+        }
+
+      },
+
+      watch: {
+        value(val) {
+          this.codeChanged = true
+          if (this._contentBackup !== val) {
+            try {
+              this._isSettingContent = true;
+              if (val !== null)
+                this._editor.setValue(val, 1);
+            } finally {
+              this._isSettingContent = false;
+            }
+            if (val !== null)
+              this._contentBackup = val;
+          }
+        },
+
+        theme(val) {
+          let lang = val
+          if (val === 'ESP32' || val === 'K210' || val === 'skulpt') {
+            lang = 'python'
+          }
+
+          this._editor.setTheme('ace/theme/' + lang);
+        },
+        options(val) {
+          this._editor.setOptions(val);
+        },
+        readonly(val) {
+          this._editor.setReadOnly(val);
+        },
+        placeholder(val) {
+          this._editor.setOption('placeholder', val);
+        },
+        wrap(val) {
+          this._editor.setWrapBehavioursEnabled(val);
+        },
+        printMargin(val) {
+          this._editor.setOption('printMargin', val);
+        },
+
+        lang(val) {
+          let lang = val
+          if (val === 'ESP32' || val === 'K210' || val === 'skulpt') {
+            lang = 'python'
+          }
+
+          this._editor.setOption('mode', 'ace/mode/' + lang);
+        },
+
+        minLines(val) {
+          this._editor.setOption('minLines', val);
+        },
+        maxLines(val) {
+          this._editor.setOption('maxLines', val);
+        },
+      }
+    }
+  });
+</script>
+<style>
+.editor-wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.editor-wrapper .editor {
+    flex-grow: 1;
+    height: 0;
+    padding: 8px 0;
+}
+
+</style>
+
+
+
+<script src="../static/js/3rd/element-plus-icons/@element-plus-icons@0.2.4.js"></script>
+
+<script type="text/template" id="dataframe-list-lite-template">
+<div class="d-flex flex-column">
+  <div class="d-flex flex-row g-2 mb-3">
+    <el-input v-model="nameFilter"
+              type="text"
+              placeholder="app.name.search"
+              class="me-2"
+              @change="loadData">
+      <template #prefix>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
+             viewBox="0 0 16 16">
+          <path
+              d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+        </svg>
+      </template>
+    </el-input>
+    <el-input v-model="tagFilter"
+              @change="loadData"
+              placeholder="app.tag.search">
+      <template #prefix>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
+             viewBox="0 0 16 16">
+          <path
+              d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+        </svg>
+      </template>
+    </el-input>
+  </div>
+  <el-table class="flex-grow-1"
+            ref="dataframeListTableRef"
+            :prefix-icon="searchIcon"
+            stripe
+            :data="dataframeList"
+            style="width: 100%"
+            @selection-change="handleSelectionChange"
+            :max-height="height">
+    <el-table-column type="selection" width="55"/>
+    <el-table-column
+        prop="name"
+        label="名称"
+        sortable>
+      <template #default="scope">
+        <div class="d-flex flex">
+          <div class="flex-grow-1">
+            <el-link :href="showUrl + '/' + scope.row.id"
+                     class="text-secondary font-weight-bold">
+              {{scope.row.name}}
+            </el-link>
+          </div>
+        </div>
+      </template>
+    </el-table-column>
+    <el-table-column
+        prop="tag"
+        label="标签"
+        width="200"
+        sortable>
+    </el-table-column>
+  </el-table>
+
+  <div class="d-flex flex-row justify-content-end mt-3">
+    <el-pagination background
+                   :page-size="length"
+                   layout="prev, pager, next"
+                   @current-change="pageChanged"
+                   @prev-click="pageChanged"
+                   @next-click="pageChanged"
+                   :total="total"/>
+  </div>
+</div>
+</script>
+
+<script>
+  createVueComponent(Vue => {
+    const {ref, reactive, toRefs, onMounted} = Vue
+    const {ElMessage, ElMessageBox} = ElementPlus
+    const {Search} = ElementPlusIconsVue
+
+    return {
+      name: 'DataFrameListLite',
+      template: '#dataframe-list-lite-template',
+
+      components: {
+        ElMessage,
+        ElMessageBox,
+      },
+
+      emits: [
+        'dataframe.selected'
+      ],
+
+      props: {
+        listUrl: {
+          type: String,
+          default: '/privateDataframe/list'
+        },
+
+        showUrl: {
+          type: String,
+          default: '/privateDataframe/show'
+        },
+
+        deleteUrl: {
+          type: String,
+          default: '/privateDataframe/delete'
+        },
+
+        hideApply: {
+          type: Boolean,
+          default: false
+        },
+
+        renameUrl: {
+          type: String,
+          default: '/privateDataframe/rename'
+        },
+
+        disableLink: {
+          type: Boolean,
+          default: true,
+        },
+
+        start: {
+          type: Number,
+          default: 0
+        },
+
+        length: {
+          type: Number,
+          default: 10
+        },
+
+        height: {
+          type: Number,
+          default: 480
+        },
+      },
+
+      setup: (props, {emit}) => {
+        dataframeListTableRef = ref(null)
+
+        const state = reactive({
+          searchIcon: Search,
+
+          dataframeList: [],
+
+          selectedDataframes: [],
+
+          nameFilter: '',
+          tagFilter: '',
+
+          start: 0,
+          length: 10,
+          total: 0,
+          sort: 'id',
+          order: 'desc',
+
+          pageNum: 1,
+          currentDataframe: {},
+        })
+
+        function loadData() {
+          axios.post(props.listUrl, {
+            filters: [
+              {
+                name: state.nameFilter
+              },
+              {
+                tag: state.tagFilter
+              }
+            ],
+            start: state.start,
+            length: state.length
+          }).then(resp => {
+            console.log(resp)
+            state.dataframeList = resp.data.dataFrameList
+            state.total = resp.data.total
+          })
+        }
+
+        function edit(dataframe) {
+          ElMessageBox.prompt(
+            '修改数据集名称',
+            '修改数据集名称',
+            {
+              cancelButtonText: '取消',
+              confirmButtonText: '修改',
+              type: "info"
+            }
+          ).then(data => {
+            axios.put(props.renameUrl, null, {
+              params: {
+                name: data.value
+              }
+            }).then(resp => {
+              ElMessage({
+                message: '修改名称成功',
+                type: 'success'
+              })
+
+              loadData()
+            })
+          }).catch(() => {
+            ElMessage({
+              message: '取消修改',
+              type: 'info'
+            })
+          })
+        }
+
+        function deleteDataframe(dataframe) {
+          axios.delete(props.deleteUrl + "/" + dataframe.id).then(resp => {
+            ElMessage({
+              message: '数据集删除',
+              type: "success",
+            })
+            loadData()
+          }).catch(err => {
+            ElMessage({
+              message: '数据集删除失败',
+              type: "danger",
+            })
+          })
+        }
+
+        function handleSelectionChange(rows) {
+          if (rows) {
+            state.selectedDataframes = rows
+            emit('dataframe-changed', state.selectedDataframes)
+          } else {
+            emit('dataframe-cleared')
+          }
+        }
+
+        function pageChanged(pageNum) {
+          state.start = 0
+          reCalccurrentStart(pageNum)
+          loadData()
+        }
+
+        function prevClicked(pageNum) {
+          reCalccurrentStart(pageNum)
+          loadData()
+        }
+
+        function nextClicked(pageNum) {
+          reCalccurrentStart(pageNum)
+          loadData()
+        }
+
+        function reCalccurrentStart(pageNum) {
+          state.start = state.start + state.length * (pageNum - 1)
+        }
+
+        onMounted(loadData)
+
+        return {
+          ...toRefs(state),
+          loadData,
+          edit,
+          deleteDataframe,
+          handleSelectionChange,
+          pageChanged,
+          prevClicked,
+          nextClicked,
+        }
+      }
+    }
+  })
+</script>
+
+<script type="text/template" id="code-dataframe-detail">
+<div class="d-flex flex-column">
+  <div class="d-flex flex-row justify-content-end m-1">
+    <el-button class="me-2" type="primary"
+               plain
+               circle
+               icon
+               @click="handleShowNewDataframeDialog">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg"
+           viewBox="0 0 16 16">
+        <path fill-rule="evenodd"
+              d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+      </svg>
+    </el-button>
+  </div>
+  <template v-if="!hasDataframe">
+    <div class="d-flex flex-row justify-content-center m-2">
+      app.no.dataframe
+    </div>
+  </template>
+  <el-tabs type="border-card" v-else>
+    <el-tab-pane :label="dataframe.name" v-for="dataframe in dataframeList">
+      <span>{{dataframe.name}}</span>
+    </el-tab-pane>
+  </el-tabs>
+</div>
+
+<el-dialog v-model="showNewDataframeDialog"
+           title="app.label.dataframe"
+           width="70%"
+           draggable>
+  <div>
+    <data-frame-list-lite :listUrl="listUrl"
+                          :disable-link="true"
+                          @dataframe-cleaned="handleDataframeCleaned">
+
+    </data-frame-list-lite>
+
+  </div>
+  <template #footer>
+    <span class="dialog-footer">
+      <el-button @click="showNewDataframeDialog=false">Cancel</el-button>
+      <el-button type="primary" @click="showNewDataframeDialog = false">Confirm</el-button>
+    </span>
+  </template>
+</el-dialog>
+</script>
+
+<script>
+  createVueComponent(Vue => {
+    const {ref, toRefs, reactive, computed} = Vue
+    return {
+      name: 'CodeSnippetDataframe',
+      template: "#code-dataframe-detail",
+
+      components: {
+        DataFrameListLite
+      },
+
+      setup(props, {emit}) {
+        const state = reactive({
+          showNewDataframeDialog: false,
+
+          listUrl: "/dataFrame/list",
+
+          dataframeList: [],
+          hasDataframe: computed(() => {
+            const val = state.dataframeList.length > 0
+            return val
+          })
+        })
+
+        function handleShowNewDataframeDialog() {
+          state.showNewDataframeDialog = true
+        }
+
+        function handleDataframeChanged(newDataframes) {
+          console.log(newDataframes)
+        }
+
+        function handleDataframeCleaned() {
+          console.log('here')
+        }
+
+        return {
+          ...toRefs(state),
+          handleShowNewDataframeDialog,
+          handleDataframeChanged,
+          handleDataframeCleaned,
+        }
+      }
+    }
+  })
+</script>
+<script type="text/javascript" src="../assets/vendor/skulpt/skulpt.min-a3c92b7d84b8ba49ffc5c18770dd51e9.js" ></script>
+<script type="text/javascript" src="../assets/vendor/skulpt/skulpt-stdlib-cc5895b5d079515d82123bc24970f43c.js" ></script>
+
+<script type="text/template" id="dataframe-grid-lite-template">
+<div class="d-flex flex-column" style="height: 100%">
+  <div class="d-flex flex-row flex-grow-0">
+    <el-button @click="save">存储到我的数据</el-button>
+  </div>
+
+  <div :id="componentId"
+       class="ag-theme-alpine flex-grow-1"
+       style="height: 100%;">
+  </div>
+</div>
+</script>
+
+<script>
+  createVueComponent(Vue => {
+    const {reactive, toRefs, ref, onMounted} = Vue
+
+    return {
+      name: 'DataframeGridLite',
+      template: '#dataframe-grid-lite-template',
+
+      props: {
+        componentId: {
+          type: String,
+          default: 'dataframe-grid-lite',
+        },
+
+        dataframe: {
+          type: Object,
+          default: {}
+        }
+      },
+
+      setup: function (props, context) {
+        const state = reactive({
+          tableDrawn: false,
+
+          gridOptions: {},
+          grid: null,
+        })
+
+        function initTable(headers, rowData) {
+          const gridDiv = document.querySelector('#' + props.componentId)
+          state.gridOptions = {
+            columnDefs: props.dataframe.headers,
+            rowData: props.dataframe.data,
+
+            // getRowId: param => param.data.id
+          };
+
+          grid = agGrid.createGrid(gridDiv, state.gridOptions);
+          state.tableDrawn = true
+        }
+
+        onMounted(initTable)
+
+        function save() {
+          const reverseMap = {}
+          props.dataframe.headers.forEach((item, idx) => {
+            reverseMap[item.field] = idx
+          })
+
+          const transformedData = props.dataframe.data.map(row => {
+            const keys = Object.keys(row)
+            const valueArray = new Array(keys.length)
+
+            keys.forEach(key => {
+              const index = reverseMap[key]
+              valueArray[index] = row[key]
+            })
+
+            return valueArray
+          })
+
+          const data = {
+            headers: props.dataframe.headers.map(item => {
+              return item.field
+            }),
+            data: transformedData,
+            name: props.dataframe.name
+          }
+
+          axios.post('/privateDataframe/save', data).then(resp => {
+          })
+        }
+
+        return {
+          ...toRefs(state),
+          initTable,
+
+          save
+        }
+      }
+    }
+  })
+</script>
+
+<script type="text/javascript" src="../assets/vendor/ag-grid/ag-grid-community.min.js" ></script>
+<link rel="stylesheet" href="../assets/vendor/ag-grid/ag-grid.css" />
+<link rel="stylesheet" href="../assets/vendor/ag-grid/ag-theme-alpine.css" />
+
+<script type="text/x-template" id="code-result-template">
+<div class="d-flex flex-column" :style="{height: '100%', fontSize: fontSize + 'px'}">
+  <div class="d-flex flex-row justify-content-between m-1 align-bottom">
+    <div class="fs-6 align-bottom d-flex flex-row align-items-center">
+      <span class="fw-bold text-info fw-bold" style="font-size: 12px;">执行结果</span>
+      <el-select class="ms-1" size="small" v-model="fontSize" placeholder="字号" style="width: 100px;">
+        <el-option
+            v-for="fs in fontSizes"
+            :key="fs"
+            :label="fs"
+            :value="fs"/>
+      </el-select>
+    </div>
+
+    <div class="opt-wrapper">
+      <el-button @click="clearConsole"
+                 size="small">
+        <svg class="icon" width="16" height="16" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"
+             data-v-365b8594=""><path fill="currentColor"
+                                      d="M160 256H96a32 32 0 010-64h256V95.936a32 32 0 0132-32h256a32 32 0 0132 32V192h256a32 32 0 110 64h-64v672a32 32 0 01-32 32H192a32 32 0 01-32-32V256zm448-64v-64H416v64h192zM224 896h576V256H224v640zm192-128a32 32 0 01-32-32V416a32 32 0 0164 0v320a32 32 0 01-32 32zm192 0a32 32 0 01-32-32V416a32 32 0 0164 0v320a32 32 0 01-32 32z"></path>
+        </svg>
+      </el-button>
+    </div>
+  </div>
+
+  <div class="run-code-result scroller flex-column" style="overflow: auto;">
+    <div style="margin-bottom: 8px;" v-for="item,index in codeOutputs" :key="index">
+      <div v-if="item.showTitle" class="line-header"><span
+          v-if="item.durationInMilliSeconds">消耗时间：{{item.durationInMilliSeconds}}ms，</span>执行结果：
+      </div>
+
+      <template v-if="item.stdout" v-for="rr,index in item.stdout">
+        <pre class="line-content" v-if="rr" :key="index" :style="{fontSize: fontSize+'px'}" v-html="rr"></pre>
+      </template>
+
+      <div class="line-content canvas-wrapper" v-if="item.canvasId" :id="item.canvasId"></div>
+
+      <div class="line-content" v-if="item.matplotlibOutput">
+        <img style="max-width: 600px" :src="item.matplotlibOutput"/>
+      </div>
+
+      <div class="line-content canvas-wrapper" v-if="item.canvasId" :id="item.canvasId"></div>
+
+      <div v-if="item.stderror">
+        <template v-if="item.stderror.errorClass">
+          <p class="line-error">{{item.stderror.errorClass}}: {{item.stderror.detail}}</p>
+
+          <p class="line-error">位置：行：{{item.stderror.lineNumber}},列：{{item.stderror.colNumber}}</p>
+        </template>
+        <template v-else>
+          <p class="line-error">{{item.stderror}}</p>
+        </template>
+      </div>
+
+      <div class="ms-3 me-1 card shadow shadow-1" v-for="dataframe, dataframeIdx in item.dataframeList"
+           style="height: 500px" v-if="item.dataframeList">
+        <div class="divider"/>
+
+        <div class="card-header">{{dataframe.name}} - {{index}} - {{dataframeIdx}}</div>
+        <dataframe-grid-lite class="d-flex flex-column"
+                             ref="'dataframeGridRef' + + index + '-' + dataframeIdx"
+                             :component-id="'dataframe-grid-' + index + '-' + dataframeIdx"
+                             :dataframe="dataframe">
+        </dataframe-grid-lite>
+      </div>
+    </div>
+  </div>
+</div>
+</script>
+<script>
+  createVueComponent((Vue) => {
+    return {
+      name: "CodeResult",
+      template: "#code-result-template",
+
+      components: {
+        DataframeGridLite,
+      },
+
+      props: {
+        codeOutput: {
+          type: Object,
+          default: null,
+        },
+
+        codeName: {
+          type: String,
+          default: "数据",
+          required: false
+        }
+      },
+
+      data: function () {
+        return {
+          defaultDataframe: {},
+
+          codeOutputs: [],
+          resultSave:{},
+
+          fontSize: 13,
+          fontSizes: [12, 13, 14, 15, 16, 17, 18, 20, 24, 26, 30, 36, 40, 50, 64, 100],
+        }
+      },
+
+      watch: {
+        codeOutput: {
+          handler(codeOutput, oldName) {
+            this.handlerCodeOutput(codeOutput)
+          },
+          deep: true,
+          immediate: true
+        }
+      },
+
+      methods: {
+        runSkulpt(code) {
+          const canvasId = Date.now().toString(10);
+          this.codeOutputs.push({canvasId, showTitle: true,})
+
+          Sk.configure({
+            output: (text) => {
+              this.codeOutputs.push({showTitle: false, stdout: text.split('\n')})
+            },
+            read: (x) => {
+              if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
+                throw "File not found: '" + x + "'";
+
+              (Sk.TurtleGraphics || (Sk.TurtleGraphics = {})).target = canvasId;
+              return Sk.builtinFiles["files"][x];
+            }
+          });
+
+          setTimeout(() => {
+            Sk.misceval.asyncToPromise(() => {
+              return Sk.importMainWithBody("<stdin>", false, code, true);
+            }).then((mod) => {
+                console.log('success');
+              },
+              (error) => {
+                console.log(error, "--err");
+                this.codeOutputs.push({showTitle: false, stderror: error.toString()})
+              }
+            );
+          })
+        },
+
+        // Function to process the string as described
+        processDciInput: function (input, dci) {
+          // Split the string by newline and keep the placeholders and text parts intact
+          const regex = /\n|(<\-dci_\d+\->)/;
+          const parts = input.split(regex).filter(part => part !== '' && part !== undefined);
+
+          // Transform the parts array by extracting placeholder identifier or keeping text as is
+          const result = parts.map(part => {
+            // Check if the part matches a placeholder pattern
+            const match = part.match(/<\-dci_(\d+)\->/);
+            if (match) {
+              // Return the placeholder identifier without angle brackets
+              const n = parseInt(match[1], 10);
+
+              if (n < dci.length) {
+                const img = dci[n].img;
+                return `<img src="data:image/jpg;base64,` + img + `"/>` // Replace the placeholder with the corresponding image (if it exists)
+              } else {
+                return ''; // If the placeholder doesn't exist, return the original string
+              }
+            } else {
+              // Return the text part as is
+              return part;
+            }
+          });
+
+          return result;
+        },
+
+        /**
+         * handle the output types
+         * @param codeOutput
+         */
+        handlerCodeOutput(codeOutput) {
+          if (codeOutput && codeOutput.execution) {
+            const {execution, resp} = codeOutput;
+            let result = ''
+            try {
+              result = JSON.parse(resp)
+            } catch (exception) {
+
+            }
+            const dataframesJsonList = result.data_output
+
+            const data = {
+              showTitle: true,
+              durationInMilliSeconds: execution.durationInMilliSeconds,
+            }
+
+            if (dataframesJsonList) {
+              data.dataframeList = dataframesJsonList.map((dataframeJsonStr, idx)=> {
+                let headers = []
+
+                const dataframeJson = JSON.parse(dataframeJsonStr)
+                headers = dataframeJson.schema.fields.map(col => {
+                  return {
+                    field: col.name,
+                    sortable: true,
+                  }
+                })
+                return {
+                  name: this.codeName,
+                  headers: headers,
+                  data: dataframeJson.data
+                }
+              })
+            }
+
+            data.stdout = result.stdout ? result.stdout.split('\n') : [];
+            let stdout = result.stdout ? result.stdout : '';
+
+            if (stdout.indexOf('<-dci_') !== -1) {
+              data.stdout = this.processDciInput(stdout, result.dci)
+            } else {
+              data.stdout = stdout.split('\n')
+            }
+
+            if (!result.success) {
+              const {detail, lineNumber, colNumber, errorClass} = result;
+              data.stderror = {
+                detail, lineNumber, colNumber, errorClass
+              }
+            }
+            this.codeOutputs.push(data)
+            this.resultSave = data
+          }
+        },
+        saveDataframeResult() {
+          axios.post('/privateDataFrame/save',
+            this.resultSave.toJSONString()).then(resp => {
+            console.log('success')
+          }).catch(err => {
+            console.error(err)
+          })
+        },
+
+        calcGridHeight: function (dataframe) {
+          if (dataframe.data.size() > 200) {
+            return "height: 400px"
+          } else {
+            return "height: 200px"
+          }
+        },
+
+        clearConsole: function () {
+          this.codeOutputs = [];
+          this.resultSave = {};
+        },
+      }
+    }
+  });
+</script>
+<style>
+
+</style>
+
+<script type="text/template" id="code-editor-toolbar-template">
+<div class="d-flex flex-row">
+  <el-tooltip
+      effect="light"
+      content="运行"
+      placement="bottom-start"
+    v-if="options.run" >
+    <el-button @click="runCode"
+               type="success"
+               size="small"
+               plain>
+      <svg class="icon" width="24" height="24" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"
+           data-v-365b8594=""><path fill="currentColor" d="M384 192v640l384-320.064z"></path></svg>
+    </el-button>
+  </el-tooltip>
+  <el-tooltip
+      effect="light"
+      content="保存"
+      placement="bottom-start"
+    v-if="options.save"
+  >
+    <el-button @click="toSaveCode"
+               type="primary"
+               plain>
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+           class="bi bi-save"
+           viewBox="0 0 16 16">
+        <path
+            d="M2 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9.5a1 1 0 0 0-1 1v7.293l2.646-2.647a.5.5 0 0 1 .708.708l-3.5 3.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L7.5 9.293V2a2 2 0 0 1 2-2H14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h2.5a.5.5 0 0 1 0 1H2z"/>
+      </svg>
+    </el-button>
+  </el-tooltip>
+
+
+
+
+</div>
+</script>
+
+<script>
+  createVueComponent(Vue => {
+    const {ref, refs, reactive} = Vue;
+
+    return {
+      name: 'CodeEditorToolbar',
+      template: '#code-editor-toolbar-template',
+
+      emit: [
+        'run-code',
+        'save-code',
+        'language-changed'
+      ],
+
+      components: {
+        LanguageOptions,
+      },
+
+      props: {
+        language: {
+          type: String,
+          default: ''
+        },
+
+        options: {
+          type: Object,
+          default: {
+            run: true,
+            save: false,
+          }
+        }
+      },
+
+      setup: function (props, {emit}) {
+        function runCode() {
+          emit('run-code')
+        }
+
+        function languageChanged() {
+          emit('language-changed')
+        }
+
+        function toSaveCode() {
+          emit('save-code')
+        }
+
+        function create() {
+          emit('create')
+        }
+
+        function createProject() {
+          emit('create-project')
+        }
+
+        return {
+          runCode,
+          toSaveCode,
+          languageChanged,
+          create,
+          createProject,
+        }
+      }
+    }
+  })
+</script>
+
+<script src="../static/js/3rd/element-plus-icons/@element-plus-icons@0.2.4.js"></script>
+
+<script type="text/template" id="dataframe-list-lite-template">
+<div class="d-flex flex-column">
+  <div class="d-flex flex-row g-2 mb-3">
+    <el-input v-model="nameFilter"
+              type="text"
+              placeholder="app.name.search"
+              class="me-2"
+              @change="loadData">
+      <template #prefix>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
+             viewBox="0 0 16 16">
+          <path
+              d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+        </svg>
+      </template>
+    </el-input>
+    <el-input v-model="tagFilter"
+              @change="loadData"
+              placeholder="app.tag.search">
+      <template #prefix>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
+             viewBox="0 0 16 16">
+          <path
+              d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+        </svg>
+      </template>
+    </el-input>
+  </div>
+  <el-table class="flex-grow-1"
+            ref="dataframeListTableRef"
+            :prefix-icon="searchIcon"
+            stripe
+            :data="dataframeList"
+            style="width: 100%"
+            @selection-change="handleSelectionChange"
+            :max-height="height">
+    <el-table-column type="selection" width="55"/>
+    <el-table-column
+        prop="name"
+        label="名称"
+        sortable>
+      <template #default="scope">
+        <div class="d-flex flex">
+          <div class="flex-grow-1">
+            <el-link :href="showUrl + '/' + scope.row.id"
+                     class="text-secondary font-weight-bold">
+              {{scope.row.name}}
+            </el-link>
+          </div>
+        </div>
+      </template>
+    </el-table-column>
+    <el-table-column
+        prop="tag"
+        label="标签"
+        width="200"
+        sortable>
+    </el-table-column>
+  </el-table>
+
+  <div class="d-flex flex-row justify-content-end mt-3">
+    <el-pagination background
+                   :page-size="length"
+                   layout="prev, pager, next"
+                   @current-change="pageChanged"
+                   @prev-click="pageChanged"
+                   @next-click="pageChanged"
+                   :total="total"/>
+  </div>
+</div>
+</script>
+
+<script>
+  createVueComponent(Vue => {
+    const {ref, reactive, toRefs, onMounted} = Vue
+    const {ElMessage, ElMessageBox} = ElementPlus
+    const {Search} = ElementPlusIconsVue
+
+    return {
+      name: 'DataFrameListLite',
+      template: '#dataframe-list-lite-template',
+
+      components: {
+        ElMessage,
+        ElMessageBox,
+      },
+
+      emits: [
+        'dataframe.selected'
+      ],
+
+      props: {
+        listUrl: {
+          type: String,
+          default: '/privateDataframe/list'
+        },
+
+        showUrl: {
+          type: String,
+          default: '/privateDataframe/show'
+        },
+
+        deleteUrl: {
+          type: String,
+          default: '/privateDataframe/delete'
+        },
+
+        hideApply: {
+          type: Boolean,
+          default: false
+        },
+
+        renameUrl: {
+          type: String,
+          default: '/privateDataframe/rename'
+        },
+
+        disableLink: {
+          type: Boolean,
+          default: true,
+        },
+
+        start: {
+          type: Number,
+          default: 0
+        },
+
+        length: {
+          type: Number,
+          default: 10
+        },
+
+        height: {
+          type: Number,
+          default: 480
+        },
+      },
+
+      setup: (props, {emit}) => {
+        dataframeListTableRef = ref(null)
+
+        const state = reactive({
+          searchIcon: Search,
+
+          dataframeList: [],
+
+          selectedDataframes: [],
+
+          nameFilter: '',
+          tagFilter: '',
+
+          start: 0,
+          length: 10,
+          total: 0,
+          sort: 'id',
+          order: 'desc',
+
+          pageNum: 1,
+          currentDataframe: {},
+        })
+
+        function loadData() {
+          axios.post(props.listUrl, {
+            filters: [
+              {
+                name: state.nameFilter
+              },
+              {
+                tag: state.tagFilter
+              }
+            ],
+            start: state.start,
+            length: state.length
+          }).then(resp => {
+            console.log(resp)
+            state.dataframeList = resp.data.dataFrameList
+            state.total = resp.data.total
+          })
+        }
+
+        function edit(dataframe) {
+          ElMessageBox.prompt(
+            '修改数据集名称',
+            '修改数据集名称',
+            {
+              cancelButtonText: '取消',
+              confirmButtonText: '修改',
+              type: "info"
+            }
+          ).then(data => {
+            axios.put(props.renameUrl, null, {
+              params: {
+                name: data.value
+              }
+            }).then(resp => {
+              ElMessage({
+                message: '修改名称成功',
+                type: 'success'
+              })
+
+              loadData()
+            })
+          }).catch(() => {
+            ElMessage({
+              message: '取消修改',
+              type: 'info'
+            })
+          })
+        }
+
+        function deleteDataframe(dataframe) {
+          axios.delete(props.deleteUrl + "/" + dataframe.id).then(resp => {
+            ElMessage({
+              message: '数据集删除',
+              type: "success",
+            })
+            loadData()
+          }).catch(err => {
+            ElMessage({
+              message: '数据集删除失败',
+              type: "danger",
+            })
+          })
+        }
+
+        function handleSelectionChange(rows) {
+          if (rows) {
+            state.selectedDataframes = rows
+            emit('dataframe-changed', state.selectedDataframes)
+          } else {
+            emit('dataframe-cleared')
+          }
+        }
+
+        function pageChanged(pageNum) {
+          state.start = 0
+          reCalccurrentStart(pageNum)
+          loadData()
+        }
+
+        function prevClicked(pageNum) {
+          reCalccurrentStart(pageNum)
+          loadData()
+        }
+
+        function nextClicked(pageNum) {
+          reCalccurrentStart(pageNum)
+          loadData()
+        }
+
+        function reCalccurrentStart(pageNum) {
+          state.start = state.start + state.length * (pageNum - 1)
+        }
+
+        onMounted(loadData)
+
+        return {
+          ...toRefs(state),
+          loadData,
+          edit,
+          deleteDataframe,
+          handleSelectionChange,
+          pageChanged,
+          prevClicked,
+          nextClicked,
+        }
+      }
+    }
+  })
+</script>
+
+<script src="../static/js/3rd/skulpt/skulpt.js"></script>
+<script src="../static/js/3rd/skulpt/skulpt-stdlib.js"></script>
+
+<template type="text/template" id="code-editor-with-result-template">
+<splitpanes horizontal>
+  <pane min-size="20" size="60">
+    <splitpanes v-if="scientificMode">
+      <pane size="70" style="width: 100%">
+        <code-editor ref="refCodeEditor"
+                     :lang="codeObject.programmingLanguage"
+                     lang="python"
+                     @update:value="updateCode"
+                     @name="codeObject.name"
+                     :readOnly="codeObject.readOnly"
+                     :value="codeObject.code ? codeObject.code : ''"
+          style="width: 100%"
+        >
+          <template v-slot:opt-btns>
+            <code-editor-toolbar
+                @new-project="newProject"
+                @new-code="newCode"
+                @run-code="runCode"
+                @save-code="saveCode"
+                disabled="true"
+                language="python"
+                :language="codeObject.programmingLanguage"
+            >
+
+            </code-editor-toolbar>
+          </template>
+        </code-editor>
+      </pane>
+      <pane>
+        <slot name="code-dataframe">
+        </slot>
+      </pane>
+    </splitpanes>
+    <code-editor ref="refCodeEditor"
+                 :lang="codeObject.programmingLanguage"
+                 @update:value="updateCode"
+                 @name="codeObject.name"
+                 :readOnly="codeObject.readOnly"
+                 :value="codeObject.code ? codeObject.code : ''"
+                 v-else>
+      <template v-slot:opt-btns>
+        <code-editor-toolbar
+            @new-project="newProject"
+            @new-code="newCode"
+            @run-code="runCode"
+            @save-code="saveCode"
+            :language="codeObject.programmingLanguage"></code-editor-toolbar>
+      </template>
+    </code-editor>
+  </pane>
+  <pane>
+    <code-result ref="refCodeResult"
+                 :code-name="codeObject.name"
+                 :code-output="codeOutput">
+    </code-result>
+  </pane>
+</splitpanes>
+</template>
+
+<script>
+  createVueComponent(Vue => {
+      const {reactive, toRefs, ref, emit, watch, computed} = Vue
+      const {ElMessageBox, ElMessage} = ElementPlus;
+      const {Splitpanes, Pane} = splitpanes
+
+      return {
+        name: 'CodeEditorWithResult',
+        template: '#code-editor-with-result-template',
+
+        components: {
+          CodeEditor,
+          CodeResult,
+          CodeEditorToolbar,
+          Splitpanes,
+          Pane,
+          LanguageOptions,
+          DataFrameListLite,
+          ElMessage,
+          ElMessageBox,
+        },
+
+        props: {
+          codeObject: {
+            type: Object,
+            default: {
+              programmingLanguage: 'python'
+            }
+          },
+
+          source: {
+            type: String,
+            default: ''
+          },
+
+          scientificMode: {
+            type: Boolean,
+            default: false
+          }
+        },
+
+        emits: [
+          'new-code',
+          'new-project',
+          'run-code',
+          'save-code',
+          'language-changed',
+          'code-changed',
+        ],
+
+        setup: function (props, {emit, slots}) {
+          const refCodeResult = ref(null)
+          const {codeObject} = toRefs(props)
+
+          const state = reactive({
+            codeOutput: {},
+            codeChanged: false,
+
+            scientificMode: computed({
+              get() {
+                return !!slots['code-dataframe']
+              },
+            })
+          })
+
+          const updateCode = function (content) {
+            emit('code-changed', content)
+            state.codeChanged = true
+          }
+
+          const runCode = function () {
+            let programmingLanguage = props.codeObject.programmingLanguage
+
+            if (!programmingLanguage)
+              programmingLanguage = 'python'
+
+            switch (programmingLanguage) {
+              case 'python':
+                runPython()
+                break
+              case 'skulpt':
+                refCodeResult.value.runSkulpt(props.codeObject.code)
+                break
+            }
+          }
+
+          watch(codeObject, (val) => {
+          })
+
+          function clearConsole() {
+            refCodeResult.value.clearConsole()
+          }
+
+          function showDataframeList() {
+            return !!slots['dataframe-list']
+          }
+
+          const runPython = function () {
+            axios.post('/python/executePython', {
+              code: props.codeObject.code,
+              programmingLanguage: props.codeObject.language,
+              feature: codeObject.language,
+              sourceId: codeObject.id,
+              source: props.source
+            }).then((resp) => {
+              state.codeOutput = resp.data
+            }).catch(err => {
+              ElMessage({
+                showClose: true,
+                type: 'error',
+                message: '代码执行失败'
+              })
+            })
+          }
+
+          const saveCode = function () {
+            emit('save-code')
+          }
+
+          const newCode = function () {
+            emit('new-code')
+          }
+
+          const newProject = function () {
+            emit('new-project')
+          }
+
+          return {
+            ...toRefs(state),
+
+            updateCode,
+            runCode,
+            saveCode,
+            runPython,
+            refCodeResult,
+            newCode,
+            newProject,
+            clearConsole
+          }
+        }
+      }
+    }
+  )
+</script>
+
+<script type="text/javascript" src="../assets/comm_vendor/blockly/blockly_compressed-83d0f1f1e0daa0e77b94adbb3724aa37.js" ></script>
+<script type="text/javascript" src="../assets/comm_vendor/blockly/blocks_compressed-77406cdc9810e0b10d35faee46a01c2b.js" ></script>
+<script type="text/javascript" src="../assets/comm_vendor/blockly/python_compressed-afc170be1fa40b10cbc984f6ad53734e.js" ></script>
+<script type="text/javascript" src="../assets/comm_vendor/blockly/msg/js/zh-hans-2d6802d1460a4d4b0f0e3d2c61d0f299.js" ></script>
+<script type="text/javascript" src="../assets/comm_vendor/blockly/prettify_compiled-c53ea58afd854ad90dcb0518573e7312.js" ></script>
+<script type="text/javascript" src="../assets/comm_vendor/blockly/acorn_interpreter-a0216936d16959af72a5a78cd2770624.js" ></script>
+
+<script type="text/javascript" src="../assets/comm_app/util/blockly_util-74da6872d6b4295372da0f82faeaabf2.js" ></script>
+
+<script type="text/javascript" src="../assets/comm_app/util/microbit_blockly_util-995bb0f3e2d18d0ce542e49b6f011ff7.js" ></script>
+
+<script type="text/x-template" id="blockly-editor-template">
+<div :id="'blockly-area-' + editorId" class="d-flex flex-column" style="height: 100%">
+  <div class="d-flex flex-grow-0 flex-row p-1 justify-content-end">
+    <el-tooltip class="box-item"
+                effect="light"
+                content="覆盖代码"
+                placement="top-start">
+      <el-button type="warning"
+                 plain
+                 class=""
+                 @click="handleOverrideCode">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+             class="bi bi-check-square-fill" viewBox="0 0 16 16">
+          <path
+              d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm10.03 4.97a.75.75 0 0 1 .011 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.75.75 0 0 1 1.08-.022z"/>
+        </svg>
+      </el-button>
+    </el-tooltip>
+
+    <el-tooltip class="box-item"
+                effect="light"
+                content="扩展代码"
+                placement="top-start">
+      <el-button type="primary"
+                 plain
+                 class=""
+                 @click="handleExtendCode">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrows-expand"
+             viewBox="0 0 16 16">
+          <path fill-rule="evenodd"
+                d="M1 8a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 8zM7.646.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 1.707V5.5a.5.5 0 0 1-1 0V1.707L6.354 2.854a.5.5 0 1 1-.708-.708l2-2zM8 10a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 0 1 .708-.708L7.5 14.293V10.5A.5.5 0 0 1 8 10z"/>
+        </svg>
+      </el-button>
+    </el-tooltip>
+
+    <el-tooltip class="box-item"
+                effect="light"
+                content="保存"
+                placement="top-start">
+      <el-button type="success"
+                 plain
+                 class=""
+                 @click="handleSaveBlockly">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-down"
+             viewBox="0 0 16 16">
+          <path fill-rule="evenodd"
+                d="M3.5 10a.5.5 0 0 1-.5-.5v-8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 0 0 1h2A1.5 1.5 0 0 0 14 9.5v-8A1.5 1.5 0 0 0 12.5 0h-9A1.5 1.5 0 0 0 2 1.5v8A1.5 1.5 0 0 0 3.5 11h2a.5.5 0 0 0 0-1h-2z"/>
+          <path fill-rule="evenodd"
+                d="M7.646 15.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 14.293V5.5a.5.5 0 0 0-1 0v8.793l-2.146-2.147a.5.5 0 0 0-.708.708l3 3z"/>
+        </svg>
+      </el-button>
+    </el-tooltip>
+
+    <el-tooltip class="box-item"
+                effect="light"
+                content="加载"
+                placement="top-start">
+      <el-button type="success"
+                 plain
+                 class=""
+                 @click="handleLoadBlockly">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-upload"
+             viewBox="0 0 16 16">
+          <path
+              d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+          <path
+              d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z"/>
+        </svg>
+      </el-button>
+    </el-tooltip>
+
+    <el-tooltip class="box-item"
+                effect="light"
+                content="清空"
+                placement="top-start">
+      <el-button type="warning"
+                 plain
+                 class=""
+                 @click="handleClearWorkspace">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-recycle"
+             viewBox="0 0 16 16">
+          <path
+              d="M9.302 1.256a1.5 1.5 0 0 0-2.604 0l-1.704 2.98a.5.5 0 0 0 .869.497l1.703-2.981a.5.5 0 0 1 .868 0l2.54 4.444-1.256-.337a.5.5 0 1 0-.26.966l2.415.647a.5.5 0 0 0 .613-.353l.647-2.415a.5.5 0 1 0-.966-.259l-.333 1.242-2.532-4.431zM2.973 7.773l-1.255.337a.5.5 0 1 1-.26-.966l2.416-.647a.5.5 0 0 1 .612.353l.647 2.415a.5.5 0 0 1-.966.259l-.333-1.242-2.545 4.454a.5.5 0 0 0 .434.748H5a.5.5 0 0 1 0 1H1.723A1.5 1.5 0 0 1 .421 12.24l2.552-4.467zm10.89 1.463a.5.5 0 1 0-.868.496l1.716 3.004a.5.5 0 0 1-.434.748h-5.57l.647-.646a.5.5 0 1 0-.708-.707l-1.5 1.5a.498.498 0 0 0 0 .707l1.5 1.5a.5.5 0 1 0 .708-.707l-.647-.647h5.57a1.5 1.5 0 0 0 1.302-2.244l-1.716-3.004z"/>
+        </svg>
+      </el-button>
+    </el-tooltip>
+  </div>
+
+  <div :id="editorId"
+       class="d-flex flex-row align-content-center flex-grow-1"
+       style="height: 100%; width: 100%">
+    <div :id="blocklyDivId" class="flex-grow-1" style="height: 100%"></div>
+  </div>
+</div>
+</script>
+<script>
+  createVueComponent(Vue => {
+    const {computed, reactive, ref, refs, toRefs, watch, onMounted} = Vue;
+    const {ElMessageBox, ElMessage} = ElementPlus
+
+    return {
+      name: 'BlocklyEditor',
+      template: '#blockly-editor-template',
+
+      emits: [
+        'generate-code-override',
+        'generate-code-extend',
+      ],
+
+      props: {
+        codeObject: {
+          type: Object,
+          default: {
+            id: null,
+            programmingLanguage: 'ESP32'
+          },
+        },
+
+        editorId: {
+          type: String,
+          default: "blockly-editor"
+        }
+      },
+
+      setup: function (props, {emit}) {
+        const {codeObject} = toRefs(props)
+
+        const state = reactive({
+          workspace: {},
+          xmlContent: '',
+          currentCode: '',
+          blocklyContent: '',
+        })
+
+        //blockly.util.blocklyInit()
+        // microbit_blockly.util.blocklyInit()
+
+        function initBlockly() {
+          var toolBoxJson
+          if (props.codeObject.programmingLanguage == "ESP32") {
+            blockly.util.blocklyInit()
+            toolBoxJson = blockly.util.defaultToolboxJson
+          } else {
+            microbit_blockly.util.blocklyInit()
+            toolBoxJson = microbit_blockly.util.defaultToolboxJson
+          }
+
+          state.workspace = Blockly.inject(blocklyDivId.value, {
+            media: 'https://www.tzspace.cn../assets/media/',
+            renderer: 'thrasos',
+            grid: {
+              spacing: 20,
+              length: 3,
+              colour: '#ccc',
+              snap: true
+            },
+            zoom: {
+              controls: true,
+              wheel: true,
+              startScale: 1.0,
+              maxScale: 3,
+              minScale: 0.3,
+              scaleSpeed: 1.2,
+              pinch: true
+            },
+            trashcan: true,
+            // toolbox: blockly.util.getXmlToolbox(),
+            toolbox: toolBoxJson
+          });
+
+          const resizeObserver = new ResizeObserver(entries => {
+            for (let entry of entries) {
+              onResize()
+            }
+          })
+
+          const blocklyDiv = document.getElementById(blocklyDivId.value);
+          resizeObserver.observe(blocklyDiv)
+
+          function handleWorkspaceChanged(event) {
+            try {
+              state.currentCode = Blockly.Python.workspaceToCode(state.workspace);
+              //console.log("bbbbbbbb")
+            } catch (e) {
+            }
+          }
+
+          if (props.codeObject && props.codeObject.blocklyContent) {
+            state.blocklyContent = props.codeObject.blocklyContent
+            showBlocklyContent()
+          }
+          state.workspace.addChangeListener(handleWorkspaceChanged);
+        }
+
+        function onResize() {
+          const blocklyArea = document.querySelector('#blockly-area-' + props.editorId);
+          const blocklyDiv = document.querySelector('#' + blocklyDivId.value);
+
+          // Compute the absolute coordinates and dimensions of blocklyArea.
+          let element = blocklyArea;
+          if (element) {
+            let x = 0;
+            let y = 0;
+            do {
+              x += element.offsetLeft;
+              y += element.offsetTop;
+              element = element.offsetParent;
+            } while (element);
+            // Position blocklyDiv over blocklyArea.
+            blocklyDiv.style.left = x + 'px';
+            blocklyDiv.style.top = y + 'px';
+            blocklyDiv.style.width = blocklyArea.offsetWidth + 'px';
+            blocklyDiv.style.height = blocklyArea.offsetHeight + 'px';
+            Blockly.svgResize(state.workspace);
+          }
+        }
+
+        function doResize() {
+          onResize()
+        }
+
+        function handleOverrideCode() {
+          emit('generate-code-override', state.currentCode)
+        }
+
+        function handleExtendCode() {
+          emit('generate-code-extend', state.currentCode)
+        }
+
+        function handleSaveBlockly() {
+
+          const xml = Blockly.Xml.workspaceToDom(state.workspace);
+          const xml_text = Blockly.Xml.domToText(xml);
+          state.blocklyContent = xml_text
+          const blocklyContent = encodeURIComponent(xml_text)
+          if (props.codeObject && props.codeObject.id) {
+            ElMessageBox.confirm(
+              '本操作将覆盖数据库中已有可视化程序, 请确认',
+              '确认操作',
+              {
+                confirmButtonText: '确认',
+                cancelButtonText: '取消',
+                type: 'warning',
+              }
+            ).then(() => {
+              axios.post('/codeSnippet/updateBlockly/' + props.codeObject.id, {content: blocklyContent}).then(resp => {
+                ElMessage({
+                  type: 'success',
+                  message: '保存成功',
+                })
+              }).catch(err => {
+                console.error(err)
+              })
+            }).catch(err => {
+              ElMessage({
+                type: 'info',
+                message: '取消操作',
+              })
+            })
+          }
+        }
+
+        function getUrlLanguage() {
+          const val = location.search.match(new RegExp('[?&]lang=([^&]+)'));
+          let language = val ? decodeURIComponent(val[1].replace(/\+/g, '%20')) : '';
+          if (['en', 'zh-hant', 'zh-hans'].indexOf(language) < 0)
+            return 'zh-hant';
+          return language;
+        }
+
+        function injectLanguageJsSources(langKey) {
+          const head = document.getElementsByTagName('head')[0];
+
+          // Retrieve and inject Ardublockly translations synchronously
+          const appLangJsLoad = document.createElement('script');
+          const request = createAjaxRequest();
+          const appLangJdPath = `msg/.js`;
+          try {
+            request.open('GET', appLangJdPath, false);
+            request.send('');
+            appLangJsLoad.text = request.responseText;
+          } catch (e) {
+            // But still asynchronous lazy load so at least some text gets translated
+            appLangJsLoad.src = appLangJdPath;
+          }
+          head.appendChild(appLangJsLoad);
+
+          // Retrieve and inject Blockly translations asynchronously
+          const blocklyLangJsLoad = document.createElement('script');
+          blocklyLangJsLoad.src = `blockly/msg/js/.js`;
+          head.appendChild(blocklyLangJsLoad);
+        }
+
+        function handleLoadBlockly() {
+          ElMessageBox.confirm(
+            '本操作将加载数据库中已有可视化程序, 请确认',
+            '确认操作',
+            {
+              confirmButtonText: '确认',
+              cancelButtonText: '取消',
+              type: 'warning',
+            }
+          ).then(() => {
+            axios.post('/codeSnippet/getBlocklyContent/' + props.codeObject.id).then(resp => {
+              const xml_text = resp.data.blocklyContent
+              const xml = Blockly.Xml.textToDom(decodeURIComponent(xml_text));
+              state.workspace.clear()
+              Blockly.Xml.domToWorkspace(xml, Blockly.mainWorkspace);
+            }).catch(err => {
+              console.error(err)
+            })
+          }).catch(err => {
+            ElMessage({
+              type: 'info',
+              message: '取消操作',
+            })
+          })
+          showBlocklyContent()
+        }
+
+        function handleClearWorkspace() {
+          state.workspace.clear()
+        }
+
+        function showBlocklyContent() {
+          try {
+            if (state.blocklyContent) {
+              var xml = Blockly.Xml.textToDom(decodeURIComponent(state.blocklyContent));
+              state.workspace.clear()
+              Blockly.Xml.domToWorkspace(xml, Blockly.mainWorkspace);
+
+            } else {
+              state.workspace.clear()
+            }
+          } catch (e) {
+            console.error(e)
+          }
+        }
+
+        onMounted(init)
+
+        watch(
+          () => props.codeObject.programmingLanguage,
+          (newVal, oldVal) => {
+            init()
+          }
+        )
+        watch(()=>props.codeObject.id,
+                (newVal,oldVal)=>{
+                    if(Blockly.selected){
+                      Blockly.selected.unselect();
+                    }
+                    state.blocklyContent = props.codeObject.blocklyContent
+
+            axios.post('/codeSnippet/getBlocklyContent/' + props.codeObject.id).then(resp => {
+
+              var xml_text = resp.data.blocklyContent
+
+              if (xml_text != null) {
+                var xml = Blockly.Xml.textToDom(decodeURIComponent(xml_text));
+                state.workspace.clear()
+                Blockly.mainWorkspace.clear();
+                Blockly.Xml.domToWorkspace(xml, Blockly.mainWorkspace);
+              } else {
+                handleClearWorkspace()
+                Blockly.mainWorkspace.clear();
+              }
+
+            }).catch(err => {
+              console.error(err)
+            })
+          }
+        )
+
+
+        function init() {
+
+          initBlockly()
+
+          // initAIBlockly()
+        }
+
+        const blocklyDivId = computed(() => {
+          return 'blockly-div-' + props.editorId
+        })
+
+        return {
+          ...toRefs(state),
+          init,
+          doResize,
+          codeObject,
+          blocklyDivId,
+          handleOverrideCode,
+          handleExtendCode,
+          handleSaveBlockly,
+          handleLoadBlockly,
+          handleClearWorkspace,
+        }
+      }
+    }
+  })
+</script>
+<style scoped>
+/* Makes our label white. */
+.blocklyTreeLabel {
+    color: white;
+}
+
+/* Adds padding around the group of categories and separators. */
+.blocklyToolboxContents {
+    /*padding: .5em;*/
+}
+
+/* Adds space between the categories, rounds the corners and adds space around the label. */
+.blocklyTreeRow {
+    height: 30px;
+    line-height: 30px;
+    padding: 1px;
+    padding-bottom: 2px;
+    border-radius: 4px;
+}
+
+.blocklyToolboxDiv {
+    background-color: palevioletred;
+}
+
+.blocklyTreeIcon {
+    color: ghostwhite;
+}
+
+.blocklySvg {
+    width: 100%;
+}
+</style>
+
+<script type="text/javascript" src="../assets/comm_vendor/xterm/xterm-7fe518569772e520c0db49d41895a7a8.js" ></script>
+<script type="text/javascript" src="../assets/comm_vendor/xterm/xterm-theme-2487ffca3fd887e0649a8d6011d5e42b.js" ></script>
+<link rel="stylesheet" href="../assets/comm_vendor/xterm/xterm-4ed24dd060b608273cfa6a90f0a0ad09.css" />
+<script type="text/javascript" src="../assets/comm_app/util/micro_python_util-83902653b905453c8c60ce6c2f26607c.js" ></script>
+
+<script type="text/template" id="device-file-list-template">
+<div class="border border-info border-end-0">
+  <el-tree default-expand-all
+           class=""
+           @node-click="handleFileClicked"
+           :data="theTreeData"
+           :props="defaultProps">
+    <template #default="{ node, data }">
+    </template>
+  </el-tree>
+</div>
+</script>
+<script>
+  createVueComponent(Vue => {
+    const {ref, toRefs, reactive, watch} = Vue
+    const {ElMessageBox, ElMessage} = ElementPlus
+
+    return {
+      name: 'DeviceFileList',
+      template: '#device-file-list-template',
+
+      props: {
+        fileList: {
+          default: []
+        }
+      },
+
+      emits: [
+        'read-device-file'
+      ],
+
+      components: {
+        ElMessageBox,
+        ElMessage
+      },
+
+      setup: function (props, {emit}) {
+        const fileListRef = toRefs(props).fileList
+        const state = reactive({
+          theTreeData: [],
+
+          defaultProps: {
+            label: 'label',
+            children: 'children',
+          }
+        })
+
+        const buildFileTree = function (fileList) {
+          const data = fileList.map((item, idx) => {
+            return {
+              label: item,
+              name: item,
+            }
+          })
+
+          state.theTreeData = [
+            {
+              label: '设备文件列表',
+              children: data,
+            }
+          ]
+        }
+
+        const handleFileClicked = function (node, theNode, evt) {
+          emit('read-device-file', {fileName: node.name})
+        }
+
+        buildFileTree(props.fileList)
+
+        watch(fileListRef, (newVal, oldVal) => {
+          buildFileTree(newVal)
+        })
+
+        return {
+          ...toRefs(state),
+          fileListRef,
+          handleFileClicked,
+        }
+      }
+    }
+  })
+</script>
+
+<script type="module">
+  import {BrowserSerial} from "https://www.tzspace.cn../assets/js/BrowserSerial.js";
+
+  window.BrowserSerial = BrowserSerial
+</script>
+
+<script type="text/x-template" id="micro-python-serial-term-template">
+<splitpanes theme="default">
+  <pane size="20">
+    <div v-if="fileList.length === 0"
+         class="p-3 d-flex flex-row justify-content-center align-items-center align-content-center flex-grow-0">
+      <el-image style="min-width: 100px"
+                src="../assets/app/esptool/ESP32.svg"
+                fit="contain" v-if="deviceName === 'ESP32'" />
+      <el-image style="min-width: 80%; width: 50%;"
+                src="../assets/app/microbit/microbit.png"
+                fit="contain" v-if="deviceName === 'MicroBit'" />
+    </div>
+
+    <device-file-list v-if="fileList.length > 0"
+                      :file-list="fileList"
+                      @read-device-file="handleReadDeviceFile"></device-file-list>
+  </pane>
+  <pane size="80">
+    <div class="d-flex flex-column flex-grow-1" id="terminal-wrapper" style="height: 100%;">
+      <div class="d-flex flex-row m-1">
+        <div class="flex-grow-0 d-flex flex-row">
+          <el-select v-model="currentTheme"
+                     class="me-1"
+                     theme="light"
+                     placeholder="主题"
+                     @change="termThemeChanged">
+            <el-option
+                v-for="item in availableTermThemes"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value">
+            </el-option>
+          </el-select>
+
+          <el-tooltip
+              class="box-item"
+              effect="light"
+              content="连接设备"
+              placement="top-end">
+            <el-button href="#" class=""
+                       v-if="!connected"
+                       @click="connectSerialPort">
+              连接设备
+            </el-button>
+          </el-tooltip>
+          <el-switch v-model="connected" class="me-1"></el-switch>
+          <el-tooltip
+              class="box-item"
+              effect="light"
+              content="断开连接"
+              placement="top-end">
+            <el-button href="#"
+                       class="me-1"
+                       type="danger"
+                       v-if="connected"
+                       @click="disconnectSerialPort">
+              断开
+            </el-button>
+          </el-tooltip>
+        </div>
+
+        <div class="d-flex flex-row justify-content-end flex-grow-1">
+          <el-tooltip
+              class="box-item"
+              effect="light"
+              content="重置系统"
+              placement="top-end">
+            <el-button href="#"
+                       class=""
+                       plain
+                       v-if="connected"
+                       @click="softReset">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                   class="bi bi-chevron-double-down" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                      d="M1.646 6.646a.5.5 0 0 1 .708 0L8 12.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                <path fill-rule="evenodd"
+                      d="M1.646 2.646a.5.5 0 0 1 .708 0L8 8.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+              </svg>
+            </el-button>
+          </el-tooltip>
+
+          <div class="vr"></div>
+
+          <el-tooltip
+              class="box-item"
+              effect="light"
+              content="清除屏幕"
+              placement="top-end">
+            <el-button href="#"
+                       plain
+                       class="text-info"
+                       @click="clearTerminal">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-recycle"
+                   viewBox="0 0 16 16">
+                <path
+                    d="M9.302 1.256a1.5 1.5 0 0 0-2.604 0l-1.704 2.98a.5.5 0 0 0 .869.497l1.703-2.981a.5.5 0 0 1 .868 0l2.54 4.444-1.256-.337a.5.5 0 1 0-.26.966l2.415.647a.5.5 0 0 0 .613-.353l.647-2.415a.5.5 0 1 0-.966-.259l-.333 1.242-2.532-4.431zM2.973 7.773l-1.255.337a.5.5 0 1 1-.26-.966l2.416-.647a.5.5 0 0 1 .612.353l.647 2.415a.5.5 0 0 1-.966.259l-.333-1.242-2.545 4.454a.5.5 0 0 0 .434.748H5a.5.5 0 0 1 0 1H1.723A1.5 1.5 0 0 1 .421 12.24l2.552-4.467zm10.89 1.463a.5.5 0 1 0-.868.496l1.716 3.004a.5.5 0 0 1-.434.748h-5.57l.647-.646a.5.5 0 1 0-.708-.707l-1.5 1.5a.498.498 0 0 0 0 .707l1.5 1.5a.5.5 0 1 0 .708-.707l-.647-.647h5.57a1.5 1.5 0 0 0 1.302-2.244l-1.716-3.004z"/>
+              </svg>
+            </el-button>
+          </el-tooltip>
+
+          <el-tooltip
+              class="box-item"
+              effect="light"
+              content="MicroPython帮助"
+              placement="top-end">
+            <el-button href="#"
+                       class=""
+                       plain
+                       v-if="connected"
+                       @click="help">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                   class="bi bi-question-circle" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                <path
+                    d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"/>
+              </svg>
+            </el-button>
+          </el-tooltip>
+
+          <div class="vr "></div>
+
+          <el-tooltip
+              effect="light"
+              placement="top-end"
+              content="MicroPython命令">
+            <el-select v-model="currentCommand"
+                       class=""
+                       v-if="connected"
+                       placeholder="MicroPython命令">
+              <el-option
+                  v-for="item in micropythonCommands"
+                  :key="item.value"
+                  :label="item.name"
+                  :value="item.value">
+              </el-option>
+            </el-select>
+          </el-tooltip>
+
+          <el-tooltip
+              effect="light"
+              placement="top-end"
+              content="发送命令">
+            <el-button href="#"
+                       type="success"
+                       v-if="connected"
+                       plain
+                       @click="sendCommand">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send-fill"
+                   viewBox="0 0 16 16">
+                <path
+                    d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z"/>
+              </svg>
+            </el-button>
+          </el-tooltip>
+
+          <div class="vr"></div>
+          <el-tooltip
+              effect="light"
+              content="列出文件">
+            <el-button
+                plain
+                v-if="connected"
+                @click="listDir"
+                class="">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                   class="bi bi-card-text" viewBox="0 0 16 16">
+                <path
+                    d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
+                <path
+                    d="M3 5.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 8zm0 2.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5z"/>
+              </svg>
+            </el-button>
+          </el-tooltip>
+        </div>
+      </div>
+
+      <div id="terminal-container" class="d-flex flex-column flex-grow-1" style="">
+        <el-tabs ref="termTabs"
+                 type="card"
+                 style="height: 100%">
+          <el-tab-pane label="硬件终端">
+            <div id="terminal" style="height: 100%">
+            </div>
+          </el-tab-pane>
+
+          <el-tab-pane v-for="(editor, idx) in termEditors"
+                       :key="editor.name"
+                       :label="editor.label">
+            <code-editor-lite :editor-id="'term-editor-' + idx"
+                              :value="editor.content"></code-editor-lite>
+          </el-tab-pane>
+        </el-tabs>
+      </div>
+    </div>
+  </pane>
+</splitpanes>
+</script>
+
+<script>
+  createVueComponent(Vue => {
+      const {reactive, toRefs, ref, watch, onMounted} = Vue
+      const {ElMessageBox, ElMessage, ElTabs} = ElementPlus;
+      const {Splitpanes, Pane} = splitpanes
+
+      return {
+        name: 'MicroPythonSerialTerm',
+        template: '#micro-python-serial-term-template',
+
+        components: {
+          Splitpanes,
+          Pane,
+          DeviceFileList,
+          CodeEditorLite,
+        },
+
+        emits: [
+          'connect-serial-port',
+          'disconnect-serial-port'
+        ],
+
+        props: {
+          deviceName: {
+            default: 'ESP32',
+            type: String,
+          }
+        },
+
+        setup: function (props, {emit}) {
+          const currentTheme = ref(xtermTheme.JetBrains_Darcula)
+          const availableTermThemes = ref([])
+          const browserSerial = ref({})
+          const termTabs = ref(null)
+
+          const MINIMUM_COLS = 2
+          const MINIMUM_ROWS = 1
+          const EOL = '\n'
+          const XTERM_EOL = "\r\n"
+
+          const state = reactive({
+            //=========================== Terminal properties ==========================//
+            term: {},
+            termOptions: {
+              fontSize: 17,
+              theme: currentTheme,
+              cursorBlink: true,
+              cursorStyle: "block",
+              scrollback: 10_000,
+            },
+            termCurrentLine: '',
+            termPromptChar: '$',
+            flushOnEnter: true,
+            echo: true,
+            entries: [],
+
+            termEditors: [],
+
+            currentTermTab: '',
+
+            //=========================== Serial Port properties ==========================//
+            port: {},
+
+            fileList: [],
+            currentOutput: [],
+            keepReading: false,
+
+            serialPortOptions: serialOptions = {
+              baudRate: 115200,
+              dataBits: 8,
+              stopBits: 1,
+              parity: "none",
+              bufferSize: 255,
+              flowControl: "none",
+            },
+            readFromStream: {},
+            writeToStream: {},
+            reader: {},
+            writer: {},
+            connected: false,
+
+            textEncoder: new TextEncoder(),
+
+            currentCommand: '',
+            micropythonCommands: [
+              {
+                name: '进入Paste模式',
+                value: 'enterPasteMode',
+              },
+              {
+                name: '退出Paste模式',
+                value: 'exitPasteMode',
+              },
+              {
+                name: '进入Raw模式',
+                value: 'enterRawMode',
+              },
+              {
+                name: '退出Raw模式',
+                value: 'exitRawMode',
+              },
+              {
+                name: '进入Paste Raw模式',
+                value: '',
+              },
+              {
+                name: '退出Paste Raw模式',
+                value: '',
+              },
+            ]
+          })
+
+          const initTerm = function () {
+            initTermTheme()
+
+            state.term = new Terminal(state.termOptions)
+            state.term.onKey(termKeyHandler)
+            state.term.open(document.getElementById('terminal'))
+            state.term.write('\x1B[1;3;31m串口控制台\x1B[0m \r\n$')
+
+            /*
+            state.term.onData((data)=>{
+              console.log(data)
+            })
+             */
+
+            state.term.focus()
+
+            const terminalContainer = document.querySelector('#terminal-container')
+            const resizeObserver = new ResizeObserver(entries => {
+              for (let entry of entries) {
+                layoutTerminal()
+              }
+            })
+
+            resizeObserver.observe(terminalContainer)
+
+            setTimeout(() => {
+              layoutTerminal()
+            }, 0)
+          }
+
+          function layoutTerminal() {
+            const dim = proposeDimensions()
+            const typeOfDim = typeof dim
+            // Force a full render
+            if ((typeOfDim !== 'undefined' && dim && state.term) && (state.term.rows !== dim.rows || state.term.cols !== dim.cols)) {
+              // TODO: Remove reliance on private API
+              const core = (state.term)._core;
+              core._renderService.clear();
+              state.term.resize(dim.cols, dim.rows);
+            }
+          }
+
+          function proposeDimensions() {
+            if (!state.term) {
+              return undefined;
+            }
+
+            const parentElement = document.getElementById('terminal-container')
+            // const tabHeaderElement = document.get
+
+            if (!parentElement || !state.term.element || !state.term.element.parentElement) {
+              return undefined;
+            }
+
+            // TODO: Remove reliance on private API
+            const core = (state.term)._core;
+
+            if (core._renderService.dimensions.actualCellWidth === 0 || core._renderService.dimensions.actualCellHeight === 0) {
+              return undefined;
+            }
+
+            const parentElementStyle = window.getComputedStyle(parentElement);
+            const parentElementHeight = parseInt(parentElementStyle.getPropertyValue('height'));
+            const parentElementWidth = Math.max(0, parseInt(parentElementStyle.getPropertyValue('width')));
+            const elementStyle = window.getComputedStyle(state.term.element);
+            const elementPadding = {
+              top: parseInt(elementStyle.getPropertyValue('padding-top')),
+              bottom: parseInt(elementStyle.getPropertyValue('padding-bottom')),
+              right: parseInt(elementStyle.getPropertyValue('padding-right')),
+              left: parseInt(elementStyle.getPropertyValue('padding-left'))
+            };
+            const elementPaddingVer = elementPadding.top + elementPadding.bottom;
+            const elementPaddingHor = elementPadding.right + elementPadding.left;
+            const availableHeight = parentElementHeight - elementPaddingVer;
+            const availableWidth = parentElementWidth - elementPaddingHor - core.viewport.scrollBarWidth;
+            const geometry = {
+              cols: Math.max(MINIMUM_COLS, Math.floor(availableWidth / core._renderService.dimensions.actualCellWidth)),
+              rows: Math.max(MINIMUM_ROWS, Math.floor(availableHeight / core._renderService.dimensions.actualCellHeight)) - 3
+            };
+            return geometry;
+          }
+
+          const initTermTheme = function () {
+            availableTermThemes.value = Object.keys(xtermTheme).map(value => {
+              return {label: value, value: xtermTheme[value]}
+            })
+          }
+
+          const termThemeChanged = function () {
+            if (currentTheme.value) {
+              state.term.setOption('theme', currentTheme.value)
+            }
+          }
+
+          function termKeyHandler(key) {
+            const term = state.term
+            const keyValue = key.key
+            const ev = key.domEvent
+            let currPos = 0
+            let pos = 0
+
+            const printable = !ev.altKey && !ev.altKey && !ev.ctrlKey && !ev.metaKey &&
+              !(ev.keyCode === 37 && term.buffer.active.cursorX < 2);
+
+            if (ev.code === 'Enter' || ev.code === 'NumpadEnter') { // Enter key
+              if (state.termCurrentLine.replace(/^\s+|\s+$/g, '').length !== 0) { // Check if string is all whitespace
+                state.entries.push(state.termCurrentLine);
+                currPos = state.entries.length - 1;
+                writeCommand(state.termCurrentLine);
+                prompt();
+              } else {
+                term.write('\n\u001b[2K\r\u001b[32m' + state.termPromptChar + ' \u001b[37m');
+              }
+              state.termCurrentLine = '';
+            } else if (ev.code === 'ArrowUp') {
+              if (state.entries.length > 0) {
+                if (currPos > 0) {
+                  currPos -= 1;
+                }
+                state.termCurrentLine = state.entries[currPos];
+                term.write('\u001B[2K\r\u001b[32m' + state.termPromptChar + ' \u001b[37m' + state.termCurrentLine);
+              }
+            } else if (ev.code === 'ArrowDown') {
+              currPos += 1;
+              if (currPos === state.entries.length || state.entries.length === 0) {
+                currPos -= 1;
+                state.termCurrentLine = '';
+                term.write('\u001B[2K\r\u001b[32m' + state.termPromptChar + ' \u001b[37m');
+              } else {
+                state.termCurrentLine = state.entries[currPos];
+                term.write('\u001B[2K\r\u001b[32m' + state.termPromptChar + ' \u001b[37m' + state.termCurrentLine);
+              }
+            } else if (ev.code === "Backspace") {
+              if (term.buffer.active.cursorX > 2) {
+                state.termCurrentLine = state.termCurrentLine.slice(0, term.buffer.active.cursorX - 3) +
+                  state.termCurrentLine.slice(term.buffer.active.cursorX - 2);
+                pos = state.termCurrentLine.length - term.buffer.active.cursorX + 2;
+                term.write('\u001B[2K\r\u001b[32m' + state.termPromptChar + ' \u001b[37m' + state.termCurrentLine);
+                term.write('\u001B['.concat(pos.toString()).concat('D')); //term.write('\033[<N>D');
+                if (term.buffer.active.cursorX === 1 || term.buffer.active.cursorX === state.termCurrentLine.length + 2) {
+                  term.write('\u001B[1C')
+                }
+              }
+            } else if (ev.code === 'Delete') {
+              if (term.buffer.active.cursorX > 1) {
+                const newLine = state.termCurrentLine.slice(0, term.buffer.active.cursorX - 2) + state.termCurrentLine.slice(term.buffer.active.cursorX - 1);
+                pos = newLine.length - term.buffer.active.cursorX;
+                term.write('\u001B[2K\r\u001b[32m' + state.termPromptChar + ' \u001b[37m' + newLine);
+                term.write('\u001B['.concat(pos.toString()).concat('D')); //term.write('\033[<N>D');
+                if (term.buffer.active.cursorX === 1 || term.buffer.active.cursorX === newLine.length + 2) {
+                  term.write('\u001B[1C')
+                }
+
+                state.termCurrentLine = newLine
+              }
+            } else if (printable && !(ev.keyCode === 39 && term.buffer.active.cursorX > state.termCurrentLine.length + 1)) {
+              if (ev.keyCode != 37 && ev.keyCode != 39) {
+                let input = key.key;
+                if (ev.code === 'Tab') { // Tab
+                  input = "    ";
+                }
+                pos = state.termCurrentLine.length - term.buffer.active.cursorX + 1;
+                state.termCurrentLine = [state.termCurrentLine.slice(0, term.buffer.active.cursorX - 2),
+                  input, state.termCurrentLine.slice(term.buffer.active.cursorX - 2)].join('');
+                term.write('\r\u001b[32m' + state.termPromptChar + ' \u001b[37m' + state.termCurrentLine);
+                term.write('\u001b['.concat(pos.toString()).concat('D')); //term.write('\033[<N>D');
+              } else {
+                // term.write(key.key);
+              }
+            }
+          }
+
+          async function writeToTerminal(content) {
+            if (content && content !== 'undefined') {
+              state.currentOutput.push(content + "\r\n")
+              state.term.write(content)
+            }
+          }
+
+          async function writeToTerminalUtf8(utf8Array) {
+            if (utf8Array) {
+              state.currentOutput.push(state.textEncoder.encode(utf8Array))
+              state.term.writeUtf8(utf8Array, () => {
+              })
+            }
+          }
+
+          async function writeCommand(command) {
+            if (state.writeToStream) {
+              await writeLine(command)
+            }
+          }
+
+          const errorFunc = async function (error) {
+            console.error(error)
+          }
+
+          const markDisconnected = async function () {
+            state.connected = false
+          }
+
+          async function connectSerialPort() {
+            browserSerial.value = new BrowserSerial()
+            await browserSerial.value.connect()
+            state.keepReading = true
+            state.connected = true
+            emit('serial-port-connected')
+
+            await writeCommand("\r\n")
+
+            try {
+              browserSerial.value.readLoop(async (value, bReturn) => {
+                await writeToTerminal(value + "\r\n")
+                return state.keepReading
+              })
+            } catch (ex) {
+            }
+          }
+
+          async function writeLine(data) {
+            browserSerial.value.write(data + "\r\n")
+          }
+
+          async function write(data) {
+            browserSerial.value.write(data)
+          }
+
+          async function executeCommand(cmd) {
+            if (!cmd) {
+              return
+            }
+
+            const newCodeArray = cmd.split(/\r|\n/)
+            await write('\r')
+
+            newCodeArray.forEach(async line => {
+              await sleep(100)
+              await write(line + '\r')
+            })
+            await sleep(100)
+          }
+
+          async function executeCode(code) {
+            if (!code) {
+              code = editor.getValue()
+            }
+            if (code) {
+              const newCodeArray = code.split(/\r|\n/)
+              await enterRawMode()
+
+              newCodeArray.forEach(async line => {
+                await write(line + '\r')
+              })
+
+              await execRawCode()
+              await sleep(100)
+              await exitRawMode()
+            }
+          }
+
+          async function execRawCode() {
+            await write('\u0004')
+          }
+
+          async function enterRawMode() {
+            await write('\r\u0003')
+            await sleep(100)
+            await write('\u0003')
+
+            await write('\r\u0001')
+            await sleep(100)
+            emit('enter-raw-mode')
+          }
+
+          async function interrupt() {
+            await write('\r\u0003')
+          }
+
+          async function sendCommand() {
+            switch (state.currentCommand) {
+              case 'enterRawMode':
+                await enterRawMode()
+                break
+              case 'exitRawMode':
+                await exitRawMode()
+                break
+              case 'enterPasteMode':
+                await enterPasteMode()
+                break
+              case 'exitPasteMode':
+                await exitPasteMode()
+                break
+            }
+          }
+
+          async function sleep(ms) {
+            return new Promise((resolve) => {
+              setTimeout(resolve, ms);
+            });
+          }
+
+          async function uploadCode(filename, code) {
+            code = code.replaceAll('\"', '\\"')
+
+            let sendCode = 'newfile = open("' + filename + '", "w")\r'
+            let codeData = code.split(/\r|\n/)
+            for (let i = 0; i < codeData.length; i++) {
+              sendCode += 'newfile.write("' + codeData[i] + '\\n")\r'
+            }
+            sendCode += "\r"
+            sendCode += 'newfile.close()\r'
+
+            await executeCode(sendCode)
+          }
+
+          const disconnectSerialPort = async function () {
+            state.keepReading = false
+            await sleep(100)
+            try {
+              await browserSerial.value.disconnect()
+            } catch (ex) {
+              await sleep(100)
+              await browserSerial.value.disconnect()
+            }
+            state.connected = false
+            emit('serial-port-disconnected')
+          }
+
+          async function softReset() {
+            const cmd = "import sys\r\nsys.exit()\r\n"
+            await executeCode(cmd)
+            emit('soft-reset')
+          }
+
+          async function exitRawMode() {
+            await write('\u0002\r')
+            await write('\r\r')
+
+            emit('exit-raw-mode')
+          }
+
+          async function enterPasteMode() {
+            await write('\u0005')
+            emit('enter-paste-mode')
+          }
+
+          async function exitPasteMode() {
+            await write('\u0004')
+            emit('enter-paste-mode')
+          }
+
+          async function help() {
+            await writeLine("help()")
+            emit('help')
+          }
+
+          async function breakCurrentProgram() {
+            await write('\u0003')
+          }
+
+          function prompt() {
+            state.term.write('\n\r' + state.termCurrentLine + '\r\n\u001b[32m' + state.termPromptChar + ' \u001b[37m');
+          }
+
+          async function listDir() {
+            await breakCurrentProgram()
+
+            state.currentOutput = []
+
+            let sendCode = '\rimport os\r'
+            sendCode += 'os.listdir()\r'
+            await executeCommand(sendCode)
+
+            //sleep 100ms
+            await sleep(100)
+
+            const outputOfListDir = MicroPythonUtil.resolveCommandOutput('listdir()', state.currentOutput)
+            const eolIndex = outputOfListDir.indexOf('\r')
+            const outputLine = outputOfListDir.substring(0, eolIndex)
+            if (outputLine) {
+              try {
+                const outputVal = eval(outputLine)
+                state.fileList = outputVal
+              } catch (ex) {
+              }
+            }
+          }
+
+          async function deleteFile(name) {
+            await breakCurrentProgram()
+            state.currentOutput = []
+
+            let sendCode = '\rimport os\r'
+            sendCode += 'os.remove("test.txt")\r'
+
+            await executeCommand(sendCode)
+          }
+
+          async function handleReadDeviceFile(data) {
+            // await readDeviceFile(data.fileName)
+
+            addTermTab("test")
+          }
+
+          async function readDeviceFile(filename) {
+          }
+
+          function clearTerminal() {
+            state.term.clear()
+            emit('clear-terminal')
+          }
+
+          function addTermTab(targetName) {
+            const newTabName = "Tab"
+            state.termEditors.push({
+              title: '文件',
+              name: newTabName,
+              content: 'New Tab content',
+            })
+            state.currentTermTab.value = newTabName
+          }
+
+          const init = function () {
+            initTerm()
+          }
+
+          onMounted(init)
+
+          return {
+            ...toRefs(state),
+
+            connectSerialPort,
+            initTerm,
+            init,
+            disconnectSerialPort,
+            softReset,
+            enterRawMode,
+            exitRawMode,
+            enterPasteMode,
+            exitPasteMode,
+            breakCurrentProgram,
+            //======== Serial Port Function ======//
+            listDir,
+            help,
+            //------------------------------------- Terminal Operation --------------------------//
+            currentTheme,
+            availableTermThemes,
+            termThemeChanged,
+            clearTerminal,
+            writeCommand,
+            sleep,
+            interrupt,
+            writeToTerminalUtf8,
+            writeToTerminal,
+            executeCode,
+            executeCommand,
+            execRawCode,
+            browserSerial,
+            uploadCode,
+            handleReadDeviceFile,
+            sendCommand,
+            deleteFile,
+          }
+        }
+      }
+    }
+  )
+</script>
+<style>
+.xterm-viewport, .xterm-screen, .terminal.xterm {
+    height: 100% !important;
+    width: 100% !important;
+}
+
+#terminal-container .el-tab-pane, #terminal-container .el-tabs__content {
+    height: 100%;
+}
+
+</style>
+
+<script type="text/template" id="hardware-code-editor-toolbar-template">
+<div class="d-flex flex-row">
+  <el-tooltip
+      class=""
+      effect="light"
+      content="运行"
+      placement="bottom-start">
+    <el-button @click="runCode"
+               class="text-success"
+               plain
+               size="small"
+               type="success">
+      <svg class="icon" width="24" height="24" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"
+           data-v-365b8594=""><path fill="currentColor" d="M384 192v640l384-320.064z"></path></svg>
+    </el-button>
+  </el-tooltip>
+  <el-tooltip
+      effect="light"
+      content="保存"
+      placement="bottom-start">
+    <el-button @click="toSaveCode"
+               class=""
+               plain
+               size="small"
+               type="primary">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+           class="bi bi-save"
+           viewBox="0 0 16 16">
+        <path
+            d="M2 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9.5a1 1 0 0 0-1 1v7.293l2.646-2.647a.5.5 0 0 1 .708.708l-3.5 3.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L7.5 9.293V2a2 2 0 0 1 2-2H14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h2.5a.5.5 0 0 1 0 1H2z"/>
+      </svg>
+    </el-button>
+  </el-tooltip>
+
+  <el-tooltip
+      class="item"
+      effect="light"
+      content="上传到硬件"
+      v-if="connected"
+      placement="bottom-start">
+    <el-button @click="uploadCodeToDevice"
+               class=""
+               plain
+               size="small"
+               type="warning">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-upload"
+           viewBox="0 0 16 16">
+        <path
+            d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+        <path
+            d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z"/>
+      </svg>
+    </el-button>
+  </el-tooltip>
+
+  <el-tooltip
+      class="item"
+      effect="light"
+      content="连接WiFi"
+      v-if="connected"
+      placement="bottom-start">
+    <el-button @click="connectWifiDialogShow"
+               class=""
+               plain
+               size="small"
+               type="warning">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wifi"
+           viewBox="0 0 16 16">
+        <path
+            d="M15.384 6.115a.485.485 0 0 0-.047-.736A12.444 12.444 0 0 0 8 3C5.259 3 2.723 3.882.663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.716 2.164.205.148.49.13.668-.049z"/>
+        <path
+            d="M13.229 8.271a.482.482 0 0 0-.063-.745A9.455 9.455 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.576 1.336c.206.132.48.108.653-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.473 6.473 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.407.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.61-.091l.016-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .707 0l.707-.707z"/>
+      </svg>
+    </el-button>
+  </el-tooltip>
+
+  <el-dialog
+      v-model="dialogVisible"
+      destroy-on-close
+      title="WiFi连接"
+      width="30%">
+    <el-form
+        :label-position="labelPosition"
+        label-width="80px"
+        :model="wifiForm"
+        style="max-width: 460px">
+      <el-form-item label="WiFi名称">
+        <el-input v-model="wifiForm.essid"></el-input>
+      </el-form-item>
+      <el-form-item label="WiFi密码">
+        <el-input v-model="wifiForm.password" show-password></el-input>
+      </el-form-item>
+    </el-form>
+
+    <template #footer>
+      <span class="dialog-footer">
+        <el-button @click="dialogVisible = false">取消</el-button>
+        <el-button type="primary" @click="connectWifi">确定</el-button>
+      </span>
+    </template>
+  </el-dialog>
+
+  <language-options :language="language"
+                    @language-changed="languageChanged">
+  </language-options>
+</div>
+</script>
+
+<script>
+
+  createVueComponent(Vue => {
+    const {emit, reactive, toRefs} = Vue;
+
+    return {
+      name: 'HardwareCodeEditorToolbar',
+      template: '#hardware-code-editor-toolbar-template',
+
+      emit: [
+        'run-code',
+        'save-code',
+        'language-changed',
+        'upload-code-to-device',
+        'connect-wifi'
+      ],
+
+      components: {
+        LanguageOptions,
+      },
+
+      props: {
+        language: {
+          type: String,
+          default: ''
+        },
+
+        connected: {
+          type: Boolean,
+          default: false,
+        }
+      },
+
+      setup: function (props, {emit}) {
+        // const dialogVisible = ref(false)
+
+        const state = reactive({
+          dialogVisible: false,
+          wifiForm: {}
+        })
+
+        function runCode() {
+          emit('run-code')
+        }
+
+        function languageChanged() {
+          emit('language-changed')
+        }
+
+        function toSaveCode() {
+          emit('save-code')
+        }
+
+        function create() {
+          emit('create')
+        }
+
+        function createProject() {
+          emit('create-project')
+        }
+
+        function uploadCodeToDevice() {
+          emit('upload-code-to-device')
+        }
+
+        function connectWifi() {
+          state.dialogVisible = false
+          localStorage.setItem('essid', state.wifiForm.essid)
+          localStorage.setItem('password', state.wifiForm.password)
+
+          emit('connect-wifi', state.wifiForm)
+        }
+
+        function connectWifiDialogShow() {
+          state.wifiForm.essid = localStorage.getItem('essid')
+          state.wifiForm.password = localStorage.getItem('password')
+          state.dialogVisible = true
+        }
+
+        return {
+          // dialogVisible,
+          ...toRefs(state),
+          runCode,
+          toSaveCode,
+          connectWifiDialogShow,
+          connectWifi,
+          languageChanged,
+          create,
+          createProject,
+          uploadCodeToDevice,
+        }
+      }
+    }
+  })
+</script>
+
+
+<script type="text/x-template" id="hardware-code-editor-template">
+<splitpanes horizontal @resized="rightSizeResize($event)">
+  <pane size="50">
+    <splitpanes>
+      <pane size="50">
+        <blockly-editor ref="blocklyEditorRef"
+                        :code-object="codeObject"
+                        :key="codeObject.programmingLanguage"
+                        editor-id="blocklyEditor"
+                        @generate-code-override="handleOverrideCode"
+                        @generate-code-extend="handleExtendCode"></blockly-editor>
+      </pane>
+      <pane size="50">
+        <code-editor :value="codeObject.code ? codeObject.code : ''"
+                     @update:value="handleUpdateValue"
+                     ref="hardware-code-editor-ref">
+          <template v-slot:opt-btns>
+            <hardware-code-editor-toolbar
+                ref="hardwareCodeEditorToolbarRef"
+                :connected="connected"
+                @new-code="newCode"
+                @run-code="runCode"
+                @save-code="saveCode"
+                @upload-code-to-device="handleUploadCodeToDevice"
+                @connect-wifi="handleConnectWifi"
+                :language="codeObject.programmingLanguage">
+            </hardware-code-editor-toolbar>
+          </template>
+        </code-editor>
+      </pane>
+    </splitpanes>
+  </pane>
+  <pane size="50">
+    <micro-python-serial-term
+        :device-name="codeObject.programmingLanguage"
+        ref="serialTerminalRef"
+        @serial-port-connected="handleSerialPortConnected"
+        @serial-port-disconnected="handleSerialPortDisconnected"
+        style=""></micro-python-serial-term>
+  </pane>
+</splitpanes>
+</script>
+
+<script>
+  const bootPy = `
+import json
+import network
+import time
+
+def do_connect():
+    try:
+        with open('wifi_config.json','r') as f:
+            config = json.loads(f.read())
+    except:
+        essid = input('wifi name:')
+        password = input('wifi passwrod:')
+        config = dict(essid=essid, password=password)
+        with open('wifi_config.json','w') as f:
+            f.write(json.dumps(config))
+
+    wifi = network.WLAN(network.STA_IF)
+    if not wifi.isconnected():
+        print('connecting to network...')
+        wifi.active(True)
+        wifi.connect(config['essid'], config['password'])
+        time.sleep(5)
+
+        if not wifi.isconnected():
+            wifi.active(False)
+            print('wifi connection error, please reconnect')
+            import os
+            try:
+                os.remove('wifi_config.json')
+            except:
+                pass
+            do_connect()
+        else:
+            print('network config:', wifi.ifconfig())
+do_connect()
+  `
+
+  createVueComponent(Vue => {
+    const {reactive, toRefs, ref, emit, watch, onMounted} = Vue
+    const {ElMessageBox, ElMessage} = ElementPlus;
+    const {Splitpanes, Pane} = splitpanes
+
+    return {
+      name: 'HardwareCodeEditor',
+      template: '#hardware-code-editor-template',
+
+      components: {
+        Splitpanes,
+        Pane,
+        CodeEditor,
+        MicroPythonSerialTerm,
+        HardwareCodeEditorToolbar,
+        BlocklyEditor,
+      },
+
+      props: {
+        codeObject: {
+          type: Object,
+          default: {
+            programmingLanguage: 'ESP32',
+            code: ''
+          }
+        }
+      },
+
+      emits: [
+        'update:value'
+      ],
+
+      setup: function (props, {emit}) {
+        const serialTerminalRef = ref(null)
+        const blocklyEditorRef = ref(null)
+        const hardwareCodeEditorToolbar = ref(null)
+
+        const {codeObject} = toRefs(props)
+
+        const state = reactive({
+          code: {},
+          connected: false
+        })
+
+        function init() {
+
+        }
+
+        function newCode() {
+        }
+
+        function runCode() {
+          serialTerminalRef.value.executeCode(props.codeObject.code)
+        }
+
+        function saveCode() {
+          emit('save-code')
+        }
+
+        function handleUpdateValue(newCode) {
+          emit('update:value', newCode)
+        }
+
+        function rightSizeResize(evt) {
+          blocklyEditorRef.value.doResize()
+        }
+
+        function handleOverrideCode(code) {
+          ElMessageBox.confirm(
+            '将要覆盖当前代码，请确认',
+            '代码覆盖',
+            {
+              confirmButtonText: '确认',
+              cancelButtonText: '取消',
+              type: 'warning',
+            }).then(() => {
+            handleUpdateValue(code)
+          }).catch(err => {
+            console.error(err)
+          })
+        }
+
+        function handleExtendCode(code) {
+          ElMessageBox.confirm(
+            '将要覆盖当前代码，请确认',
+            '代码覆盖',
+            {
+              confirmButtonText: '确认',
+              cancelButtonText: '取消',
+              type: 'warning',
+            }).then(() => {
+            handleUpdateValue(code)
+          }).catch(err => {
+            console.error(err)
+          })
+        }
+
+        function handleUploadCodeToDevice(evt) {
+          let codeName = 'main.py'
+
+          ElMessageBox.prompt('请输入代码名称', '上传代码', {
+            confirmButtonText: '上传',
+            cancelButtonText: '取消',
+            inputPattern:
+              /[a-zA-Z][a-zA-Z0-9_]+\.py/,
+            inputErrorMessage: '',
+          }).then(({value}) => {
+            codeName = value
+            serialTerminalRef.value.uploadCode(codeName,
+              props.codeObject.code)
+            ElMessage({
+              type: 'success',
+              message: `代码上传成功`,
+            })
+          }).catch(() => {
+            ElMessage({
+              type: 'info',
+              message: '取消代码上传',
+            })
+          })
+        }
+
+        function handleConnectWifi(wifiData) {
+          serialTerminalRef.value.uploadCode('boot.py', bootPy)
+          serialTerminalRef.value.uploadCode('wifi_config.json', JSON.stringify(wifiData))
+        }
+
+        function handleSerialPortConnected(data) {
+          state.connected = true
+        }
+
+        function handleSerialPortDisconnected(data) {
+          state.connected = false
+        }
+
+        onMounted(init)
+
+        watch(codeObject, (newValue, oldValue) => {
+        })
+
+        return {
+          ...toRefs(state),
+          blocklyEditorRef,
+          serialTerminalRef,
+          handleUpdateValue,
+
+          init,
+          newCode,
+          runCode,
+          saveCode,
+          handleUploadCodeToDevice,
+          handleSerialPortConnected,
+          handleSerialPortDisconnected,
+          handleConnectWifi,
+          handleOverrideCode,
+          handleExtendCode,
+          rightSizeResize,
+        }
+      }
+    }
+  })
+</script>
+
+
+<div id="app" style="width: 100%; overflow: auto; height: 100%">
+  <splitpanes class=default-theme>
+    <pane size="20">
+      <code-snippet-list :enable-create="false"
+                         @code-changed="handleCodeChanged"
+                         ref="refTurtleCodeSnippetList">
+      </code-snippet-list>
+    </pane>
+    <pane size="80">
+      <code-editor-with-result :code-object="currentCodeSnippet"
+                               @save-code="saveCode"
+                               @code-changed="handleCodeContentChanged"
+                               v-if="currentCodeSnippet.programmingLanguage==='python' ||
+        currentCodeSnippet.programmingLanguage=== 'skulpt'">
+      </code-editor-with-result>
+
+      <hardware-code-editor :code-object="currentCodeSnippet"
+                            @save-code="saveCode"
+                            @update:value="handleCodeContentChanged"
+                            v-if="currentCodeSnippet.programmingLanguage ==='ESP32' ||
+        currentCodeSnippet.programmingLanguage === 'K210'||
+        currentCodeSnippet.programmingLanguage === 'MicroBit'">
+      </hardware-code-editor>
+
+      <div class="bg-dark bg-opacity-10" v-else></div>
+    </pane>
+  </splitpanes>
+</div>
+
+<script>
+  const {onMounted} = Vue
+  const {Splitpanes, Pane} = splitpanes
+  const {ElMessageBox, ElMessage} = ElementPlus;
+
+  createVueApp({
+    components: {
+      Splitpanes,
+      Pane,
+      CodeSnippetList,
+      CodeEditorWithResult,
+      HardwareCodeEditor,
+      CodeEditorToolbar,
+      CodeSnippetDataframe,
+    },
+
+    data: function () {
+      return {
+        currentCodeSnippet: {},
+        programmingLanguageFilter: ''
+      }
+    },
+
+    methods: {
+      handleCodeChanged: function (data) {
+        this.currentCodeSnippet = {...data}
+      },
+
+      handleCodeContentChanged: function (codeContent) {
+        this.currentCodeSnippet.code = codeContent
+      },
+
+      newCode: function (language) {
+        ElMessageBox.prompt('请输入小程序名称', '输入本小程序名称', {
+          confirmButtonText: '确认',
+          cancelButtonText: '取消',
+        }).then(({value}) => {
+          this.currentCodeSnippet = {
+            programmingLanguage: language,
+            code: ''
+          }
+          ElMessage({
+            type: 'success',
+            message: `新程序创建成功`,
+          })
+        }).catch(() => {
+          ElMessage({
+            type: 'info',
+            message: '创建程序取消',
+          })
+        })
+      },
+
+      saveCode: function () {
+        ElMessageBox.prompt(
+            '复制到我的代码空间吗？如文件重名，新代码将会覆盖已有代码',
+            '复制到我的空间',
+            {
+              confirmButtonText: '确认',
+              cancelButtonText: '取消',
+              type: 'info',
+              inputValue: this.currentCodeSnippet.name
+            }
+        ).then((value) => {
+          const userCode = {
+            name: value,
+            code: this.currentCodeSnippet.code,
+            programmingLanguage: this.currentCodeSnippet.programmingLanguage
+          }
+
+          axios.post('/userCode/save', this.currentCodeSnippet).then(resp => {
+            ElMessage({
+              type: 'success',
+              message: '代码保存成功',
+            })
+          }).catch(err => {
+            console.log(err)
+          })
+        }).catch(() => {
+          ElMessage({
+            type: 'info',
+            message: '取消保存',
+          })
+        })
+      },
+
+      reloadTurtleCodeSnippetList: function () {
+        this.$refs['refTurtleCodeSnippetList'].reload()
+      }
+    },
+
+    watch: {
+      currentCodeSnippet: function (val) {
+      }
+    }
+  })
+</script>
+
+</div>
+
+<div id="spinner" class="spinner" style="display:none;">
+  Loading&hellip;
+</div>
+<script type="application/javascript" src="../static/js/3rd/bootstrap/bootstrap.bundle.min.js"></script>
+</body>
+</html>
