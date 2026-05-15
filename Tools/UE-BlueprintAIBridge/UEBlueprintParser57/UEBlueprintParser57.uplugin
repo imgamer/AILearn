@@ -1,0 +1,16 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "UEBlueprintParser57",
+	"Description": "Blueprint AI Parser for UE5.7 - Parse Blueprint nodes to AI-friendly text format and reconstruct from AI-modified text",
+	"Category": "AI",
+	"CreatedBy": "Developer",
+	"Modules": [
+		{
+			"Name": "UEBlueprintParser57",
+			"Type": "Editor",
+			"LoadingPhase": "Default"
+		}
+	]
+}
