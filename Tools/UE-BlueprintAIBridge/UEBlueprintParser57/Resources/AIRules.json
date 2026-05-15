@@ -1,0 +1,43 @@
+{
+	"Version": "1.0",
+	"Description": "AI Parsing Rules for Blueprint Node Short Code Generation",
+	"Rules": {
+		"NodeNaming": {
+			"FunctionCall": "Use the function name directly",
+			"VariableGet": "Prefix with 'Get'",
+			"VariableSet": "Prefix with 'Set'",
+			"Branch": "Use 'Branch'",
+			"Knot": "Use 'Knot'"
+		},
+		"PinNaming": {
+			"Exec": {
+				"Input": "inExec",
+				"Output": "outExec"
+			},
+			"Data": "Use pin name directly"
+		},
+		"ValueEscaping": {
+			"Backslash": "\\\\",
+			"OpenParen": "\\(",
+			"CloseParen": "\\)",
+			"Semicolon": "\\;",
+			"Newline": "\\n",
+			"CarriageReturn": "\\r",
+			"Tab": "\\t"
+		},
+		"Format": {
+			"NodeDefinition": "{Name}_{ID} ({InputPins}) : ({OutputPins})",
+			"LinkDefinition": "{SourceNodeID} ({SourcePin}) -> {TargetNodeID} ({TargetPin})"
+		}
+	},
+	"SupportedNodeTypes": [
+		"K2Node_CallFunction",
+		"K2Node_VariableGet",
+		"K2Node_VariableSet",
+		"K2Node_IfThenElse",
+		"K2Node_Knot",
+		"K2Node_Event",
+		"K2Node_MacroInstance"
+	],
+	"Templates": {}
+}
