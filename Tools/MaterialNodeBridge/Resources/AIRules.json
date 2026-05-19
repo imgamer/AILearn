@@ -1,0 +1,244 @@
+{
+	"version": "1.0",
+	"name": "Material Node Short Code Rules",
+	"description": "Rules for generating and parsing material node short code for AI-friendly serialization",
+	"format": {
+		"node_definition": "NodeName_ID (InputPins;) : (OutputPins;)",
+		"link_definition": "NodeID (OutputPin) -> NodeID (InputPin)",
+		"example": "# --- Node Definitions ---\nConstant_1 (R\\(1.0\\);) : (Output;)\nMultiply_2 (A; B;) : (Output;)\n\n# --- Links ---\nConstant_1 (Output) -> Multiply_2 (A)"
+	},
+	"rules": {
+		"pin_values": "Use \\(value\\) for pins with values, separate pins with semicolon",
+		"escaping": {
+			"(": "\\(",
+			")": "\\)",
+			";": "\\;",
+			"\\": "\\\\"
+		},
+		"connections": "Use -> to indicate connection direction from output to input",
+		"node_order": "Nodes should be ordered from left to right based on data flow",
+		"layer_assignment": "Nodes are assigned to layers based on their distance from source nodes"
+	},
+	"supported_nodes": [
+		{
+			"type": "Constant",
+			"description": "Single float constant value",
+			"inputs": [],
+			"outputs": ["Output"],
+			"properties": ["R"]
+		},
+		{
+			"type": "Constant2Vector",
+			"description": "2-component vector constant",
+			"inputs": [],
+			"outputs": ["RGB"],
+			"properties": ["R", "G"]
+		},
+		{
+			"type": "Constant3Vector",
+			"description": "3-component vector constant",
+			"inputs": [],
+			"outputs": ["RGB"],
+			"properties": ["R", "G", "B"]
+		},
+		{
+			"type": "Constant4Vector",
+			"description": "4-component vector constant",
+			"inputs": [],
+			"outputs": ["RGBA"],
+			"properties": ["R", "G", "B", "A"]
+		},
+		{
+			"type": "Add",
+			"description": "Addition of two values",
+			"inputs": ["A", "B"],
+			"outputs": ["Output"]
+		},
+		{
+			"type": "Subtract",
+			"description": "Subtraction of two values",
+			"inputs": ["A", "B"],
+			"outputs": ["Output"]
+		},
+		{
+			"type": "Multiply",
+			"description": "Multiplication of two values",
+			"inputs": ["A", "B"],
+			"outputs": ["Output"]
+		},
+		{
+			"type": "Divide",
+			"description": "Division of two values",
+			"inputs": ["A", "B"],
+			"outputs": ["Output"]
+		},
+		{
+			"type": "Abs",
+			"description": "Absolute value",
+			"inputs": ["Input"],
+			"outputs": ["Output"]
+		},
+		{
+			"type": "Sine",
+			"description": "Sine function",
+			"inputs": ["Input"],
+			"outputs": ["Output"]
+		},
+		{
+			"type": "Cosine",
+			"description": "Cosine function",
+			"inputs": ["Input"],
+			"outputs": ["Output"]
+		},
+		{
+			"type": "Tangent",
+			"description": "Tangent function",
+			"inputs": ["Input"],
+			"outputs": ["Output"]
+		},
+		{
+			"type": "Floor",
+			"description": "Floor function",
+			"inputs": ["Input"],
+			"outputs": ["Output"]
+		},
+		{
+			"type": "Ceil",
+			"description": "Ceiling function",
+			"inputs": ["Input"],
+			"outputs": ["Output"]
+		},
+		{
+			"type": "Frac",
+			"description": "Fractional part",
+			"inputs": ["Input"],
+			"outputs": ["Output"]
+		},
+		{
+			"type": "Max",
+			"description": "Maximum of two values",
+			"inputs": ["A", "B"],
+			"outputs": ["Output"]
+		},
+		{
+			"type": "Min",
+			"description": "Minimum of two values",
+			"inputs": ["A", "B"],
+			"outputs": ["Output"]
+		},
+		{
+			"type": "Clamp",
+			"description": "Clamp value to range",
+			"inputs": ["Input", "Min", "Max"],
+			"outputs": ["Output"],
+			"properties": ["MinDefault", "MaxDefault"]
+		},
+		{
+			"type": "OneMinus",
+			"description": "One minus input",
+			"inputs": ["Input"],
+			"outputs": ["Output"]
+		},
+		{
+			"type": "ComponentMask",
+			"description": "Extract color components",
+			"inputs": ["Input"],
+			"outputs": ["Output"],
+			"properties": ["R", "G", "B", "A"]
+		},
+		{
+			"type": "Append",
+			"description": "Append vectors",
+			"inputs": ["A", "B"],
+			"outputs": ["Output"]
+		},
+		{
+			"type": "TextureSample",
+			"description": "Sample texture",
+			"inputs": ["UVs", "TextureObject"],
+			"outputs": ["RGB", "R", "G", "B", "A"]
+		},
+		{
+			"type": "TextureObject",
+			"description": "Texture object reference",
+			"inputs": [],
+			"outputs": ["RGB"]
+		},
+		{
+			"type": "TextureCoordinate",
+			"description": "Texture coordinate source",
+			"inputs": [],
+			"outputs": ["UV"]
+		},
+		{
+			"type": "ScalarParameter",
+			"description": "Scalar parameter for material instance",
+			"inputs": [],
+			"outputs": ["Output"],
+			"properties": ["Name", "Value"]
+		},
+		{
+			"type": "VectorParameter",
+			"description": "Vector parameter for material instance",
+			"inputs": [],
+			"outputs": ["Output"],
+			"properties": ["Name", "R", "G", "B", "A"]
+		},
+		{
+			"type": "ColorParameter",
+			"description": "Color parameter for material instance",
+			"inputs": [],
+			"outputs": ["Output"],
+			"properties": ["Name", "R", "G", "B", "A"]
+		},
+		{
+			"type": "TextureSampleParameter2D",
+			"description": "Texture parameter for material instance",
+			"inputs": ["UVs"],
+			"outputs": ["RGB", "A"],
+			"properties": ["Name"]
+		},
+		{
+			"type": "Fresnel",
+			"description": "Fresnel effect for rim lighting",
+			"inputs": ["BaseMaterialExp"],
+			"outputs": ["Output"]
+		},
+		{
+			"type": "BumpOffset",
+			"description": "Parallax mapping",
+			"inputs": ["Coordinate", "Height", "HeightRatio"],
+			"outputs": ["Offset"]
+		},
+		{
+			"type": "Panner",
+			"description": "Pan texture coordinates",
+			"inputs": ["Coordinate", "Time"],
+			"outputs": ["Output"]
+		},
+		{
+			"type": "Rotator",
+			"description": "Rotate texture coordinates",
+			"inputs": ["Coordinate", "Time"],
+			"outputs": ["Output"]
+		},
+		{
+			"type": "Time",
+			"description": "Time source for animations",
+			"inputs": [],
+			"outputs": ["Output"]
+		},
+		{
+			"type": "If",
+			"description": "Conditional expression",
+			"inputs": ["A", "B", "AGreaterThanB", "AEqualsB", "ALessThanB"],
+			"outputs": ["Output"]
+		},
+		{
+			"type": "Lerp",
+			"description": "Linear interpolation",
+			"inputs": ["A", "B", "Alpha"],
+			"outputs": ["Output"]
+		}
+	]
+}
