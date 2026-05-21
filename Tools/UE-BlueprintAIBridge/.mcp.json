@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "unreal-engine": {
+      "command": "node",
+      "args": ["G:/repository/AI/ChiR24_Unreal_mcp/dist/cli.js"],
+      "env": {
+        "UE_PROJECT_PATH": "G:/repository/claude/UEMCPTest/UEMCPTest.uproject",
+        "MCP_AUTOMATION_PORT": "8091"
+      }
+    }
+  }
+}
