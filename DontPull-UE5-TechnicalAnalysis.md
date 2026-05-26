@@ -7,23 +7,23 @@
 
 ## 文档总览
 
-```
-第1章  项目架构与引擎配置        ← 项目级基础设施
-第2章  网格系统与关卡构建        ← 地图/格子/数据驱动
-第3章  相机与视角               ← 等轴测3D视角
-第4章  玩家系统                 ← 角色/移动/状态
-第5章  方块系统                 ← 推/滑/碎/爆炸
-第6章  敌人AI系统               ← 行为树/EQS/狂暴
-第7章  碰撞与物理               ← 格子碰撞/触发器
-第8章  心形拼合与Gameplay标签    ← GAS/状态管理
-第9章  道具与奖励系统           ← 生成/拾取/计分
-第10章 特效与视觉表现           ← Niagara/材质/后处理
-第11章 音频系统                 ← MetaSound/音效空间化
-第12章 UI系统                   ← UMG/HUD
-第13章 双人模式与网络           ← 本地多人/Replication
-第14章 数据驱动与配置           ← DataAsset/DataTable
-第15章 性能与优化               ← LOD/实例化/剔除
-```
+| 章节 | 内容 | 关键词 |
+|------|------|--------|
+| 第1章 | 项目架构与引擎配置 | 模块/目录/Build.cs |
+| 第2章 | 网格系统与关卡构建 | GridManager/ISM/DataTable |
+| 第3章 | 相机与视角 | 假正交透视/等轴测 |
+| 第4章 | 玩家系统 | Character/格子移动/EnhancedInput |
+| 第5章 | 方块系统 | Actor/Interface/Timeline |
+| 第6章 | 敌人AI系统 | BehaviorTree/EQS/喷火 |
+| 第7章 | 碰撞与物理 | 格子碰撞/碰撞通道 |
+| 第8章 | 心形拼合与Gameplay标签 | GAS/Tag/Effect |
+| 第9章 | 道具与奖励系统 | DataAsset/SpawnActor |
+| 第10章 | 特效与视觉表现 | Niagara/材质/AnimBP |
+| 第11章 | 音频系统 | MetaSound/3D空间音 |
+| 第12章 | UI系统 | UMG/HUD/Widget |
+| 第13章 | 双人模式与网络 | 本地多人/Replication |
+| 第14章 | 数据驱动与配置 | DataTable/DataAsset |
+| 第15章 | 性能与优化 | ISM/LOD/烘焙光照 |
 
 ---
 
@@ -43,11 +43,11 @@
 ## 1.2 必需引擎模块
 
 | 模块 | 用途 | 是否默认启用 |
-|------|------|-------------|
+|------|------|:------------:|
 | Core / CoreUObject | 基础框架 | 是 |
 | Engine | 引擎核心 | 是 |
 | InputCore | 输入系统 | 是 |
-| EnhancedInput | 增强输入系统（新） | 需手动启用 |
+| EnhancedInput | 增强输入系统 | 需手动启用 |
 | NavigationSystem | NavMesh 导航 | 是 |
 | AIModule | 行为树/EQS | 需手动启用 |
 | Niagara | 粒子特效 | 需手动启用 |
@@ -64,7 +64,7 @@
 PublicDependencyModuleNames.AddRange(new string[] {
     "Core", "CoreUObject", "Engine", "InputCore",
     "EnhancedInput", "NavigationSystem", "AIModule",
-    "Niagara", "UMG", "GameplayTasks", "MetaSound"
+    "Niagara", "UMG", "GameplayTasks", "Slate", "SlateCore"
 });
 
 // GAS 需在 .uplugin 或 Build.cs 中启用
@@ -75,72 +75,7 @@ PrivateDependencyModuleNames.AddRange(new string[] {
 
 ## 1.4 项目目录结构
 
-```
-/Content/
-├── Characters/
-│   ├── Don/                    ← 1P兔子
-│   │   ├── Mesh/
-│   │   ├── AnimBP/
-│   │   └── Materials/
-│   └── Pull/                   ← 2P松鼠
-│       ├── Mesh/
-│       ├── AnimBP/
-│       └── Materials/
-├── Blocks/
-│   ├── Normal/
-│   ├── Heart/
-│   ├── Bomb/
-│   └── Star/
-├── Enemies/
-│   ├── Jelly/
-│   └── Dragon/
-├── Items/
-│   ├── Fruits/
-│   └── PowerShake/
-├── Environment/
-│   ├── Walls/
-│   ├── Floor/
-│   ├── Manhole/
-│   └── Boulder/
-├── VFX/
-│   ├── NiagaraSystems/
-│   └── Materials/
-├── Audio/
-│   ├── SFX/
-│   ├── BGM/
-│   └── MetaSounds/
-├── UI/
-│   ├── WBP_TITLE | — | — |
-
-## 1.3 Build.cs 配置
-
-```csharp
-PublicDependencyModuleNames.AddRange(new string[] {
-    "Core",
-    "CoreUObject",
-    "Engine",
-    "InputCore",
-    "EnhancedInput",
-    "NavigationSystem",
-    "AIModule",
-    "Niagara",
-    "UMG",
-    "GameplayTasks",
-    "Slate",
-    "SlateCore",
-});
-
-// 可选：GAS（如使用Gameplay Ability System）
-PrivateDependencyModuleNames.AddRange(new string[] {
-    "GameplayAbilities",
-    "GameplayTags",
-    "GameplayTasks",
-});
-```
-
-## 1.4 项目目录结构
-
-```
+```text
 /Content/
 ├── Characters/
 │   ├── Don/                     ← 1P兔子
@@ -206,9 +141,9 @@ PrivateDependencyModuleNames.AddRange(new string[] {
 
 ## 2.2 网格系统实现方案
 
-### 方案A：自定义GridManager（推荐）
+### 方案A：自定义GridManager（✅ 推荐）
 
-```
+```cpp
 UCLASS()
 class UGridManagerComponent : public UActorComponent
 {
@@ -221,7 +156,7 @@ class UGridManagerComponent : public UActorComponent
     int32 GridHeight = 13;
 
     UPROPERTY(EditAnywhere)
-    float CellSize = 100.0f;  // 3D世界中每格100单位
+    float CellSize = 100.0f;
 
     UPROPERTY()
     TArray<ECellType> Cells;  // 一维数组，index = y * Width + x
@@ -238,29 +173,26 @@ class UGridManagerComponent : public UActorComponent
 ### 方案B：基于NavMesh的网格
 
 - 利用UE NavMesh标记可行走区域
-- 不推荐：NavMesh是连续空间导航，不适合格子对齐逻辑
+- ❌ 不推荐：NavMesh是连续空间导航，不适合格子对齐逻辑
 
 ### 方案C：Tilemap（Paper2D）
 
 - UE的2D Tilemap系统
-- 不推荐：本项目是3D重制
+- ❌ 不推荐：本项目是3D重制
 
 ## 2.3 关卡构建方案
 
-### 方案A：程序化生成（推荐）
+### 方案A：程序化生成（✅ 推荐）
 
-```
+```cpp
 UCLASS()
 class AStageGenerator : public AActor
 {
-    // 从DataTable读取关卡数据
     UPROPERTY(EditAnywhere)
     UDataTable* StageDataTable;
 
-    // 根据数据生成地图
     void GenerateStage(int32 StageID);
 
-    // 使用InstancedStaticMeshComponent批量放置地板/墙壁
     UPROPERTY()
     UInstancedStaticMeshComponent* FloorMeshes;
 
@@ -277,7 +209,7 @@ class AStageGenerator : public AActor
 ### 方案B：手动摆放
 
 - 每关手动在编辑器中搭建
-- 不推荐：32关工作量巨大，不可维护
+- ❌ 不推荐：32关工作量巨大，不可维护
 
 ### 方案C：子关卡（Level Streaming）
 
@@ -324,17 +256,17 @@ class AStageGenerator : public AActor
 
 ### UE实现要点
 
-```
-// BP_IsometricCamera（CameraActor蓝图）
-// CameraComponent属性设置：
-// - Projection = Perspective
-// - FOV = 10.0
-// - Constrain Aspect Ratio = unchecked
+```text
+BP_IsometricCamera（CameraActor蓝图）
+  CameraComponent属性设置：
+  - Projection = Perspective
+  - FOV = 10.0
+  - Constrain Aspect Ratio = unchecked
 
-// PlayerController BeginPlay中设置ViewTarget：
-Event BeginPlay
-  → Get Actor of Class (BP_IsometricCamera)
-  → Set View Target with Blend (BlendTime=0.0)
+PlayerController BeginPlay中设置ViewTarget：
+  Event BeginPlay
+    → Get Actor of Class (BP_IsometricCamera)
+    → Set View Target with Blend (BlendTime=0.0)
 ```
 
 **为什么不用Orthographic**：正交投影虽然大小完全一致，但3D物体侧面无透视缩放，看起来像"纸片"，缺乏3D立体感。极小FOV透视保留了<2%的畸变（肉眼不可辨），但侧面/顶面有完整的3D深度信息。
@@ -366,9 +298,9 @@ Event BeginPlay
 
 ## 4.2 角色基类选择
 
-### 方案A：ACharacter（推荐）
+### 方案A：ACharacter（✅ 推荐）
 
-```
+```cpp
 UCLASS()
 class ADontPullCharacter : public ACharacter
 {
@@ -388,26 +320,22 @@ class ADontPullCharacter : public ACharacter
 ### 方案C：纯Actor
 
 - 最轻量，但缺少Pawn/Controller体系
-- 不推荐：无法接收输入
+- ❌ 不推荐：无法接收输入
 
 ## 4.3 格子移动实现
 
 **关键问题**：UE的CharacterMovementComponent是连续空间移动，Don't Pull需要格子对齐移动。
 
-### 方案A：禁用CMM，自定义格子移动（推荐）
+### 方案A：禁用CMM，自定义格子移动（✅ 推荐）
 
-```
+```cpp
 UCLASS()
 class UGridMovementComponent : public UActorComponent
 {
-    // 目标格子坐标
-    FIntPoint TargetGridPos;
-    // 移动动画进度
-    float MoveProgress = 0.0f;
-    // 移动动画时长
-    float MoveDuration = 0.1f;
-    // 是否正在移动中
-    bool bIsMoving = false;
+    FIntPoint TargetGridPos;       // 目标格子坐标
+    float MoveProgress = 0.0f;     // 移动动画进度
+    float MoveDuration = 0.1f;     // 移动动画时长
+    bool bIsMoving = false;        // 是否正在移动中
 
     void TryMove(EDirection Direction);
     void TickMovement(float DeltaTime);
@@ -423,11 +351,11 @@ class UGridMovementComponent : public UActorComponent
 ### 方案B：使用CMM + Snap
 
 - 利用CharacterMovement移动，每帧Snap到最近格子
-- 不推荐：移动手感差，与格子逻辑冲突
+- ❌ 不推荐：移动手感差，与格子逻辑冲突
 
 ## 4.4 Enhanced Input System
 
-```
+```cpp
 // IMC_DontPull（Input Mapping Context）
 // + IA_MoveUp    → W / Up Arrow / Left Stick Up
 // + IA_MoveDown  → S / Down Arrow / Left Stick Down
@@ -435,13 +363,11 @@ class UGridMovementComponent : public UActorComponent
 // + IA_MoveRight → D / Right Arrow / Left Stick Right
 // + IA_Push      → Space / Face Button South (A)
 
-// 在PlayerController中绑定：
 void ADontPullPlayerController::SetupInputComponent()
 {
     Super::SetupInputComponent();
     UEnhancedInputComponent* EIC = Cast<UEnhancedInputComponent>(InputComponent);
     EIC->BindAction(MoveUpAction, ETriggerEvent::Started, this, &ThisClass::OnMoveUp);
-    // ...
 }
 ```
 
@@ -453,9 +379,9 @@ void ADontPullPlayerController::SetupInputComponent()
 
 ## 4.5 玩家状态管理
 
-### 方案A：简单枚举 + Timer（推荐初期）
+### 方案A：简单枚举 + Timer（✅ 推荐初期）
 
-```
+```cpp
 UENUM(BlueprintType)
 enum class EPlayerState : uint8
 {
@@ -476,19 +402,19 @@ void OnInvincibleTimerExpired();
 
 ### 方案B：GAS GameplayTag（推荐后期/复杂状态）
 
-```
-// Gameplay Tags:
-// State.Player.Normal
-// State.Player.Invincible
-// State.Player.Damaged
-// State.Player.Dead
-// State.Player.Respawning
+```text
+Gameplay Tags:
+  State.Player.Normal
+  State.Player.Invincible
+  State.Player.Damaged
+  State.Player.Dead
+  State.Player.Respawning
 
-// 优势：
-// - 状态间互斥自动管理
-// - 与GameplayEffect联动（无敌时自动阻止伤害Effect）
-// - 蓝图可查询标签
-// - 网络复制内置
+优势：
+  - 状态间互斥自动管理
+  - 与GameplayEffect联动（无敌时自动阻止伤害Effect）
+  - 蓝图可查询标签
+  - 网络复制内置
 ```
 
 ---
@@ -509,7 +435,7 @@ void OnInvincibleTimerExpired();
 
 ## 5.2 方块Actor架构
 
-```
+```cpp
 UCLASS()
 class ABlock : public AActor
 {
@@ -525,11 +451,10 @@ class ABlock : public AActor
     UPROPERTY()
     EDirection SlideDirection;
 
-    // 格子坐标
     UPROPERTY()
     FIntPoint GridPos;
 
-    void OnPushed(EDirection Direction, APlayerCharacter* Pusher);
+    void OnPushed(EDirection Direction, ADontPullCharacter* Pusher);
     void OnCrushed();
     void OnHitWall();
     void OnHitBlock(ABlock* OtherBlock);
@@ -540,7 +465,7 @@ class ABlock : public AActor
 
 ## 5.3 方块交互接口
 
-```
+```cpp
 UINTERFACE(Blueprintable)
 class UPushableInterface : public UInterface
 {
@@ -563,9 +488,9 @@ public:
 
 ## 5.4 方块滑动动画
 
-### 方案A：Timeline（推荐）
+### 方案A：Timeline（✅ 推荐）
 
-```
+```cpp
 // 在ABlock中：
 UPROPERTY()
 UTimelineComponent* SlideTimeline;
@@ -573,7 +498,6 @@ UTimelineComponent* SlideTimeline;
 UFUNCTION()
 void SlideTimelineUpdate(float Value);  // Value: 0.0 → 1.0
 
-// SlideTimelineUpdate中：
 void ABlock::SlideTimelineUpdate(float Value)
 {
     FVector StartPos = GridToWorld(SlideStartPos);
@@ -591,7 +515,7 @@ void ABlock::SlideTimelineUpdate(float Value)
 
 ## 5.5 炸弹爆炸实现
 
-```
+```cpp
 void ABlock::OnCrushed_Bomb()
 {
     // 1. 播放爆炸特效
@@ -645,7 +569,7 @@ void ABlock::OnCrushed_Bomb()
 
 ### 推荐方案：Behavior Tree + Blackboard + EQS
 
-```
+```text
 AIController
 ├── Behavior Tree (BT_Enemy)
 │   ├── Selector: 行为选择
@@ -670,7 +594,8 @@ AIController
 ### Behavior Tree详解
 
 **史莱姆BT**：
-```
+
+```text
 Root → Selector
 ├── [IsStunned?] → Wait
 ├── [IsRaging?] → Sequence
@@ -682,7 +607,8 @@ Root → Selector
 ```
 
 **恐龙BT**：
-```
+
+```text
 Root → Selector
 ├── [IsStunned?] → Wait
 ├── [CanFireBreath?] → FireBreath
@@ -698,13 +624,13 @@ Root → Selector
 
 用于敌人选择移动方向：
 
-```
-// EQS_Query_EnemyMoveDirection
-// 查询敌人周围4个方向的格子，评分选择最优方向
-// 评分因子：
-// 1. 距离玩家的曼哈顿距离（越近越好）
-// 2. 格子是否可行走（不可行走=0分）
-// 3. 格子是否有方块/敌人（有=0分）
+```text
+EQS_Query_EnemyMoveDirection
+  查询敌人周围4个方向的格子，评分选择最优方向
+  评分因子：
+  1. 距离玩家的曼哈顿距离（越近越好）
+  2. 格子是否可行走（不可行走=0分）
+  3. 格子是否有方块/敌人（有=0分）
 ```
 
 **为什么用EQS**：
@@ -713,37 +639,33 @@ Root → Selector
 - 运行时动态评估
 - 比硬编码if-else更灵活
 
-### 替代方案：自定义格子AI（不推荐EQS时）
+### 替代方案：自定义格子AI
 
-```
+```cpp
 void AEnemy::ChooseMoveDirection()
 {
     FIntPoint PlayerPos = TargetPlayer->GetGridPos();
     FIntPoint MyPos = GetGridPos();
 
-    // 计算到玩家的方向
     TArray<EDirection> PreferredDirs;
     int32 DX = PlayerPos.X - MyPos.X;
     int32 DY = PlayerPos.Y - MyPos.Y;
 
-    // 按追踪概率决定是否追踪
     float ChaseProb = bIsRaging ? 0.9f : ChaseProbability;
     if (FMath::FRand() < ChaseProb)
     {
         // 选择使距离最短的方向
-        // ...
     }
     else
     {
         // 随机方向
-        // ...
     }
 }
 ```
 
 ## 6.4 恐龙喷火实现
 
-```
+```cpp
 // BTTask_FireBreath
 EBTNodeResult::Type UBTTask_FireBreath::ExecuteTask(
     UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
@@ -782,15 +704,15 @@ void AEnemy_Dragon::FireBreath()
 
 ### 火焰Actor
 
-```
+```cpp
 UCLASS()
 class AFireBreath : public AActor
 {
     UPROPERTY(VisibleAnywhere)
-    UBoxComponent* DamageBox;  // 触发伤害的碰撞盒
+    UBoxComponent* DamageBox;
 
     UPROPERTY(VisibleAnywhere)
-    UNiagaraComponent* FireVFX;  // 火焰粒子
+    UNiagaraComponent* FireVFX;
 
     float Lifespan = 1.5f;
 
@@ -805,8 +727,7 @@ class AFireBreath : public AActor
 
 ### 方案A：Blackboard Key
 
-```
-// StageManager检测狂暴条件后设置所有敌人的Blackboard
+```cpp
 void AStageManager::CheckRageCondition()
 {
     if (StageTimer > RageConfig.TriggerTime ||
@@ -823,11 +744,11 @@ void AStageManager::CheckRageCondition()
 
 ### 方案B：GAS GameplayTag
 
-```
-// 应用狂暴GameplayEffect
-// Tag: State.Enemy.Raging
-// Effect: 修改移动速度Attribute × 2.0
-// Effect: 修改追踪概率（通过Tag查询）
+```text
+应用狂暴GameplayEffect
+  Tag: State.Enemy.Raging
+  Effect: 修改移动速度Attribute × 2.0
+  Effect: 修改追踪概率（通过Tag查询）
 ```
 
 ---
@@ -858,15 +779,13 @@ void AStageManager::CheckRageCondition()
 
 ### 推荐方案：格子坐标碰撞 + UE碰撞辅助
 
-```
+```cpp
 // 核心碰撞：格子坐标判断
 bool UGridManager::CheckCollision(FIntPoint Pos) const
 {
-    // 检查格子类型
     ECellType CellType = GetCellType(Pos);
     if (CellType == ECellType::Wall) return true;
 
-    // 检查格子上的实体
     if (GetEntityAt(Pos) != nullptr) return true;
 
     return false;
@@ -879,8 +798,8 @@ bool UGridManager::CheckCollision(FIntPoint Pos) const
 
 ## 7.3 碰撞通道配置
 
-```
-// 自定义碰撞通道（DefaultEngine.ini）
+```ini
+; 自定义碰撞通道（DefaultEngine.ini）
 [/Script/Engine.CollisionProfile]
 +DefaultChannelResponses=(Channel=ECC_GameTraceChannel1, Name="Player")
 +DefaultChannelResponses=(Channel=ECC_GameTraceChannel2, Name="Enemy")
@@ -926,26 +845,26 @@ bool UGridManager::CheckCollision(FIntPoint Pos) const
 
 ### GAS实现心形拼合
 
-```
-// Gameplay Tags:
-// State.Player.Invincible       ← 无敌状态
-// State.Enemy.Stunned           ← 晕眩状态
-// State.Enemy.Raging            ← 狂暴状态
-// Effect.HeartCombined          ← 心形拼合效果
+```text
+Gameplay Tags:
+  State.Player.Invincible       ← 无敌状态
+  State.Enemy.Stunned           ← 晕眩状态
+  State.Enemy.Raging            ← 狂暴状态
+  Effect.HeartCombined          ← 心形拼合效果
 
-// Gameplay Effect: GE_HeartCombined
-// - Duration: 10秒
-// - Granted Tags: State.Player.Invincible
-// - Modifiers: 无属性修改（纯Tag）
+Gameplay Effect: GE_HeartCombined
+  - Duration: 10秒
+  - Granted Tags: State.Player.Invincible
+  - Modifiers: 无属性修改（纯Tag）
 
-// Gameplay Effect: GE_EnemyStun
-// - Duration: 3秒（炸弹）/ 10秒（心形拼合）
-// - Granted Tags: State.Enemy.Stunned
+Gameplay Effect: GE_EnemyStun
+  - Duration: 3秒（炸弹）/ 10秒（心形拼合）
+  - Granted Tags: State.Enemy.Stunned
 ```
 
 ## 8.3 心形拼合检测
 
-```
+```cpp
 void AStageManager::CheckHeartCombination()
 {
     TArray<ABlock*> HeartBlocks;
@@ -991,7 +910,7 @@ void AStageManager::CheckHeartCombination()
 
 ## 9.2 道具掉落表实现
 
-```
+```cpp
 USTRUCT(BlueprintType)
 struct FItemDropEntry
 {
@@ -1072,8 +991,7 @@ class UItemDropTable : public UDataAsset
 
 ### 动态材质参数示例
 
-```
-// 狂暴变红：在敌人Tick中更新材质参数
+```cpp
 void AEnemy::UpdateRageMaterial()
 {
     if (bIsRaging)
@@ -1090,7 +1008,7 @@ void AEnemy::UpdateRageMaterial()
 
 ## 10.4 Camera Shake
 
-```
+```cpp
 UCLASS()
 class UExplosionShake : public UCameraShakeBase
 {
@@ -1107,41 +1025,41 @@ class UExplosionShake : public UCameraShakeBase
 
 ### AnimBP状态机
 
-```
-// ABP_Player
-StateMachine: Locomotion
-├── Idle
-├── Walk (4方向Blend Space)
-├── Push (推块动画)
-├── Damaged (受伤)
-├── Dead (死亡)
-└── Dance (过关跳舞)
+```text
+ABP_Player
+  StateMachine: Locomotion
+  ├── Idle
+  ├── Walk (4方向Blend Space)
+  ├── Push (推块动画)
+  ├── Damaged (受伤)
+  ├── Dead (死亡)
+  └── Dance (过关跳舞)
 
-// ABP_Jelly
-StateMachine: JellyAI
-├── Idle
-├── Jump (跳跃移动)
-├── Stunned (晕眩)
-├── Raging (狂暴)
-└── Death (扁平化)
+ABP_Jelly
+  StateMachine: JellyAI
+  ├── Idle
+  ├── Jump (跳跃移动)
+  ├── Stunned (晕眩)
+  ├── Raging (狂暴)
+  └── Death (扁平化)
 
-// ABP_Dragon
-StateMachine: DragonAI
-├── Idle
-├── Walk (4方向)
-├── FireBreath (喷火)
-├── Stunned (晕眩)
-├── Raging (狂暴)
-└── Death (扁平化)
+ABP_Dragon
+  StateMachine: DragonAI
+  ├── Idle
+  ├── Walk (4方向)
+  ├── FireBreath (喷火)
+  ├── Stunned (晕眩)
+  ├── Raging (狂暴)
+  └── Death (扁平化)
 ```
 
 ### Blend Space
 
-```
-// BS_PlayerWalk
-// 横轴: Direction (-180 ~ 180)
-// 纵轴: Speed (0 ~ 300)
-// 动画样本: Walk_Fwd, Walk_Back, Walk_Left, Walk_Right
+```text
+BS_PlayerWalk
+  横轴: Direction (-180 ~ 180)
+  纵轴: Speed (0 ~ 300)
+  动画样本: Walk_Fwd, Walk_Back, Walk_Left, Walk_Right
 ```
 
 ---
@@ -1172,7 +1090,7 @@ StateMachine: DragonAI
 
 ## 11.3 音效架构
 
-```
+```text
 /Content/Audio/
 ├── MetaSounds/
 │   ├── MS_BGM_Main.uasset          ← 主BGM
@@ -1221,7 +1139,7 @@ StateMachine: DragonAI
 
 ## 12.2 UMG Widget架构
 
-```
+```text
 WBP_HUD
 ├── CanvasPanel
 │   ├── HorizontalBox (1P Info)
@@ -1247,8 +1165,7 @@ WBP_TitleScreen       ← 标题画面
 
 ## 12.3 HUD绑定
 
-```
-// 在PlayerController中创建HUD Widget
+```cpp
 void ADontPullPlayerController::BeginPlay()
 {
     Super::BeginPlay();
@@ -1262,7 +1179,7 @@ void ADontPullPlayerController::BeginPlay()
 // 数据绑定方式：
 // 方案A：Polling（在Tick中更新Widget数据）
 // 方案B：Delegate（数据变化时广播通知Widget）
-// 推荐方案B，性能更好
+// ✅ 推荐方案B，性能更好
 ```
 
 ---
@@ -1282,13 +1199,13 @@ void ADontPullPlayerController::BeginPlay()
 
 ## 13.2 本地双人方案
 
-### 方案A：同屏共享（推荐）
+### 方案A：同屏共享（✅ 推荐）
 
-```
-// GameMode配置：
-AGameModeBase::bUseSeamlessTravel = true;
-// 2个PlayerController共享同一个BP_IsometricCamera
-// 不分屏，同屏显示两个角色
+```text
+GameMode配置：
+  AGameModeBase::bUseSeamlessTravel = true;
+  2个PlayerController共享同一个BP_IsometricCamera
+  不分屏，同屏显示两个角色
 ```
 
 **优势**：符合原版街机体验，一个屏幕两个角色
@@ -1296,7 +1213,7 @@ AGameModeBase::bUseSeamlessTravel = true;
 ### 方案B：分屏
 
 - 每个玩家独立相机
-- 不推荐：等轴测视角分屏体验差
+- ❌ 不推荐：等轴测视角分屏体验差
 
 ## 13.3 网络复制策略
 
@@ -1312,7 +1229,7 @@ AGameModeBase::bUseSeamlessTravel = true;
 
 ### 关键Replication代码
 
-```
+```cpp
 // 方块位置由服务器权威
 UPROPERTY(ReplicatedUsing = OnRep_GridPos)
 FIntPoint GridPos;
@@ -1348,74 +1265,38 @@ void Server_RequestPush(EDirection Direction);
 
 ### 关卡数据表
 
-```
+```cpp
 USTRUCT(BlueprintType)
 struct FStageDataRow : public FTableRowBase
 {
-    UPROPERTY(EditAnywhere)
-    int32 StageID = 0;
-
-    UPROPERTY(EditAnywhere)
-    FString StageName;
-
-    UPROPERTY(EditAnywhere)
-    int32 GridWidth = 15;
-
-    UPROPERTY(EditAnywhere)
-    int32 GridHeight = 13;
-
-    UPROPERTY(EditAnywhere)
-    FString CellMapString;  // "#..#M.#..." 格式
-
-    UPROPERTY(EditAnywhere)
-    TArray<FString> BlockSpawns;  // "H,3,5" 格式
-
-    UPROPERTY(EditAnywhere)
-    TArray<FString> ManholeSpawns;  // "M,2,3,JELLY,JELLY,DRAGON" 格式
-
-    UPROPERTY(EditAnywhere)
-    int32 BoulderCount = 1;
-
-    UPROPERTY(EditAnywhere)
-    float RageTriggerTime = 30.0f;
-
-    UPROPERTY(EditAnywhere)
-    float TimeLimit = 30.0f;
-
-    UPROPERTY(EditAnywhere)
-    bool bHasBoulderInward = false;
-
-    UPROPERTY(EditAnywhere)
-    bool bIsFullMap = false;
+    UPROPERTY(EditAnywhere) int32 StageID = 0;
+    UPROPERTY(EditAnywhere) FString StageName;
+    UPROPERTY(EditAnywhere) int32 GridWidth = 15;
+    UPROPERTY(EditAnywhere) int32 GridHeight = 13;
+    UPROPERTY(EditAnywhere) FString CellMapString;       // "#..#M.#..." 格式
+    UPROPERTY(EditAnywhere) TArray<FString> BlockSpawns; // "H,3,5" 格式
+    UPROPERTY(EditAnywhere) TArray<FString> ManholeSpawns; // "M,2,3,JELLY,JELLY,DRAGON"
+    UPROPERTY(EditAnywhere) int32 BoulderCount = 1;
+    UPROPERTY(EditAnywhere) float RageTriggerTime = 30.0f;
+    UPROPERTY(EditAnywhere) float TimeLimit = 30.0f;
+    UPROPERTY(EditAnywhere) bool bHasBoulderInward = false;
+    UPROPERTY(EditAnywhere) bool bIsFullMap = false;
 };
 ```
 
 ### 方块配置表
 
-```
+```cpp
 USTRUCT(BlueprintType)
 struct FBlockConfigRow : public FTableRowBase
 {
-    UPROPERTY(EditAnywhere)
-    EBlockType BlockType;
-
-    UPROPERTY(EditAnywhere)
-    bool bCanBePushed = true;
-
-    UPROPERTY(EditAnywhere)
-    bool bCrushOnWall = true;
-
-    UPROPERTY(EditAnywhere)
-    bool bCrushOnBlock = true;
-
-    UPROPERTY(EditAnywhere)
-    bool bCrushEnemy = true;
-
-    UPROPERTY(EditAnywhere)
-    bool bDestroyable = true;
-
-    UPROPERTY(EditAnywhere)
-    FString SpecialEffect;  // "None" / "HeartCombine" / "Explosion" / "DropItem"
+    UPROPERTY(EditAnywhere) EBlockType BlockType;
+    UPROPERTY(EditAnywhere) bool bCanBePushed = true;
+    UPROPERTY(EditAnywhere) bool bCrushOnWall = true;
+    UPROPERTY(EditAnywhere) bool bCrushOnBlock = true;
+    UPROPERTY(EditAnywhere) bool bCrushEnemy = true;
+    UPROPERTY(EditAnywhere) bool bDestroyable = true;
+    UPROPERTY(EditAnywhere) FString SpecialEffect; // "None"/"HeartCombine"/"Explosion"/"DropItem"
 };
 ```
 
@@ -1440,12 +1321,14 @@ struct FBlockConfigRow : public FTableRowBase
 
 ### 15.2.1 InstancedStaticMesh
 
+```text
+地板和墙壁使用ISM批量渲染
+  32关共约500+个地板格子 + 100+个墙壁格子
+  不用ISM = 600+ DrawCall
+  用ISM = 2 DrawCall（地板1个 + 墙壁1个）
 ```
-// 地板和墙壁使用ISM批量渲染
-// 32关共约500+个地板格子 + 100+个墙壁格子
-// 不用ISM = 600+ DrawCall
-// 用ISM = 2 DrawCall（地板1个 + 墙壁1个）
 
+```cpp
 UPROPERTY()
 UInstancedStaticMeshComponent* FloorISM;
 
@@ -1470,8 +1353,7 @@ void AStageGenerator::GenerateFloor()
 
 ### 15.2.2 AI Tick优化
 
-```
-// 远离玩家的敌人降低Tick频率
+```cpp
 void AEnemy::Tick(float DeltaTime)
 {
     float DistToPlayer = GetDistanceToPlayer();
@@ -1489,11 +1371,9 @@ void AEnemy::Tick(float DeltaTime)
 
 ### 15.2.3 关卡流式加载
 
-```
+```cpp
 // 32关不需要全部常驻内存
 // 使用Level Streaming按需加载当前关卡
-// 过关后Unload当前关，Load下一关
-
 FLatentActionInfo LatentInfo;
 UGameplayStatics::LoadStreamLevel(GetWorld(), NextLevelName, true, false, LatentInfo);
 UGameplayStatics::UnloadStreamLevel(GetWorld(), CurrentLevelName, LatentInfo, false);
@@ -1514,7 +1394,7 @@ UGameplayStatics::UnloadStreamLevel(GetWorld(), CurrentLevelName, LatentInfo, fa
 # 附录A UE功能与Don't Pull系统完整映射表
 
 | Don't Pull系统 | UE功能 | 具体组件/类 | 优先级 |
-|----------------|--------|-------------|--------|
+|----------------|--------|-------------|:------:|
 | 网格管理 | 自定义Component | UGridManagerComponent | P0 |
 | 格子移动 | 自定义Component | UGridMovementComponent | P0 |
 | 碰撞检测 | 格子坐标判断 | 自定义逻辑 | P0 |
@@ -1561,7 +1441,7 @@ UGameplayStatics::UnloadStreamLevel(GetWorld(), CurrentLevelName, LatentInfo, fa
 # 附录B 推荐第三方插件
 
 | 插件 | 用途 | 是否免费 |
-|------|------|---------|
+|------|------|:--------:|
 | Gameplay Ability System | 状态/效果管理 | 引擎内置 |
 | Enhanced Input | 增强输入 | 引擎内置 |
 | Niagara | 粒子特效 | 引擎内置 |
