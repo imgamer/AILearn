@@ -21,7 +21,7 @@
 | 第10章 | 特效与视觉表现 | Niagara/材质/AnimBP |
 | 第11章 | 音频系统 | MetaSound/3D空间音 |
 | 第12章 | UI系统 | UMG/HUD/Widget |
-| 第13章 | 双人模式与网络 | 本地多人/Replication |
+| 第13章 | 多人模式：本地双人→网络联机 | EOS/Iris/预测/延迟补偿/反作弊 |
 | 第14章 | 数据驱动与配置 | DataTable/DataAsset |
 | 第15章 | 性能与优化 | ISM/LOD/烘焙光照 |
 
@@ -1184,20 +1184,43 @@ void ADontPullPlayerController::BeginPlay()
 
 ---
 
-# 第13章 双人模式与网络
+# 第13章 多人模式：本地双人 → 网络联机
 
-## 13.1 UE功能映射
+> 本章从本地双人扩展到完整的网络联机方案，覆盖 UE5.7 全部网络功能栈。
+> 架构原则：**单机优先 → 本地双人 → 网络联机**，每层可独立运行，不强制依赖上层。
+
+## 13.1 多人模式总览
+
+| 模式 | 玩家数 | 网络拓扑 | 适用场景 |
+|------|--------|----------|----------|
+| 单机 | 1P | 无网络 | 离线游玩 |
+| 本地双人 | 1P+2P | 同一进程 | 沙发合作 |
+| 联机双人 | 1P+2P | Client-Server | 远程合作 |
+| 联机对战 | 2~4P | Client-Server | 竞速/对抗 |
+
+## 13.2 UE功能映射
 
 | Don't Pull系统 | UE功能 | 说明 |
 |----------------|--------|------|
-| 本地双人 | SplitScreen / SharedScreen | 同屏合作 |
-| 独立输入 | PlayerController × 2 | 各自输入 |
-| 独立生命 | PlayerState | 各自状态 |
-| 独立得分 | PlayerState | 各自分数 |
-| 网络同步 | Replication | 在线合作 |
-| 状态同步 | GAS / Replicated Properties | 网络复制 |
+| 本地双人 | SharedScreen + 2×PlayerController | 同屏合作 |
+| 独立输入 | EnhancedInput + IMC切换 | 各自输入映射 |
+| 独立生命/得分 | PlayerState Replicated | 各自状态 |
+| 网络会话 | Online Subsystem + EOS | 创建/搜索/加入 |
+| 匹配系统 | EOS Lobbies / Session | 房间/匹配 |
+| 网络同步 | Iris Replication / 传统Replication | 状态复制 |
+| 服务器权威 | GameMode (Server-only) | 逻辑判定 |
+| 客户端预测 | Client-Side Prediction | 移动平滑 |
+| 延迟补偿 | Server-Side Rewind | 碰撞回溯 |
+| 语音聊天 | EOS Voice Chat | 实时语音 |
+| 反作弊 | Server Authority + 校验 | 防篡改 |
+| 专用服务器 | Dedicated Server | 生产部署 |
+| P2P中继 | EOS P2P / NAT穿透 | 跨网络连接 |
+| 好友系统 | EOS Friends / Presence | 社交功能 |
+| 跨平台 | EOS Crossplay | PC/主机/移动互通 |
 
-## 13.2 本地双人方案
+---
+
+## 13.3 本地双人方案
 
 ### 方案A：同屏共享（✅ 推荐）
 
@@ -1215,24 +1238,172 @@ GameMode配置：
 - 每个玩家独立相机
 - ❌ 不推荐：等轴测视角分屏体验差
 
-## 13.3 网络复制策略
+### 本地双人输入映射
 
-| 数据 | 复制方式 | 说明 |
-|------|----------|------|
-| 玩家位置 | ReplicatedMovement | 自动同步 |
-| 方块位置 | Replicated Property | 服务器权威 |
-| 敌人位置/状态 | Replicated + RPC | 服务器权威AI |
-| 生命/得分 | PlayerState Replicated | 各自同步 |
-| 心形拼合 | Multicast RPC | 全员触发 |
-| 道具拾取 | Server RPC | 服务器判定 |
-| 计时器 | Server Authority | 服务器计时 |
+```cpp
+// 1P: 键鼠 / 手柄1
+// IMC_DontPull_P1: WASD + Space
 
-### 关键Replication代码
+// 2P: 手柄2
+// IMC_DontPull_P2: Left Stick + Face Button South
+
+void ADontPullPlayerController::BeginPlay()
+{
+    Super::BeginPlay();
+    if (UEnhancedInputLocalPlayerSubsystem* Subsystem =
+        ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(GetLocalPlayer()))
+    {
+        int32 PlayerIndex = GetLocalPlayer()->GetControllerId();
+        if (PlayerIndex == 0)
+            Subsystem->AddMappingContext(IMC_DontPull_P1, 0);
+        else
+            Subsystem->AddMappingContext(IMC_DontPull_P2, 0);
+    }
+}
+```
+
+---
+
+## 13.4 网络架构设计
+
+### 13.4.1 服务器-客户端模型
+
+```
+┌─────────────────────────────────────────────────────┐
+│                  Dedicated Server                     │
+│  ┌───────────────────────────────────────────────┐  │
+│  │  GameMode (Authority)                         │  │
+│  │  ├─ GridManager (格子逻辑权威)                │  │
+│  │  ├─ StageManager (关卡流程权威)               │  │
+│  │  ├─ ScoreManager (计分权威)                   │  │
+│  │  ├─ EnemyAISystem (AI权威)                    │  │
+│  │  └─ CollisionSystem (碰撞判定权威)            │  │
+│  └───────────────────────────────────────────────┘  │
+│  ┌───────────────────────────────────────────────┐  │
+│  │  GameState (Replicated to All)                │  │
+│  │  ├─ StageID / Timer / EnemyCount             │  │
+│  │  └─ HeartMergeState / RageState              │  │
+│  └───────────────────────────────────────────────┘  │
+└──────────────────────────┬──────────────────────────┘
+                           │ Replication
+              ┌────────────┼────────────┐
+              ▼            ▼            ▼
+        ┌──────────┐ ┌──────────┐ ┌──────────┐
+        │ Client 1 │ │ Client 2 │ │ Client N │
+        │ PlayerCtrl│ │ PlayerCtrl│ │ Spectator│
+        │ PlayerSt │ │ PlayerSt │ │          │
+        │ Predict  │ │ Predict  │ │          │
+        │ Render   │ │ Render   │ │ Render   │
+        └──────────┘ └──────────┘ └──────────┘
+```
+
+### 13.4.2 权威划分
+
+| 逻辑 | 权威方 | 说明 |
+|------|--------|------|
+| 格子移动可行性 | Server | GridManager只在Server计算 |
+| 推块判定 | Server | 碰撞优先级由Server裁决 |
+| 方块滑动/压碎 | Server | Server计算路径，客户端播放动画 |
+| 敌人AI决策 | Server | BehaviorTree只在Server运行 |
+| 碾压判定 | Server | 碰撞结果由Server广播 |
+| 心形拼合检测 | Server | 3心排列由Server判定 |
+| 计分/奖命 | Server | ScoreManager只在Server |
+| 关卡流程/计时 | Server | StageManager只在Server |
+| 道具拾取 | Server | Server判定拾取有效性 |
+| 玩家移动输入 | Client → Server | Client预测，Server校验 |
+| 视觉/音效表现 | Client | 各客户端独立渲染 |
+| UI显示 | Client | 各客户端独立更新 |
+
+### 13.4.3 GameMode / GameState / PlayerState 设计
+
+```cpp
+UCLASS()
+class ADontPullGameMode : public AGameModeBase
+{
+    // 仅在Server存在
+    UPROPERTY()
+    UGridManagerComponent* GridManager;
+
+    UPROPERTY()
+    UStageManagerComponent* StageManager;
+
+    void OnPlayerPushBlock(ADontPullCharacter* Player, EDirection Dir);
+    void OnBlockSlideComplete(ABlock* Block);
+    void CheckHeartCombination();
+    void CheckStageClear();
+};
+
+UCLASS()
+class ADontPullGameState : public AGameStateBase
+{
+    UPROPERTY(Replicated)
+    int32 CurrentStageID;
+
+    UPROPERTY(Replicated)
+    float StageTimer;
+
+    UPROPERTY(Replicated)
+    int32 RemainingEnemies;
+
+    UPROPERTY(Replicated)
+    bool bIsRageMode;
+
+    UPROPERTY(Replicated)
+    bool bIsHeartCombined;
+};
+
+UCLASS()
+class ADontPullPlayerState : public APlayerState
+{
+    UPROPERTY(Replicated)
+    int32 Score;
+
+    UPROPERTY(Replicated)
+    int32 Lives;
+
+    UPROPERTY(Replicated)
+    int32 FruitCount;
+
+    UPROPERTY(Replicated)
+    EPlayerState CurrentState;
+};
+```
+
+---
+
+## 13.5 网络复制策略
+
+### 13.5.1 复制方式选型
+
+| 数据类型 | 复制方式 | 频率 | 带宽 | 说明 |
+|----------|----------|------|------|------|
+| 玩家格子坐标 | ReplicatedUsing(OnRep) | 变化时 | 低 | 格子坐标是整数，极省带宽 |
+| 玩家移动动画 | 客户端本地预测 | — | 0 | 基于预测位置本地播放 |
+| 方块格子坐标 | ReplicatedUsing(OnRep) | 变化时 | 低 | Server权威 |
+| 方块滑动动画 | 客户端本地插值 | — | 0 | 收到起止坐标后本地插值 |
+| 敌人格子坐标 | ReplicatedUsing(OnRep) | 变化时 | 低 | AI在Server运行 |
+| 敌人状态(晕眩/狂暴) | Replicated | 变化时 | 极低 | 布尔值/枚举 |
+| 生命/得分/水果数 | PlayerState Replicated | 变化时 | 极低 | 整数 |
+| 心形拼合触发 | Multicast RPC | 事件时 | 一次 | 全员播放特效 |
+| 炸弹爆炸 | Multicast RPC | 事件时 | 一次 | 全员播放特效+晕眩 |
+| 推块请求 | Server RPC | 玩家操作 | 低 | 客户端→服务器 |
+| 道具拾取 | Server RPC | 玩家操作 | 低 | 服务器判定 |
+| 格子类型变化 | Replicated | 变化时 | 低 | 墙/地板/井盖 |
+| 计时器 | GameState Replicated | 1次/秒 | 极低 | 服务器计时 |
+
+### 13.5.2 关键Replication代码
 
 ```cpp
 // 方块位置由服务器权威
 UPROPERTY(ReplicatedUsing = OnRep_GridPos)
 FIntPoint GridPos;
+
+UFUNCTION()
+void OnRep_GridPos()
+{
+    // 客户端收到新坐标后，启动本地插值动画
+    StartSlideAnimation(PreviousGridPos, GridPos);
+}
 
 void ABlock::GetLifetimeReplicatedProps(
     TArray<FLifetimeProperty>& OutLifetimeProps) const
@@ -1240,12 +1411,871 @@ void ABlock::GetLifetimeReplicatedProps(
     Super::GetLifetimeReplicatedProps(OutLifetimeProps);
     DOREPLIFETIME(ABlock, GridPos);
     DOREPLIFETIME(ABlock, BlockType);
+    DOREPLIFETIME(ABlock, bIsSliding);
 }
 
 // 推块由服务器判定
-UFUNCTION(Server, Reliable)
+UFUNCTION(Server, Reliable, WithValidation)
 void Server_RequestPush(EDirection Direction);
+
+bool ADontPullCharacter::Server_RequestPush_Validate(
+    EDirection Direction)
+{
+    return Direction >= EDirection::Up && Direction <= EDirection::Right;
+}
+
+void ADontPullCharacter::Server_RequestPush_Implementation(
+    EDirection Direction)
+{
+    if (CurrentState != EPlayerState::Normal &&
+        CurrentState != EPlayerState::Invincible)
+        return;
+
+    FIntPoint TargetPos = GetGridPos() + DirectionToOffset(Direction);
+    ABlock* Block = GridManager->GetBlockAt(TargetPos);
+    if (Block && Block->TryPush(Direction, this))
+    {
+        // 推块成功，移动玩家到方块原位置
+        SetGridPos(TargetPos);
+    }
+}
+
+// 心形拼合全员广播
+UFUNCTION(NetMulticast, Reliable)
+void Multicast_OnHeartCombined(const TArray<FIntPoint>& HeartPositions);
+
+// 炸弹爆炸全员广播
+UFUNCTION(NetMulticast, Unreliable)
+void Multicast_OnBombExploded(FIntPoint Center, TArray<FIntPoint> StunPositions);
 ```
+
+### 13.5.3 格子游戏的带宽优势
+
+```
+Don't Pull 网络优势分析：
+  - 格子坐标 = 2个int8（x, y），每个坐标1字节
+  - 传统3D位置 = 3个float（x, y, z），每个12字节
+  - 带宽节省：2字节 vs 12字节，节省83%
+  - 15×13地图最大坐标(14,12)，int8足够
+  - 方向 = 1个uint8（0~3），1字节
+  - 状态 = 1个uint8（枚举），1字节
+
+单帧全量同步估算（2人+10敌+5方块）：
+  - 玩家坐标：2人 × 2字节 = 4字节
+  - 方块坐标：5块 × 3字节 = 15字节
+  - 敌人坐标+状态：10敌 × 3字节 = 30字节
+  - GameState：~10字节
+  - 合计：~59字节/帧 @ 60fps = ~3.5KB/s
+  - 极低带宽需求，适合移动网络
+```
+
+---
+
+## 13.6 Iris 复制系统（UE5.7 下一代）
+
+### 13.6.1 Iris vs 传统Replication
+
+| 维度 | 传统Replication | Iris（UE5.7 Beta） |
+|------|----------------|---------------------|
+| 架构 | FastArraySerializer + DOREPLIFETIME | 实体化复制 + SubObject |
+| 增量同步 | FastArray需手动MarkItemDirty | 自动增量检测 |
+| 带宽优化 | ReplicationGraph（可选） | 内置CullDistance + 分级 |
+| 大世界支持 | 需手动分Stream | 原生支持多Server |
+| 调试 | NetProfiler | Iris Inspector |
+| 稳定性 | 生产就绪 | Beta（5.7），Fortnite已验证 |
+| 适用场景 | 中小型项目 | 大型/高并发项目 |
+
+### 13.6.2 Don't Pull 是否使用Iris？
+
+| 评估维度 | 结论 |
+|----------|------|
+| 玩家数 | 2~4人，规模小 |
+| 同步实体 | <50个，规模小 |
+| 带宽需求 | 极低（格子坐标） |
+| Iris收益 | 低（项目规模不触发Iris优势） |
+| Iris风险 | Beta状态，API可能变动 |
+| **推荐** | **初期用传统Replication，预留Iris迁移接口** |
+
+### 13.6.3 Iris迁移预留
+
+```cpp
+// 抽象复制接口，便于未来迁移到Iris
+UINTERFACE(Blueprintable)
+class UReplicableGridEntity : public UInterface
+{
+    GENERATED_BODY()
+};
+
+class IReplicableGridEntity
+{
+    GENERATED_BODY()
+public:
+    UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
+    FIntPoint GetReplicatedGridPos() const;
+
+    UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
+    uint8 GetReplicatedState() const;
+};
+
+// 未来迁移到Iris时，只需替换复制层实现
+// 业务逻辑（格子移动/碰撞/计分）不需要改动
+```
+
+### 13.6.4 Iris启用配置（预留）
+
+```ini
+; DefaultEngine.ini — 预留Iris配置
+[SystemSettings]
+net.Iris.UseIrisReplication=0          ; 初期关闭
+net.SubObjects.DefaultUseSubObjectReplicationList=1
+
+; 未来启用时改为：
+; net.Iris.UseIrisReplication=1
+```
+
+```csharp
+// Build.cs — 预留Iris模块
+// 初期不启用，迁移时取消注释
+// SetupIrisSupport(Target);
+```
+
+---
+
+## 13.7 客户端预测与服务器校正
+
+### 13.7.1 为什么格子游戏也需要预测
+
+```
+问题：网络延迟导致操作反馈延迟
+  - 100ms RTT下，玩家按"上"后100ms才看到角色移动
+  - 格子移动本身只需100ms动画，延迟占比高达50%
+  - 玩家感知：操作"粘滞"，手感差
+
+方案：客户端预测 + 服务器校正
+  - 客户端立即执行移动（预测）
+  - 同时发送Server RPC
+  - 服务器校验后确认或回滚
+  - 格子游戏优势：回滚代价极小（只需回到上一个格子）
+```
+
+### 13.7.2 预测实现
+
+```cpp
+UCLASS()
+class ADontPullCharacter : public ACharacter
+{
+    UPROPERTY(ReplicatedUsing = OnRep_ServerGridPos)
+    FIntPoint ServerGridPos;
+
+    FIntPoint PredictedGridPos;
+    int32 PredictionID = 0;
+
+    void TryMove(EDirection Direction)
+    {
+        FIntPoint TargetPos = PredictedGridPos + DirectionToOffset(Direction);
+
+        if (!GridManager->IsWalkable(TargetPos))
+            return;
+
+        // 1. 客户端立即预测移动
+        PredictedGridPos = TargetPos;
+        PredictionID++;
+        StartMoveAnimation(PredictedGridPos, TargetPos);
+
+        // 2. 发送到服务器
+        Server_RequestMove(Direction, PredictionID);
+    }
+
+    UFUNCTION(Server, Reliable, WithValidation)
+    void Server_RequestMove(EDirection Direction, int32 InPredictionID);
+
+    UFUNCTION()
+    void OnRep_ServerGridPos()
+    {
+        // 3. 服务器校正
+        if (ServerGridPos != PredictedGridPos)
+        {
+            // 服务器否决了移动，回滚到服务器位置
+            PredictedGridPos = ServerGridPos;
+            SnapToGrid(ServerGridPos);
+        }
+        // 如果一致，预测正确，无需额外操作
+    }
+};
+
+void ADontPullCharacter::Server_RequestMove_Implementation(
+    EDirection Direction, int32 InPredictionID)
+{
+    FIntPoint TargetPos = GetGridPos() + DirectionToOffset(Direction);
+
+    if (!GridManager->IsWalkable(TargetPos))
+        return;
+
+    if (CurrentState == EPlayerState::Dead)
+        return;
+
+    SetGridPos(TargetPos);
+    ServerGridPos = TargetPos;
+}
+```
+
+### 13.7.3 方块滑动的客户端预测
+
+```cpp
+// 推块预测：客户端预测推块成功，立即播放推块+滑动动画
+// 服务器校验：如果推块被否决（如另一玩家同时推），回滚
+
+void ADontPullCharacter::TryPush(EDirection Direction)
+{
+    FIntPoint BlockPos = PredictedGridPos + DirectionToOffset(Direction);
+    ABlock* Block = GetBlockAt(BlockPos);
+
+    if (!Block) return;
+
+    // 客户端预测推块成功
+    PredictedGridPos = BlockPos;
+    Block->ClientPredictSlide(Direction);
+
+    Server_RequestPush(Direction, PredictionID++);
+}
+
+// 服务器校正
+UFUNCTION()
+void OnRep_ServerBlockStates()
+{
+    // 比对服务器方块状态与本地预测
+    // 不一致时回滚方块位置
+    for (auto& ServerBlock : ServerBlockStates)
+    {
+        ABlock* LocalBlock = GetBlockAt(ServerBlock.GridPos);
+        if (LocalBlock && LocalBlock->GetGridPos() != ServerBlock.GridPos)
+        {
+            LocalBlock->SnapToGrid(ServerBlock.GridPos);
+        }
+    }
+}
+```
+
+---
+
+## 13.8 延迟补偿
+
+### 13.8.1 格子游戏的延迟补偿优势
+
+```
+传统FPS延迟补偿：
+  - 需要回溯玩家位置到射击时刻
+  - 需要保存历史碰撞体快照
+  - 复杂度高，计算量大
+
+Don't Pull延迟补偿：
+  - 格子坐标是离散的，回溯只需恢复整数坐标
+  - 不需要连续位置插值
+  - 历史快照只需保存 (帧号, 格子坐标) 对
+  - 计算量极小
+```
+
+### 13.8.2 服务器端回溯（Server-Side Rewind）
+
+```cpp
+// 服务器保存每个实体的格子坐标历史
+struct FGridSnapshot
+{
+    int32 Frame;
+    TMap<AActor*, FIntPoint> EntityPositions;
+};
+
+class AStageManager
+{
+    TArray<FGridSnapshot> Snapshots;
+    static constexpr int32 MaxSnapshotFrames = 300; // 5秒@60fps
+
+    void SaveSnapshot()
+    {
+        FGridSnapshot& Snap = Snapshots.Emplace_GetRef();
+        Snap.Frame = GetWorld()->GetFrameNumber();
+        for (AActor* Entity : AllEntities)
+        {
+            Snap.EntityPositions.Add(Entity, Entity->GetGridPos());
+        }
+        if (Snapshots.Num() > MaxSnapshotFrames)
+            Snapshots.RemoveAt(0);
+    }
+
+    FIntPoint GetEntityPosAtFrame(AActor* Entity, int32 Frame)
+    {
+        for (int32 i = Snapshots.Num() - 1; i >= 0; i--)
+        {
+            if (Snapshots[i].Frame <= Frame)
+            {
+                if (FIntPoint* Pos = Snapshots[i].EntityPositions.Find(Entity))
+                    return *Pos;
+            }
+        }
+        return Entity->GetGridPos();
+    }
+};
+
+// 延迟补偿碰撞判定
+void ADontPullGameMode::OnPlayerPushBlock(
+    ADontPullCharacter* Player, EDirection Dir, float ClientTimestamp)
+{
+    // 计算客户端操作时的服务器帧号
+    float ServerTime = GetWorld()->GetTimeSeconds();
+    float Ping = ServerTime - ClientTimestamp;
+    int32 TargetFrame = GetWorld()->GetFrameNumber() - FMath::RoundToInt(Ping * 60.0f);
+
+    // 回溯到客户端操作时刻的位置
+    FIntPoint PlayerPosAtTime = StageManager->GetEntityPosAtFrame(Player, TargetFrame);
+    FIntPoint BlockPosAtTime = PlayerPosAtTime + DirectionToOffset(Dir);
+
+    ABlock* Block = GridManager->GetBlockAt(BlockPosAtTime);
+    if (Block && Block->CanPushInDirection(Dir))
+    {
+        // 补偿后判定有效，执行推块
+        Block->TryPush(Dir, Player);
+    }
+    // 否则：客户端预测错误，OnRep校正会自动回滚
+}
+```
+
+---
+
+## 13.9 网络化AI
+
+### 13.9.1 AI执行架构
+
+```
+┌─────────────────────────────────────────┐
+│            Dedicated Server              │
+│  ┌─────────────────────────────────────┐│
+│  │ Enemy AI (Server-Only)              ││
+│  │ ├─ BehaviorTree 全部在Server运行    ││
+│  │ ├─ EQS查询在Server执行             ││
+│  │ ├─ 移动决策在Server计算            ││
+│  │ └─ 喷火/狂暴在Server触发           ││
+│  └─────────────────────────────────────┘│
+│           │ Replicated                   │
+│           ▼                              │
+│  敌人格子坐标 + 状态 → 广播给所有Client  │
+└─────────────────────────────────────────┘
+         │                    │
+         ▼                    ▼
+   ┌──────────┐        ┌──────────┐
+   │ Client 1 │        │ Client 2 │
+   │ 敌人插值 │        │ 敌人插值 │
+   │ 动画播放 │        │ 动画播放 │
+   └──────────┘        └──────────┘
+```
+
+### 13.9.2 敌人网络复制
+
+```cpp
+UCLASS()
+class AEnemy : public ACharacter
+{
+    UPROPERTY(ReplicatedUsing = OnRep_EnemyGridPos)
+    FIntPoint GridPos;
+
+    UPROPERTY(ReplicatedUsing = OnRep_EnemyState)
+    EEnemyState EnemyState;
+
+    UPROPERTY(Replicated)
+    bool bIsRaging;
+
+    UPROPERTY(Replicated)
+    bool bIsStunned;
+
+    UFUNCTION()
+    void OnRep_EnemyGridPos()
+    {
+        // 客户端收到新坐标，播放移动动画
+        StartMoveAnimation(PreviousGridPos, GridPos);
+    }
+
+    UFUNCTION()
+    void OnRep_EnemyState()
+    {
+        // 客户端收到状态变化，播放对应动画
+        switch (EnemyState)
+        {
+        case EEnemyState::Stunned:
+            PlayStunAnimation();
+            break;
+        case EEnemyState::Raging:
+            PlayRageAnimation();
+            break;
+        case EEnemyState::Dead:
+            PlayDeathAnimation();
+            break;
+        }
+    }
+};
+
+// 恐龙喷火：Server触发，Multicast广播特效
+UFUNCTION(NetMulticast, Unreliable)
+void Multicast_FireBreath(FIntPoint StartPos, FIntPoint Direction, int32 Range);
+```
+
+### 13.9.3 AI在Listen Server vs Dedicated Server
+
+| 场景 | Listen Server | Dedicated Server |
+|------|--------------|------------------|
+| AI运行位置 | Host客户端 | 服务器进程 |
+| Host延迟 | 0ms | 取决于网络 |
+| AI性能 | 与Host共享帧预算 | 独立帧预算 |
+| 推荐场景 | 开发测试 | 生产部署 |
+
+---
+
+## 13.10 Online Subsystem 与 EOS 集成
+
+### 13.10.1 Online Subsystem 架构
+
+```
+┌─────────────────────────────────────────────┐
+│              Game Code                       │
+│  (调用统一接口，不关心底层实现)               │
+├─────────────────────────────────────────────┤
+│          Online Subsystem (OSS)              │
+│  IOnlineSession / IOnlineIdentity / ...     │
+├──────────┬──────────┬───────────────────────┤
+│ OSS EOS  │ OSS NULL │ OSS Steam / Others    │
+│ (跨平台) │ (开发用) │ (平台特定)            │
+├──────────┴──────────┴───────────────────────┤
+│       Epic Online Services (EOS) SDK        │
+│  Auth / Sessions / P2P / Voice / Lobbies    │
+└─────────────────────────────────────────────┘
+```
+
+### 13.10.2 EOS 功能与 Don't Pull 对应
+
+| EOS 服务 | Don't Pull 用途 | 优先级 |
+|----------|----------------|:------:|
+| EOS Auth | 玩家身份认证（OAuth2.0 / 设备ID） | P0 |
+| EOS Sessions | 创建/搜索/加入游戏房间 | P0 |
+| EOS Lobbies | 大厅系统（比Session更灵活） | P0 |
+| EOS P2P | NAT穿透 + 中继通信 | P0 |
+| EOS Voice | 实时语音聊天 | P1 |
+| EOS Friends | 好友列表 + 邀请 | P1 |
+| EOS Presence | 在线状态（游戏中/大厅/离线） | P2 |
+| EOS Stats | 排行榜（最高分/最快通关） | P2 |
+| EOS Achievements | 成就系统 | P2 |
+| EOS Leaderboards | 排行榜 | P2 |
+| EOS TitleStorage | 云存档 | P3 |
+| EOS Mods | MOD支持 | P3 |
+
+### 13.10.3 会话管理实现
+
+```cpp
+UCLASS()
+class UDontPullOnlineSubsystem : public UGameInstanceSubsystem
+{
+public:
+    UFUNCTION(BlueprintCallable)
+    void CreateSession(int32 MaxPlayers = 2, bool bIsLan = false);
+
+    UFUNCTION(BlueprintCallable)
+    void FindSessions(int32 MaxResults = 10, bool bIsLan = false);
+
+    UFUNCTION(BlueprintCallable)
+    void JoinSession(const FBlueprintSessionResult& SessionResult);
+
+    UFUNCTION(BlueprintCallable)
+    void DestroySession();
+
+    UPROPERTY(BlueprintAssignable)
+    FOnCreateSessionComplete OnCreateSessionComplete;
+
+    UPROPERTY(BlueprintAssignable)
+    FOnFindSessionsComplete OnFindSessionsComplete;
+
+    UPROPERTY(BlueprintAssignable)
+    FOnJoinSessionComplete OnJoinSessionComplete;
+
+private:
+    void OnCreateSessionComplete_Internal(FName SessionName, bool bWasSuccessful);
+    void OnFindSessionsComplete_Internal(bool bWasSuccessful);
+    void OnJoinSessionComplete_Internal(FName SessionName, EOnJoinSessionCompleteResult::Type Result);
+
+    FOnlineSessionSearch* SessionSearch;
+};
+
+void UDontPullOnlineSubsystem::CreateSession(int32 MaxPlayers, bool bIsLan)
+{
+    IOnlineSubsystem* OnlineSub = IOnlineSubsystem::Get();
+    if (!OnlineSub) return;
+
+    IOnlineSessionPtr Sessions = OnlineSub->GetSessionInterface();
+    if (!Sessions.IsValid()) return;
+
+    FOnlineSessionSettings Settings;
+    Settings.NumPublicConnections = MaxPlayers;
+    Settings.bShouldAdvertise = true;
+    Settings.bIsLANMatch = bIsLan;
+    Settings.bUsesPresence = true;
+    Settings.bAllowJoinViaPresence = true;
+
+    // 自定义属性：关卡/难度
+    Settings.Set(FName("StageID"), 1, EOnlineDataAdvertisementType::ViaOnlineService);
+    Settings.Set(FName("GameMode"), FString("Coop"), EOnlineDataAdvertisementType::ViaOnlineService);
+
+    Sessions->CreateSession(0, NAME_GameSession, Settings);
+}
+```
+
+### 13.10.4 EOS 插件配置
+
+```ini
+; DefaultEngine.ini
+[OnlineSubsystem]
+DefaultPlatformService=EOS
+
+[OnlineSubsystemEOS]
+bEnabled=true
+ProductId=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+SandboxId=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+DeploymentId=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+ClientId=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+ClientSecret=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+; EncryptionKey需在EOS DevPortal生成
+EncryptionKey=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+; P2P中继
+bUseP2P=true
+bUseP2PRelay=true
+
+; 语音
+bUseVoiceChat=true
+```
+
+### 13.10.5 Build.cs 模块依赖
+
+```csharp
+PublicDependencyModuleNames.AddRange(new string[] {
+    "Core", "CoreUObject", "Engine", "InputCore",
+    "EnhancedInput", "NavigationSystem", "AIModule",
+    "Niagara", "UMG", "GameplayTasks", "Slate", "SlateCore",
+    "OnlineSubsystem", "OnlineSubsystemUtils"   // 新增
+});
+
+PrivateDependencyModuleNames.AddRange(new string[] {
+    "GameplayAbilities", "GameplayTags", "GameplayTasks",
+    "OnlineSubsystemEOS", "EOSVoiceChat",            // 新增
+    "OnlineServicesEOSGS"                             // 新增
+});
+```
+
+---
+
+## 13.11 语音聊天
+
+### 13.11.1 EOS Voice Chat
+
+```cpp
+// 初始化语音聊天
+void UDontPullOnlineSubsystem::InitVoiceChat()
+{
+    UEOSVoiceChatUser* VoiceChatUser = UEOSVoiceChatUser::Get();
+    if (VoiceChatUser)
+    {
+        VoiceChatUser->OnVoiceChatConnected.AddDynamic(
+            this, &ThisClass::OnVoiceChatConnected);
+        VoiceChatUser->Connect();
+    }
+}
+
+// 加入房间时自动加入语音频道
+void UDontPullOnlineSubsystem::OnJoinSessionComplete_Internal(
+    FName SessionName, EOnJoinSessionCompleteResult::Type Result)
+{
+    if (Result == EOnJoinSessionCompleteResult::Success)
+    {
+        // 加入EOS语音频道
+        UEOSVoiceChatUser* VoiceChatUser = UEOSVoiceChatUser::Get();
+        if (VoiceChatUser && VoiceChatUser->IsConnected())
+        {
+            VoiceChatUser->JoinChannel(
+                SessionName.ToString(),
+                EVoiceChatChannelType::NonPositional,
+                EVoiceChatChannel2dPositionality::None);
+        }
+    }
+}
+```
+
+### 13.11.2 3D空间音 vs 非空间音
+
+| 模式 | 说明 | 推荐 |
+|------|------|------|
+| 非空间音（NonPositional） | 全房间听到，不区分位置 | ✅ Don't Pull推荐 |
+| 3D空间音（Positional） | 根据角色3D位置衰减音量 | 可选（等轴测视角效果有限） |
+
+**推荐非空间音**：Don't Pull 是等轴测俯视角，地图小（15×13格），两人距离近，空间音区分意义不大。
+
+---
+
+## 13.12 反作弊设计
+
+### 13.12.1 服务器权威即反作弊
+
+```
+Don't Pull 反作弊核心原则：
+  所有影响游戏结果的操作都在服务器执行
+
+客户端只能：
+  ├─ 发送输入指令（移动/推块方向）
+  ├─ 渲染画面
+  ├─ 播放音效
+  └─ 显示UI
+
+客户端不能：
+  ├─ 修改得分（Score在Server的PlayerState）
+  ├─ 修改生命（Lives在Server的PlayerState）
+  ├─ 修改敌人位置（AI在Server运行）
+  ├─ 修改方块位置（Block GridPos由Server Replicated）
+  ├─ 修改计时器（Timer在Server的GameState）
+  └─ 伪造拾取（拾取判定在Server）
+```
+
+### 13.12.2 输入校验
+
+```cpp
+void ADontPullGameMode::OnPlayerMoveRequest(
+    ADontPullCharacter* Player, EDirection Dir, int32 PredictionID)
+{
+    // 1. 方向合法性
+    if (Dir < EDirection::Up || Dir > EDirection::Right) return;
+
+    // 2. 移动频率限制（防加速器）
+    float CurrentTime = GetWorld()->GetTimeSeconds();
+    float LastMoveTime = PlayerMoveTimestamps.FindRef(Player, -1.0f);
+    float MinMoveInterval = 0.1f; // 格子移动最短间隔
+    if (CurrentTime - LastMoveTime < MinMoveInterval * 0.8f)
+    {
+        // 移动过快，可能是加速器
+        return;
+    }
+    PlayerMoveTimestamps.Add(Player, CurrentTime);
+
+    // 3. 位置合法性（防瞬移）
+    FIntPoint TargetPos = Player->GetGridPos() + DirectionToOffset(Dir);
+    float MaxGridDistance = 1; // 一次只能移动1格
+    if (FMath::Abs(TargetPos.X - Player->GetGridPos().X) > MaxGridDistance ||
+        FMath::Abs(TargetPos.Y - Player->GetGridPos().Y) > MaxGridDistance)
+    {
+        return;
+    }
+
+    // 4. 执行移动
+    Player->SetGridPos(TargetPos);
+}
+```
+
+### 13.12.3 反作弊检查清单
+
+| 作弊类型 | 防御措施 | 实现位置 |
+|----------|----------|----------|
+| 速度修改 | 移动频率限制 | GameMode |
+| 瞬移 | 格子距离校验 | GameMode |
+| 无敌修改 | 状态在Server | PlayerState |
+| 分数修改 | 分数在Server | PlayerState |
+| 方块穿墙 | 碰撞在Server | GridManager |
+| 敌人位置修改 | AI在Server | EnemyAISystem |
+| 道具复制 | 拾取在Server | ItemSystem |
+| 计时器修改 | 计时在Server | GameState |
+
+---
+
+## 13.13 专用服务器部署
+
+### 13.13.1 Dedicated Server vs Listen Server
+
+| 维度 | Listen Server | Dedicated Server |
+|------|--------------|------------------|
+| 主机 | 某个玩家同时当服务器 | 独立服务器进程 |
+| 延迟 | Host 0ms，其他玩家高 | 所有玩家平等 |
+| 稳定性 | Host断线则房间消失 | 服务器常驻 |
+| 反作弊 | Host可作弊 | 服务器权威 |
+| 成本 | 免费 | 需要服务器费用 |
+| 适用 | 开发测试/好友联机 | 生产环境 |
+
+### 13.13.2 推荐方案：分阶段
+
+```
+阶段1（开发期）：Listen Server
+  - 开发/测试用
+  - 不需要额外服务器成本
+  - 快速迭代
+
+阶段2（上线初期）：EOS P2P + Listen Server
+  - 好友联机模式
+  - EOS P2P中继解决NAT穿透
+  - 无需Dedicated Server
+
+阶段3（规模化）：Dedicated Server + EOS Sessions
+  - 匹配模式
+  - 云端部署Dedicated Server
+  - EOS Sessions管理房间生命周期
+```
+
+### 13.13.3 Dedicated Server 构建
+
+```bash
+# 构建专用服务器
+# 1. 在Build.cs中添加Server目标
+# 2. 使用UE编辑器构建
+#    或者命令行：
+#    UE5Editor-Cmd.exe DontPull.uproject -run=cook -targetplatform=WinServer
+#    UE5Editor-Cmd.exe DontPull.uproject -build -targetplatform=WinServer -serverconfig=Development
+
+# 3. 运行
+#    DontPullServer.exe DontPull -log -NOSTEAM
+```
+
+### 13.13.4 云端部署方案
+
+| 方案 | 说明 | 成本 | 适用 |
+|------|------|------|------|
+| EOS Hosting | Epic官方托管 | 按用量 | 小规模 |
+| AWS GameLift | AWS游戏托管 | 按实例 | 中规模 |
+| Azure PlayFab | 微软游戏托管 | 按实例 | 中规模 |
+| 自建K8s | 自建容器集群 | 固定+弹性 | 大规模 |
+| 混合方案 | EOS Sessions + 自建Server | 混合 | ✅ 推荐 |
+
+---
+
+## 13.14 跨平台联机
+
+### 13.14.1 EOS Crossplay
+
+```
+EOS Crossplay 架构：
+  ┌──────────────────────────────────┐
+  │         EOS 账号系统              │
+  │    (Epic Account Service)        │
+  ├──────────┬──────────┬────────────┤
+  │  PC      │  主机     │  移动端    │
+  │  Steam   │  PSN     │  iOS      │
+  │  EGS     │  XboxLive│  Android  │
+  │  Win/Mac │  Switch  │           │
+  └──────────┴──────────┴────────────┘
+       │          │          │
+       └──────────┼──────────┘
+                  ▼
+         EOS P2P 中继网络
+                  │
+                  ▼
+         Dedicated Server
+```
+
+### 13.14.2 跨平台注意事项
+
+| 注意点 | 说明 | 解决方案 |
+|--------|------|----------|
+| 输入差异 | 手柄/键鼠/触屏 | EnhancedInput多设备映射 |
+| 性能差异 | 主机/PC/移动端 | 可调画质+固定逻辑帧率 |
+| 审核差异 | 各平台审核要求 | 功能开关+平台宏 |
+| 语音差异 | 各平台语音SDK | EOS Voice统一接口 |
+| 支付差异 | 各平台支付规则 | 仅外观付费，不影响玩法 |
+
+---
+
+## 13.15 网络调试工具
+
+### 13.15.1 UE内置网络调试
+
+| 工具 | 用途 | 命令/方式 |
+|------|------|-----------|
+| NetProfiler | 网络性能分析 | `stat net` / `netprofile` |
+| Network Emulation | 模拟延迟/丢包 | Project Settings → Net Emulation |
+| Session Node | 蓝图调试Session | 蓝图断点 |
+| Replication Graph | 可视化复制关系 | `net.RepGraph=1` |
+| Gameplay Debugger | AI/网络状态调试 | `'` 键（撇号） |
+| Iris Inspector | Iris复制检查器 | `iris.Debug=1`（启用Iris后） |
+
+### 13.15.2 网络模拟配置
+
+```ini
+; DefaultEngine.ini — 开发期网络模拟
+[/Script/Engine.NetworkEmulation]
+; 模拟100ms延迟
+MinLatency=100
+MaxLatency=100
+; 模拟1%丢包
+MinPacketLoss=0.01
+MaxPacketLoss=0.01
+; 模拟偶尔的突发延迟
+MinJitter=0
+MaxJitter=50
+```
+
+### 13.15.3 测试流程
+
+```
+1. 单机测试 → 确保逻辑正确
+2. PIE双窗口 → 测试本地双人
+3. Net Emulation 100ms → 测试延迟下预测/校正
+4. Net Emulation 200ms+丢包 → 测试极端网络
+5. 独立Dedicated Server → 测试真实部署
+6. 跨网络测试 → 不同地区/运营商
+7. 压力测试 → 长时间运行，检查内存泄漏
+```
+
+---
+
+## 13.16 网络联机开发路线图
+
+```
+Phase 1: 基础网络化（2~3周）
+├─ GameMode/GameState/PlayerState 网络化
+├─ 基础Replication（格子坐标/状态/得分）
+├─ Server RPC（移动/推块/拾取）
+├─ Multicast RPC（特效/拼合/爆炸）
+└─ PIE双窗口测试
+
+Phase 2: 客户端预测（1~2周）
+├─ 移动预测 + 服务器校正
+├─ 推块预测 + 回滚
+├─ 方块滑动客户端插值
+└─ 延迟模拟测试
+
+Phase 3: EOS集成（2~3周）
+├─ EOS SDK接入 + 认证
+├─ Session创建/搜索/加入
+├─ P2P中继连接
+├─ 好友列表 + 邀请
+└─ 语音聊天
+
+Phase 4: 专用服务器（1~2周）
+├─ Dedicated Server构建
+├─ 云端部署
+├─ Session与Server集成
+└─ 自动匹配
+
+Phase 5: 优化与安全（1~2周）
+├─ 带宽优化（条件复制/频率控制）
+├─ 输入校验 + 反作弊
+├─ 延迟补偿
+├─ 断线重连
+└─ 跨平台测试
+```
+
+---
+
+## 13.17 网络联机风险与挑战
+
+| 风险ID | 风险描述 | 影响 | 缓解措施 |
+|--------|---------|------|----------|
+| NR-01 | 高延迟下推块判定不一致 | 玩家推块被否决，体验差 | 客户端预测+延迟补偿 |
+| NR-02 | 两玩家同时推同一方块 | 冲突，结果不确定 | Server串行化处理，先到先得 |
+| NR-03 | 方块滑动中客户端与服务端位置不同步 | 视觉抖动 | 客户端插值+OnRep校正 |
+| NR-04 | 敌人AI移动在客户端看起来卡顿 | 敌人瞬移 | 客户端平滑插值+预测动画 |
+| NR-05 | 断线重连后状态丢失 | 玩家丢失进度 | GameState快照+重连恢复 |
+| NR-06 | EOS服务不可用 | 无法联机 | 降级为本地双人/LAN模式 |
+| NR-07 | NAT穿透失败 | 部分玩家无法连接 | EOS P2P中继兜底 |
+| NR-08 | 语音聊天延迟/质量差 | 沟通体验差 | 非空间音+EOS Voice优化 |
 
 ---
 
@@ -1430,7 +2460,17 @@ UGameplayStatics::UnloadStreamLevel(GetWorld(), CurrentLevelName, LatentInfo, fa
 | HUD | UMG Widget | WBP_HUD | P3 |
 | 结算界面 | UMG Widget | WBP_StageResult | P3 |
 | 双人模式 | Local Multiplayer | 2× PlayerController | P3 |
-| 网络复制 | Replication | DOREPLIFETIME | P3 |
+| 网络复制 | Replication | DOREPLIFETIME / OnRep | P0(联机) |
+| 客户端预测 | Client-Side Prediction | PredictionID + OnRep校正 | P0(联机) |
+| 延迟补偿 | Server-Side Rewind | FGridSnapshot | P1(联机) |
+| 网络化AI | Server-Only AI | BehaviorTree (Server) | P0(联机) |
+| 在线会话 | Online Subsystem EOS | IOnlineSession | P0(联机) |
+| P2P中继 | EOS P2P | NAT穿透 | P0(联机) |
+| 语音聊天 | EOS Voice Chat | NonPositional | P1(联机) |
+| 反作弊 | Server Authority | GameMode校验 | P0(联机) |
+| 专用服务器 | Dedicated Server | 独立Server构建 | P1(联机) |
+| 跨平台 | EOS Crossplay | Epic Account Service | P2(联机) |
+| Iris复制 | Iris (Beta) | 预留迁移接口 | P3(联机) |
 | 地板/墙壁 | InstancedStaticMesh | UInstancedStaticMeshComponent | P1 |
 | 关卡加载 | Level Streaming | LoadStreamLevel | P3 |
 | 光照 | Lumen / Baked | — | P3 |
@@ -1449,11 +2489,14 @@ UGameplayStatics::UnloadStreamLevel(GetWorld(), CurrentLevelName, LatentInfo, fa
 | UMG | UI系统 | 引擎内置 |
 | Behavior Tree | AI系统 | 引擎内置 |
 | EQS | 环境查询 | 引擎内置 |
+| Online Subsystem EOS | 跨平台联机 | 引擎内置 |
+| EOS Voice Chat | 语音聊天 | 引擎内置 |
+| Iris Networking | 下一代复制 | 引擎内置(Beta) |
 | Paper2D | 2D贴图参考（不用于3D） | 引擎内置 |
 | Animation Budget Allocator | 动画性能优化 | 引擎内置 |
 | Asset Manager | 资源管理 | 引擎内置 |
 
-**说明**：Don't Pull的3D重制完全可以仅使用UE5.7内置功能完成，无需第三方付费插件。
+**说明**：Don't Pull的3D重制完全可以仅使用UE5.7内置功能完成，无需第三方付费插件。联机功能使用EOS（免费），无需Steamworks等付费中间件。
 
 ---
 
