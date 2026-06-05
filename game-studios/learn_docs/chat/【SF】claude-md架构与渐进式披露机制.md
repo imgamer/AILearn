@@ -2464,6 +2464,7 @@ Complete WeaponBase.cpp implementation
 **最终目标**：在任何时刻，**上下文窗口中只保留当前任务最相关的 5-20% 的信息**，其余 80-95% 在磁盘上，按需读取。
 
 > ## 为什么项目结构用的格式是一种文本表示的连线，大模型也能够理解，这个文本表示的连线只是给人看的吧？大模型能够理解项目结构，是不是因为实际上是一个缩进结构，比如：
+
 ```text
 /
 ├── src/
@@ -2499,6 +2500,7 @@ Complete WeaponBase.cpp implementation
 ```
 
 **关键洞察**：
+
 - `├──` 和 `└──` 符号**对 AI 来说没有语义意义**
 - **缩进的空格数量**才是真正的层级标记
 - AI 通过**计数前导空格**来确定文件属于哪个目录
@@ -2511,12 +2513,12 @@ Complete WeaponBase.cpp implementation
 缩进 = 空格数量 = 层级深度
 ```
 
-| 缩进（空格数） | 层级 | 示例 |
-|---------------|------|------|
-| 0 | 根目录 | `/` |
-| 2 | 第一层 | `src/` |
-| 4 | 第二层 | `src/main.ts` |
-| 6 | 第三层 | `src/utils/helpers.ts` |
+| 缩进（空格数） | 层级  | 示例                     |
+| ------- | --- | ---------------------- |
+| 0       | 根目录 | `/`                    |
+| 2       | 第一层 | `src/`                 |
+| 4       | 第二层 | `src/main.ts`          |
+| 6       | 第三层 | `src/utils/helpers.ts` |
 
 #### 大模型如何"看到"目录树
 
@@ -2530,6 +2532,7 @@ Line 6: "└── tests/"            → tests 是根的子目录，深度=2
 ```
 
 **大模型的"思维过程"**：
+
 1. "第一个文件 `main.ts` 缩进了 4 个空格"
 2. "比 `src/` 多了 2 个空格"
 3. "所以 `main.ts` 在 `src/` 目录下"
@@ -2539,16 +2542,16 @@ Line 6: "└── tests/"            → tests 是根的子目录，深度=2
 
 ### 1.3 为什么还要用这些线条符号？
 
-| 目的 | 说明 |
-|------|------|
-| **人类可读性** | 线条提供视觉引导，快速理解层级 |
-| **快速扫描** | 不用数空格，直接看连接线就知道归属 |
+| 目的        | 说明                         |
+| --------- | -------------------------- |
+| **人类可读性** | 线条提供视觉引导，快速理解层级            |
+| **快速扫描**  | 不用数空格，直接看连接线就知道归属          |
 | **跨工具兼容** | 许多工具（tree、explorer）都输出这种格式 |
-| **约定俗成** | 已经成为社区标准，降低学习成本 |
+| **约定俗成**  | 已经成为社区标准，降低学习成本            |
 
 **但是**：这些线条**对 AI 来说完全是装饰性的**，AI 真正依赖的是缩进。
 
----
+***
 
 ## 二、大模型如何解析文本目录结构
 
@@ -2606,17 +2609,19 @@ def parse_directory_tree(lines):
 #### 方式 2：对比学习
 
 大模型在训练数据中见过无数这样的结构，自然学会了：
+
 - "src/main.ts" → `src` 是 `main.ts` 的父目录
 - "src/utils/helpers.ts" → `utils` 是 `helpers.ts` 的父目录，`src` 是 `utils` 的父目录
 
 #### 方式 3：零样本推理
 
 即使从未见过这种格式，大模型也能通过：
+
 1. **识别重复模式**：`├──` 和 `│` 出现多次
 2. **计算相对位置**：后面的内容比前面的缩进更深
 3. **推断语义关系**：缩进差异 = 层级关系
 
----
+***
 
 ## 三、最佳实践：如何让 AI 更好地理解目录结构
 
@@ -2643,12 +2648,12 @@ def parse_directory_tree(lines):
 
 ### 3.2 使用标准格式
 
-| 格式 | 适用场景 | AI 理解度 |
-|------|---------|----------|
-| `├── ` 和 `└── ` | 标准目录树 | ✅ 完美 |
-| `- ` | 扁平列表 | ✅ 好 |
-| `* ` | 无序列表 | ✅ 好 |
-| 纯文本无缩进 | **不要用** | ❌ 差 |
+| 格式                | 适用场景    | AI 理解度 |
+| ----------------- | ------- | ------ |
+| `├── `  和 `└── `  | 标准目录树   | ✅ 完美   |
+| `- `              | 扁平列表    | ✅ 好    |
+| `* `              | 无序列表    | ✅ 好    |
+| 纯文本无缩进            | **不要用** | ❌ 差    |
 
 ### 3.3 标注文件类型
 
@@ -2705,7 +2710,7 @@ src/
     └── menus/      # 菜单
 ```
 
----
+***
 
 ## 四、大模型理解目录结构的其他线索
 
@@ -2725,23 +2730,24 @@ src/
 ```
 
 大模型通过**文件名约定**也能推断用途：
+
 - `main.ts` → 程序入口
 - `index.ts` → 模块导出
 - `*Test.ts` → 测试文件
 
 ### 4.2 常见目录约定
 
-| 目录 | 用途 | 大模型理解度 |
-|------|------|------------|
-| `src/` | 源代码 | ✅ 强 |
-| `lib/` | 库代码 | ✅ 强 |
-| `utils/` | 工具函数 | ✅ 强 |
-| `tests/` | 测试 | ✅ 强 |
-| `docs/` | 文档 | ✅ 强 |
-| `config/` | 配置 | ✅ 强 |
-| `assets/` | 资源 | ✅ 强 |
-| `build/` | 构建产物 | ✅ 强 |
-| `dist/` | 分发版本 | ✅ 强 |
+| 目录        | 用途   | 大模型理解度 |
+| --------- | ---- | ------ |
+| `src/`    | 源代码  | ✅ 强    |
+| `lib/`    | 库代码  | ✅ 强    |
+| `utils/`  | 工具函数 | ✅ 强    |
+| `tests/`  | 测试   | ✅ 强    |
+| `docs/`   | 文档   | ✅ 强    |
+| `config/` | 配置   | ✅ 强    |
+| `assets/` | 资源   | ✅ 强    |
+| `build/`  | 构建产物 | ✅ 强    |
+| `dist/`   | 分发版本 | ✅ 强    |
 
 ### 4.3 技术栈特定约定
 
@@ -2775,7 +2781,7 @@ src/
 └── MyGame.uproject
 ```
 
----
+***
 
 ## 五、总结
 
@@ -2785,12 +2791,12 @@ src/
 
 **是的！** 大模型理解目录结构的**核心机制**是：
 
-| 元素 | 对人类 | 对 AI |
-|------|--------|-------|
+| 元素              | 对人类  | 对 AI          |
+| --------------- | ---- | ------------- |
 | `├──`、`└──`、`│` | 视觉连线 | **装饰性符号，无语义** |
-| 空格缩进 | 辅助对齐 | **真正的层级标记** |
-| 文件名 | 名称 | **通过约定推断用途** |
-| 目录名 | 组织结构 | **通过约定推断功能** |
+| 空格缩进            | 辅助对齐 | **真正的层级标记**   |
+| 文件名             | 名称   | **通过约定推断用途**  |
+| 目录名             | 组织结构 | **通过约定推断功能**  |
 
 ### 为什么这种格式如此有效？
 
@@ -2808,4 +2814,454 @@ src/
 5. **复杂项目分层展示**（顶层 + 子层详细）
 
 这就是为什么在 `CLAUDE.md` 中使用这种文本树状结构，既能让人快速理解项目布局，AI 也能准确解析！
+
+
+> ## 讲解@docs/engine-reference/unreal/VERSION.md 文件是做什么的，已经指定版本UE5.7
+
+toolName: view_files
+            
+status: success
+          
+            
+filePath: g:\repository\claude\Game-Studio-Analise\docs\engine-reference\unreal\VERSION.md
+          
+
+        
+            
+toolName: view_files
+            
+status: success
+          
+            
+filePath: g:\repository\claude\Game-Studio-Analise\CLAUDE.md
+          
+我来为你深入讲解 [VERSION.md](file:///g:/repository/claude/Game-Studio-Analise/docs/engine-reference/unreal/VERSION.md) 这个文件的设计意图与作用机制。
+
+## 一、文件的核心定位
+
+这个 `VERSION.md` 是一份**「引擎版本契约文件」**（Engine Version Contract），它在多智能体游戏开发框架中扮演着**「LLM 知识盲区警示牌 + 版本权威信源」**的双重角色。
+
+它解决的核心矛盾是：**LLM 的知识截止时间（May 2025）≠ 项目使用的引擎版本（UE 5.7, Nov 2025）**。
+
+## 二、文件结构剖析
+
+### 1. 元数据表（Metadata Table）
+```
+| Engine Version | Unreal Engine 5.7 |
+| LLM Knowledge Cutoff | May 2025 |
+```
+这是**版本锚点**，告诉所有 subagent："你所在的项目固定使用 UE 5.7，不要根据训练记忆里的旧 API 写代码。"
+
+### 2. Knowledge Gap Warning（知识鸿沟警告）
+明确告知 LLM：训练数据只覆盖到 ~UE 5.3，5.4/5.5/5.6/5.7 是**未知区域**。这是一种**主动的元认知提示**（meta-cognitive prompting），让 agent 在生成代码前知道自己「不知道什么」。
+
+### 3. 版本时间线表（Risk Level）
+| 版本 | Risk Level | 含义 |
+|------|-----------|------|
+| 5.4-5.7 | HIGH/MEDIUM | 风险等级越高，越需要查阅官方文档而非凭记忆 |
+
+### 4. Breaking Changes & Deprecated Systems
+列出**破坏性变更**（如 Substrate 替代 Legacy Materials、PCG API 重构），让 agent 避免推荐已废弃的 API。
+
+### 5. Verified Sources
+提供权威 URL 兜底，agent 在不确定时可以引导用户查阅。
+
+## 三、它在 Agent 体系中的工作机制
+
+### 加载机制（@-import）
+看 [CLAUDE.md:L23](file:///g:/repository/claude/Game-Studio-Analise/CLAUDE.md#L23)：
+```markdown
+@docs/engine-reference/godot/VERSION.md
+```
+
+`@` 语法是 Claude Code 的**文件嵌入指令**——CLAUDE.md 被加载时，会把 VERSION.md 的内容**展开注入到主上下文**中。这是一种**声明式上下文组合**（declarative context composition）。
+
+### 当前的不一致问题 ⚠️
+你提到「已指定版本 UE5.7」，但 [CLAUDE.md:L23](file:///g:/repository/claude/Game-Studio-Analise/CLAUDE.md#L23) 实际引用的是 `godot/VERSION.md`，**不是 Unreal**。这意味着：
+- Unreal 的 VERSION.md 文件本身内容正确（UE 5.7）
+- 但**主入口 CLAUDE.md 还指向 Godot**，subagent 实际加载的是 Godot 版本契约
+
+这是一个需要修复的**配置漂移**（configuration drift）。
+
+## 四、设计哲学：为什么要这样做？
+
+### 1. **防御性提示工程**（Defensive Prompt Engineering）
+不假设 LLM 知道最新版本，而是**显式注入版本事实**，把不确定性转为确定性。
+
+### 2. **单一信源原则**（Single Source of Truth）
+所有 agent 共享同一份版本声明，避免 48 个 subagent 各自臆测。
+
+### 3. **版本锁定（Pinning）**
+```
+| Project Pinned | 2026-02-13 |
+| Last Docs Verified | 2026-02-13 |
+```
+类似 `package-lock.json` 的思路——锁定时间戳，让团队成员/AI 协作时有可追溯的版本基线。
+
+## 五、实战建议
+
+如果你确认本项目使用 **UE 5.7**，需要做两件事：
+
+1. **修正 CLAUDE.md 的 @-import 路径**：把 `godot/VERSION.md` 改为 `unreal/VERSION.md`
+2. **同步 Technology Stack 占位符**：CLAUDE.md 第 8-9 行还写着 `[CHOOSE: ...]`，需要锁定为 Unreal Engine 5 / C++ 或 Blueprint
+
+需要我帮你做这两处同步修改吗？（按协作协议，我会先给出 diff 草稿请你确认再写入）
+
+
+> ## 讲解Technical Preferences是什么，前面不是有指定Technology Stack技术栈吗，讲解引用的 @.claude/docs/technical-preferences.md 文件是做什么的
+
+toolName: view_files
+            
+status: success
+          
+            
+filePath: g:\repository\claude\Game-Studio-Analise\.claude\docs\technical-preferences.md
+          
+来深入讲解 [technical-preferences.md](file:///g:/repository/claude/Game-Studio-Analise/.claude/docs/technical-preferences.md) 这个文件，以及它和 Technology Stack 的本质区别。
+
+## 一、两者的根本区别：粒度与稳定性
+
+| 维度 | Technology Stack | Technical Preferences |
+|------|-----------------|----------------------|
+| **位置** | CLAUDE.md 顶层（L8-12） | 独立文件 @-import |
+| **粒度** | 粗粒度：选什么引擎/语言 | 细粒度：怎么用这个引擎/语言 |
+| **变化频率** | 项目启动后基本不变 | 随项目演进持续更新 |
+| **决策性质** | 战略选择（Strategic） | 战术约定（Tactical） |
+| **写入时机** | `/setup-engine` 一次性 | 开发过程中持续追加 |
+
+简单说：**Technology Stack 回答「用什么」，Technical Preferences 回答「怎么用 + 不能用什么」**。
+
+## 二、Technical Preferences 的七大模块剖析
+
+### 1. Engine & Language（引擎与语言细节）
+比 Stack 更具体——不仅说「Unreal」，还要指定 **Rendering**（Lumen/Nanite/Forward？）、**Physics**（Chaos/PhysX？）。这是 Stack 的**实例化细节**。
+
+### 2. Naming Conventions（命名规范）⭐ 核心价值
+```
+- Classes: [TO BE CONFIGURED]
+- Signals/Events: [TO BE CONFIGURED]
+- Scenes/Prefabs: [TO BE CONFIGURED]
+```
+这是 **48 个 subagent 协作的「语言基础」**——如果 gameplay-programmer 用 `PascalCase`，UI-engineer 用 `snake_case`，代码库会迅速腐化。这里把规范固化，所有 agent 写代码前必须遵守。
+
+### 3. Performance Budgets（性能预算）⭐ 量化约束
+```
+- Target Framerate: [TO BE CONFIGURED]
+- Draw Calls: [TO BE CONFIGURED]
+- Memory Ceiling: [TO BE CONFIGURED]
+```
+这是给 **performance-optimizer / graphics-programmer** 类 agent 的**硬性 KPI**。例如设定 "60fps / 16.67ms / <2000 draw calls / 4GB RAM"，agent 在做技术决策时会以此为约束求解。
+
+### 4. Testing（测试规范）
+约束 QA-engineer 和 test-automation agent：用什么框架、最低覆盖率多少、哪些系统**必须**有测试（平衡公式、网络代码）。
+
+### 5. Forbidden Patterns（禁用模式）⭐ 防御机制
+```
+<!-- Add patterns that should never appear in this project's codebase -->
+```
+这是**反模式黑名单**。例如可能写入：
+- "禁止在 Tick 里调用 FindActor"
+- "禁止使用 Blueprint 实现核心战斗逻辑"
+- "禁止 GDScript 中使用 `_process` 做物理"
+
+agent 在生成代码前会检查这个列表，相当于一道**预提交审查门**。
+
+### 6. Allowed Libraries / Addons（白名单）
+对应 Forbidden Patterns 的正向约束——**只有列出的依赖才能用**。这防止 agent 擅自引入不熟悉的第三方库，控制供应链风险。
+
+### 7. Architecture Decisions Log（架构决策索引）⭐ 长期记忆
+```
+- [No ADRs yet — use /architecture-decision to create one]
+```
+这是 **ADR（Architecture Decision Record）的索引页**，链接到 `docs/architecture/` 中的完整决策文档。它让 agent 在做新决策时能**追溯历史决策的上下文**，避免推翻已有共识。
+
+## 三、为什么要拆分成两个文件？设计哲学
+
+### 1. **关注点分离**（Separation of Concerns）
+- CLAUDE.md = **入口宣言**（What is this project?）
+- technical-preferences = **详细契约**（How do we build it?）
+
+CLAUDE.md 保持简洁稳定，复杂细节外置。
+
+### 2. **可演进性**（Evolvability）
+注意文件顶部注释：
+```
+<!-- Populated by /setup-engine. Updated as the user makes decisions throughout development. -->
+```
+这是一份**活文档**（living document）——Forbidden Patterns、ADR 会随开发持续累加。如果塞进 CLAUDE.md，主文件会膨胀到不可维护。
+
+### 3. **Agent 上下文经济学**（Context Economy）
+通过 `@` 嵌入而非内联，可以：
+- 只在需要时被某些 agent 加载（理论上未来可做条件加载）
+- 单独被人类编辑而不污染主入口
+- 通过 git diff 清晰追踪「项目偏好」的演进史
+
+### 4. **斜杠命令的写入目标**（Slash Command Target）
+```
+- use /architecture-decision to create one
+- run /setup-engine
+```
+这些斜杠命令会**程序化地修改这个文件**。把它独立出来，让 `/setup-engine` 这类工具有明确的写入目标，不用在巨型 CLAUDE.md 里做精准定位编辑。
+
+## 四、与 Technology Stack 的协作链路
+
+```
+用户运行 /setup-engine
+    ↓
+①写入 CLAUDE.md 的 Technology Stack（替换 [CHOOSE: ...] 占位符）
+    ↓
+②填充 technical-preferences.md 的 [TO BE CONFIGURED] 占位符
+    ↓
+③可能同步更新 docs/engine-reference/{engine}/VERSION.md 的引用路径
+    ↓
+所有 48 个 subagent 加载 CLAUDE.md → 自动 @-import 到 preferences
+    ↓
+agent 在写代码/做决策时遵守这些偏好
+```
+
+## 五、当前文件状态观察
+
+你的 [technical-preferences.md](file:///g:/repository/claude/Game-Studio-Analise/.claude/docs/technical-preferences.md) **几乎全是 `[TO BE CONFIGURED]` 占位符**，说明：
+- 项目尚未运行 `/setup-engine` 完成初始化
+- 即使你已经心中确定 UE 5.7，这个契约层还没落地
+- 当前所有 subagent 加载到的是「空契约」，会缺乏命名/性能/测试等约束
+
+## 六、总结一句话
+
+**Technology Stack 是「项目身份证」，Technical Preferences 是「项目家规」**——前者定义「我是谁」，后者定义「我们怎么相处」。两者一粗一细、一稳一动，共同构成 multi-agent 协作的认知基础。
+
+如果你想让 48 个 agent 真正按 UE 5.7 的最佳实践协作，下一步建议运行 `/setup-engine` 把这份家规具体化。需要我帮你梳理一份针对 UE 5.7 的推荐 preferences 草案吗？
+
+
+> ## !! `g:\repository\claude\Game-Studio-Analise\CLAUDE.md` Technology Stack， Engine Version Reference，Technical Preferences，Coordination Rules， Collaboration Protocol，Coding Standards，Context Management，这些名字的语义是什么，为什么要这么命名，有些意义容易混淆
+
+toolName: view_files
+            
+status: success
+          
+            
+filePath: g:\repository\claude\Game-Studio-Analise\.claude\docs\coordination-rules.md
+          
+
+        
+            
+toolName: view_files
+            
+status: success
+          
+            
+filePath: g:\repository\claude\Game-Studio-Analise\.claude\docs\coding-standards.md
+          
+
+        
+            
+toolName: view_files
+            
+status: success
+          
+            
+filePath: g:\repository\claude\Game-Studio-Analise\.claude\docs\context-management.md
+          
+
+        
+            
+toolName: view_files
+            
+status: success
+          
+            
+filePath: g:\repository\claude\Game-Studio-Analise\.claude\docs\directory-structure.md
+          
+现在我把 CLAUDE.md 中的 7 个模块全部读完，来给你做系统性的语义解析。
+
+---
+
+## 全局视角：7 个模块的分层架构
+
+先看一张图，理解它们不是并列的，而是**有逻辑层次的**：
+
+```
+┌─────────────────────────────────────────────────┐
+│  第 1 层：战略选择（What — 选什么）                  │
+│  ├── Technology Stack                           │
+│  └── Engine Version Reference                   │
+├─────────────────────────────────────────────────┤
+│  第 2 层：项目约定（How — 怎么做）                    │
+│  ├── Technical Preferences                      │
+│  └── Coding Standards                           │
+├─────────────────────────────────────────────────┤
+│  第 3 层：协作机制（Who/When — 谁来做/何时做）         │
+│  ├── Coordination Rules                         │
+│  └── Collaboration Protocol                     │
+├─────────────────────────────────────────────────┤
+│  第 4 层：资源管理（Resource — 瓶颈控制）             │
+│  └── Context Management                         │
+└─────────────────────────────────────────────────┘
+```
+
+---
+
+## 逐个语义深析
+
+### 1. Technology Stack（技术栈）
+
+| 语义拆解 | |
+|---------|---|
+| **Technology** | 广义的技术选型：引擎、语言、版本控制 |
+| **Stack** | 「栈」——分层堆叠的依赖体系（引擎 → 语言 → 构建系统 → 资产管线） |
+
+**为什么用 Stack 而不是 List/Choices？** 因为这些技术不是扁平的列表，而是**有依赖层次**的：引擎决定语言，语言决定构建系统，构建系统决定资产管线。像 TCP/IP 协议栈一样，上层依赖下层，所以叫 Stack。
+
+**容易混淆的点**：有人以为 Stack 和 Preferences 重复。实际上 Stack 只管**「选 A 还是 B」**，不管**「选了 A 之后怎么用 A」**。后者是 Preferences 的职责。
+
+---
+
+### 2. Engine Version Reference（引擎版本参考）
+
+| 语义拆解 | |
+|---------|---|
+| **Engine** | 特指游戏引擎，不是泛化技术 |
+| **Version** | 版本号——精确的语义化版本锚点 |
+| **Reference** | 参考/参照——**不是规则，而是事实依据** |
+
+**为什么叫 Reference 而不是 Version Rules / Version Config？** 因为它不是在制定规则，而是在**声明一个事实**（"本项目用 UE 5.7"）并提供**参考信息**（知识鸿沟、破坏性变更、官方文档链接）。agent 不是去遵守版本规则，而是**参照这个版本事实来校正自己的输出**。
+
+**容易混淆的点**：Reference 和 Stack 看起来都在说"用什么引擎"。区别是：
+- **Stack**：一句话声明（"Unreal Engine 5"）
+- **Reference**：完整的版本上下文（"UE 5.7，LLM 知识截止到 5.3，5.4-5.7 有这些破坏性变更"）
+
+类比：Stack 是身份证上的「国籍」，Reference 是护照上的「签证页 + 入境须知」。
+
+---
+
+### 3. Technical Preferences（技术偏好）
+
+| 语义拆解 | |
+|---------|---|
+| **Technical** | 技术层面的，不是设计/艺术层面的 |
+| **Preferences** | 偏好——**不是强制法律，而是团队共识** |
+
+**为什么用 Preferences 而不是 Requirements / Constraints / Standards？**
+
+- **Requirements** 暗示"必须满足的需求"，太重了——命名规范不是需求，是偏好
+- **Constraints** 暗示"硬约束"——但性能预算可以是软性的
+- **Standards** 暗示"外部标准"——但这些是**项目内部**的选择
+
+**Preferences** 的精妙之处在于：它承认这些决定是**主观选择**（PascalCase vs camelCase 没有绝对对错），但一旦选定了就是团队共识。这个词语同时传达了「可选但选定」的微妙含义。
+
+**容易混淆的点**：Preferences 和 Coding Standards 看起来都在说"代码怎么写"。区别：
+- **Preferences**：**项目级**决策（命名规范、性能预算、禁用模式、允许的库）
+- **Standards**：**行为级**规范（必须写注释、必须数据驱动、必须可测试）
+
+类比：Preferences 是「我们餐厅用什么食材供应商」，Standards 是「食材处理卫生规范」。
+
+---
+
+### 4. Coordination Rules（协调规则）
+
+| 语义拆解 | |
+|---------|---|
+| **Coordination** | 协调——多个 agent 之间**如何配合** |
+| **Rules** | 规则——**不可违反的硬性约束** |
+
+看它的内容就明白了：
+> - 垂直委托：不能越级
+> - 水平协商：同级不能跨域决策
+> - 冲突升级：找共同上级
+> - 禁止单方面跨域修改
+
+**为什么叫 Coordination 而不是 Communication / Organization？**
+
+- **Communication** 太宽泛——只关注信息传递，不关注决策权限
+- **Organization** 太静态——只关注结构，不关注运行时行为
+- **Coordination** 精确地描述了**运行时的动态协调行为**：谁可以委派谁、冲突怎么解决、变更如何传播
+
+---
+
+### 5. Collaboration Protocol（协作协议）
+
+| 语义拆解 | |
+|---------|---|
+| **Collaboration** | 协作——**人机之间的协作**（用户 ↔ agent） |
+| **Protocol** | 协议——**交互流程的规范序列** |
+
+内容是：
+> Question → Options → Decision → Draft → Approval
+
+**这是和 Coordination Rules 最容易混淆的一对**。关键区分：
+
+| | Coordination Rules | Collaboration Protocol |
+|---|---|---|
+| **主体** | Agent ↔ Agent | User ↔ Agent |
+| **关注点** | 权限边界、冲突解决 | 工作流步骤、审批门 |
+| **类比** | 公司的部门职责制度 | 公司的审批流程 |
+
+**为什么用 Protocol 而不是 Rules？** 因为 Protocol 暗示**有序的交互步骤**（先问、再给选项、再决定、再草稿、再审批），而 Rules 是静态的规则声明。"Protocol" 这个词来自外交/网络协议，天然带有「按步骤交换信息」的含义。
+
+**为什么 Collaboration 不叫 Cooperation？**
+- **Cooperation** 暗示无差别的配合
+- **Collaboration** 暗示有分工的创造性合作——更准确，因为 48 个 agent 各有专长
+
+---
+
+### 6. Coding Standards（编码标准）
+
+| 语义拆解 | |
+|---------|---|
+| **Coding** | 编码——特指写代码这一行为 |
+| **Standards** | 标准——**外部可验证的质量基准** |
+
+内容：必须写注释、必须数据驱动、必须可测试、先写测试、提交必须关联文档。
+
+**为什么叫 Standards 而不是 Conventions / Best Practices？**
+
+- **Conventions**（惯例）太软——暗示"大家习惯这样做"，不遵守也无妨
+- **Best Practices**（最佳实践）太泛——不是所有实践都需要强制
+- **Standards** 暗示**可审计的基准**——"你的代码是否符合标准"是一个可判定的布尔值
+
+**与 Preferences 的区别再强调**：
+
+```
+Preferences: "我们用 PascalCase 命名类"    ← 选了 A 不选 B
+Standards:   "所有公共 API 必须有文档注释"   ← 无论选什么都要遵守
+```
+
+---
+
+### 7. Context Management（上下文管理）
+
+| 语义拆解 | |
+|---------|---|
+| **Context** | 上下文——LLM 的**上下文窗口**（token budget） |
+| **Management** | 管理——**主动规划、分配、回收** |
+
+这是最独特的一个模块，它管理的是 **LLM 最稀缺的资源：注意力窗口**。
+
+内容：文件即记忆、增量写入、主动压缩、按任务类型预算 token、子代理委托。
+
+**为什么叫 Context 而不是 Memory / Session / State？**
+
+- **Memory** 太像人类记忆——LLM 没有持久记忆，只有当前上下文
+- **Session** 太像服务器会话——这是 per-invocation 的，不是 per-session 的
+- **State** 太像程序状态——暗示结构化数据，但上下文是半结构化的自然语言
+- **Context** 精确指向 LLM 的**上下文窗口**，是 prompt engineering 社区的通用术语
+
+**为什么需要单独一个模块？** 因为在 48 agent 协作场景下，上下文耗尽是最常见的失败模式。它不是一个"锦上添花"的技巧，而是**系统可靠性的根本保障**——没有它，长对话中 agent 会遗忘前面的决策、重复已解决的问题、甚至产生幻觉。
+
+---
+
+## 总结：一张语义地图
+
+```
+Technology Stack    → 选什么技术（战略层）
+Engine Version Ref  → 技术的版本现实（事实层）
+Technical Preferences → 技术的使用偏好（项目层）
+Coding Standards    → 代码的质量底线（行为层）
+Coordination Rules  → Agent间怎么配合（横向协作）
+Collaboration Protocol → 人机间怎么互动（纵向协作）
+Context Management  → 注意力怎么分配（资源层）
+```
+
+**命名的核心哲学**：每个名字都**精确指向一个不同的关注面**（concern），没有两个模块管同一件事。这是软件工程中**正交性原则**（Orthogonality）在 prompt 架构中的体现——如果两个模块语义重叠，agent 就会困惑"该听谁的"，导致行为不一致。
+
 
