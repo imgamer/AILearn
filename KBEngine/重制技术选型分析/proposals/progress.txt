@@ -1,0 +1,19 @@
+2026-06-09 Ralph 启动
+- 任务：针对 5 种语言方案各产出一份技术方案 + 开发计划
+- 输入：KBEngine_Technical_Selection.md v3.0、KBEngine_Rewrite_Recommendation.md、KBEngine_Technical_Analysis.md
+- 输出目录：proposals/
+- 策略：并行生成 5 份方案文件 + 1 份总览
+
+2026-06-09 完成
+- proposals/A_Rust_Python.md (12.8KB) — Rust + pyo3 + CPython 3.12, 5 phase 路线图 21-27 月
+- proposals/B_Rust_Lua.md (7.6KB) — Rust + mlua + Luau, py2lua 迁移工具
+- proposals/C_Cpp20_Refactor.md (9.0KB) — C++20 + CMake + pybind11 + Python 3.12, 9 步升级路径
+- proposals/D_Pure_Go.md (8.7KB) — Pure Go, 含"无脚本层"诚实声明 + 配置驱动 DSL 补偿方案
+- proposals/E_Go_Lua.md (8.3KB) — Go + gopher-lua, 双 GC 治理策略
+- proposals/README.md (4.4KB) — 入口 + 决策矩阵 + 适用场景速查
+- 6 个文件全部含「一、技术方案」+「二、开发计划」两个一级章节
+- 全部含 风险登记册 / 团队画像 / 成功标准 / 里程碑
+
+学习沉淀
+- 用户在 askUserQuestion 处直接拒绝→意味着 ralph 不应该再阻塞询问含义，直接按"技术方案+开发计划"双结构产出即可
+- 上游文档已经把方案选项 A/B/C/D/E 明确定义，无需重新发明分类

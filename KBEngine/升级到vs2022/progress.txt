@@ -1,0 +1,72 @@
+# KBEngine VS2019 → VS2022 Migration Progress
+
+## Session: 2026-06-11
+
+### Task
+Produce a detailed plan document for upgrading KBEngine's Visual Studio projects from VS2019 (v142) to VS2022 (v143).
+
+### Project Inventory (from exploration)
+- **Solution file**: kbe/src/kbengine.sln (Format 12.00, Visual Studio 15)
+- **Toolset**: v142 (VS2019) across all kbengine-owned projects
+- **Windows SDK**: 10.0
+- **Configurations**: Debug|Win32, Debug|x64, Release|Win32, Release|x64
+- **Internal libs (16)**: client_lib, common, db_interface, db_mongodb, db_mysql, db_redis, entitydef, helper, math, navigation, network, pyscript, resmgr, server, thread, xml
+- **Server components (13)**: baseapp, baseappmgr, cellapp, cellappmgr, centermgr, dbmgr, loginapp, machine, bots, guiconsole, interfaces, kbcmd, logger
+- **Dependencies**: apr, apr-util, curl (v141), expat, fmt, hiredis, jemalloc (v141), jwsmtp, log4cxx, mongodb, openssl
+
+### US-001 Complete: Project Structure Analysis
+- All 29 kbengine-owned vcxproj files identified (all v142)
+- All ~13 dependency vcxproj files identified (mostly v142, jemalloc v141, curl v141)
+- Solution format: Format 12.00, VisualStudioVersion 15.0
+- Props files found in python/ subdirectories only
+
+### US-002 Complete: Risk Analysis
+- C++ standard risk: C++11→C++17 default, recommend keeping /std:c++14
+- ABI incompatibility risk: HIGH - all .lib must be recompiled
+- Deprecated API risk: LOW - register, auto_ptr, random_shuffle
+- New warnings risk: MEDIUM - /Werror may break on new warnings
+- 3rd-party libs: All compatible with v143, jemalloc/curl need v141→v143
+
+### US-003 Complete: Migration Procedure
+- Phase 0: Environment prep (install VS2022, backup, baseline build)
+- Phase 1: Solution file update (minor)
+- Phase 2: Batch vcxproj toolset replacement (28 kbengine + ~13 dependency files)
+- Phase 3: Compilation verification (4 configs)
+- Phase 4: Runtime verification
+- Automation: PowerShell script provided
+- Rollback: git-based and manual PowerShell script
+
+### US-004 Complete: Document Output
+- KBEngine_VS2022_Migration_Plan.md written to vs2022-up/
+- 7 sections: overview, risks, steps, automation, validation, rollback, appendix
+- File count: ~40 vcxproj files to modify
+- All file paths verified against actual project structure
+
+### US-003 Complete: Debug|x64 Build
+- Build runs with VS2022 v143 toolset, all 12 server exes produced
+- Fix 1: Added `#include <basetsd.h>` to `bson-compat.h` (VS2022 no longer transitively includes it)
+- Fix 2: Removed `#define _SSIZE_T_DEFINED` workaround in `db_interface_mongodb.h` (blocked ssize_t typedef)
+- 0 migration-related errors; 9 pre-existing errors (python _ctypes/_hashlib/_ssl missing ffi.h/openssl, guiconsole missing MFC)
+- Warnings: ~1663 total (size_t truncation, deprecated APIs — pre-existing, same as VS2019)
+
+### US-004 Complete: Remaining Configurations
+- **Release|x64**: All 12 server exes produced. 0 migration-related errors. Same 9 pre-existing errors.
+  - Build ordering issue: `fmt.lib` and `libcurl.lib` fail to link on Rebuild (parallel build race). Workaround: Build twice or build libs first. Pre-existing, not caused by VS2022.
+- **Debug|Win32**: Fails with ~1527 linker errors — `__imp__Py_NegativeRefcount` unresolved. Root cause: Python 3.11 ships x64 .lib only; Win32 targets were never supported with Python 3.11. Pre-existing.
+- **Release|Win32**: Same Win32 incompatibility (~326 errors). Pre-existing.
+
+### Build Summary
+| Configuration | Result | Migration Errors | Pre-existing Errors |
+|---|---|---|---|
+| Debug\|x64 | PASS | 0 | 9 (python/guiconsole) |
+| Release\|x64 | PASS | 0 | 9 (python/guiconsole) |
+| Debug\|Win32 | FAIL | 0 | ~1527 (Python x64-only libs) |
+| Release\|Win32 | FAIL | 0 | ~326 (Python x64-only libs) |
+
+### Files Changed
+- NEW: KBEngine_VS2022_Migration_Plan.md
+- NEW: progress.txt
+- NEW: .omc/state/sessions/{id}/prd.json
+- MODIFIED: kbe/src/lib/dependencies/mongodb/src/libbson/src/bson/bson-compat.h (+`#include <basetsd.h>`)
+- MODIFIED: kbe/src/lib/db_mongodb/db_interface_mongodb.h (-`_SSIZE_T_DEFINED` workaround)
+- MODIFIED: All 55 vcxproj files (v142→v143 toolset migration)

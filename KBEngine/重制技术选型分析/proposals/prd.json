@@ -1,0 +1,23 @@
+{
+  "title": "KBEngine 重写：五种语言方案的技术方案与开发计划",
+  "stories": [
+    {"id": "US-001", "title": "方案 A：Rust + Python 3.12 (pyo3)", "priority": 1, "passes": true,
+     "acceptanceCriteria": ["文件 proposals/A_Rust_Python.md 存在","包含 技术方案 章节","包含 开发计划 章节","明确写出 pyo3 绑定与 Python 热加载策略"],
+     "evidence": "文件 12830 字节；含 ## 一、技术方案 和 ## 二、开发计划；pyo3/reload 关键词出现 13 次；含 1.4 D-2 Python 边界与 D-4 开发期热加载小节"},
+    {"id": "US-002", "title": "方案 B：Rust + Lua/Luau (mlua)", "priority": 2, "passes": true,
+     "acceptanceCriteria": ["文件 proposals/B_Rust_Lua.md 存在","包含 技术方案 章节","包含 开发计划 章节","明确写出 Python→Lua 迁移策略与 mlua 边界设计"],
+     "evidence": "文件 7557 字节；含两节；py2lua/mlua 关键词出现 30 次；含 D-4 Python→Lua 迁移工具与 1.4 LuaState 模型"},
+    {"id": "US-003", "title": "方案 C：现代 C++20 渐进式重构 + Python 3.12", "priority": 3, "passes": true,
+     "acceptanceCriteria": ["文件 proposals/C_Cpp20_Refactor.md 存在","包含 技术方案 章节","包含 开发计划 章节","明确写出 9 步升级路径与回归保障"],
+     "evidence": "文件 9012 字节；含两节；1.2 升级路径 9 步表格；CMake/pybind11/OpenSSL/spdlog 关键词 26 次；含 Sanitizer + 单元测试基础"},
+    {"id": "US-004", "title": "方案 D：纯 Go 重写", "priority": 4, "passes": true,
+     "acceptanceCriteria": ["文件 proposals/D_Pure_Go.md 存在","包含 技术方案 章节","包含 开发计划 章节","诚实陈述 GC/无脚本层的取舍与缓解策略"],
+     "evidence": "文件 8707 字节；含两节；1.1 含诚实声明小节；GC/配置驱动/热加载关键词 31 次；含 R1-R6 风险登记"},
+    {"id": "US-005", "title": "方案 E：Go + Lua", "priority": 5, "passes": true,
+     "acceptanceCriteria": ["文件 proposals/E_Go_Lua.md 存在","包含 技术方案 章节","包含 开发计划 章节","明确双 GC 问题与边界设计"],
+     "evidence": "文件 8350 字节；含两节；双GC/gopher-lua 关键词 24 次；含 D-3 双 GC 治理与 1.3 Lua 嵌入方案对比"},
+    {"id": "US-006", "title": "总览与对比", "priority": 6, "passes": true,
+     "acceptanceCriteria": ["文件 proposals/README.md 存在并链接到 A-E 五个方案","包含统一的对比矩阵"],
+     "evidence": "文件 4450 字节；含 5 个方案链接；含决策矩阵和适用场景速查表"}
+  ]
+}
