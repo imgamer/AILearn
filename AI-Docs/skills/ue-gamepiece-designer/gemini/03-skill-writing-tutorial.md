@@ -77,11 +77,20 @@ When the user <触发条件>, produce a structured design ready to implement in 
 <skill-slug>/                     ← 文件夹名 = slug = SKILL.md 的 name
 ├── SKILL.md                      ← 必须，固定文件名
 ├── _meta.json                    ← 分发时必须
-└── Templates/                    ← 推荐但非必须
-    ├── <Topic>_Template.md       ← 输出骨架模板
-    ├── Checklist_<Topic>.md      ← 检查清单模板
-    └── Schema_<Topic>_<Type>.csv ← 数据 schema 示例（如适用）
+├── Templates/                    ← 推荐但非必须（待填充骨架）
+│   ├── <Topic>_Template.md       ← 输出骨架模板
+│   ├── Checklist_<Topic>.md      ← 检查清单模板
+│   └── Schema_<Topic>_<Type>.csv ← 数据 schema 示例（如适用）
+└── examples/                     ← 进阶可选（已填充范例）
+    ├── example-1.md              ← 标杆输出范例 1
+    ├── example-2.md              ← 标杆输出范例 2
+    └── example-3.md              ← 标杆输出范例 3
 ```
+
+> 💡 **关于 `examples/`**：与 Templates 的"待填充骨架"不同，examples 是**已填充完毕的标杆输出**，
+> 用于通过 few-shot 学习对齐输出深度和措辞。何时该加、如何写、怎么在 SKILL.md 引用，
+> 详见 [第 5 篇：examples 指南](file:///workspace/AI-Docs/skills/ue-gamepiece-designer/gemini/05-examples-guide.md)。
+> 初学者第一版 skill 可以**先不加 examples**，等发现输出质量不稳定时再加。
 
 ### 3.1.4 _meta.json 模板
 
@@ -256,14 +265,19 @@ When the user asks for <触发条件>, produce a structured design ready to impl
 - [ ] 模板的 Testing 段给了具体可执行场景？
 - [ ] SKILL.md 显式引用了 Templates/ 下的模板？
 - [ ] 没有把详细模板塞进 SKILL.md？
+- [ ] （进阶）若加了 `examples/`，SKILL.md 是否显式引用了范例文件？
+- [ ] （进阶）每个范例是否完整填充了 6 段且命名严格遵守前缀？
+
+> 💡 后两项是进阶检查，不加 examples 可跳过。加 examples 的完整流程见
+> [第 5 篇](file:///workspace/AI-Docs/skills/ue-gamepiece-designer/gemini/05-examples-guide.md)。
 
 全部勾选 = 及格的 skill，可以发布。
 
 ---
 
-## 3.3 避坑指南：初学者最容易犯的 10 个错
+## 3.3 避坑指南：初学者最容易犯的 11 个错
 
-下面这 10 个错是按"出现频率 + 危害程度"排序的，前 3 个最致命。
+下面这些错按"出现频率 + 危害程度"排序，前 3 个最致命。
 
 ### 坑 1：description 写得太宽
 
@@ -454,6 +468,52 @@ description: ...
 
 **修复方法**：把 Test Checklist 设为强制段，每段给 3 个具体测试场景。
 
+### 坑 11：误用 examples 或不加引用
+
+**症状**：加了 `examples/` 目录但输出质量没改善；或 examples 和 Templates 混淆。
+
+**反例 1（混淆）**：把 examples 当 Templates 用，里面写 `<占位符>`。
+```markdown
+# examples/my-example.md
+1) Goal: <one sentence>
+2) Inputs: <input 1>
+```
+
+**正例 1**：examples 必须是**已填充完毕的完整范例**，没有占位符。
+```markdown
+# examples/my-example.md
+1) Goal: 设计生命药水拾取系统，按 E 拾取，多人同步
+2) Inputs: Enhanced Input Action "IA_Interact"、玩家进入碰撞盒触发
+```
+
+**反例 2（不引用）**：建了 examples/ 但 SKILL.md 没提。
+```markdown
+## Output format (always)
+1) Goal
+...
+6) Test Checklist
+（结尾没有引用 examples）
+```
+
+**正例 2**：在 Output format 段后显式引用 examples。
+```markdown
+## Output format (always)
+1) Goal
+...
+6) Test Checklist
+
+> **参考范例**：生成前先读 `examples/example-1.md`，对照其深度和粒度。
+```
+
+**为什么错**：
+- 反例 1：examples 是 few-shot 范例，必须是完整答案。占位符让它失去了"标杆"作用。
+- 反例 2：examples 不自动注入，SKILL.md 不引用 = Claude 不知道有范例可参考 = 加了等于没加。
+
+**修复方法**：
+- examples 写完整答案，不放占位符
+- SKILL.md 的 Output format 段末尾用 `>` 引用块显式列出范例文件
+- 详见 [第 5 篇：examples 指南](file:///workspace/AI-Docs/skills/ue-gamepiece-designer/gemini/05-examples-guide.md)
+
 ---
 
 ## 3.4 实战范例：从零写一个 skill（10 分钟）
@@ -637,7 +697,7 @@ When the user asks for a weapon effect (muzzle flash, impact, explosion, trail) 
 
 1. **写 skill 的本质是用自然语言写"约束"**。约束越精确，输出越稳定。
 2. **7 步法是通用流程**：定义边界 → 建目录 → 写 YAML → 写核心三段 → 写领域约定 → 写模板 → 自检。
-3. **10 个坑前 3 个最致命**：description 太宽、模板塞进 SKILL.md、Safety 没替代行为。
+3. **避坑指南 11 条，前 3 个最致命**：description 太宽、模板塞进 SKILL.md、Safety 没替代行为；第 11 条专门讲 examples 的误用（详见第 5 篇）。
 
 ### 写 skill 的元原则（5 条）
 
