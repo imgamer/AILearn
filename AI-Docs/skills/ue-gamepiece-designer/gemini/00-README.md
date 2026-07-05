@@ -4,7 +4,8 @@
 >
 > 目标读者：**有工程基础但首次接触 Claude Code Skill 的开发者**。语言通俗、技术细节严谨，所有结论都对照源文件行号，可在阅读时打开源文件同步对照。
 >
-> 学习路径：1 → 2 → 3 → 4，每篇自包含但层层递进。
+> 学习路径：1 → 2 → 3 → 4 → 5，每篇自包含但层层递进。第 5 篇是进阶主题（examples），
+> 可在掌握前 4 篇后按需阅读。
 
 ---
 
@@ -24,6 +25,9 @@ Game-Skills/gamepiece-designer/ue57-gamepiece-designer/
     └── Schema_Ability_DT.csv         ← DataTable 字段示例（可直接导入 UE）
 ```
 
+> **注**：当前案例**没有** `examples/` 目录。第 5 篇会讲这个目录何时该加、
+> 如何发挥作用，并给出为案例 skill 添加 3 个完整范例的实现方案。
+
 整个 skill 总共不到 150 行，但麻雀虽小五脏俱全——它是学习 skill 工程化的**最佳样本**：足够小到能逐行读完，足够完整到能覆盖 skill 设计的所有关键决策。
 
 ---
@@ -37,6 +41,7 @@ Game-Skills/gamepiece-designer/ue57-gamepiece-designer/
 | 2 | [02-source-deep-dive.md](file:///workspace/AI-Docs/skills/ue-gamepiece-designer/gemini/02-source-deep-dive.md) | 技术细节与源码拆解（How） | 参数解析 / 工具交互 / 错误处理 / 状态管理 |
 | 3 | [03-skill-writing-tutorial.md](file:///workspace/AI-Docs/skills/ue-gamepiece-designer/gemini/03-skill-writing-tutorial.md) | 保姆级教程：写一个标准 Claude Code Skill | 通用模板 + 标准步骤 + 避坑指南 |
 | 4 | [04-ue-automation-migration.md](file:///workspace/AI-Docs/skills/ue-gamepiece-designer/gemini/04-ue-automation-migration.md) | 实战迁移：虚幻引擎自动化技能 | 桥接 unreal Python / Web Remote Control，附 UE_AssetCheck / UE_LightSetup 完整设计 |
+| 5 | [05-examples-guide.md](file:///workspace/AI-Docs/skills/ue-gamepiece-designer/gemini/05-examples-guide.md) | examples/ 目录：何时用、如何发挥作用、怎么加 | few-shot 机制 + 与 Templates 区别 + 为案例 skill 添加 3 个完整范例 |
 
 ---
 
@@ -60,5 +65,7 @@ Game-Skills/gamepiece-designer/ue57-gamepiece-designer/
 | Skill 文件越多越强 | ❌ skill 强不强看 SKILL.md 的精度，文件多反而增加 token 负担 |
 | 写 skill 必须会 Python/C++ | ❌ 写 skill 只需会写 Markdown；要让 skill 真的执行 UE 操作才需要 Python（见第 4 篇） |
 | `description` 是给人看的说明 | ❌ `description` 是给系统做**触发匹配**的关键字段，决定 skill 是否被启用 |
+| `examples/` 和 `Templates/` 是一回事 | ❌ Templates 是**待填充骨架**（占位符），examples 是**已填充范例**（标杆输出）。详见第 5 篇 |
+| `examples/` 会自动注入上下文 | ❌ examples 按需读取，不自动注入。最可靠的方式是 SKILL.md 显式引用（详见第 5 篇） |
 
 校准完毕后，从 [01-core-architecture.md](file:///workspace/AI-Docs/skills/ue-gamepiece-designer/gemini/01-core-architecture.md) 开始阅读。
