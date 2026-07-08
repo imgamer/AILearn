@@ -778,6 +778,12 @@ When the user asks for a UE system or "game piece", produce a structured design 
 - 纵向深化：参考第 4 篇，让 skill 输出可执行的 Python 脚本，真正落地 UE 自动化
 - 反哺原版：如果你的改造有通用价值（比如更细的性能基线），可以提 PR 给原版
 
+> ⚠️ **如果你的项目是异构技术栈**（例如 UE 只做客户端、嵌入 slua 脚本层、
+> bigworld 服务端、自定义网络协议），第 6 篇的"改填充"思路不够用——
+> 需要**重构输出结构**。这种情况请接着读
+> [第 7 篇：异构项目改造实战](file:///workspace/AI-Docs/skills/ue-gamepiece-designer/gemini/07-heterogeneous-project-guide.md)，
+> 里面有针对 UE+slua+bigworld 技术栈的完整改造步骤和双 Schema 设计。
+
 ---
 
 ## 本系列结束
