@@ -4,8 +4,11 @@
 >
 > 目标读者：**有工程基础但首次接触 Claude Code Skill 的开发者**。语言通俗、技术细节严谨，所有结论都对照源文件行号，可在阅读时打开源文件同步对照。
 >
-> 学习路径：1 → 2 → 3 → 4 → 5，每篇自包含但层层递进。第 5 篇是进阶主题（examples），
-> 可在掌握前 4 篇后按需阅读。
+> 学习路径：1 → 2 → 3 → 4 → 5 → 6，每篇自包含但层层递进。
+> - 第 1-3 篇是基础（架构 / 源码 / 写作教程），必读
+> - 第 4 篇是 UE 自动化迁移实战
+> - 第 5、6 篇是进阶主题（examples / 改造指南），可在掌握前 4 篇后按需阅读
+> - **想直接改造 skill 用到自己项目**：可跳读第 6 篇，但建议先看第 1、3 篇建立概念
 
 ---
 
@@ -42,6 +45,7 @@ Game-Skills/gamepiece-designer/ue57-gamepiece-designer/
 | 3 | [03-skill-writing-tutorial.md](file:///workspace/AI-Docs/skills/ue-gamepiece-designer/gemini/03-skill-writing-tutorial.md) | 保姆级教程：写一个标准 Claude Code Skill | 通用模板 + 标准步骤 + 避坑指南 |
 | 4 | [04-ue-automation-migration.md](file:///workspace/AI-Docs/skills/ue-gamepiece-designer/gemini/04-ue-automation-migration.md) | 实战迁移：虚幻引擎自动化技能 | 桥接 unreal Python / Web Remote Control，附 UE_AssetCheck / UE_LightSetup 完整设计 |
 | 5 | [05-examples-guide.md](file:///workspace/AI-Docs/skills/ue-gamepiece-designer/gemini/05-examples-guide.md) | examples/ 目录：何时用、如何发挥作用、怎么加 | few-shot 机制 + 与 Templates 区别 + 为案例 skill 添加 3 个完整范例 |
+| 6 | [06-skill-customization-guide.md](file:///workspace/AI-Docs/skills/ue-gamepiece-designer/gemini/06-skill-customization-guide.md) | 改造指南：把 skill 改造成适合自己项目流程 | 5 维度决策矩阵 + 7 步法 + 4 个项目类型案例 + 8 条避坑 |
 
 ---
 
