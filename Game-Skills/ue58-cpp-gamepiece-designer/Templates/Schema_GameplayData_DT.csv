@@ -1,0 +1,41 @@
+# Gameplay Data Schema Template (DataTable CSV format)
+#
+# This template shows the CSV format for DataTable-driven gameplay data.
+# C++ defines the row struct (F<Thing>Stats, USTRUCT(BlueprintType)).
+# DataTable asset (DT_<Thing>) imports this CSV.
+# Replace all <Thing> placeholders with system-specific names.
+#
+# Format notes:
+# - Tab-separated (UE DataTable CSV import default)
+# - First row: field names matching F<Thing>Stats UPROPERTY names exactly
+# - bool fields use TRUE/FALSE (all caps)
+# - Enum fields use the enum value name without the E prefix (e.g., Fire not EElement::Fire)
+# - Soft references use asset path strings (e.g., /Game/UI/Icons/T_Icon_Potion.T_Icon_Potion)
+# - Empty optional fields: leave the cell empty (don't write "null")
+#
+# Corresponding C++ struct (in <Thing>Data.h):
+#
+# USTRUCT(BlueprintType)
+# struct F<Thing>Stats
+# {
+#     GENERATED_BODY()
+#
+#     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "<Thing>")
+#     FName <Thing>Id;                    // Row name, unique identifier
+#
+#     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "<Thing>")
+#     FText DisplayName;                  // Localized display name
+#
+#     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "<Thing>")
+#     <Type> <Field>;                     // Typed field
+#
+#     // ... more fields
+# };
+#
+# Example rows below use an Ability stats table as illustration.
+# Adapt field names and types to your system's actual data.
+
+<Thing>Id	DisplayName	<EnumField>	<FloatField>	<IntField>	<BoolField>	<StringField>	<SoftRefField>
+EXAMPLE_ITEM_1	Example Item 1	<EnumValue>	100.0	10	TRUE	description text	/Game/UI/Icons/T_Example1.T_Example1
+EXAMPLE_ITEM_2	Example Item 2	<EnumValue>	250.0	25	FALSE	another description	/Game/UI/Icons/T_Example2.T_Example2
+EXAMPLE_ITEM_3	Example Item 3	<EnumValue>	500.0	50	TRUE	third description	/Game/UI/Icons/T_Example3.T_Example3
