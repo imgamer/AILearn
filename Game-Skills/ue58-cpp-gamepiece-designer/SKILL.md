@@ -1,6 +1,6 @@
 ---
 name: ue58-cpp-gamepiece-designer
-description: Designs UE5.8 game pieces with strict layer separation: all gameplay logic in C++, Blueprint as config layer only, engine visual assets (AnimBP/StateTree/BT/DataTable) preserved. Produces C++ class designs, visual asset interface contracts, DataTable schemas, replication notes, and test checklists. AI-readable: C++ source is the single source of truth, no .uasset parsing needed.
+description: "Designs UE5.8 game pieces with strict layer separation: all gameplay logic in C++, Blueprint as config layer only, engine visual assets (AnimBP/StateTree/BT/DataTable) preserved. Produces C++ class designs, visual asset interface contracts, DataTable schemas, replication notes, and test checklists. AI-readable: C++ source is the single source of truth, no .uasset parsing needed."
 ---
 
 # UE5.8 C++-Logic Gamepiece Designer (Strict Layer Separation, Text-Only)
