@@ -4,16 +4,18 @@
 >
 > 目标读者：**有工程基础但首次接触 Claude Code Skill 的开发者**。语言通俗、技术细节严谨，所有结论都对照源文件行号，可在阅读时打开源文件同步对照。
 >
-> 学习路径：1 → 2 → 3 → 4 → 5 → 6 → 7 → 8，每篇自包含但层层递进。
+> 学习路径：1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 → 9，每篇自包含但层层递进。
 > - 第 1-3 篇是基础（架构 / 源码 / 写作教程），必读
 > - 第 4 篇是 UE 自动化迁移实战
 > - 第 5、6 篇是进阶主题（examples / 通用改造指南）
 > - 第 7 篇是异构技术栈改造（UE+slua+bigworld+协议）
-> - 第 8 篇是 C++ 优先架构改造（让大模型参与开发），适合"逻辑用 C++、蓝图只配置"的项目
+> - 第 8 篇是 C++ 优先架构改造（具体玩法案例：推砖块）
+> - 第 9 篇是 UE5.8 严格分层改造（C++ 逻辑 + 引擎可视化资产保留 + AI 可读），通用架构原则
 > - **想直接改造 skill 用到自己项目**：按项目类型选读
 >   - UE 单体标准蓝图 → 第 6 篇
 >   - 异构多语言栈 → 第 7 篇
->   - UE 原生但 C++ 优先 → 第 8 篇
+>   - UE 原生但 C++ 优先（具体玩法）→ 第 8 篇
+>   - UE5.8 C++ 全逻辑 + 引擎资产保留（通用架构）→ 第 9 篇
 >   - 建议都先看第 1、3 篇建立概念
 
 ---
@@ -54,6 +56,7 @@ Game-Skills/gamepiece-designer/ue57-gamepiece-designer/
 | 6 | [06-skill-customization-guide.md](file:///workspace/AI-Docs/skills/ue-gamepiece-designer/gemini/06-skill-customization-guide.md) | 改造指南：把 skill 改造成适合自己项目流程 | 5 维度决策矩阵 + 7 步法 + 4 个项目类型案例 + 8 条避坑 |
 | 7 | [07-heterogeneous-project-guide.md](file:///workspace/AI-Docs/skills/ue-gamepiece-designer/gemini/07-heterogeneous-project-guide.md) | 异构项目改造实战（UE5.7+slua+bigworld） | 澄清 Schema 通用性 + 异构 7 大改动 + 双 Schema 设计 + 火球术完整范例 |
 | 8 | [08-cpp-first-casual-game-guide.md](file:///workspace/AI-Docs/skills/ue-gamepiece-designer/gemini/08-cpp-first-casual-game-guide.md) | C++ 优先休闲联机游戏改造（推砖块碾压） | C++ 优先架构动机 + 7 大改动 + ABrick 完整 C++ 范例 + 大模型协作工作流 |
+| 9 | [09-cpp-logic-visual-asset-boundary.md](file:///workspace/AI-Docs/skills/ue-gamepiece-designer/gemini/09-cpp-logic-visual-asset-boundary.md) | UE5.8 C++ 逻辑层与可视化资产层边界 | 三层架构 + 边界判断准则 + 接口契约机制 + 8 个补充边界情况 + 背包系统完整范例 |
 
 ---
 

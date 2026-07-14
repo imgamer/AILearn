@@ -1156,6 +1156,17 @@ Source/Gameplay/                       ← C++ 源码
 
 **完成比完美更重要**。先跑通最小系统，再迭代代码规范和范例。
 
+> 📌 **进阶场景**：如果你的项目不限于单一玩法，而是要把"C++ 承载全部业务逻辑、
+> 引擎可视化资产（AnimBP/StateTree/BT/DataTable）完整保留"作为**通用架构原则**，
+> 第 8 篇聚焦的"推砖块物理玩法"不够用。这种情况请读
+> [第 9 篇：UE5.8 C++ 逻辑层与可视化资产层边界](file:///workspace/AI-Docs/skills/ue-gamepiece-designer/gemini/09-cpp-logic-visual-asset-boundary.md)，
+> 里面有：
+> - 三层架构的清晰边界（C++ 逻辑 / 引擎可视化资产 / 纯美术）
+> - "什么该 C++ 化、什么不该"的判断准则
+> - **接口契约机制**——让 AI 只读 C++ 源码就能理解项目，无需解析 .uasset
+> - 8 个容易遗漏的边界情况（Gameplay Tags / Editor Tool / 热更 / Subsystem / UMG / BFL / 测试 / UHT）
+> - 背包系统完整范例（覆盖三层）
+
 ---
 
 ## 本系列结束
